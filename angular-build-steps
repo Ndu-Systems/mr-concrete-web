@@ -1,0 +1,12 @@
+Creating a PWA ready Application.
+
+
+ng new MrConcrete --style=scss --routing
+
+inside the APP 
+
+Perform a build AOT (Simulates the build that is build for --prod)
+ng b --aot
+
+Production deployments
+ng b --prod 
