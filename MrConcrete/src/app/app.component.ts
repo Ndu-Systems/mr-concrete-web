@@ -17,15 +17,6 @@ export class AppComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getItems();
-  }
+   }
 
-  getItems() {
-    this.apiService.get().subscribe(data => {
-      console.log(data);
-      this.items = data;
-    }, (error) => {
-      console.log(error);
-    });
-  }
 }

@@ -1,0 +1,8 @@
+@import '../../../assets/styles/general/colors';
+.home-container {
+  background: $black;
+  background-image: url('../../../assets/images/home/backround.svg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  min-height: 120vh;
+}

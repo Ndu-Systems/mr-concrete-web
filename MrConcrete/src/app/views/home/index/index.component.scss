@@ -1,0 +1,27 @@
+@import '../../../../assets/styles/general/colors';
+
+.container {
+  .main-block {
+    margin: 6em;
+    padding: 1em;
+    width: 40em;
+
+    .header {
+      font-size: 80px;
+      color: $white;
+    }
+  }
+
+  .cta-text {
+    font-size: 1.5em;
+  }
+
+  .mat-flat-button.mat-primary {
+    background-color: $black;
+    padding: 0.5em 4em;
+    font-size: 1em;
+    font-weight: 500;
+  }
+
+
+}
