@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Item } from './_models';
 import { ApiService, PwaService } from './_services';
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -12,11 +13,23 @@ export class AppComponent implements OnInit {
   items: Item[];
 
   constructor(
-    private apiService: ApiService,
-    public pwaService: PwaService
+    public pwaService: PwaService,
+    private router: Router,
   ) { }
 
   ngOnInit() {
-   }
+    this.scrollUp();
+  }
+  installPwa(): void {
+    this.pwaService.promptEvent.prompt();
+  }
 
+  scrollUp() {
+    this.router.events.subscribe((ev) => {
+      if (!(ev instanceof NavigationEnd)) {
+        return;
+      }
+      window.scrollTo(0, 0);
+    });
+  }
 }

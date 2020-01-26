@@ -1,0 +1,47 @@
+@import '../../../../../assets/styles/general/colors';
+
+.sign-in-container {
+  padding: 1em;
+  margin-top: 20em;
+  height: 50em;
+  background: $black;
+  background-image: url('../../../../../assets/images/home/sign-in-bg.svg');
+  background-repeat: no-repeat;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  background: $white;
+  padding: 3em;
+  width: 25em;
+  border-radius: 5px;
+  position: absolute;
+  right: 5em;
+  top: 20em;
+}
+
+
+.form-heading {
+  font-size: 1.5em;
+  margin: 2em 0;
+}
+
+::ng-deep {
+  .mat-form-field-wrapper {
+    .mat-form-field-flex {
+      background: #ffffff !important;
+      padding: 0em 1em;
+      border: solid 1px #DCDDE1;
+      border-radius: 5px;
+    }
+  }
+}
+
+
+.mat-flat-button.mat-primary {
+  background-color: $black;
+  padding: 0.5em 4em;
+  font-size: 1em;
+  font-weight: 500;
+}

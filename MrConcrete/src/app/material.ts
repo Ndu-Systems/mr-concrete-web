@@ -9,7 +9,8 @@ import {
   ShowOnDirtyErrorStateMatcher,
   MatMenuModule,
   MatToolbarModule,
-  MatCardModule
+  MatCardModule,
+  MatSelectModule
 } from '@angular/material';
 
 @NgModule({
@@ -21,6 +22,7 @@ import {
     MatIconModule,
     MatMenuModule,
     MatToolbarModule,
+    MatSelectModule,
     MatCardModule
   ],
   exports: [
@@ -31,6 +33,7 @@ import {
     MatIconModule,
     MatMenuModule,
     MatToolbarModule,
+    MatSelectModule,
     MatCardModule
   ],
   providers: [
