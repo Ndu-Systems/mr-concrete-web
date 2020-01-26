@@ -1,3 +1,4 @@
+import { environment } from 'src/environments/environment';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { SignInModel } from 'src/app/_models';
@@ -15,6 +16,8 @@ export class SignInComponent implements OnInit {
   hidePassword = true;
   error: string;
   returnUrl: string;
+  email = environment.EMAIL;
+  password = environment.PASSWORD;
   constructor(
     private fb: FormBuilder,
     private accountService: AccountService,
@@ -25,13 +28,13 @@ export class SignInComponent implements OnInit {
   ngOnInit() {
     this.rForm = this.fb.group({
       Email: new FormControl(
-        null,
+        this.email,
         Validators.compose([
           Validators.required,
           Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
         ])
       ),
-      Password: [null, Validators.required]
+      Password: [this.password, Validators.required]
     });
 
     this.returnUrl = this.route.snapshot.queryParams.returnUrl || 'dashboard';
@@ -41,7 +44,7 @@ export class SignInComponent implements OnInit {
     this.accountService.signIn(model)
       .pipe(first())
       .subscribe(data => {
-        if (data) {
+        if (data.Email) {
           this.routeTo.navigate([this.returnUrl]);
         }
       }, error => {
