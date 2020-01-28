@@ -1,0 +1,73 @@
+@import '../../../../assets/styles/general/colors';
+
+.col-1-of-2 {
+  grid-template-columns: 65% auto;
+}
+.header {
+  font-weight: 600;
+  font-size: 25px;
+  padding: 0 1.2em;
+  &.stats {
+    padding: 0;
+  }
+}
+.main-card {
+  width: 20em;
+  color: $white;
+  cursor: pointer;
+
+  &.stats {
+    height: 11em;
+    &.success {
+      background-color: $success;
+    }
+
+    &.warning {
+      background-color: $yellow;
+    }
+
+    &.danger {
+      background-color: $danger;
+    }
+
+    h1 {
+      font-size: 2.5em;
+
+    }
+  }
+
+  .mat-card-subtitle {
+    display: block;
+    margin-bottom: 16px;
+    color: $white;
+  }
+}
+
+.recent-order {
+  padding: 0em 2em;
+  .main-card {
+    color: $black;
+    .mat-card-subtitle {
+       color: inherit;
+    }
+
+    h1 {
+      font-size: 1.33em;
+    }
+    .col-1-of-2 {
+      margin: 0;
+      grid-template-columns: 35% auto;
+    }
+    .status {
+      padding: 1em 0;
+    }
+    .badge-pending {
+      background-color: #fbc53180;
+      padding: 1em;
+      border-radius: 50em;
+      width: 50%;
+      text-align: center;
+      color: #FFA502;
+    }
+  }
+}
