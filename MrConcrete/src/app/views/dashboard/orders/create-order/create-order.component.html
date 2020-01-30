@@ -1,0 +1,23 @@
+<div class="container">
+  <h1>
+    Create an order
+  </h1>
+</div>
+
+<div class="form">
+  <div class="catergory">
+    <p>
+
+    </p>
+
+    <div class="options">
+      <mat-radio-group aria-label="Select an option">
+        <mat-radio-button  *ngFor="let catergory of caterories$ | async" [value]="catergory.CategoryId">{{catergory.CategoryName}}</mat-radio-button>
+      </mat-radio-group>
+      <p>
+        Select the category that best relates to your order. 
+      </p>
+    </div>
+    
+  </div>
+</div>
