@@ -1,13 +1,27 @@
 .mat-radio-button {
-    margin-left: 16px;
-    border: 1px solid #DCDDE1;
-    border-radius: .3rem;
-    padding: .5rem 1rem;
-    background: #fff;
-  }
+  margin-left: 16px;
+  border: 1px solid #DCDDE1;
+  border-radius: .3rem;
+  padding: .5rem 1rem;
+  background: #fff;
+}
 
-  p{
-      width: 100%;
-    //   text-align: center;
-      padding: 2rem;
-  }
+p {
+  width: 100%;
+  //   text-align: center;
+  padding: 2rem;
+}
+
+
+.suppliers-card {
+ width: 25rem;
+//   min-width: 4rem;
+  display: inline-block;
+  margin: .5rem;
+  text-align: center;
+}
+
+.suppliers-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}

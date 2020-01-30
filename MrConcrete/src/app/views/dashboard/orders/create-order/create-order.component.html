@@ -6,18 +6,37 @@
 
 <div class="form">
   <div class="catergory">
-    <p>
-
-    </p>
-
     <div class="options">
       <mat-radio-group aria-label="Select an option">
-        <mat-radio-button  *ngFor="let catergory of caterories$ | async" [value]="catergory.CategoryId">{{catergory.CategoryName}}</mat-radio-button>
+        <mat-radio-button *ngFor="let catergory of caterories$ | async" [value]="catergory.CategoryId">
+          {{catergory.CategoryName}}</mat-radio-button>
       </mat-radio-group>
       <p>
-        Select the category that best relates to your order. 
+        Select the category that best relates to your order.
       </p>
     </div>
-    
+
+    <div class="suppliers">
+      <mat-card class="suppliers-card" *ngFor="let supplier of suppliers$ | async">
+        <div class="icon">
+          <img src="assets/images/dashboard/order/suppliers-inactive.svg" alt="">
+        </div>
+        <div class="data">
+          <h2>
+            {{supplier.SupplierName}}
+          </h2>
+          <h3>
+            {{supplier.City}}
+          </h3>
+          <h4>
+            {{supplier.ContactNumber}}
+          </h4>
+        </div>
+      </mat-card>
+      <p>
+        Select or add a new supplier for  residential
+      </p>
+    </div>
+
   </div>
 </div>
