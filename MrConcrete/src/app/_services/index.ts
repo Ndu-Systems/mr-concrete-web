@@ -4,5 +4,5 @@ export * from './pwa.service';
 export * from './account.service';
 export * from './dashboard/caterory.service';
 export * from './dashboard/supplier.service';
-// end:ng42.barrel
+ // end:ng42.barrel
 

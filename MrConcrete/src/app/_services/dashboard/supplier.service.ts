@@ -68,11 +68,11 @@ export class SupplierService {
           return new Date(y.CreateDate).getTime() - new Date(x.CreateDate).getTime();
         });
         this._suppliers.next(Object.assign({}, this.dataStore).suppliers);
-      }, error => console.log('Could not update category'));
+      }, error => console.log('Could not update supplier'));
   }
 
-  getSuppliers(companyId) {
-    return this.http.get<Supplier[]>(`${this.url}/api/supplier/get-supplies.php?CompanyId=${companyId}`).subscribe(resp => {
+  getSuppliers() {
+    return this.http.get<Supplier[]>(`${this.url}/api/supplier/get-supplies.php`).subscribe(resp => {
       const Supplier: Supplier[] = resp;
       localStorage.setItem('suppliers', JSON.stringify(Supplier));
       this._suppliers.next(Supplier);

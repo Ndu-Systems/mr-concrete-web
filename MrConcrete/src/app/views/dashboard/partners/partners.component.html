@@ -1,3 +1,41 @@
-<p>
-  partners works!
-</p>
+<app-banner [subheading]="subheading" [heading]="heading" [actionButton]="actionButton"></app-banner>
+<div class="container" *ngIf="suppliers">
+  <span *ngFor="let item of suppliers">
+    <mat-card>
+      <span class="table-card col-1-of-4">
+        <div class="header col-1-of-2">
+          <img src="assets/images/dashboard/settings/image.svg" alt="image vector">
+          <h1 class="header">
+            {{item.SupplierName}}
+            <span class="date">{{item.CreateDate | date:'mediumDate'}}</span>
+          </h1>
+        </div>
+        <div class="data">
+          <h1 class="text">
+            {{item.ContactNumber}}
+            <span class="span">
+              phone number
+            </span>
+          </h1>
+        </div>
+        <div class="data">
+          <h1 class="text">
+           {{item.EmailAddress}}
+            <span class="span">
+              email
+            </span>
+          </h1>
+        </div>
+        <div class="data">
+          <h1 class="text">
+           {{item.SupplierAddress}}, {{item.City}}, {{item.PostalCode}}
+            <span class="span">
+              Address
+            </span>
+          </h1>
+        </div>
+      </span>
+    </mat-card>
+  </span>
+
+</div>

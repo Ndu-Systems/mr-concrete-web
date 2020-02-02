@@ -7,7 +7,13 @@
       <span class="date">{{today | date: 'mediumDate'}}</span>
     </h1>
   </div>
-  <h1 class="banner-heading">
-    {{subheading}}
-  </h1>
+  <div class="col-1-of-2">
+    <h1 class="banner-heading">
+      {{subheading}}
+    </h1>
+    <button *ngIf="actionButton" mat-flat-button color="primary" (click)="navigateTo(actionButton.link)">
+      {{actionButton.label}}
+    </button>
+  </div>
+
 </mat-card>

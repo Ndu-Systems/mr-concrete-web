@@ -18,7 +18,7 @@ export class CreateOrderComponent implements OnInit {
 
   ngOnInit() {
     this.cateroryService.getCateries('test');
-    this.supplierService.getSuppliers('test');
+    this.supplierService.getSuppliers();
     this.caterories$ = this.cateroryService.categories;
     this.suppliers$ = this.supplierService.suppliers;
   }

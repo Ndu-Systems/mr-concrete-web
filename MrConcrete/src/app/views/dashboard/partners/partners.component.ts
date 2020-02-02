@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Supplier } from 'src/app/_models';
+import { SupplierService } from 'src/app/_services';
+import { ActionButton } from '../shared/constants/actions';
 
 @Component({
   selector: 'app-partners',
@@ -6,10 +9,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./partners.component.scss']
 })
 export class PartnersComponent implements OnInit {
-
-  constructor() { }
+  heading = 'Settings';
+  subheading = 'Suppliers';
+   suppliers: Supplier[] = [];
+   actionButton: ActionButton = {
+     link: '/dashboard/add-supplier',
+     label: 'add supplier'
+   };
+  constructor(
+    private supplierService: SupplierService
+  ) { }
 
   ngOnInit() {
+    this.suppliers = this.supplierService.suppliersValue;
+    this.supplierService.getSuppliers();
   }
 
 }
