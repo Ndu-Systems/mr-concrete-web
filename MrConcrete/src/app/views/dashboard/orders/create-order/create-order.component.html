@@ -5,7 +5,7 @@
 </div>
 
 <div class="form">
-  <div class="catergory">
+  <div class="catergory order-form">
     <div class="options">
       <mat-radio-group aria-label="Select an option">
         <mat-radio-button *ngFor="let catergory of caterories$ | async" [value]="catergory.CategoryId">
@@ -16,7 +16,7 @@
       </p>
     </div>
 
-    <div class="suppliers">
+    <div class="suppliers order-form">
       <mat-card class="suppliers-card" *ngFor="let supplier of suppliers$ | async">
         <div class="icon">
           <img src="assets/images/dashboard/order/suppliers-inactive.svg" alt="">
@@ -38,7 +38,7 @@
       </p>
     </div>
 
-    <div class="form">
+    <div class="order-form">
       <h1>Ready-mix Concrete order form</h1>
 
       <div class="example-container">
@@ -50,6 +50,10 @@
           <mat-label>{{measurement.Name}}</mat-label>
           <input matInput [placeholder]="measurement.Name">
         </mat-form-field>
+        <div class="actions">
+          <button mat-button>Skip</button>
+          <button mat-button>Save</button>
+        </div>
       </div>
     </div>
 
