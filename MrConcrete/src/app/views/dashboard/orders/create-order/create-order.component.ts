@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CateroryService, SupplierService } from 'src/app/_services';
+import { CateroryService, SupplierService, MeasurementService } from 'src/app/_services';
 import { Observable } from 'rxjs';
-import { Caterory,Supplier } from 'src/app/_models';
+import { Caterory, Supplier, Measurement } from 'src/app/_models';
 
 @Component({
   selector: 'app-create-order',
@@ -11,9 +11,11 @@ import { Caterory,Supplier } from 'src/app/_models';
 export class CreateOrderComponent implements OnInit {
   caterories$: Observable<Caterory[]>;
   suppliers$: Observable<Supplier[]>;
+  measurements$: Observable<Measurement[]>;
   constructor(
     private cateroryService: CateroryService,
     private supplierService: SupplierService,
+    private measurementService: MeasurementService,
   ) { }
 
   ngOnInit() {
@@ -21,6 +23,7 @@ export class CreateOrderComponent implements OnInit {
     this.supplierService.getSuppliers();
     this.caterories$ = this.cateroryService.categories;
     this.suppliers$ = this.supplierService.suppliers;
+    this.measurements$ = this.measurementService.measurements;
   }
 
 }
