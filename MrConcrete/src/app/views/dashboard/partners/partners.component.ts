@@ -13,7 +13,7 @@ export class PartnersComponent implements OnInit {
   subheading = 'Suppliers';
    suppliers: Supplier[] = [];
    actionButton: ActionButton = {
-     link: '/dashboard/add-supplier',
+     link: '/dashboard/add-partner',
      label: 'add supplier'
    };
   constructor(

@@ -1,0 +1,67 @@
+<app-banner [subheading]="subheading" [heading]="heading"></app-banner>
+<div class="container">
+  <form class="form" [formGroup]="rForm">
+    <!-- <h1 class="form-heading">Sign in to access your account.</h1>
+    <mat-form-field>
+      <input matInput placeholder="Email" formControlName="Email" MatFormFieldControl type="email" required>
+      <mat-error *ngIf="!rForm.controls['Email'].valid && rForm.controls['Email'].touched">a valid email address is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Password" formControlName="Password" MatFormFieldControl [type]="hidePassword ? 'password' : 'text'"  required>
+      <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'">
+        <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+      <mat-error *ngIf="!rForm.controls['Password'].valid && rForm.controls['Password'].touched">your password is required</mat-error>
+    </mat-form-field>
+
+    <div class="col-1-of-2">
+      <button mat-flat-button color="primary" (click)="onSubmit(rForm.value)">
+        sign in
+      </button>
+    </div> -->
+    <mat-form-field appearance="outline" class="input-field-50">
+      <mat-label>Supplier Name</mat-label>
+      <input matInput placeholder="Supplier Name" formControlName="SupplierName">
+      <mat-error *ngIf="!rForm.controls['SupplierName'].valid && rForm.controls['SupplierName'].touched">your Supplier
+        Name is required</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="input-field-50">
+      <mat-label>Email Address</mat-label>
+      <input matInput placeholder="Email Address" formControlName="EmailAddress">
+      <mat-error *ngIf="!rForm.controls['EmailAddress'].valid && rForm.controls['EmailAddress'].touched">your Email
+        Address is required</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="input-field-50">
+      <mat-label>Contact Number</mat-label>
+      <input matInput placeholder="Contact Number" formControlName="ContactNumber">
+      <mat-error *ngIf="!rForm.controls['ContactNumber'].valid && rForm.controls['ContactNumber'].touched">your Contact
+        Number is required</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="input-field-50">
+      <mat-label>Contact Person</mat-label>
+      <input matInput placeholder="Contact Person" formControlName="ContactPerson">
+      <mat-error *ngIf="!rForm.controls['ContactPerson'].valid && rForm.controls['ContactPerson'].touched">your Contact
+        Number is required</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="input-field-50">
+      <mat-label>SupplierAddress</mat-label>
+      <input matInput placeholder="SupplierAddress" formControlName="SupplierAddress">
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="input-field-50">
+      <mat-label>City</mat-label>
+      <input matInput placeholder="City" formControlName="City">
+      <mat-error *ngIf="!rForm.controls['City'].valid && rForm.controls['City'].touched">your City is required
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="input-field-50">
+      <mat-label>Postal Code</mat-label>
+      <input matInput placeholder="Postal Code" formControlName="PostalCode">
+    </mat-form-field>
+    <div class="col-1-of-2">
+      <button mat-flat-button color="primary" (click)="onSubmit(rForm.value)" [disabled]="!rForm.valid">
+        Create supplier
+      </button>
+    </div>
+  </form>
+</div>

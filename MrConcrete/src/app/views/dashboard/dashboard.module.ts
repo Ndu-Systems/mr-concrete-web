@@ -3,12 +3,15 @@ import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './dashboard.component';
 import { DashboardRoutingModule, declarations } from './dashboard-routing.module';
 import { MaterialModule } from 'src/app/material';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
     DashboardRoutingModule,
     MaterialModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   declarations: [...declarations]
 })

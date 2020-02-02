@@ -7,7 +7,7 @@ import { DashboardNavComponent } from './dashboard-nav';
 import { OrdersComponent, ListOrdersComponent, CreateOrderComponent } from './orders';
 import { SettingsComponent } from './settings';
 import { ActionsComponent, BannerComponent } from './shared';
-import { PartnersComponent } from './partners';
+import { PartnersComponent, CreateSupplierComponent } from './partners';
 
 
 const routes: Routes = [
@@ -18,6 +18,7 @@ const routes: Routes = [
       { path: 'create-orders', component: CreateOrderComponent },
       { path: 'settings', component: SettingsComponent },
       { path: 'partners', component: PartnersComponent },
+      { path: 'add-partner', component: CreateSupplierComponent },
     ]
   }
 ];
@@ -31,7 +32,8 @@ export const declarations = [
   SettingsComponent,
   BannerComponent,
   ActionsComponent,
-  PartnersComponent
+  PartnersComponent,
+  CreateSupplierComponent
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],

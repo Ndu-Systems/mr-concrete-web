@@ -26,3 +26,4 @@ export const INDUSTRY_ACTION_CONSTANTS: Actions[] = [
     icon: 'assets/images/dashboard/settings/industry.svg'
   },
 ]
+
