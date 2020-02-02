@@ -1,0 +1,11 @@
+<h1 class="header">
+  {{header}}
+</h1>
+<div class="col-1-of-4 actions" *ngIf="actions">
+  <span *ngFor="let item of actions">
+    <mat-card (click)="navigateTo(item.link)">
+      <img [src]="item.icon" class="icon" alt="action icon">
+      <h1 class="name">{{item.name}}</h1>
+    </mat-card>
+  </span>
+</div>

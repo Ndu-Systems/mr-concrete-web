@@ -5,6 +5,8 @@ import { AuthGuard } from 'src/app/_guards';
 import { DashboardHomeComponent } from './dashboard-home';
 import { DashboardNavComponent } from './dashboard-nav';
 import { OrdersComponent, ListOrdersComponent, CreateOrderComponent } from './orders';
+import { SettingsComponent } from './settings';
+import { ActionsComponent, BannerComponent } from './shared';
 
 
 const routes: Routes = [
@@ -12,7 +14,8 @@ const routes: Routes = [
     path: '', component: DashboardComponent, canActivate: [AuthGuard],
     children: [
       { path: '', component: DashboardHomeComponent },
-      { path: 'orders', component: OrdersComponent },
+      { path: 'create-orders', component: CreateOrderComponent },
+      { path: 'settings', component: SettingsComponent },
     ]
   }
 ];
@@ -22,7 +25,10 @@ export const declarations = [
   DashboardNavComponent,
   OrdersComponent,
   ListOrdersComponent,
-  CreateOrderComponent
+  CreateOrderComponent,
+  SettingsComponent,
+  BannerComponent,
+  ActionsComponent,
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],

@@ -1,0 +1,27 @@
+@import '../../../../../assets/styles/general/colors';
+
+.actions {
+  width: 50rem;
+}
+
+.header {
+  font-size: 25px;
+  text-transform: capitalize;
+  font-weight: 500;
+  color: $grey;
+}
+
+.mat-card {
+  width: 10em;
+  border-radius: 5px;
+  cursor: pointer;
+
+  img {
+    height: 3em;
+  }
+
+  .name {
+    font-size: 1.2em;
+    font-weight: 900;
+  }
+}

@@ -1,0 +1,25 @@
+ @import '../../../../../assets/styles/general/colors';
+
+ .mat-card  {
+  height: 8em;
+}
+.col-1-of-3 {
+  grid-template-columns: 20% 50% auto;
+
+  h1 {
+    font-size: 20px;
+    font-weight: 500;
+  }
+  .heading {
+    font-weight: 400;
+    color: $grey;
+  }
+  .greeting {
+    font-size: 18px;
+  }
+}
+
+.banner-heading {
+  font-size: 1.8em;
+  font-weight: 900;
+}
