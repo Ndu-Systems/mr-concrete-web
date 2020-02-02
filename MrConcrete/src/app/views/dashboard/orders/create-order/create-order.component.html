@@ -38,5 +38,20 @@
       </p>
     </div>
 
+    <div class="form">
+      <h1>Ready-mix Concrete order form</h1>
+
+      <div class="example-container">
+        <!-- <mat-form-field *ngFor="let measurement of measurements$ | async" class="input-field">
+          <input matInput [placeholder]="measurement.Name">
+        </mat-form-field> -->
+
+        <mat-form-field appearance="outline" *ngFor="let measurement of measurements$ | async" class="input-field">
+          <mat-label>{{measurement.Name}}</mat-label>
+          <input matInput [placeholder]="measurement.Name">
+        </mat-form-field>
+      </div>
+    </div>
+
   </div>
 </div>
