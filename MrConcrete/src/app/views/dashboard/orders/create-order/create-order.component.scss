@@ -31,9 +31,25 @@ p {
   background: #fff;
   width: 80%;
   padding: 1rem;
+  h1{
+    width: 100%;
+    text-align: center;
+    color: #B2BEC3;
+    font-weight: 400;
+    font-size: 1.5rem;
+    margin-bottom: 3rem;
+  }
 
   .input-field {
     width: 28%;
+    margin: .3rem;
+  }
+  .input-field-50{
+    width: 48%;
+    margin: .3rem;
+  }
+  .input-field-100{
+    width: 97%;
     margin: .3rem;
   }
   button{

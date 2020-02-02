@@ -34,7 +34,7 @@
         </div>
       </mat-card>
       <p>
-        Select or add a new supplier for  residential
+        Select or add a new supplier for residential
       </p>
     </div>
 
@@ -42,14 +42,58 @@
       <h1>Ready-mix Concrete order form</h1>
 
       <div class="example-container">
-        <!-- <mat-form-field *ngFor="let measurement of measurements$ | async" class="input-field">
-          <input matInput [placeholder]="measurement.Name">
-        </mat-form-field> -->
-
         <mat-form-field appearance="outline" *ngFor="let measurement of measurements$ | async" class="input-field">
           <mat-label>{{measurement.Name}}</mat-label>
           <input matInput [placeholder]="measurement.Name">
         </mat-form-field>
+        <div class="actions">
+          <button mat-button>Skip</button>
+          <button mat-button>Save</button>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="order-form">
+      <h1>Complete this order</h1>
+
+      <div class="example-container">
+        <mat-form-field appearance="outline" class="input-field-50">
+          <mat-label>Order Number</mat-label>
+          <input matInput placeholder="Order Number" disabled value="ORD44">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="input-field-50">
+          <mat-label>Project title/number</mat-label>
+          <input matInput placeholder="Project title/number">
+        </mat-form-field>
+
+        <mat-form-field  appearance="outline" class="input-field-50">
+          <mat-label>Order date</mat-label>
+          <input matInput [matDatepicker]="picker" placeholder="Order date">
+          <mat-datepicker-toggle matSuffix [for]="picker">
+            <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+          </mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field  appearance="outline" class="input-field-50">
+          <mat-label>Delivery date</mat-label>
+          <input matInput [matDatepicker]="picker2" placeholder="Delivery date">
+          <mat-datepicker-toggle matSuffix [for]="picker2">
+            <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+          </mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field class="input-field-100"  appearance="outline" >
+          <textarea matInput placeholder="How to get there"></textarea>
+        </mat-form-field>
+
+        <mat-form-field class="input-field-100"  appearance="outline" >
+          <textarea matInput placeholder="Special instructions"></textarea>
+        </mat-form-field>
+
         <div class="actions">
           <button mat-button>Skip</button>
           <button mat-button>Save</button>
