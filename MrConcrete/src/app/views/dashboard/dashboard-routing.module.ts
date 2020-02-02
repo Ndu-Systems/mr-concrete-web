@@ -8,6 +8,8 @@ import { OrdersComponent, ListOrdersComponent, CreateOrderComponent } from './or
 import { SettingsComponent } from './settings';
 import { ActionsComponent, BannerComponent } from './shared';
 import { PartnersComponent, CreateSupplierComponent } from './partners';
+import { MeasurementsComponent, CreateMeasurementComponent } from './measurements';
+import { CategoriesComponent, CreateCategoryComponent } from './categories';
 
 
 const routes: Routes = [
@@ -19,6 +21,10 @@ const routes: Routes = [
       { path: 'settings', component: SettingsComponent },
       { path: 'partners', component: PartnersComponent },
       { path: 'add-partner', component: CreateSupplierComponent },
+      { path: 'measurements', component: MeasurementsComponent },
+      { path: 'add-measurement', component: CreateMeasurementComponent },
+      { path: 'categories', component: CategoriesComponent },
+      { path: 'add-category', component: CreateCategoryComponent },
     ]
   }
 ];
@@ -33,7 +39,11 @@ export const declarations = [
   BannerComponent,
   ActionsComponent,
   PartnersComponent,
-  CreateSupplierComponent
+  CreateSupplierComponent,
+  MeasurementsComponent,
+  CategoriesComponent,
+  CreateCategoryComponent,
+  CreateMeasurementComponent
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],

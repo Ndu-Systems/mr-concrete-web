@@ -1,6 +1,6 @@
 <app-banner [subheading]="subheading" [heading]="heading" [actionButton]="actionButton"></app-banner>
 <div class="container" *ngIf="suppliers">
-  <span *ngFor="let item of suppliers">
+  <span *ngFor="let item of suppliers" class="container-table">
     <mat-card>
       <span class="table-card col-1-of-4">
         <div class="header col-1-of-2">

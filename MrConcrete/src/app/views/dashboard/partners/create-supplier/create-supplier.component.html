@@ -1,25 +1,6 @@
 <app-banner [subheading]="subheading" [heading]="heading"></app-banner>
 <div class="container">
   <form class="form" [formGroup]="rForm">
-    <!-- <h1 class="form-heading">Sign in to access your account.</h1>
-    <mat-form-field>
-      <input matInput placeholder="Email" formControlName="Email" MatFormFieldControl type="email" required>
-      <mat-error *ngIf="!rForm.controls['Email'].valid && rForm.controls['Email'].touched">a valid email address is required</mat-error>
-    </mat-form-field>
-
-    <mat-form-field>
-      <input matInput placeholder="Password" formControlName="Password" MatFormFieldControl [type]="hidePassword ? 'password' : 'text'"  required>
-      <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'">
-        <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
-      </button>
-      <mat-error *ngIf="!rForm.controls['Password'].valid && rForm.controls['Password'].touched">your password is required</mat-error>
-    </mat-form-field>
-
-    <div class="col-1-of-2">
-      <button mat-flat-button color="primary" (click)="onSubmit(rForm.value)">
-        sign in
-      </button>
-    </div> -->
     <mat-form-field appearance="outline" class="input-field-50">
       <mat-label>Supplier Name</mat-label>
       <input matInput placeholder="Supplier Name" formControlName="SupplierName">

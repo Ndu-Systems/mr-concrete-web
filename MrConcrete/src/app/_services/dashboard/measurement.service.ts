@@ -48,7 +48,7 @@ export class MeasurementService {
     localStorage.removeItem('measurement');
   }
   addMeasurement(data: Measurement) {
-    return this.http.post<any>(`${this.url}/api/catergory/add-catergory.php`, data).subscribe(resp => {
+    return this.http.post<any>(`${this.url}/api/measurement/add-measurement.php`, data).subscribe(resp => {
       const measurement: Measurement = resp;
       this.apendState(measurement);
     }, error => {
@@ -57,7 +57,7 @@ export class MeasurementService {
   }
 
   updateMeasurement(measurement: Measurement) {
-    this.http.put<Measurement>(`${this.url}/api/catergory/edit-catergory.php`, JSON.stringify(measurement))
+    this.http.put<Measurement>(`${this.url}/api/measurement/edit-measurement.php`, JSON.stringify(measurement))
       .subscribe(data => {
         this.dataStore.measurements.forEach((item, index) => {
           if (item.CatergoryId === data.CatergoryId) {
@@ -71,8 +71,8 @@ export class MeasurementService {
       }, error => console.log('Could not update Measurement'));
   }
 
-  getMeasurements(companyId) {
-    return this.http.get<Measurement[]>(`${this.url}/api/measurement/get-measurements.php?CompanyId=${companyId}`).subscribe(resp => {
+  getMeasurements() {
+    return this.http.get<Measurement[]>(`${this.url}/api/measurement/get-measurements.php`).subscribe(resp => {
       const measurement: Measurement[] = resp;
       localStorage.setItem('measurements', JSON.stringify(measurement));
       this._measurements.next(measurement);

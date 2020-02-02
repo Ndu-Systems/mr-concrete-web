@@ -48,7 +48,7 @@ export class CateroryService {
     localStorage.removeItem('category');
   }
   addCaterory(data: Caterory) {
-    return this.http.post<any>(`${this.url}/api/catergory/add-catergory.php`, data).subscribe(resp => {
+    return this.http.post<any>(`${this.url}/api/category/add-category.php`, data).subscribe(resp => {
       const caterory: Caterory = resp;
       this.apendState(caterory);
     }, error => {
@@ -71,8 +71,8 @@ export class CateroryService {
       }, error => console.log('Could not update category'));
   }
 
-  getCateries(companyId) {
-    return this.http.get<Caterory[]>(`${this.url}/api/category/get-categories.php?CompanyId=${companyId}`).subscribe(resp => {
+  getCateries() {
+    return this.http.get<Caterory[]>(`${this.url}/api/category/get-categories.php`).subscribe(resp => {
       const caterory: Caterory[] = resp;
       localStorage.setItem('categories', JSON.stringify(caterory));
       this._categories.next(caterory);

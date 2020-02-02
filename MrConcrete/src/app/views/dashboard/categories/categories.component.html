@@ -1,0 +1,17 @@
+<app-banner [subheading]="subheading" [heading]="heading" [actionButton]="actionButton"></app-banner>
+
+<div class="container col-1-of-4" *ngIf="categories" >
+  <span *ngFor="let item of categories" class="container-table">
+    <mat-card>
+      <span class="table-card col-1-of-1">
+        <div class="header col-1-of-2">
+          <img src="assets/images/dashboard/settings/image.svg" alt="image vector">
+          <h1 class="header">
+            {{item.CategoryName}}
+            <span class="date">{{item.CreateDate | date:'mediumDate'}}</span>
+          </h1>
+        </div>
+      </span>
+    </mat-card>
+  </span>
+</div>
