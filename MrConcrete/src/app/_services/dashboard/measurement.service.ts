@@ -60,7 +60,7 @@ export class MeasurementService {
     this.http.put<Measurement>(`${this.url}/api/measurement/edit-measurement.php`, JSON.stringify(measurement))
       .subscribe(data => {
         this.dataStore.measurements.forEach((item, index) => {
-          if (item.CatergoryId === data.CatergoryId) {
+          if (item.MeasurementId === data.MeasurementId) {
             this.dataStore.measurements[index] = data;
           }
         });

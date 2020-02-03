@@ -60,7 +60,7 @@ export class CateroryService {
     this.http.put<Caterory>(`${this.url}/api/catergory/edit-catergory.php`, JSON.stringify(category))
       .subscribe(data => {
         this.dataStore.categories.forEach((item, index) => {
-          if (item.CatergoryId === data.CatergoryId) {
+          if (item.CategoryId === data.CategoryId) {
             this.dataStore.categories[index] = data;
           }
         });

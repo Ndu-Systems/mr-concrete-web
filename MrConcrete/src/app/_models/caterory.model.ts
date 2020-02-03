@@ -1,5 +1,5 @@
 export interface Caterory {
-    CatergoryId?: string;
+    CategoryId?: string;
     CompanyId: string;
     Name: string;
     CreateDate?: string;

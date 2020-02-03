@@ -5,5 +5,7 @@ export * from './user.model';
 export * from './caterory.model';
 export * from './supplier.model';
 export * from './measurement.model';
+export * from './concreteorder.model';
+export * from './concreteordermeasurements.model';
 // end:ng42.barrel
 

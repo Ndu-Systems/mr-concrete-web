@@ -1,10 +1,10 @@
 export interface Measurement {
-    CatergoryId?: string;
-    CompanyId: string;
+    MeasurementId: string;
     Name: string;
-    CreateDate?: string;
+    UnitOfMeasurement: string;
+    CreateDate: string;
     CreateUserId: string;
-    ModifyDate?: string;
+    ModifyDate: string;
     ModifyUserId: string;
-    StatusId: number;
+    StatusId: string;
 }
