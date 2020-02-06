@@ -1,3 +1,73 @@
-<p>
-  list-orders works!
-</p>
+<app-banner [subheading]="subheading" [heading]="heading" [actionButton]="actionButton"></app-banner>
+<div class="container">
+  <span *ngFor="let item of orders$ | async" class="container-table">
+    <mat-card>
+      <span class="table-card col-1-of-8">
+        <div class="data">
+          <h1 class="text">
+            {{item.OrderNumber}}
+            <span class="span">
+              {{item.StatusId}}
+            </span>
+          </h1>
+        </div>
+
+
+        <div class="data">
+          <h1 class="text">
+            {{item.ProjectCode}}
+            <span class="span">
+              <!-- {{item.StatusId}} -->
+            </span>
+          </h1>
+        </div>
+
+
+        <div class="data">
+          <h1 class="text">
+            {{item.category?.CategoryName}}
+            <span class="span">
+              <!-- {{item.StatusId}} -->
+            </span>
+          </h1>
+        </div>
+
+
+
+
+
+        <div class="data">
+          <h1 class="text">
+            {{item.DeliveryDate | date:'mediumDate'}}
+            <span class="span">
+              <!-- {{item.StatusId}} -->
+            </span>
+          </h1>
+        </div>
+
+
+
+        <div class="data">
+          <h1 class="text">
+            {{item.supplier?.SupplierName}}
+            <span class="span">
+              <!-- {{item.StatusId}} -->
+            </span>
+          </h1>
+        </div>
+
+
+
+      
+        <!-- <div class="data">
+          <button class="sucees" mat-button>V</button>
+          <button class="primary" mat-button>E</button>
+          <button class="" mat-button>D</button>
+        </div> -->
+
+
+      </span>
+    </mat-card>
+  </span>
+
+</div>

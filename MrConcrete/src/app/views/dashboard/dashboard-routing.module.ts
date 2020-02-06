@@ -18,6 +18,7 @@ const routes: Routes = [
     children: [
       { path: '', component: DashboardHomeComponent },
       { path: 'create-orders', component: CreateOrderComponent },
+      { path: 'orders', component: ListOrdersComponent },
       { path: 'settings', component: SettingsComponent },
       { path: 'partners', component: PartnersComponent },
       { path: 'add-partner', component: CreateSupplierComponent },
