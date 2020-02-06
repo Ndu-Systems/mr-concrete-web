@@ -4,16 +4,21 @@
       <div class="logo">
         <img src="assets/images/dashboard/icon.svg" class="icon" alt="icon image">
       </div>
-      <mat-icon class="close" (click)="drawer.close()">close</mat-icon>
+      <mat-icon class="close" (click)="drawer.close()">keyboard_arrow_right</mat-icon>
     </mat-toolbar>
     <app-dashboard-nav></app-dashboard-nav>
   </mat-drawer>
 
   <mat-toolbar class="main header-main">
-    <mat-icon *ngIf="!drawer.opened" (click)="drawer.toggle()">
-      menu
+    <mat-icon *ngIf="!drawer.opened" class="menu" (click)="drawer.toggle()">
+      view_list
     </mat-icon>
-    <div>Dashboard</div>
+    <div class="profile">
+     <h1 class="title">
+      Welcome,  {{currentUser.FirstName}} {{currentUser.LastName}}
+     </h1>
+    </div>
+    <!-- <div>Menu</div> -->
     <div class="sign-out">
       <img src="../../../assets/images/dashboard/off.svg" alt="sign-out" (click)="signOut()">
     </div>

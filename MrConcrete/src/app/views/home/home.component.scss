@@ -1,8 +1,17 @@
 @import '../../../assets/styles/general/colors';
+
 .home-container {
   background: $black;
   background-image: url('../../../assets/images/home/backround.svg');
   background-repeat: no-repeat;
   background-size: 100%;
   min-height: 120vh;
+}
+
+@media only screen and (max-width: 600px) {
+  .home-container {
+    background-image: url('../../../assets/images/home/mobile-bg.svg');
+    background-size: 110%;
+    background-position-x: -1em;
+  }
 }
