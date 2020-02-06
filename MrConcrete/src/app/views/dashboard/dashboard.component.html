@@ -6,7 +6,7 @@
       </div>
       <mat-icon class="close" (click)="drawer.close()">keyboard_arrow_right</mat-icon>
     </mat-toolbar>
-    <app-dashboard-nav></app-dashboard-nav>
+    <app-dashboard-nav (toggleNav)="drawer.close()"></app-dashboard-nav>
   </mat-drawer>
 
   <mat-toolbar class="main header-main">
