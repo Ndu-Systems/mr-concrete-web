@@ -1,0 +1,56 @@
+@import '.../../../../../../../assets/styles/general/colors';
+
+.container-table {
+  .mat-card {
+    margin-bottom: 0.5em;
+  }
+
+  .table-card {
+
+    h1 {
+      font-size: 20px;
+    }
+
+    .header {
+      &.col-1-of-2 {
+        grid-template-columns: 12% auto;
+      }
+    }
+
+    .date {
+      display: block;
+      margin: 0.5em 0;
+      font-weight: 600;
+      font-size: .9em;
+      color: $grey;
+    }
+
+    .data {
+      .text {
+        font-weight: 400;
+        font-size: 18px;
+      }
+
+      .span {
+        display: block;
+        font-weight: 700;
+        font-size: 15px;
+        text-transform: uppercase;
+        margin: 1em 0;
+        color: $grey;
+      }
+      button.sucees{
+        background: $success;
+      }
+      button.primary{
+        background: $primary;
+      }
+    }
+  }
+
+}
+
+.col-1-of-8 {
+  display: grid;
+  grid-template-columns: repeat(8, 16%);
+}

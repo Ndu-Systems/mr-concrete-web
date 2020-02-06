@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ConcreteorderService } from 'src/app/_services/dashboard';
+import { Observable } from 'rxjs';
+import { OrderView } from 'src/app/_models/orderview.model';
+import { UserModel } from 'src/app/_models';
+import { AccountService } from 'src/app/_services';
 
 @Component({
   selector: 'app-list-orders',
@@ -7,9 +12,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListOrdersComponent implements OnInit {
 
-  constructor() { }
+  heading = 'Orders';
+  subheading = 'Order list';
+  orders$: Observable<OrderView[]>;
+  actionButton: any = {
+    link: '/dashboard/create-orders',
+    label: 'add Order'
+  };
+  currentUser: UserModel;
+  constructor(
+    private concreteorderService: ConcreteorderService,
+    private accountService: AccountService,
+
+
+  ) { }
 
   ngOnInit() {
+    this.currentUser = this.accountService.CurrentUserValue;
+    this.orders$ = this.concreteorderService.orders;
+    this.concreteorderService.getOrders(this.currentUser.UserId);
   }
 
 }
