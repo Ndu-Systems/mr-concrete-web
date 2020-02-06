@@ -44,3 +44,14 @@ h1 {
     }
   }
 }
+
+@media only screen and (max-width: 600px) {
+  .commitment {
+    padding: 1em;
+  }
+  .cta-section {
+    .cta-buttons {
+      width: 15em;
+    }
+  }
+}

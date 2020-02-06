@@ -3,14 +3,17 @@
 .col-1-of-2 {
   grid-template-columns: 65% auto;
 }
+
 .header {
   font-weight: 600;
   font-size: 25px;
   padding: 0 1.2em;
+
   &.stats {
     padding: 0;
   }
 }
+
 .main-card {
   width: 20em;
   color: $white;
@@ -18,6 +21,7 @@
 
   &.stats {
     height: 11em;
+
     &.success {
       background-color: $success;
     }
@@ -45,22 +49,27 @@
 
 .recent-order {
   padding: 0em 2em;
+
   .main-card {
     color: $black;
+
     .mat-card-subtitle {
-       color: inherit;
+      color: inherit;
     }
 
     h1 {
       font-size: 1.33em;
     }
+
     .col-1-of-2 {
       margin: 0;
       grid-template-columns: 35% auto;
     }
+
     .status {
       padding: 1em 0;
     }
+
     .badge-pending {
       background-color: #fbc53180;
       padding: 1em;
@@ -69,5 +78,23 @@
       text-align: center;
       color: #FFA502;
     }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .col-1-of-2 {
+    grid-template-columns: 100%;
+    margin-bottom: 0;
+    grid-gap: 0;
+
+  }
+
+  .header {
+    padding: 0;
+
+  }
+
+  .recent-order {
+    padding: 0;
   }
 }

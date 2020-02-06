@@ -39,8 +39,19 @@ body {
   margin: 0;
   font-family: 'Ubuntu', sans-serif;
   padding: 1em;
+
 }
 
 ::-webkit-scrollbar {
   display: none;
+}
+
+
+// iphoneX
+@media only screen and (max-width: 600px) {
+
+  body {
+    padding: 0;
+
+  }
 }

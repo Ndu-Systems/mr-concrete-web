@@ -1,27 +1,33 @@
  @import '../../../../assets/styles/general/colors';
 
 
-.menu-items {
-  position: absolute;
-  top: 10em;
+ .menu-items {
+   position: absolute;
+   top: 10em;
 
-  ul {
-    list-style: none;
-    padding: 0 1em;
+   ul {
+     list-style: none;
+     padding: 0 1em;
 
-    li {
-      margin: 25px 0;
-    }
+     li {
+       margin: 25px 0;
+     }
 
-    a {
-      text-decoration: none;
-      color: $white;
-      font-weight: 400;
-      font-size: 0.8em;
-      &:hover {
-        color: $white;
-        font-weight: 700;
-      }
-    }
-  }
-}
+     a {
+       text-decoration: none;
+       color: $white;
+       font-weight: 400;
+       font-size: 0.8em;
+
+       &:hover {
+         color: $white;
+         font-weight: 700;
+       }
+     }
+   }
+ }
+
+
+ @media only screen and (max-width: 600px) {
+
+ }

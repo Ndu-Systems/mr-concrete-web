@@ -82,6 +82,7 @@ mat-icon {
   position: absolute;
   right: 15em;
   cursor: pointer;
+
   img {
     height: 100%;
   }
@@ -101,4 +102,29 @@ mat-icon {
   width: 100%;
   background-color: $black !important;
   color: $white !important;
+}
+
+.menu {
+  color: $yellow;
+}
+
+.profile {
+  margin: 0 30em;
+
+  .title {
+    font-weight: 400;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .sign-out {
+    right: 1em;
+  }
+
+  .drawer {
+    width: 50vw !important;
+    height: 100%;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+  }
 }

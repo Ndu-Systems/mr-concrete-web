@@ -31,3 +31,16 @@
   right: 8em;
   text-transform: capitalize;
 }
+
+@media only screen and (max-width: 600px) {
+  .col-1-of-3 {
+    grid-template-columns: 10% 40% auto;
+
+  }
+  .mat-card {
+    height: 6em;
+    overflow: hidden;
+
+  }
+
+}
