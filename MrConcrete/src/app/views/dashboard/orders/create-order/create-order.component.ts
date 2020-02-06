@@ -28,6 +28,7 @@ export class CreateOrderComponent implements OnInit {
     this.currentUser = this.accountService.CurrentUserValue;
     this.cateroryService.getCateries();
     this.supplierService.getSuppliers();
+    this.measurementService.getMeasurements();
     this.caterories$ = this.cateroryService.categories;
     this.suppliers$ = this.supplierService.suppliers;
     this.measurements$ = this.measurementService.measurements;
