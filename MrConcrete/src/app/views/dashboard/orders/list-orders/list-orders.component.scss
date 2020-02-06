@@ -53,4 +53,8 @@
 .col-1-of-8 {
   display: grid;
   grid-template-columns: repeat(8, 16%);
+  @media only screen and (max-width: 600px) {
+    grid-template-columns: 100%;
+  }
+
 }
