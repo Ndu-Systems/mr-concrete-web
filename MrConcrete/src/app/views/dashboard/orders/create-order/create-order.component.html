@@ -4,22 +4,38 @@
   </h1>
 </div>
 
-<div class="form">
-  <div class="catergory order-form">
-    <div class="options">
-      <mat-radio-group aria-label="Select an option">
-        <span *ngFor="let catergory of caterories$ | async">
-          <mat-radio-button [value]="catergory.CategoryId" (click)="selectCatergory(catergory)">
-            {{catergory.CategoryName}}
-          </mat-radio-button>
-        </span>
 
-      </mat-radio-group>
-      <p>
-        Select the category that best relates to your order.
-      </p>
+<!-- <pre>
+  {{order |json}}
+</pre>
+ -->
+
+
+<mat-tab-group>
+  <mat-tab label="Catergory">
+    <div class="catergory order-form">
+      <div class="options">
+        <mat-radio-group aria-label="Select an option">
+          <span *ngFor="let catergory of caterories$ | async">
+            <mat-radio-button [value]="catergory.CategoryId" (click)="selectCatergory(catergory)">
+              {{catergory.CategoryName}}
+            </mat-radio-button>
+          </span>
+
+        </mat-radio-group>
+        <br> <br>
+        <div class="actions">
+          <button mat-button>Skip</button>
+          <button mat-button (click)="save()">Save</button>
+        </div>
+        <p>
+          Select the category that best relates to your order.
+        </p>
+      </div>
     </div>
 
+  </mat-tab>
+  <mat-tab label="Supplier">
     <div class="suppliers order-form">
       <mat-card class="suppliers-card" *ngFor="let supplier of suppliers$ | async" (click)="selectSupplier(supplier)">
         <div class="icon">
@@ -42,6 +58,9 @@
       </p>
     </div>
 
+  </mat-tab>
+  <mat-tab label="Ready-mix">
+
     <div class="order-form" *ngIf="order">
       <h1>Ready-mix Concrete order form</h1>
 
@@ -58,6 +77,9 @@
       </div>
     </div>
 
+  </mat-tab>
+
+  <mat-tab label="Complete  order">
 
     <div class="order-form">
       <h1>Complete this order</h1>
@@ -65,17 +87,18 @@
       <div class="example-container">
         <mat-form-field appearance="outline" class="input-field-50">
           <mat-label>Order Number</mat-label>
-          <input matInput placeholder="Order Number"  [(ngModel)]="order.concreteorder.OrderNumber" disabled value="ORD44">
+          <input matInput placeholder="Order Number" [(ngModel)]="order.concreteorder.OrderNumber" disabled
+            value="ORD44">
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="input-field-50">
           <mat-label>Project title/number</mat-label>
-          <input matInput placeholder="Project title/number"  [(ngModel)]="order.concreteorder.ProjectCode">
+          <input matInput placeholder="Project title/number" [(ngModel)]="order.concreteorder.ProjectCode">
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="input-field-50">
           <mat-label>Order date</mat-label>
-          <input matInput [matDatepicker]="picker" placeholder="Order date"   [(ngModel)]="order.concreteorder.OrderDate">
+          <input matInput [matDatepicker]="picker" placeholder="Order date" [(ngModel)]="order.concreteorder.OrderDate">
           <mat-datepicker-toggle matSuffix [for]="picker">
             <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
           </mat-datepicker-toggle>
@@ -84,7 +107,8 @@
 
         <mat-form-field appearance="outline" class="input-field-50">
           <mat-label>Delivery date</mat-label>
-          <input matInput [matDatepicker]="picker2" placeholder="Delivery date"   [(ngModel)]="order.concreteorder.DeliveryDate">
+          <input matInput [matDatepicker]="picker2" placeholder="Delivery date"
+            [(ngModel)]="order.concreteorder.DeliveryDate">
           <mat-datepicker-toggle matSuffix [for]="picker2">
             <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
           </mat-datepicker-toggle>
@@ -93,24 +117,20 @@
 
         <mat-form-field class="input-field-100" appearance="outline">
           <mat-label>How to get there</mat-label>
-          <textarea matInput placeholder="How to get there"   [(ngModel)]="order.concreteorder.Directions"></textarea>
+          <textarea matInput placeholder="How to get there" [(ngModel)]="order.concreteorder.Directions"></textarea>
         </mat-form-field>
 
         <mat-form-field class="input-field-100" appearance="outline">
           <mat-label>Special instructions</mat-label>
-          <textarea matInput placeholder="Special instructions"   [(ngModel)]="order.concreteorder.SpecialInstructions"></textarea>
+          <textarea matInput placeholder="Special instructions"
+            [(ngModel)]="order.concreteorder.SpecialInstructions"></textarea>
         </mat-form-field>
 
         <div class="actions">
-          <button mat-button>Skip</button>
-          <button mat-button (click)="save()">Save</button>
+          <button mat-button (click)="save()">Complete order</button>
         </div>
       </div>
     </div>
 
-  </div>
-</div>
-
-<pre>
-  {{order |json}}
-</pre>
+  </mat-tab>
+</mat-tab-group>
