@@ -1,9 +1,16 @@
 <mat-toolbar>
   <mat-toolbar-row>
-    <img src="assets/images/home/icon.svg" alt="header icon" class="header-icon">
+    <a routerLink=""><img src="assets/images/home/icon.svg" alt="header icon" class="header-icon"></a>
     <ul>
       <li><a routerLink="">Home</a></li>
-      <li><a routerLink="sign-in">Sign in  </a></li>
+      <li><a routerLink="/sign-in">Sign in </a></li>
+      <li>
+        <a routerLink="/sign-up">
+          <button mat-flat-button>
+            Sign up
+          </button>
+        </a>
+      </li>
     </ul>
   </mat-toolbar-row>
 </mat-toolbar>

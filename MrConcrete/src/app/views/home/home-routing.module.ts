@@ -7,7 +7,7 @@ import { IndexComponent } from './index/index.component';
 import { MaterialSectionComponent } from './index/material-section';
 import { CommitmentSectionComponent } from './index/commitment-section';
 import { FooterComponent } from './footer';
-import { SignInComponent } from './account/sign-in';
+import { SignUpComponent, SignInComponent } from './account';
 
 
 
@@ -17,6 +17,7 @@ const routes: Routes = [
     children: [
       { path: '', component: IndexComponent },
       { path: 'sign-in', component: SignInComponent },
+      { path: 'sign-up', component: SignUpComponent },
     ]
   }
 ];
@@ -28,7 +29,8 @@ export const declarations = [
   MaterialSectionComponent,
   CommitmentSectionComponent,
   FooterComponent,
-  SignInComponent
+  SignInComponent,
+  SignUpComponent
 ];
 
 @NgModule({

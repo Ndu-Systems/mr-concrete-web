@@ -5,6 +5,7 @@ import { SignInModel } from 'src/app/_models';
 import { AccountService } from 'src/app/_services';
 import { Router, ActivatedRoute } from '@angular/router';
 import { first } from 'rxjs/operators';
+import { Roles } from 'src/app/_shared';
 
 @Component({
   selector: 'app-sign-in',
@@ -18,6 +19,16 @@ export class SignInComponent implements OnInit {
   returnUrl: string;
   email = environment.EMAIL;
   password = environment.PASSWORD;
+  accessRoles: any[] = [
+    {
+      description: 'I am an engineer',
+      role: Roles.ENGINEER
+    },
+    {
+      description: 'I am a supplier',
+      role: Roles.SUPPLIER
+    }
+  ];
   constructor(
     private fb: FormBuilder,
     private accountService: AccountService,
@@ -34,9 +45,9 @@ export class SignInComponent implements OnInit {
           Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
         ])
       ),
-      Password: [this.password, Validators.required]
+      Password: [this.password, Validators.required],
+      TypeOfUser: [null, Validators.required]
     });
-
     this.returnUrl = this.route.snapshot.queryParams.returnUrl || 'dashboard';
   }
 
@@ -51,6 +62,5 @@ export class SignInComponent implements OnInit {
         this.error = error;
       });
   }
-
 
 }

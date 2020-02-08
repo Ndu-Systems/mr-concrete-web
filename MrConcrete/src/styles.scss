@@ -56,3 +56,23 @@ body {
 
   }
 }
+
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle{
+  border-color:$yellow;
+}
+
+.mat-radio-button.mat-accent .mat-radio-inner-circle{
+  color:$yellow;
+  background-color:$yellow;
+}
+
+.mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
+    background-color:rgb(255, 37, 37,.26)
+}
+
+.mat-flat-button.mat-primary {
+  &[disabled] {
+    background-color: #DCDDE1;
+    color: #B2BEC3;
+  }
+}
