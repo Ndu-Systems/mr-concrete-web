@@ -11,11 +11,15 @@ export class ConcreteorderService {
   url: string;
   private _orders: BehaviorSubject<OrderView[]>;
   public orders: Observable<OrderView[]>;
+  private _order: BehaviorSubject<OrderView>;
+  public order: Observable<OrderView>;
   constructor(
     private http: HttpClient,
   ) {
     this._orders = new BehaviorSubject<OrderView[]>(JSON.parse(localStorage.getItem('orders')) || []);
     this.orders = this._orders.asObservable();
+    this._order = new BehaviorSubject<OrderView>(JSON.parse(localStorage.getItem('order')) || undefined);
+    this.order = this._order.asObservable();
     this.url = environment.API_URL;
   }
 
@@ -32,6 +36,11 @@ export class ConcreteorderService {
   setState(data: OrderView[]) {
     this._orders.next(data);
     localStorage.setItem('orders', JSON.stringify(data));
+
+  }
+  setStateForCurrentOrder(data: OrderView) {
+    this._order.next(data);
+    localStorage.setItem('order', JSON.stringify(data));
 
   }
   createOrder(data): Observable<any> {

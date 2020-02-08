@@ -16,7 +16,7 @@ export class Concreteorder {
     CreateUserId = '';
     ModifyDate = '';
     ModifyUserId = '';
-    StatusId = '';
+    StatusId = 1;
     constructor() {
         this.OrderId = '';
         this.UserId = '';
@@ -33,7 +33,7 @@ export class Concreteorder {
         this.CreateUserId = '';
         this.ModifyDate = '';
         this.ModifyUserId = '';
-        this.StatusId = '';
+        this.StatusId = 1;
     }
 }
 

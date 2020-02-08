@@ -39,12 +39,7 @@
         margin: 1em 0;
         color: $grey;
       }
-      button.sucees{
-        background: $success;
-      }
-      button.primary{
-        background: $primary;
-      }
+
     }
   }
 
@@ -53,8 +48,53 @@
 .col-1-of-8 {
   display: grid;
   grid-template-columns: repeat(8, 16%);
+
   @media only screen and (max-width: 600px) {
     grid-template-columns: 100%;
   }
 
+}
+
+
+.chips {
+  .chip {
+    font-weight: 800;
+    font-size: .6rem;
+  }
+
+  .pending {
+    color: $orange;
+    background: $light_yellow;
+  }
+
+  .cancelled {
+    color: $danger;
+    background: $light_danger;
+  }
+}
+
+
+.buttons {
+  padding: .2rem;
+  line-height: 20px;
+  color: #fff;
+  margin: .2rem;
+  min-width: 1rem;
+  margin-top: .5rem;
+
+  &:disabled{
+    background: $grey_light;
+    color: $grey;
+  }
+}
+
+button.sucees {
+  background: $success;
+}
+
+button.primary {
+  background: $primary;
+}
+button.danger {
+  background: $danger;
 }

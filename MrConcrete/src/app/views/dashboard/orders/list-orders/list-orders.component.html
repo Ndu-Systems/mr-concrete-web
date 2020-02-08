@@ -1,14 +1,19 @@
 <app-banner [subheading]="subheading" [heading]="heading" [actionButton]="actionButton"></app-banner>
 <div class="container">
-  <span *ngFor="let item of orders$ | async" class="container-table">
-    <mat-card>
+  <span *ngIf="orders$ | async as orders" class="container-table">
+    <mat-card *ngFor="let item of orders">
       <span class="table-card col-1-of-8">
         <div class="data">
           <h1 class="text">
             {{item.OrderNumber}}
-            <span class="span">
+            <!-- <span class="span">
               {{item.StatusId}}
-            </span>
+            </span> -->
+
+            <mat-chip-list class="chips">
+              <mat-chip class="chip pending" *ngIf="item.StatusId == '1'">Pending</mat-chip>
+              <mat-chip class="chip cancelled" *ngIf="item.StatusId == '0'">Cancelled</mat-chip>
+            </mat-chip-list>
           </h1>
         </div>
 
@@ -58,12 +63,18 @@
 
 
 
-      
-        <!-- <div class="data">
-          <button class="sucees" mat-button>V</button>
-          <button class="primary" mat-button>E</button>
-          <button class="" mat-button>D</button>
-        </div> -->
+
+        <div class="data">
+          <button class="buttons sucees" mat-button (click)="view(item)">
+            <mat-icon matDatepickerToggleIcon   matTooltip="View order full details">remove_red_eye</mat-icon>
+          </button>
+          <button class="buttons primary" [disabled] ="item.StatusId != '1'" matTooltip="Edit this order."  mat-button>
+            <mat-icon matDatepickerToggleIcon>edit</mat-icon>
+          </button>
+          <button class="buttons danger" [disabled] ="item.StatusId != '1'" matTooltip="Cancel this order." mat-button>
+            <mat-icon matDatepickerToggleIcon>cancel</mat-icon>
+          </button>
+        </div>
 
 
       </span>
