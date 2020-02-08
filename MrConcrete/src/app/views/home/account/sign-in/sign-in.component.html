@@ -13,7 +13,12 @@
       </button>
       <mat-error *ngIf="!rForm.controls['Password'].valid && rForm.controls['Password'].touched">your password is required</mat-error>
     </mat-form-field>
-
+    <div class="col-1-of-2">
+      <mat-radio-group aria-label="Select an option">
+        <mat-radio-button value="1">Option 1</mat-radio-button>
+        <mat-radio-button value="2">Option 2</mat-radio-button>
+      </mat-radio-group>
+    </div>
     <div class="col-1-of-2">
       <button mat-flat-button color="primary" (click)="onSubmit(rForm.value)">
         sign in
