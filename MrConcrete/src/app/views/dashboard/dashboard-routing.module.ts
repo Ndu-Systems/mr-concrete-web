@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from 'src/app/_guards';
 import { DashboardHomeComponent } from './dashboard-home';
 import { DashboardNavComponent } from './dashboard-nav';
-import { OrdersComponent, ListOrdersComponent, CreateOrderComponent } from './orders';
+import { OrdersComponent, ListOrdersComponent, CreateOrderComponent, ViewOrderComponent } from './orders';
 import { SettingsComponent } from './settings';
 import { ActionsComponent, BannerComponent } from './shared';
 import { PartnersComponent, CreateSupplierComponent } from './partners';
@@ -26,6 +26,7 @@ const routes: Routes = [
       { path: 'add-measurement', component: CreateMeasurementComponent },
       { path: 'categories', component: CategoriesComponent },
       { path: 'add-category', component: CreateCategoryComponent },
+      { path: 'view-order', component: ViewOrderComponent },
     ]
   }
 ];
@@ -44,7 +45,8 @@ export const declarations = [
   MeasurementsComponent,
   CategoriesComponent,
   CreateCategoryComponent,
-  CreateMeasurementComponent
+  CreateMeasurementComponent,
+  ViewOrderComponent
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],

@@ -16,6 +16,13 @@ export class CreateOrderComponent implements OnInit {
   measurements$: Observable<Measurement[]>;
   order: Order = new Order();
   currentUser: UserModel;
+
+  heading = 'Orders';
+  subheading = '    Create an order';
+  actionButton: any = {
+    link: '/dashboard/orders',
+    label: 'View Orders'
+  };
   constructor(
     private cateroryService: CateroryService,
     private supplierService: SupplierService,
