@@ -1,1 +1,133 @@
 <app-banner [subheading]="subheading" [heading]="heading" [actionButton]="actionButton"></app-banner>
+
+
+<div class="contianer">
+  <div class="main">
+    <div class="left">
+      <div class="matrix">
+        <div class="basic-info table-3">
+          <mat-card class="card">
+            <span class="table-card col-1-of-1">
+  
+  
+  
+              <div class="data">
+                <h1 class="text">
+                  32432423432
+                  <span class="span">
+                    order #
+                  </span>
+                </h1>
+              </div>
+  
+  
+            </span>
+          </mat-card>
+          <mat-card class="card">
+            <span class="table-card col-1-of-1">
+  
+  
+  
+              <div class="data">
+                <h1 class="text">
+                  32432423432
+                  <span class="span">
+                    Project name/number
+                  </span>
+                </h1>
+              </div>
+  
+  
+            </span>
+          </mat-card>
+          <mat-card class="card">
+            <span class="table-card col-1-of-1">
+  
+  
+  
+              <div class="data">
+                <h1 class="text">
+                  32432423432
+                  <span class="span">
+                    order category
+                  </span>
+                </h1>
+              </div>
+  
+  
+            </span>
+          </mat-card>
+        </div>
+        <h1 class="separator">Metrics</h1>
+        <span *ngIf="order$ | async as order" class="container-table">
+          <div class="table-3">
+            <mat-card class="card" *ngFor="let item of order.measurements">
+              <span class="table-card col-1-of-1">
+  
+  
+  
+                <div class="data">
+                  <h1 class="text">
+                    {{item.Value}}
+                    <span class="span">
+                      <!-- {{item.MeasurementId}} -->
+                      Compressive strength
+                    </span>
+                  </h1>
+                </div>
+  
+  
+              </span>
+            </mat-card>
+          </div>
+  
+        </span>
+      </div>
+    </div>
+    <div class="rigth">
+      <h1 class="separator m-t">Special information</h1>
+  
+      <div class="basic-info table-1">
+        <mat-card class="card">
+          <span class="table-card col-1-of-1">
+  
+  
+  
+            <div class="data">
+              <h1 class="text">
+                Ring for office 25 at the security gate and ask for Magwaza
+                <span class="span">
+                  how to get there
+                </span>
+              </h1>
+            </div>
+  
+  
+          </span>
+        </mat-card>
+        <mat-card class="card">
+          <span class="table-card col-1-of-1">
+  
+  
+  
+            <div class="data">
+              <h1 class="text">
+                32432423432
+                <span class="span">
+                  special instructions
+                </span>
+              </h1>
+            </div>
+  
+  
+          </span>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+  <h1 class="separator"></h1>
+  <div class="actions">
+    <button mat-button class="simple">Cancel order</button>
+    <button mat-button class="primary">Confirmed, place order</button>
+  </div>
+</div>

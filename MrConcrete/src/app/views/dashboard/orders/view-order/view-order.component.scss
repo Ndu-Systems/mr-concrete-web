@@ -1,0 +1,68 @@
+@import '../../../../../assets/styles/general/colors';
+.contianer{
+    width: 90%;
+    margin: 1rem auto;
+    background: $default-white;
+    padding: 1rem;
+    padding-bottom: 4rem;
+
+
+}
+.main {
+  display: grid;
+  grid-template-columns: 60% auto;
+
+
+  .table-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 33.333333333%);
+  }
+.card{
+    margin: 0;
+    border-radius: 0;
+    box-shadow: none;
+    padding: .5rem;
+  .data {
+    .text {
+      font-weight: 400;
+      font-size: 18px;
+    }
+
+    .span {
+      display: block;
+      font-weight: 700;
+      font-size: 12px;
+      text-transform: uppercase;
+      margin: 1em 0;
+      color: $grey;
+    }
+
+  }
+}
+}
+
+.separator{
+    border-bottom: 1px solid $grey;
+    padding-left: .5rem;
+    color: $grey;
+    font-weight: 300;
+    font-size: 1.8rem;
+
+}
+.m-t{
+    margin-top: 6.6rem;
+}
+.rigth{
+    padding-left: 2rem;
+}
+.actions{
+    float: right;
+    .primary{
+        color: $default-white;
+        background: $primary;
+        margin: 0 .3rem;
+    }
+    .simple{
+        background: $grey;
+    }
+}
