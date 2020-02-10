@@ -83,5 +83,9 @@ export class SupplierService {
     });
   }
 
+  getSupplier(supplierId: string, email: string): Observable<Supplier> {
+    return this.http.get<Supplier>(`${this.url}/api/supplier/get-supplier.php?SupplierId=${supplierId}&Email=${email}`);
+  }
+
 
 }

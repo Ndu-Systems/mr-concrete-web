@@ -1,4 +1,4 @@
-export interface Supplier {
+export class Supplier {
     SupplierId: string;
     SupplierName: string;
     ContactNumber: string;

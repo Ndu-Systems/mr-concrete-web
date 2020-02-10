@@ -52,23 +52,33 @@
     </mat-card>
   </div>
   <div class="recent-order">
-    <mat-card class="main-card">
+    <mat-card class="main-card" *ngIf="recentOrder">
       <mat-card-content>
         <span class="col-1-of-2">
           <h1 class="stat-header">Order #</h1>
-          <h1 class="stat-value">ORD-20200109-3</h1>
+          <h1 class="stat-value">{{recentOrder.OrderNumber}}</h1>
         </span>
         <span class="col-1-of-2">
           <h1 class="stat-header">Order date</h1>
-          <h1 class="stat-value">01 January 2020</h1>
+          <h1 class="stat-value">{{recentOrder.OrderDate  | date:'medium'}}</h1>
         </span>
         <span class="col-1-of-2">
           <h1 class="stat-header status">Status</h1>
-          <h1 class="stat-value badge-pending">pending</h1>
+          <!-- <h1 class="stat-value badge-pending">pending</h1> -->
+
+          <mat-chip-list class="chips">
+            <mat-chip class="chip pending">{{status}}</mat-chip>
+            <!-- <mat-chip class="chip cancelled" *ngIf="item.StatusId == '0'">Cancelled</mat-chip> -->
+          </mat-chip-list>
         </span>
       </mat-card-content>
-      <mat-card-actions>
-        <button mat-button>Learn More.</button>
+      <mat-card-actions class="cta">
+         <button mat-button class="info" *ngIf="status === 'pending approval'">Accept order.</button>
+        <button mat-button class="info" *ngIf="status === 'accepted at supplier'">Order in progress.</button>
+        <button mat-button class="info" *ngIf="status === 'in progress'">On Delivery.</button>
+        <button mat-button class="success" *ngIf="status === 'on delivery'">Accepted by customer.</button>
+        <button mat-button class="success" *ngIf="status === 'confirmed by customer'">Complete Order.</button>
+        <button mat-button class="danger">Cancel order.</button>
       </mat-card-actions>
     </mat-card>
   </div>
