@@ -10,6 +10,7 @@ import { ActionsComponent, BannerComponent } from './shared';
 import { PartnersComponent, CreateSupplierComponent } from './partners';
 import { MeasurementsComponent, CreateMeasurementComponent } from './measurements';
 import { CategoriesComponent, CreateCategoryComponent } from './categories';
+import { MeasurenamePipe } from 'src/app/_pipes/measurename.pipe';
 
 
 const routes: Routes = [
@@ -46,7 +47,10 @@ export const declarations = [
   CategoriesComponent,
   CreateCategoryComponent,
   CreateMeasurementComponent,
-  ViewOrderComponent
+  ViewOrderComponent,
+
+  // Pipes
+  MeasurenamePipe,
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],
