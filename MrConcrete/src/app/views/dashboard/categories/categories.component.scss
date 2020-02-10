@@ -1,9 +1,15 @@
 @import '../../../../assets/styles/general/colors';
 
+.container {
+  overflow: hidden;
+  padding: 0 4em;
+  padding-left: 1em;
+}
+
 .container-table {
   .mat-card {
     margin-bottom: 0.5em;
-   }
+  }
 
   .table-card {
 

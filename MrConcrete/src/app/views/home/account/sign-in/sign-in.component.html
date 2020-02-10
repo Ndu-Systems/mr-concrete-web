@@ -1,4 +1,4 @@
-<div class="sign-in-container">
+<div class="account-container">
   <form class="form" [formGroup]="rForm">
     <h1 class="form-heading">Sign in to access your account.</h1>
     <mat-form-field>
@@ -13,14 +13,17 @@
       </button>
       <mat-error *ngIf="!rForm.controls['Password'].valid && rForm.controls['Password'].touched">your password is required</mat-error>
     </mat-form-field>
-    <div class="col-1-of-2">
-      <mat-radio-group aria-label="Select an option">
-        <mat-radio-button value="1">Option 1</mat-radio-button>
-        <mat-radio-button value="2">Option 2</mat-radio-button>
+    <div class="select">
+      <mat-radio-group aria-label="Select an option" formControlName="TypeOfUser">
+         <span *ngFor="let item of accessRoles">
+          <mat-radio-button [value]="item.role">
+            {{item.description}}
+          </mat-radio-button>
+         </span>
       </mat-radio-group>
     </div>
     <div class="col-1-of-2">
-      <button mat-flat-button color="primary" (click)="onSubmit(rForm.value)">
+      <button mat-flat-button color="primary" (click)="onSubmit(rForm.value)" [disabled]="!rForm.valid">
         sign in
       </button>
     </div>
