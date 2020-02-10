@@ -79,6 +79,18 @@
     }
   }
 }
+.cta {
+  color: $white;
+  .info {
+    background-color:$primary;
+  }
+  .success {
+    background-color: $success;
+  }
+  .danger {
+    background-color: $danger;
+  }
+}
 
 @media only screen and (max-width: 600px) {
   .col-1-of-2 {

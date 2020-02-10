@@ -3,19 +3,19 @@
     <li><a routerLink="/dashboard"><img src="assets/images/dashboard/dashboard-img.svg"
           alt="dashboard icon">&nbsp;
         Dashboard</a></li>
-    <li><a routerLink="/dashboard/create-orders"><img src="assets/images/dashboard/trolly.svg"
+    <li *ngIf="isAdmin || isEngineer"><a routerLink="/dashboard/create-orders"><img src="assets/images/dashboard/trolly.svg"
           alt="trolly icon">&nbsp;
         Create Order</a></li>
     <li><a routerLink="/dashboard/orders"><img src="assets/images/dashboard/trolly.svg" alt="trolly icon">&nbsp;
         List Orders</a></li>
-    <li><a routerLink="/dashboard/settings"><img src="assets/images/dashboard/cog.svg"
+    <li *ngIf="isAdmin || isEngineer"><a routerLink="/dashboard/settings"><img src="assets/images/dashboard/cog.svg"
           alt="cog icon">&nbsp;
         Settings</a></li>
   </ul>
 </mat-toolbar>
 <mat-toolbar class="mobile menu-items">
   <ul>
-    <li><a routerLink="/dashboard" (click)="toggleNave()"><img src="assets/images/dashboard/dashboard-img.svg"
+    <li *ngIf="isAdmin || isEngineer"><a routerLink="/dashboard" (click)="toggleNave()"><img src="assets/images/dashboard/dashboard-img.svg"
           alt="dashboard icon">&nbsp;
         Dashboard</a></li>
     <li><a routerLink="/dashboard/create-orders" (click)="toggleNave()"><img src="assets/images/dashboard/trolly.svg"
@@ -23,7 +23,7 @@
         Create Order</a></li>
     <li><a routerLink="/dashboard/orders"  (click)="toggleNave()"><img src="assets/images/dashboard/trolly.svg" alt="trolly icon">&nbsp;
         List Orders</a></li>
-    <li><a routerLink="/dashboard/settings" (click)="toggleNave()"><img src="assets/images/dashboard/cog.svg"
+    <li *ngIf="isAdmin"><a routerLink="/dashboard/settings" (click)="toggleNave()"><img src="assets/images/dashboard/cog.svg"
           alt="cog icon">&nbsp;
         Settings</a></li>
   </ul>

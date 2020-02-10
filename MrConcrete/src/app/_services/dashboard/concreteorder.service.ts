@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { OrderView } from 'src/app/_models/orderview.model';
+import { SupplierOrdersModel } from 'src/app/_models';
 
 @Injectable({
   providedIn: 'root'
@@ -55,5 +56,9 @@ export class ConcreteorderService {
     }, error => {
       console.log(error);
     });
+  }
+
+  getOrdersForSupplier(UserId: string): Observable<SupplierOrdersModel> {
+    return this.http.get<SupplierOrdersModel>(`${this.url}/api/concreteorder/get-supplierorders.php?UserId=${UserId}`);
   }
 }

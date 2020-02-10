@@ -1,4 +1,5 @@
 export class UserModel {
+
   UserId: string;
   FirstName: string;
   LastName: string;
@@ -11,4 +12,16 @@ export class UserModel {
   ModifyDate: string;
   ModifyUserId: string;
   StatusId: string;
+  Role: RoleModel;
+}
+
+export class RoleModel {
+  Id: string;
+  RoleName: string;
+  CreateDate: string;
+  CreateUserId: string;
+  ModifyDate: string;
+  ModifyUserId: string;
+  StatusId: string;
+
 }
