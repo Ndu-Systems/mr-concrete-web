@@ -12,4 +12,5 @@ export class Supplier {
     ModifyDate: string;
     ModifyUserId: string;
     StatusId: string;
+    Selected?: string;
 }
