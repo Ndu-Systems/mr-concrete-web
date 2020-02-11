@@ -13,6 +13,7 @@ import { ConcreteorderService } from 'src/app/_services/dashboard/concreteorder.
 export class CreateOrderComponent implements OnInit {
   caterories$: Observable<Caterory[]>;
   suppliers$: Observable<Supplier[]>;
+  suppliers: Supplier[];
   measurements$: Observable<Measurement[]>;
   order: Order = new Order();
   currentUser: UserModel;
@@ -45,6 +46,9 @@ export class CreateOrderComponent implements OnInit {
       this.order.concreteorder.ModifyUserId = this.currentUser.UserId;
       this.order.concreteordermeasurements = this.mapMeasurements(measurements);
     });
+    this.supplierService.suppliers.subscribe(data => {
+      this.suppliers = data;
+    });
   }
   mapMeasurements(measurements: Measurement[]): Concreteordermeasurements[] {
     const concreteordermeasurements: Concreteordermeasurements[] = [];
@@ -68,9 +72,12 @@ export class CreateOrderComponent implements OnInit {
   selectSupplier(supplier: Supplier) {
     if (!this.order) {
       this.order = new Order();
+      this.supplierService.apendState(supplier);
     }
+    this.supplierService.resetCardClass(this.suppliers);
+    supplier.Selected = 'yes';
     this.order.concreteorder.SupplierId = supplier.SupplierId;
-    console.log(this.order);
+    // console.log(this.order);
   }
   save() {
     this.concreteorderService.createOrder(this.order).subscribe(response => {

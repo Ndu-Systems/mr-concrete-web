@@ -28,9 +28,16 @@
   </mat-tab>
   <mat-tab label="Supplier">
     <div class="suppliers order-form">
-      <mat-card class="suppliers-card" *ngFor="let supplier of suppliers$ | async" (click)="selectSupplier(supplier)">
+      <span *ngFor="let supplier of suppliers$ | async" >
+        <!-- <pre>
+          {{supplier|json}}
+        </pre> -->
+      <mat-card class="suppliers-card active-{{supplier.Selected}}" (click)="selectSupplier(supplier)">
+        <img class ="mark-icon" *ngIf="supplier.Selected =='yes'" src="assets/images/dashboard/correct.svg" alt="">
         <div class="icon">
-          <img src="assets/images/dashboard/order/suppliers-inactive.svg" alt="">
+          <img *ngIf="supplier.Selected =='no'" src="assets/images/dashboard/order/suppliers-inactive.svg" alt="">
+          <img *ngIf="supplier.Selected =='yes'" src="assets/images/dashboard/order/suppliers-active.svg" alt="">
+
         </div>
         <div class="data">
           <h2>
@@ -44,6 +51,7 @@
           </h4>
         </div>
       </mat-card>
+    </span>
       <p>
         Select or add a new supplier for residential
       </p>
