@@ -1,9 +1,11 @@
+
+@import '../../../../../assets/styles/general/colors';
 .mat-radio-button {
   margin-left: 16px;
-  border: 1px solid #DCDDE1;
+  border: 1px solid $grey_light;
   border-radius: .3rem;
   padding: .5rem 1rem;
-  background: #fff;
+  background: $white;
 }
 
 p {
@@ -14,11 +16,29 @@ p {
 
 
 .suppliers-card {
-  width: 25rem;
+  width: 20%;
   //   min-width: 4rem;
   display: inline-block;
   margin: .5rem;
   text-align: center;
+
+  .data{
+    h2{
+      font-weight: 600;
+      font-size: 1rem;
+      color: $black;
+    }
+    h3{
+      font-weight: 600;
+      font-size: .9rem;
+      color: $grey; 
+    }
+    h4{
+      font-weight: 600;
+      font-size: .8rem;
+      color: $black;
+    }
+  }
 }
 
 .suppliers-header-image {
@@ -28,7 +48,7 @@ p {
 
 .order-form {
   margin: 2rem auto;
-  background: #fff;
+  background:  $white;
   width: 80%;
   padding: 1rem;
   h1{
@@ -53,7 +73,7 @@ p {
     margin: .3rem;
   }
   button{
-    border: 1px solid #DCDDE1;
+    border: 1px solid $grey_light;
     margin: 0 .5rem;
   }
 }
