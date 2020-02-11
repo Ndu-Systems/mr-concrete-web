@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from 'src/app/_guards';
 import { DashboardHomeComponent } from './dashboard-home';
 import { DashboardNavComponent } from './dashboard-nav';
-import { OrdersComponent, ListOrdersComponent, CreateOrderComponent, ViewOrderComponent } from './orders';
+import { OrdersComponent, ListOrdersComponent, CreateOrderComponent, ViewOrderComponent, SupplierListOrdersComponent } from './orders';
 import { SettingsComponent } from './settings';
 import { ActionsComponent, BannerComponent } from './shared';
 import { PartnersComponent, CreateSupplierComponent } from './partners';
@@ -48,7 +48,7 @@ export const declarations = [
   CreateCategoryComponent,
   CreateMeasurementComponent,
   ViewOrderComponent,
-
+  SupplierListOrdersComponent,
   // Pipes
   MeasurenamePipe,
 ];

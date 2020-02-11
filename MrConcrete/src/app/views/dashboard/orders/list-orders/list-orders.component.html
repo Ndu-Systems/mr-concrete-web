@@ -16,8 +16,6 @@
             </mat-chip-list>
           </h1>
         </div>
-
-
         <div class="data">
           <h1 class="text">
             {{item.ProjectCode}}
@@ -26,8 +24,6 @@
             </span>
           </h1>
         </div>
-
-
         <div class="data">
           <h1 class="text">
             {{item.category?.CategoryName}}
@@ -36,11 +32,6 @@
             </span>
           </h1>
         </div>
-
-
-
-
-
         <div class="data">
           <h1 class="text">
             {{item.DeliveryDate | date:'mediumDate'}}
@@ -49,9 +40,6 @@
             </span>
           </h1>
         </div>
-
-
-
         <div class="data">
           <h1 class="text">
             {{item.supplier?.SupplierName}}
@@ -60,10 +48,6 @@
             </span>
           </h1>
         </div>
-
-
-
-
         <div class="data">
           <button class="buttons sucees" mat-button (click)="view(item)">
             <mat-icon matDatepickerToggleIcon   matTooltip="View order full details">remove_red_eye</mat-icon>
@@ -75,10 +59,10 @@
             <mat-icon matDatepickerToggleIcon>cancel</mat-icon>
           </button>
         </div>
-
-
       </span>
     </mat-card>
   </span>
-
+  <div class="supplier" *ngIf="this.supplierOrder">
+     <app-supplier-list-orders [orders]="this.supplierOrder.Orders"></app-supplier-list-orders>
+  </div>
 </div>

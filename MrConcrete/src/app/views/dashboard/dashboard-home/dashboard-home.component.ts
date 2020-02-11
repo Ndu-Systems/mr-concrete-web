@@ -60,7 +60,7 @@ export class DashboardHomeComponent implements OnInit {
             this.status = StatusEnum.COMPLETE;
           }
           if (this.recentOrder.StatusId.toString() === '7') {
-            this.status = StatusEnum.COMPLETE;
+            this.status = StatusEnum.CANCELLED;
           }
         }
       });
