@@ -8,9 +8,9 @@
         <div class="basic-info table-3">
           <mat-card class="card">
             <span class="table-card col-1-of-1">
-  
-  
-  
+
+
+
               <div class="data">
                 <h1 class="text">
                   {{order.OrderNumber}}
@@ -19,15 +19,15 @@
                   </span>
                 </h1>
               </div>
-  
-  
+
+
             </span>
           </mat-card>
           <mat-card class="card">
             <span class="table-card col-1-of-1">
-  
-  
-  
+
+
+
               <div class="data">
                 <h1 class="text">
                   {{order.ProjectCode}}
@@ -36,25 +36,25 @@
                   </span>
                 </h1>
               </div>
-  
-  
+
+
             </span>
           </mat-card>
           <mat-card class="card">
             <span class="table-card col-1-of-1">
-  
-  
-  
+
+
+
               <div class="data">
                 <h1 class="text">
-                  {{order.category.CategoryName}}
+                  {{order.category?.CategoryName}}
                   <span class="span">
                     order category
                   </span>
                 </h1>
               </div>
-  
-  
+
+
             </span>
           </mat-card>
         </div>
@@ -63,9 +63,9 @@
           <div class="table-3">
             <mat-card class="card" *ngFor="let item of order.measurements">
               <span class="table-card col-1-of-1">
-  
-  
-  
+
+
+
                 <div class="data">
                   <h1 class="text">
                     {{item.Value}}
@@ -75,24 +75,24 @@
                     </span>
                   </h1>
                 </div>
-  
-  
+
+
               </span>
             </mat-card>
           </div>
-  
+
         </span>
       </div>
     </div>
     <div class="rigth">
       <h1 class="separator m-t">Special information</h1>
-  
+
       <div class="basic-info table-1">
         <mat-card class="card">
           <span class="table-card col-1-of-1">
-  
-  
-  
+
+
+
             <div class="data">
               <h1 class="text">
                 {{order.Directions}}
@@ -101,15 +101,15 @@
                 </span>
               </h1>
             </div>
-  
-  
+
+
           </span>
         </mat-card>
         <mat-card class="card">
           <span class="table-card col-1-of-1">
-  
-  
-  
+
+
+
             <div class="data">
               <h1 class="text">
                 {{order.SpecialInstructions}}
@@ -118,8 +118,8 @@
                 </span>
               </h1>
             </div>
-  
-  
+
+
           </span>
         </mat-card>
       </div>

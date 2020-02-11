@@ -1,3 +1,21 @@
+<span class="header col-1-of-8">
+  <h1 class="title">
+    Order #
+  </h1>
+  <h1 class="title">
+    Project code
+  </h1>
+  <h1 class="title">
+   Category
+  </h1>
+  <h1 class="title">
+    Delivery date
+  </h1>
+  <h1 class="title">
+   Client
+  </h1>
+
+</span>
 <mat-card *ngFor="let item of orders">
   <span class="table-card col-1-of-8">
     <div class="data">
@@ -5,12 +23,12 @@
         {{item.OrderNumber}}
         <mat-chip-list class="chips">
           <mat-chip class="chip pending" *ngIf="item.StatusId == '1'">Pending</mat-chip>
-          <mat-chip class="chip acceptedBySupplier" *ngIf="item.StatusId == '2'">Accepted at supplier</mat-chip>
-          <mat-chip class="chip inProgress" *ngIf="item.StatusId == '3'">In progress</mat-chip>
-          <mat-chip class="chip onDelivery" *ngIf="item.StatusId == '4'">On delivery</mat-chip>
-          <mat-chip class="chip confirmedCustomer" *ngIf="item.StatusId == '5'">Confirmed by customer</mat-chip>
-          <mat-chip class="chip complete" *ngIf="item.StatusId == '6'">Complete</mat-chip>
-          <mat-chip class="chip cancelled" *ngIf="item.StatusId == '6'">Cancelled</mat-chip>
+          <mat-chip class="chip info" *ngIf="item.StatusId == '2'">Accepted at supplier</mat-chip>
+          <mat-chip class="chip info" *ngIf="item.StatusId == '3'">In progress</mat-chip>
+          <mat-chip class="chip info" *ngIf="item.StatusId == '4'">On delivery</mat-chip>
+          <mat-chip class="chip success" *ngIf="item.StatusId == '5'">Confirmed by customer</mat-chip>
+          <mat-chip class="chip success" *ngIf="item.StatusId == '6'">Complete</mat-chip>
+          <mat-chip class="chip danger" *ngIf="item.StatusId == '7'">Cancelled</mat-chip>
         </mat-chip-list>
       </h1>
     </div>
@@ -32,7 +50,7 @@
     </div>
     <div class="data">
       <h1 class="text">
-        {{item.DeliveryDate | date:'mediumDate'}}
+        {{item.DeliveryDate }}
         <span class="span">
           <!-- {{item.StatusId}} -->
         </span>

@@ -1,47 +1,56 @@
 @import '.../../../../../../../../assets/styles/general/colors';
 
+.header {
+  .title {
+    font-size: 1em;
+    padding: 0 1em;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: gray;
+  }
+}
 
-  .mat-card {
-    margin-bottom: 0.5em;
+.mat-card {
+  margin-bottom: 0.5em;
+}
+
+.table-card {
+
+  h1 {
+    font-size: 20px;
   }
 
-  .table-card {
+  .header {
+    &.col-1-of-2 {
+      grid-template-columns: 12% auto;
+    }
+  }
 
-    h1 {
-      font-size: 20px;
+  .date {
+    display: block;
+    margin: 0.5em 0;
+    font-weight: 600;
+    font-size: .9em;
+    color: $grey;
+  }
+
+  .data {
+    .text {
+      font-weight: 400;
+      font-size: 18px;
     }
 
-    .header {
-      &.col-1-of-2 {
-        grid-template-columns: 12% auto;
-      }
-    }
-
-    .date {
+    .span {
       display: block;
-      margin: 0.5em 0;
-      font-weight: 600;
-      font-size: .9em;
+      font-weight: 700;
+      font-size: 15px;
+      text-transform: uppercase;
+      margin: 1em 0;
       color: $grey;
     }
 
-    .data {
-      .text {
-        font-weight: 400;
-        font-size: 18px;
-      }
-
-      .span {
-        display: block;
-        font-weight: 700;
-        font-size: 15px;
-        text-transform: uppercase;
-        margin: 1em 0;
-        color: $grey;
-      }
-
-    }
   }
+}
 
 
 
@@ -85,7 +94,7 @@
   min-width: 1rem;
   margin-top: .5rem;
 
-  &:disabled{
+  &:disabled {
     background: $grey_light;
     color: $grey;
   }
@@ -98,6 +107,25 @@ button.sucees {
 button.primary {
   background: $primary;
 }
+
 button.danger {
   background: $danger;
+}
+.chip {
+   &.info {
+    color:$primary;
+    background-color:$light_primary;
+  }
+  &.success {
+    color: $success;
+    background-color: $light_success;
+  }
+  &.danger {
+    color: $danger;
+    background: $light_danger;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .header {display: none;}
 }
