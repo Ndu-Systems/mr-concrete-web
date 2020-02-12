@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Caterory, Supplier, Measurement, Concreteordermeasurements, UserModel } from 'src/app/_models';
 import { Order } from 'src/app/_models/order.model';
 import { ConcreteorderService } from 'src/app/_services/dashboard/concreteorder.service';
+import { OrderView, initOrderView } from 'src/app/_models/orderview.model';
 
 @Component({
   selector: 'app-create-order',
@@ -15,7 +16,7 @@ export class CreateOrderComponent implements OnInit {
   suppliers$: Observable<Supplier[]>;
   suppliers: Supplier[];
   measurements$: Observable<Measurement[]>;
-  order: Order = new Order();
+  order: OrderView = initOrderView;
   currentUser: UserModel;
 
   heading = 'Orders';
@@ -41,10 +42,9 @@ export class CreateOrderComponent implements OnInit {
     this.suppliers$ = this.supplierService.suppliers;
     this.measurements$ = this.measurementService.measurements;
     this.measurementService.measurements.subscribe(measurements => {
-      this.order = new Order();
-      this.order.concreteorder.CreateUserId = this.currentUser.UserId;
-      this.order.concreteorder.ModifyUserId = this.currentUser.UserId;
-      this.order.concreteordermeasurements = this.mapMeasurements(measurements);
+      this.order.CreateUserId = this.currentUser.UserId;
+      this.order.ModifyUserId = this.currentUser.UserId;
+      this.order.measurements = this.mapMeasurements(measurements);
     });
     this.supplierService.suppliers.subscribe(data => {
       this.suppliers = data;
@@ -63,21 +63,16 @@ export class CreateOrderComponent implements OnInit {
     return concreteordermeasurements;
   }
   selectCatergory(caterory: Caterory) {
-    if (!this.order) {
-      this.order = new Order();
-    }
-    this.order.concreteorder.CategoryId = caterory.CategoryId;
+    this.order.CategoryId = caterory.CategoryId;
+    this.order.category = caterory;
     console.log(this.order);
   }
   selectSupplier(supplier: Supplier) {
-    if (!this.order) {
-      this.order = new Order();
-      this.supplierService.apendState(supplier);
-    }
     this.supplierService.resetCardClass(this.suppliers);
     supplier.Selected = 'yes';
-    this.order.concreteorder.SupplierId = supplier.SupplierId;
-    // console.log(this.order);
+    this.order.SupplierId = supplier.SupplierId;
+    this.order.supplier = supplier;
+    console.log(this.order);
   }
   save() {
     this.concreteorderService.createOrder(this.order).subscribe(response => {

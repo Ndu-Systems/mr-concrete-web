@@ -25,6 +25,7 @@ p {
   position: relative;
   padding: .5rem;
   cursor: pointer;
+  background: $default-white;
 
 
   .data {
@@ -58,6 +59,8 @@ p {
   background: $white;
   width: 80%;
   padding: 1rem;
+  // max-height: 22vw;
+  // overflow-y: scroll;
 
   h1 {
     width: 100%;
@@ -70,7 +73,7 @@ p {
 
   .input-field {
     width: 28%;
-    margin: .3rem;
+    margin: 0 .3rem;
   }
 
   .input-field-50 {
@@ -99,4 +102,27 @@ p {
   position: absolute;
   right: -12px;
   top: -13px;
+}
+.catergory{
+  .catergory-option{
+    background: $default-white;
+    border: 1px solid $grey_lighter;
+    width: 25%;
+    margin: .5rem;
+    padding: 1rem;
+  }
+}
+.tab-group{
+  // background: red;
+  width: 90%;
+  margin: 0 auto;
+
+}
+
+.white-bg{
+  background: $default-white;
+  text-align: center;
+}
+.padding-0{
+  padding: 0;
 }
