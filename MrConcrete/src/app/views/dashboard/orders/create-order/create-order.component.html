@@ -6,7 +6,7 @@
       <div class="options">
         <mat-radio-group aria-label="Select an option">
           <span *ngFor="let catergory of caterories$ | async">
-            <mat-radio-button  class="catergory-option" [value]="catergory.CategoryId" (click)="selectCatergory(catergory)">
+            <mat-radio-button  class="catergory-option" [value]="catergory.CategoryId" [checked]="catergory.CategoryId == order.CategoryId"  (click)="selectCatergory(catergory)">
               {{catergory.CategoryName}}
             </mat-radio-button>
           </span>
@@ -62,7 +62,7 @@
       <h1>Ready-mix Concrete order form</h1>
 
       <div class="example-container">
-        <mat-form-field appearance="outline" class="padding-0" *ngFor="let measurement of order.measurements"
+        <mat-form-field appearance="outline" *ngFor="let measurement of order.measurements"
           class="input-field">
           <mat-label>{{measurement.Name}}</mat-label>
           <input matInput [placeholder]="measurement.Name" [(ngModel)]="measurement.Value">
@@ -133,6 +133,6 @@
 </mat-tab-group>
 
 
-<!-- <pre>
+<pre>
   {{order | json}}
-</pre> -->
+</pre>

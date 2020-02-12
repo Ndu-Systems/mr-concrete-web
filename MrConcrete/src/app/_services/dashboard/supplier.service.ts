@@ -34,11 +34,14 @@ export class SupplierService {
     return this._suppliers.value;
   }
   apendState(data: Supplier) {
-    console.log(data);
-
     const state = this.suppliersValue || [];
     state.push(data);
     this._suppliers.next(state);
+  }
+  setState(data: Supplier[]) {
+    this._suppliers.next(data);
+    localStorage.setItem('suppliers', JSON.stringify(data));
+
   }
 
   updateCurrentCategory(category: Supplier) {
@@ -88,11 +91,12 @@ export class SupplierService {
   getSupplier(supplierId: string, email: string): Observable<Supplier> {
     return this.http.get<Supplier>(`${this.url}/api/supplier/get-supplier.php?SupplierId=${supplierId}&Email=${email}`);
   }
-  resetCardClass(suppliers: Supplier[]) {
+  resetCardClass(suppliers: Supplier[], supplier: Supplier) {
     if (suppliers && suppliers.length) {
       suppliers.forEach(x => {
         x.Selected = 'no';
       });
+      supplier.Selected = 'yes';
       this._suppliers.next(suppliers);
     }
   }

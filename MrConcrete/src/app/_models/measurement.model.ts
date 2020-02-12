@@ -1,7 +1,10 @@
 export interface Measurement {
+    Id: string;
+    OrderId: string;
     MeasurementId: string;
-    Name: string;
-    UnitOfMeasurement: string;
+    Value?: string;
+    Name?: string;
+    UnitOfMeasurement?: string;
     CreateDate: string;
     CreateUserId: string;
     ModifyDate: string;

@@ -1,5 +1,5 @@
 import { Supplier } from './supplier.model';
-import { Concreteorder } from './concreteorder.model';
+import { OrderView } from './orderview.model';
 
 
 
@@ -8,6 +8,6 @@ export class SupplierOrdersModel {
     this.Supplier = new Supplier();
     this.Orders = [];
   }
-  Orders: Concreteorder[];
+  Orders: OrderView[];
   Supplier: Supplier;
 }

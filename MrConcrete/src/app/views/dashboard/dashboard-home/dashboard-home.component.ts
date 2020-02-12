@@ -2,7 +2,7 @@ import { Supplier } from './../../../_models/supplier.model';
 import { Component, OnInit } from '@angular/core';
 import { ConcreteorderService } from 'src/app/_services/dashboard';
 import { AccountService, SupplierService } from 'src/app/_services';
-import { UserModel, Concreteorder } from 'src/app/_models';
+import { UserModel} from 'src/app/_models';
 import { OrderView } from 'src/app/_models/orderview.model';
 import { Roles } from 'src/app/_shared';
 import { StatusEnum } from 'src/app/_shared/status.enum';
@@ -17,7 +17,7 @@ export class DashboardHomeComponent implements OnInit {
   user: UserModel;
   supplier: Supplier;
   orders: OrderView[] = [];
-  recentOrder: Concreteorder;
+  recentOrder: OrderView;
   status: string;
   constructor(
     private orderService: ConcreteorderService,
@@ -37,7 +37,7 @@ export class DashboardHomeComponent implements OnInit {
           const pendingOrders = result.Orders.filter(x => x.StatusId.toString() === '1').sort((x, y) => {
             return new Date(y.CreateDate).getTime() - new Date(x.CreateDate).getTime();
           });
-          this.recentOrder = new Concreteorder();
+          // this.recentOrder = new Concreteorder();
           this.recentOrder = pendingOrders[0];
 
           if (this.recentOrder.StatusId.toString() === '1') {

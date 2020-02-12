@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {  Concreteorder } from 'src/app/_models';
 import { ConcreteorderService } from 'src/app/_services/dashboard';
 import { Router } from '@angular/router';
+import { OrderView } from 'src/app/_models/orderview.model';
 
 @Component({
   selector: 'app-supplier-list-orders',
@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./supplier-list-orders.component.scss']
 })
 export class SupplierListOrdersComponent implements OnInit {
-@Input() orders: Concreteorder[];
+@Input() orders: OrderView[];
   constructor(
     private concreteorderService: ConcreteorderService,
     private router: Router

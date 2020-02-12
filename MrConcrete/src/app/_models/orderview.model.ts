@@ -1,17 +1,5 @@
 import { Caterory, initCaterory } from './caterory.model';
-
-export interface Measurement {
-    Id: string;
-    OrderId: string;
-    MeasurementId: string;
-    Value: string;
-    CreateDate: string;
-    CreateUserId: string;
-    ModifyDate: string;
-    ModifyUserId: string;
-    StatusId: string;
-}
-
+import { Measurement } from '.';
 
 export interface Supplier {
     SupplierId: string;
@@ -49,6 +37,7 @@ export interface OrderView {
     measurements: Measurement[];
     category: Caterory;
     supplier: Supplier;
+    isBusyWith?: boolean;
 }
 export const initSupplier: Supplier = {
     SupplierId: '',
@@ -83,9 +72,10 @@ export const initOrderView: OrderView = {
     ModifyDate: '',
     ModifyUserId: '',
     StatusId: 1,
-    measurements:  [],
-    category:  initCaterory,
-    supplier:  initSupplier,
+    measurements: [],
+    category: initCaterory,
+    supplier: initSupplier,
+    isBusyWith: false
 }
 
 

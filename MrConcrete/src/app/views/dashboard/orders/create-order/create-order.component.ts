@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CateroryService, SupplierService, MeasurementService, AccountService } from 'src/app/_services';
 import { Observable } from 'rxjs';
-import { Caterory, Supplier, Measurement, Concreteordermeasurements, UserModel } from 'src/app/_models';
+import { Caterory, Supplier, Measurement, UserModel } from 'src/app/_models';
 import { ConcreteorderService } from 'src/app/_services/dashboard/concreteorder.service';
 import { OrderView, initOrderView } from 'src/app/_models/orderview.model';
 import { Router } from '@angular/router';
@@ -16,6 +16,7 @@ export class CreateOrderComponent implements OnInit {
   suppliers$: Observable<Supplier[]>;
   suppliers: Supplier[];
   measurements$: Observable<Measurement[]>;
+  measurements: Measurement[];
   order: OrderView = initOrderView;
   currentUser: UserModel;
 
@@ -45,23 +46,45 @@ export class CreateOrderComponent implements OnInit {
     this.measurementService.measurements.subscribe(measurements => {
       this.order.CreateUserId = this.currentUser.UserId;
       this.order.ModifyUserId = this.currentUser.UserId;
-      this.order.measurements = this.mapMeasurements(measurements);
+      this.measurements = measurements;
+      // this.order.measurements = this.mapMeasurements(measurements);
     });
     this.supplierService.suppliers.subscribe(data => {
       this.suppliers = data;
     });
+    this.initOrder();
   }
-  mapMeasurements(measurements: Measurement[]): Concreteordermeasurements[] {
-    const concreteordermeasurements: Concreteordermeasurements[] = [];
-    measurements.forEach(data => {
-      const concreteordermeasurement = new Concreteordermeasurements();
-      concreteordermeasurement.MeasurementId = data.MeasurementId;
-      concreteordermeasurement.Name = data.Name;
-      concreteordermeasurement.CreateUserId = this.currentUser.UserId;
-      concreteordermeasurement.ModifyUserId = this.currentUser.UserId;
-      concreteordermeasurements.push(concreteordermeasurement);
+  initOrder() {
+    this.concreteorderService.order.subscribe(data => {
+      const order = data;
+      if (order.isBusyWith) {
+        this.order = order;
+        this.order.measurements = this.getMeasurementLabels(this.order.measurements);
+        this.selectSupplier(this.order.supplier);
+        // this.order.measurements = this.mapMeasurements(this.order.measurements);
+
+      }
     });
-    return concreteordermeasurements;
+  }
+  // mapMeasurements(measurements: Measurement[]): Measurement[] {
+  //   const concreteordermeasurements: Measurement[] = [];
+  //   measurements.forEach(data => {
+  //     const concreteordermeasurement: Measurement[];
+  //     concreteordermeasurement.MeasurementId = data.MeasurementId;
+  //     concreteordermeasurement.Name = data.Name;
+  //     concreteordermeasurement.Value = data.Value;
+  //     concreteordermeasurement.CreateUserId = this.currentUser.UserId;
+  //     concreteordermeasurement.ModifyUserId = this.currentUser.UserId;
+  //     concreteordermeasurements.push(concreteordermeasurement);
+  //   });
+  //   return concreteordermeasurements;
+  // }
+  getMeasurementLabels(measurements: Measurement[]) {
+    measurements.forEach(data => {
+      const check = this.measurements.find(x => x.MeasurementId === data.MeasurementId);
+      data.Name = check && check.Name || '';
+    });
+    return measurements;
   }
   selectCatergory(caterory: Caterory) {
     this.order.CategoryId = caterory.CategoryId;
@@ -69,12 +92,13 @@ export class CreateOrderComponent implements OnInit {
     console.log(this.order);
   }
   selectSupplier(supplier: Supplier) {
-    this.supplierService.resetCardClass(this.suppliers);
+    this.supplierService.resetCardClass(this.suppliers,supplier);
     supplier.Selected = 'yes';
     this.order.SupplierId = supplier.SupplierId;
     this.order.supplier = supplier;
   }
   preview() {
+    this.order.isBusyWith = false;
     this.concreteorderService.setStateForCurrentOrder(this.order);
     this.router.navigate(['dashboard/view-order']);
   }
