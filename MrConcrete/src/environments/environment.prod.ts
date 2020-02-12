@@ -1,3 +1,8 @@
+
 export const environment = {
-  production: true
+  production: true,
+  API_URL: 'https://portfolio.ndu-systems.net/api',
+  EMAIL: '',
+  PASSWORD: ''
+
 };
