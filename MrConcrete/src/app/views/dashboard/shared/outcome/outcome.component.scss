@@ -1,0 +1,46 @@
+@import '../../../../../assets/styles/general/colors';
+
+.contianer {
+  width: 100%;
+  text-align: center;
+
+  .card {
+    width: 20%;
+    display: inline-block;
+    text-align: center;
+    border: 1px solid $grey_light;
+    position: relative;
+    padding: .5rem;
+    cursor: pointer;
+    background: $default-white;
+
+
+
+    .data {
+      h4 {
+        font-weight: 600;
+        font-size: 1rem;
+        color: $black;
+      }
+
+      p {
+        color: $grey;
+        font-size: .9rem;
+
+      }
+    }
+  }
+}
+
+.action {
+  border: 1px solid $grey;
+  color: $grey;
+  margin: 0 1rem;
+  width: 30%;
+}
+
+.view {
+  border: 1px solid $success;
+  color: $success;
+
+}

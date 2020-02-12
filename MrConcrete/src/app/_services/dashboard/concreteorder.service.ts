@@ -47,6 +47,9 @@ export class ConcreteorderService {
   createOrder(data): Observable<any> {
     return this.http.post<any>(`${this.url}/api/concreteorder/order.php`, data);
   }
+  updateOrder(data): Observable<any> {
+    return this.http.post<any>(`${this.url}/api/concreteorder/update-order.php`, data);
+  }
   getOrders(userId: string) {
     return this.http.get<OrderView[]>(`${this.url}/api/concreteorder/get-concreteorders.php?UserId=${userId}`).subscribe(resp => {
       const data: OrderView[] = resp;

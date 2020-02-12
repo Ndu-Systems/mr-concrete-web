@@ -11,6 +11,7 @@ import { PartnersComponent, CreateSupplierComponent } from './partners';
 import { MeasurementsComponent, CreateMeasurementComponent } from './measurements';
 import { CategoriesComponent, CreateCategoryComponent } from './categories';
 import { MeasurenamePipe } from 'src/app/_pipes/measurename.pipe';
+import { OutcomeComponent } from './shared/outcome/outcome.component';
 
 
 const routes: Routes = [
@@ -28,6 +29,7 @@ const routes: Routes = [
       { path: 'categories', component: CategoriesComponent },
       { path: 'add-category', component: CreateCategoryComponent },
       { path: 'view-order', component: ViewOrderComponent },
+      { path: 'outcome', component: OutcomeComponent }
     ]
   }
 ];
@@ -49,6 +51,7 @@ export const declarations = [
   CreateMeasurementComponent,
   ViewOrderComponent,
   SupplierListOrdersComponent,
+  OutcomeComponent,
   // Pipes
   MeasurenamePipe,
 ];

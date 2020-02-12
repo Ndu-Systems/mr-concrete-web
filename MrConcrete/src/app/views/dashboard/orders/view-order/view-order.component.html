@@ -95,6 +95,23 @@
 
             <div class="data">
               <h1 class="text">
+                {{order.supplier?.SupplierName}}
+                <span class="span">
+                  Supplier
+                </span>
+              </h1>
+            </div>
+
+
+          </span>
+        </mat-card>
+        <mat-card class="card">
+          <span class="table-card col-1-of-1">
+
+
+
+            <div class="data">
+              <h1 class="text">
                 {{order.Directions}}
                 <span class="span">
                   how to get there
@@ -127,8 +144,8 @@
     <div></div>
     <div class="actions">
       <h1 class="separator"></h1>
-      <button mat-button class="primary">Confirmed, place order</button>
-      <button mat-button class="simple">Cancel order</button>
+      <button mat-button class="primary" (click)="action()">Looks good, save</button>
+      <button mat-button (click)="cancel()" class="simple">Cancel</button>
     </div>
   </div>
 

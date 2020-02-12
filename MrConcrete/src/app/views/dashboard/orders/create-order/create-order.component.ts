@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { CateroryService, SupplierService, MeasurementService, AccountService } from 'src/app/_services';
 import { Observable } from 'rxjs';
 import { Caterory, Supplier, Measurement, Concreteordermeasurements, UserModel } from 'src/app/_models';
-import { Order } from 'src/app/_models/order.model';
 import { ConcreteorderService } from 'src/app/_services/dashboard/concreteorder.service';
 import { OrderView, initOrderView } from 'src/app/_models/orderview.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-order',
@@ -31,6 +31,7 @@ export class CreateOrderComponent implements OnInit {
     private measurementService: MeasurementService,
     private accountService: AccountService,
     private concreteorderService: ConcreteorderService,
+    private router: Router,
   ) { }
 
   ngOnInit() {
@@ -72,12 +73,9 @@ export class CreateOrderComponent implements OnInit {
     supplier.Selected = 'yes';
     this.order.SupplierId = supplier.SupplierId;
     this.order.supplier = supplier;
-    console.log(this.order);
   }
-  save() {
-    this.concreteorderService.createOrder(this.order).subscribe(response => {
-      console.log('order saved', response);
-
-    });
+  preview() {
+    this.concreteorderService.setStateForCurrentOrder(this.order);
+    this.router.navigate(['dashboard/view-order']);
   }
 }

@@ -1,0 +1,30 @@
+<app-banner [subheading]="subheading" [heading]="heading" [actionButton]="actionButton"></app-banner>
+
+
+<div class="contianer">
+  <mat-card class="card" (click)="selectSupplier(supplier)">
+    <div class="icon">
+      <img src="assets/images/dashboard/successfully.svg" alt="">
+
+    </div>
+    <div class="data">
+
+      <h4>
+        Order successfully submitted!
+      </h4>
+      <p>
+        Three to four days is usually sufficient time for concrete scheduling. Should the delivery not arrive with 20
+        minutes after scheduled time, please contact person at supplier side.
+      </p>
+      <h3>
+        View order details:
+      </h3>
+      <div class="actions">
+        <button class="action"  (click)="list()"  mat-button>Done</button>
+        <button class="action view" (click)="preview()" mat-button>View order</button>
+        <!-- <button class="action view" (click)="list()" mat-button>Done</button> -->
+      </div>
+    </div>
+  </mat-card>
+
+</div>

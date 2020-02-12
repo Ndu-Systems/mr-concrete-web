@@ -1,6 +1,5 @@
 import { Supplier } from './../../../_models/supplier.model';
 import { Component, OnInit } from '@angular/core';
-import { Order } from 'src/app/_models/order.model';
 import { ConcreteorderService } from 'src/app/_services/dashboard';
 import { AccountService, SupplierService } from 'src/app/_services';
 import { UserModel, Concreteorder } from 'src/app/_models';

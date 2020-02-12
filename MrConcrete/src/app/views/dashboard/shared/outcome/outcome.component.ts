@@ -1,17 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { OrderView } from 'src/app/_models/orderview.model';
+import { UserModel } from 'src/app/_models';
 import { ConcreteorderService } from 'src/app/_services/dashboard';
 import { AccountService, MeasurementService } from 'src/app/_services';
-import { UserModel } from 'src/app/_models';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-view-order',
-  templateUrl: './view-order.component.html',
-  styleUrls: ['./view-order.component.scss']
+  selector: 'app-outcome',
+  templateUrl: './outcome.component.html',
+  styleUrls: ['./outcome.component.scss']
 })
-export class ViewOrderComponent implements OnInit {
+export class OutcomeComponent implements OnInit {
+
   heading = 'Orders';
   subheading = 'View order';
   actionButton: any = {
@@ -42,29 +43,12 @@ export class ViewOrderComponent implements OnInit {
     });
   }
 
-  createNewOrder() {
-    this.concreteorderService.createOrder(this.order).subscribe(response => {
-      this.concreteorderService.setStateForCurrentOrder(response);
-      this.router.navigate(['dashboard/outcome']);
-    });
+  preview() {
+    this.concreteorderService.setStateForCurrentOrder(this.order);
+    this.router.navigate(['dashboard/view-order']);
   }
-
-  updateOder() {
-    this.concreteorderService.createOrder(this.order).subscribe(response => {
-      this.concreteorderService.setStateForCurrentOrder(response);
-      this.router.navigate(['dashboard/outcome']);    });
-  }
-  cancel() {
+  list() {
+    this.concreteorderService.setStateForCurrentOrder(this.order);
     this.router.navigate(['dashboard/orders']);
-
-  }
-  action() {
-    console.log(this.order);
-
-    if (this.order.OrderId.length > 5) {
-      this.updateOder();
-      return true;
-    }
-    this.createNewOrder();
   }
 }
