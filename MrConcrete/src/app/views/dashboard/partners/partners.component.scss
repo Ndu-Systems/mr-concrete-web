@@ -1,7 +1,9 @@
 @import '../../../../assets/styles/general/colors';
+
 .col-1-of-4 {
-  grid-template-columns: 20% 10% 20% 20% 20% 10%;
+  grid-template-columns: 25% 10% 15% 15% 20% 10%;
 }
+
 .heading {
   h1 {
     font-size: 1em;
@@ -11,6 +13,7 @@
     font-weight: 500;
 
   }
+
   margin: 0;
 }
 
@@ -69,7 +72,7 @@
   min-width: 1rem;
   margin-top: .5rem;
 
-  &:disabled{
+  &:disabled {
     background: $grey_light;
     color: $grey;
   }
@@ -82,14 +85,16 @@ button.sucees {
 button.primary {
   background: $primary;
 }
+
 button.danger {
   background: $danger;
 }
 
 @media only screen and (max-width: 600px) {
   .col-1-of-4 {
-    grid-template-columns: repeat(1,100%);
+    grid-template-columns: repeat(1, 100%);
   }
+
   .heading {
     display: none;
   }
