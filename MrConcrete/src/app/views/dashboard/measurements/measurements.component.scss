@@ -1,5 +1,7 @@
 @import '../../../../assets/styles/general/colors';
-
+.col-1-of-4 {
+  grid-template-columns: repeat(5,20%);
+}
 .heading {
   h1 {
     font-size: 1em;
@@ -19,7 +21,7 @@
   .table-card {
 
     h1 {
-      font-size: 20px;
+      font-size: 15px;
     }
 
     .header {
@@ -39,7 +41,7 @@
     .data {
       .text {
         font-weight: 400;
-        font-size: 18px;
+        font-size: 15px;
       }
 
       .span {
@@ -87,6 +89,9 @@ button.danger {
 
 
 @media only screen and (max-width: 600px) {
+  .col-1-of-4 {
+    grid-template-columns: repeat(1,100%);
+  }
   .heading {
     display: none;
   }

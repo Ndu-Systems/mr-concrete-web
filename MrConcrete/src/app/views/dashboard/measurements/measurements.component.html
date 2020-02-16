@@ -2,8 +2,9 @@
 <div class="container" *ngIf="measurements">
   <div class="heading col-1-of-4">
     <h1>description</h1>
-    <h1>date created</h1>
+    <h1>status</h1>
     <h1>unit of measurement</h1>
+    <h1>date created</h1>
     <h1>actions</h1>
   </div>
   <div class="container-table">
@@ -14,6 +15,8 @@
           <h1 class="header">
             {{item.Name}}
           </h1>
+        </div>
+        <div class="data">
           <mat-chip-list class="chips">
             <mat-chip class="chip success" *ngIf="item.StatusId == '1'">active</mat-chip>
             <mat-chip class="chip cancelled" *ngIf="item.StatusId == '0'">Cancelled</mat-chip>
@@ -21,14 +24,15 @@
         </div>
         <div class="data">
           <h1 class="text">
-            {{item.CreateDate | date:'mediumDate'}}
+            {{item.UnitOfMeasurement}}
           </h1>
         </div>
         <div class="data">
           <h1 class="text">
-            {{item.UnitOfMeasurement}}
+            {{item.CreateDate | date:'mediumDate'}}
           </h1>
         </div>
+
         <div class="data">
           <button class="buttons primary" [disabled]="item.StatusId != '1'" matTooltip="Edit this measurement."
             mat-button>

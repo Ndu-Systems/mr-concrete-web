@@ -2,6 +2,7 @@
 <div class="container" *ngIf="suppliers">
   <div class="heading col-1-of-4">
     <h1>name</h1>
+    <h1>status</h1>
     <h1>contact number</h1>
     <h1>email address</h1>
     <h1>address</h1>
@@ -16,6 +17,8 @@
             {{item.SupplierName}}
             <span class="date">{{item.CreateDate | date:'mediumDate'}}</span>
           </h1>
+        </div>
+        <div class="data">
           <mat-chip-list class="chips">
             <mat-chip class="chip success" *ngIf="item.StatusId == '1'">active</mat-chip>
             <mat-chip class="chip cancelled" *ngIf="item.StatusId == '0'">Cancelled</mat-chip>
@@ -37,11 +40,11 @@
           </h1>
         </div>
         <div class="data">
-          <button class="buttons primary" [disabled]="item.StatusId != '1'" matTooltip="Edit this measurement."
+          <button class="buttons primary" [disabled]="item.StatusId != '1'" matTooltip="Edit this supplier."
             mat-button>
             <mat-icon matDatepickerToggleIcon>edit</mat-icon>
           </button>
-          <button class="buttons danger" [disabled]="item.StatusId != '1'" matTooltip="Archive this measurement."
+          <button class="buttons danger" [disabled]="item.StatusId != '1'" matTooltip="Archive this supplier."
             mat-button>
             <mat-icon matDatepickerToggleIcon>cancel</mat-icon>
           </button>
