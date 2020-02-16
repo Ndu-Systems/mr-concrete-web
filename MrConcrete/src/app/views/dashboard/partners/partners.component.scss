@@ -1,6 +1,23 @@
 @import '../../../../assets/styles/general/colors';
+.col-1-of-4 {
+  grid-template-columns: repeat(5,20%);
+}
+.heading {
+  h1 {
+    font-size: 1em;
+    padding: 0 1em;
+    text-transform: uppercase;
+    color: #a4b0be;
+    font-weight: 500;
+
+  }
+  margin: 0;
+}
 
 .container-table {
+  overflow-y: scroll;
+  height: 40em;
+
   .table-card {
 
     h1 {
@@ -38,4 +55,42 @@
     }
   }
 
+  .mat-card {
+    padding: 0.5em;
+  }
+
+}
+
+.buttons {
+  padding: .2rem;
+  line-height: 20px;
+  color: #fff;
+  margin: .2rem;
+  min-width: 1rem;
+  margin-top: .5rem;
+
+  &:disabled{
+    background: $grey_light;
+    color: $grey;
+  }
+}
+
+button.sucees {
+  background: $success;
+}
+
+button.primary {
+  background: $primary;
+}
+button.danger {
+  background: $danger;
+}
+
+@media only screen and (max-width: 600px) {
+  .col-1-of-4 {
+    grid-template-columns: repeat(1,100%);
+  }
+  .heading {
+    display: none;
+  }
 }

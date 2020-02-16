@@ -1,17 +1,40 @@
 <app-banner [subheading]="subheading" [heading]="heading" [actionButton]="actionButton"></app-banner>
 
-<div class="container col-1-of-4" *ngIf="categories" >
-  <span *ngFor="let item of categories" class="container-table">
-    <mat-card>
-      <span class="table-card col-1-of-1">
+<div class="container" *ngIf="categories" >
+  <div class="heading col-1-of-3">
+    <h1>description</h1>
+    <h1>date created</h1>
+    <h1>actions</h1>
+    </div>
+  <div class="container-table">
+    <mat-card *ngFor="let item of categories">
+      <span class="table-card col-1-of-3">
         <div class="header col-1-of-2">
           <img src="assets/images/dashboard/settings/image.svg" alt="image vector">
           <h1 class="header">
             {{item.CategoryName}}
-            <span class="date">{{item.CreateDate | date:'mediumDate'}}</span>
           </h1>
+          <mat-chip-list class="chips">
+            <mat-chip class="chip success" *ngIf="item.StatusId == '1'">active</mat-chip>
+            <mat-chip class="chip cancelled" *ngIf="item.StatusId == '0'">Cancelled</mat-chip>
+          </mat-chip-list>
+        </div>
+        <div class="data">
+          <h1 class="text">
+            {{item.CreateDate | date:'mediumDate'}}
+          </h1>
+        </div>
+        <div class="data">
+          <button class="buttons primary" [disabled]="item.StatusId != '1'" matTooltip="Edit this category."
+            mat-button>
+            <mat-icon matDatepickerToggleIcon>edit</mat-icon>
+          </button>
+          <button class="buttons danger" [disabled]="item.StatusId != '1'" matTooltip="Archive this category."
+            mat-button>
+            <mat-icon matDatepickerToggleIcon>cancel</mat-icon>
+          </button>
         </div>
       </span>
     </mat-card>
-  </span>
+  </div>
 </div>
