@@ -100,12 +100,20 @@ button.danger {
     color: #fff !important;
   }
 }
+
 @media only screen and (max-width: 600px) {
+
   .col-1-of-4 {
     grid-template-columns: repeat(1, 100%);
   }
 
   .heading {
     display: none;
+  }
+
+  ::ng-deep {
+    body .ui-dialog {
+      width: 95vw !important;
+    }
   }
 }

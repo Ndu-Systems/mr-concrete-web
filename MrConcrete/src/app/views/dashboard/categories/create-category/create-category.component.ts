@@ -1,3 +1,4 @@
+import { MessageService } from 'primeng/api';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserModel, Caterory } from 'src/app/_models';
@@ -21,6 +22,7 @@ export class CreateCategoryComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private accountService: AccountService,
+    private messageService: MessageService,
     private categoryService: CateroryService,
     private routeTo: Router
   ) { }
@@ -37,6 +39,12 @@ export class CreateCategoryComponent implements OnInit {
 
   onSubmit(category: Caterory) {
     this.categoryService.addCaterory(category);
+    this.messageService.add({
+      severity: 'success',
+      summary: `Success!`,
+      detail: 'Category created successfully',
+      life: 1000
+    });
     this.categoryService.getCateries();
     this.routeTo.navigate(['/dashboard/categories']);
   }

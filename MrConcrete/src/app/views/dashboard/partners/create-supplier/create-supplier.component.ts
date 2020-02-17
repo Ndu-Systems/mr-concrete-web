@@ -1,3 +1,4 @@
+import { MessageService } from 'primeng/api';
 import { AccountService, SupplierService } from 'src/app/_services';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
@@ -23,6 +24,7 @@ export class CreateSupplierComponent implements OnInit {
     private fb: FormBuilder,
     private accountService: AccountService,
     private supplierService: SupplierService,
+    private messageService: MessageService,
     private routeTo: Router
   ) { }
 
@@ -43,6 +45,12 @@ export class CreateSupplierComponent implements OnInit {
   }
   onSubmit(supplier: Supplier) {
     this.supplierService.addSupplier(supplier);
+    this.messageService.add({
+      severity: 'success',
+      summary: `Success!`,
+      detail: 'Supplier added successfully',
+      life: 1000
+    });
     this.supplierService.getSuppliers(1);
     this.routeTo.navigate(['/dashboard/partners']);
   }

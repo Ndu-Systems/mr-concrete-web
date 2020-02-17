@@ -1,7 +1,7 @@
 import { ConfirmationService, Message, MessageService } from 'primeng/api';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { Supplier } from 'src/app/_models';
-import { SupplierService } from 'src/app/_services';
+import { Supplier, UserModel } from 'src/app/_models';
+import { SupplierService, AccountService } from 'src/app/_services';
 import { ActionButton } from '../shared/constants/actions';
 import { Router } from '@angular/router';
 
@@ -21,17 +21,18 @@ export class PartnersComponent implements OnInit {
   };
   @Output() messages: EventEmitter<Message[]> = new EventEmitter<Message[]>();
   msgs: Message[] = [];
-
+  currentUser: UserModel;
   constructor(
     private supplierService: SupplierService,
     private routeTo: Router,
     private confirmationService: ConfirmationService,
-    private messageService: MessageService
-  ) { }
+    private accountService: AccountService,
+   ) { }
 
   ngOnInit() {
     this.supplierService.getSuppliers(1);
     this.supplierService.suppliers.subscribe(data => this.suppliers = data);
+    this.currentUser = this.accountService.CurrentUserValue;
   }
 
   updatePartner(supplier: Supplier) {
@@ -46,8 +47,9 @@ export class PartnersComponent implements OnInit {
       icon: 'pi pi-exclamation-triangle',
       accept: () => {
         supplier.StatusId = '2';
+        supplier.ModifyUserId = this.currentUser.UserId;
         this.supplierService.updateSupplier(supplier);
-        this.msgs = [{ severity: 'warn', summary: 'Confirmed', detail: 'Supplier successfully archived.' }];
+        this.msgs = [{ severity: 'warn', summary: 'Archived', detail: 'Supplier successfully archived.' }];
       },
       reject: () => {
         this.msgs = [{ severity: 'info', summary: 'Rejected', detail: 'Have rejected the archive action' }];

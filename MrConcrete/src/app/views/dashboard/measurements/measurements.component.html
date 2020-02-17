@@ -1,3 +1,5 @@
+<p-messages [value]="msgs"></p-messages>
+
 <app-banner [subheading]="subheading" [heading]="heading" [actionButton]="actionButton"></app-banner>
 <div class="container" *ngIf="measurements">
   <div class="heading col-1-of-4">
@@ -19,7 +21,7 @@
         <div class="data">
           <mat-chip-list class="chips">
             <mat-chip class="chip success" *ngIf="item.StatusId == '1'">active</mat-chip>
-            <mat-chip class="chip cancelled" *ngIf="item.StatusId == '0'">Cancelled</mat-chip>
+            <mat-chip class="chip cancelled" *ngIf="item.StatusId == '2'">disabled</mat-chip>
           </mat-chip-list>
         </div>
         <div class="data">
@@ -34,11 +36,11 @@
         </div>
 
         <div class="data">
-          <button class="buttons primary" [disabled]="item.StatusId !== '1'" (click)="editMeasurement(item)" matTooltip="Edit this measurement."
+          <button class="buttons primary"  [disabled]="item.StatusId !== '1' && item.StatusId !== '2'"  (click)="editMeasurement(item)" matTooltip="Edit this measurement."
             mat-button>
             <mat-icon matDatepickerToggleIcon>edit</mat-icon>
           </button>
-          <button class="buttons danger" [disabled]="item.StatusId === '1'" matTooltip="Archive this measurement."
+          <button class="buttons danger" [disabled]="item.StatusId !== '1'" (click)="archiveMeasurement(item)"   matTooltip="Archive this measurement."
             mat-button>
             <mat-icon matDatepickerToggleIcon>cancel</mat-icon>
           </button>

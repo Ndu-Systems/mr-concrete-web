@@ -85,9 +85,25 @@ button.danger {
   background: $danger;
 }
 
+::ng-deep {
+  body .ui-dialog .ui-dialog-titlebar {
+    background: $yellow !important;
+    color: #fff !important;
+  }
+
+  body .ui-dialog .ui-dialog-titlebar .ui-dialog-titlebar-icon {
+    color: #fff !important;
+  }
+}
 
 @media only screen and (max-width: 600px) {
   .heading {
     display: none;
+  }
+  
+  ::ng-deep {
+    body .ui-dialog {
+      width: 95vw !important;
+    }
   }
 }

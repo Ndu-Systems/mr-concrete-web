@@ -1,3 +1,4 @@
+import { MessageService } from 'primeng/api';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserModel, Measurement } from 'src/app/_models';
@@ -21,6 +22,7 @@ export class CreateMeasurementComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private accountService: AccountService,
+    private messageService: MessageService,
     private routeTo: Router,
     private measurementService: MeasurementService
   ) { }
@@ -38,6 +40,12 @@ export class CreateMeasurementComponent implements OnInit {
 
   onSubmit(measureMent: Measurement) {
     this.measurementService.addMeasurement(measureMent);
+    this.messageService.add({
+      severity: 'success',
+      summary: `Success!`,
+      detail: 'Measurement added successfully',
+      life: 1000
+    });
     this.measurementService.getMeasurements();
     this.routeTo.navigate(['/dashboard/measurements']);
    }
