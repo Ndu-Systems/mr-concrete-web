@@ -15,6 +15,10 @@ export class CreateSupplierComponent implements OnInit {
   rForm: FormGroup;
   error: string;
   currentUser: UserModel;
+  actionButton: any = {
+    link: '/dashboard/partners',
+    label: 'View Suppliers'
+  };
   constructor(
     private fb: FormBuilder,
     private accountService: AccountService,
@@ -39,7 +43,7 @@ export class CreateSupplierComponent implements OnInit {
   }
   onSubmit(supplier: Supplier) {
     this.supplierService.addSupplier(supplier);
-    this.supplierService.getSuppliers();
+    this.supplierService.getSuppliers(1);
     this.routeTo.navigate(['/dashboard/partners']);
   }
 }

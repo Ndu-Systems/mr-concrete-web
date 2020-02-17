@@ -40,11 +40,11 @@
           </h1>
         </div>
         <div class="data">
-          <button class="buttons primary" [disabled]="item.StatusId != '1'" matTooltip="Edit this supplier."
+          <button class="buttons primary" [disabled]="item.StatusId !== '1'" (click)="updatePartner(item)" matTooltip="Edit this supplier."
             mat-button>
             <mat-icon matDatepickerToggleIcon>edit</mat-icon>
           </button>
-          <button class="buttons danger" [disabled]="item.StatusId != '1'" matTooltip="Archive this supplier."
+          <button class="buttons danger" [disabled]="item.StatusId === '1'" matTooltip="Archive this supplier."
             mat-button>
             <mat-icon matDatepickerToggleIcon>cancel</mat-icon>
           </button>

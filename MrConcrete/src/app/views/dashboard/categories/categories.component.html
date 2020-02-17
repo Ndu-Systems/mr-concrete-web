@@ -29,10 +29,10 @@
         </div>
 
         <div class="data">
-          <button class="buttons primary" [disabled]="item.StatusId != '1'" matTooltip="Edit this category." mat-button>
+          <button class="buttons primary" [disabled]="item.StatusId !== '1'" matTooltip="Edit this category." mat-button>
             <mat-icon matDatepickerToggleIcon>edit</mat-icon>
           </button>
-          <button class="buttons danger" [disabled]="item.StatusId != '1'" matTooltip="Archive this category."
+          <button class="buttons danger" [disabled]="item.StatusId === '1'" matTooltip="Archive this category."
             mat-button>
             <mat-icon matDatepickerToggleIcon>cancel</mat-icon>
           </button>

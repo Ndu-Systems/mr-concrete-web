@@ -38,7 +38,7 @@ export class CreateOrderComponent implements OnInit {
   ngOnInit() {
     this.currentUser = this.accountService.CurrentUserValue;
     this.cateroryService.getCateries();
-    this.supplierService.getSuppliers();
+    this.supplierService.getSuppliers(1);
     this.measurementService.getMeasurements();
     this.caterories$ = this.cateroryService.categories;
     this.suppliers$ = this.supplierService.suppliers;

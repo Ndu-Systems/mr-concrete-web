@@ -25,4 +25,8 @@ export class MeasurementsComponent implements OnInit {
     this.measurementService.getMeasurements();
   }
 
+  editMeasurement(measurement: Measurement) {
+
+  }
+
 }

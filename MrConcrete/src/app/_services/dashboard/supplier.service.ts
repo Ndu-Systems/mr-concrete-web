@@ -17,8 +17,8 @@ export class SupplierService {
     suppliers: Supplier[]
   } = { suppliers: [] };
 
-  private _category: BehaviorSubject<Supplier>;
-  public category: Observable<Supplier>;
+  private _supplier: BehaviorSubject<Supplier>;
+  public supplier: Observable<Supplier>;
 
   constructor(
     private http: HttpClient,
@@ -26,8 +26,8 @@ export class SupplierService {
     this._suppliers = new BehaviorSubject<Supplier[]>(JSON.parse(localStorage.getItem('suppliers')) || []);
     this.suppliers = this._suppliers.asObservable();
     this.url = environment.API_URL;
-    this._category = new BehaviorSubject<Supplier>(JSON.parse(localStorage.getItem('supplier')));
-    this.category = this._category.asObservable();
+    this._supplier = new BehaviorSubject<Supplier>(JSON.parse(localStorage.getItem('supplier')));
+    this.supplier = this._supplier.asObservable();
   }
 
   public get suppliersValue(): Supplier[] {
@@ -44,9 +44,9 @@ export class SupplierService {
 
   }
 
-  updateCurrentCategory(category: Supplier) {
-    this._category.next(category);
-    localStorage.setItem('supplier', JSON.stringify(category));
+  updateCurrentSupplier(supplier: Supplier) {
+    this._supplier.next(supplier);
+    localStorage.setItem('supplier', JSON.stringify(supplier));
   }
 
   removeCurrentCategory() {
@@ -61,8 +61,8 @@ export class SupplierService {
     });
   }
 
-  updateSupplier(category: Supplier) {
-    this.http.put<Supplier>(`${this.url}/api/supplier/edit-supplier.php`, JSON.stringify(category))
+  updateSupplier(supplier: Supplier) {
+    this.http.put<Supplier>(`${this.url}/api/supplier/edit-supplier.php`, JSON.stringify(supplier))
       .subscribe(data => {
         this.dataStore.suppliers.forEach((item, index) => {
           if (item.SupplierId === data.SupplierId) {
@@ -76,8 +76,8 @@ export class SupplierService {
       }, error => console.log('Could not update supplier'));
   }
 
-  getSuppliers() {
-    return this.http.get<Supplier[]>(`${this.url}/api/supplier/get-supplies.php`).subscribe(resp => {
+  getSuppliers(statusId: string | number) {
+    return this.http.get<Supplier[]>(`${this.url}/api/supplier/get-suppliers.php?StatusId=${statusId}`).subscribe(resp => {
       const Supplier: Supplier[] = resp;
       localStorage.setItem('suppliers', JSON.stringify(Supplier));
       this._suppliers.next(Supplier);
