@@ -14,7 +14,10 @@ export class CreateCategoryComponent implements OnInit {
   subheading = 'Create a new category';
   rForm: FormGroup;
   currentUser: UserModel;
-
+  actionButton: any = {
+    link: '/dashboard/categories',
+    label: 'View categories'
+  };
   constructor(
     private fb: FormBuilder,
     private accountService: AccountService,

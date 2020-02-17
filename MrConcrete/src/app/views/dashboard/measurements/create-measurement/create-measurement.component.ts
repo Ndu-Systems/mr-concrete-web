@@ -14,6 +14,10 @@ export class CreateMeasurementComponent implements OnInit {
   subheading = 'Create a new measurement';
   rForm: FormGroup;
   currentUser: UserModel;
+  actionButton: any = {
+    link: '/dashboard/measurements',
+    label: 'View measurements'
+  };
   constructor(
     private fb: FormBuilder,
     private accountService: AccountService,

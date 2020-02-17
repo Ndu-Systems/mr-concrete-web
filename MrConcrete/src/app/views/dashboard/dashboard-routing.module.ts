@@ -13,7 +13,7 @@ import { SettingsComponent } from './settings';
 import { ActionsComponent, BannerComponent } from './shared';
 import { PartnersComponent, CreateSupplierComponent } from './partners';
 import { MeasurementsComponent, CreateMeasurementComponent, EditMeasurementComponent } from './measurements';
-import { CategoriesComponent, CreateCategoryComponent } from './categories';
+import { CategoriesComponent, CreateCategoryComponent, EditCategoryComponent } from './categories';
 import { MeasurenamePipe } from 'src/app/_pipes/measurename.pipe';
 import { OutcomeComponent } from './shared/outcome/outcome.component';
 import { EditPartnerComponent } from './partners/edit-partner';
@@ -35,6 +35,7 @@ const routes: Routes = [
       { path: 'edit-measurement', component: EditMeasurementComponent },
       { path: 'categories', component: CategoriesComponent },
       { path: 'add-category', component: CreateCategoryComponent },
+      { path: 'edit-category', component: EditCategoryComponent },
       { path: 'view-order', component: ViewOrderComponent },
       { path: 'outcome', component: OutcomeComponent }
     ]
@@ -61,6 +62,7 @@ export const declarations = [
   SupplierListOrdersComponent,
   OutcomeComponent,
   EditMeasurementComponent,
+  EditCategoryComponent,
   // Pipes
   MeasurenamePipe,
 ];

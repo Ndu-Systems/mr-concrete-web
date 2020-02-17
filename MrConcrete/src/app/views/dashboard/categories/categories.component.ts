@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CateroryService } from 'src/app/_services';
 import { Caterory } from 'src/app/_models';
 import { ActionButton } from '../shared/constants/actions';
+ import { Router } from '@angular/router';
 @Component({
   selector: 'app-categories',
   templateUrl: './categories.component.html',
@@ -16,7 +17,8 @@ export class CategoriesComponent implements OnInit {
     label: 'add category'
   };
   constructor(
-    private categoryService: CateroryService
+    private categoryService: CateroryService,
+    private routeTo: Router
   ) { }
 
   ngOnInit() {
@@ -24,4 +26,8 @@ export class CategoriesComponent implements OnInit {
     this.categoryService.getCateries();
   }
 
+  updateCategory(category: Caterory) {
+    this.categoryService.updateCurrentCategory(category);
+    this.routeTo.navigate(['/dashboard/edit-category']);
+  }
 }

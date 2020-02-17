@@ -2,6 +2,7 @@ import { MeasurementService } from 'src/app/_services';
 import { Component, OnInit } from '@angular/core';
 import { ActionButton } from '../shared/constants/actions';
 import { Measurement } from 'src/app/_models';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-measurements',
@@ -17,7 +18,8 @@ export class MeasurementsComponent implements OnInit {
   };
   measurements: Measurement[] = [];
   constructor(
-    private measurementService: MeasurementService
+    private measurementService: MeasurementService,
+    private routeTo: Router
   ) { }
 
   ngOnInit() {
@@ -26,7 +28,8 @@ export class MeasurementsComponent implements OnInit {
   }
 
   editMeasurement(measurement: Measurement) {
-
+    this.measurementService.updateCurrentMeasurement(measurement);
+    this.routeTo.navigate(['/dashboard/edit-measurement']);
   }
 
 }
