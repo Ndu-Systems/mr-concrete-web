@@ -78,10 +78,9 @@ export class SupplierService {
 
   getSuppliers(statusId: string | number) {
     return this.http.get<Supplier[]>(`${this.url}/api/supplier/get-suppliers.php?StatusId=${statusId}`).subscribe(resp => {
-      const Supplier: Supplier[] = resp;
-      localStorage.setItem('suppliers', JSON.stringify(Supplier));
-      this._suppliers.next(Supplier);
-      this.dataStore.suppliers = resp;
+      const suppliers: Supplier[] = resp;
+      localStorage.setItem('suppliers', JSON.stringify(suppliers));
+      this.dataStore.suppliers = suppliers;
       this._suppliers.next(Object.assign({}, this.dataStore).suppliers);
     }, error => {
       console.log(error);

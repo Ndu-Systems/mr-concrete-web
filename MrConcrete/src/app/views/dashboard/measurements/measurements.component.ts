@@ -23,8 +23,8 @@ export class MeasurementsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.measurements = this.measurementService.measurementsValue;
     this.measurementService.getMeasurements();
+    this.measurementService.measurements.subscribe(data => this.measurements = data);
   }
 
   editMeasurement(measurement: Measurement) {

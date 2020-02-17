@@ -53,9 +53,9 @@ export class EditPartnerComponent implements OnInit {
     this.supplierService.updateSupplier(supplier);
     this.messageService.add({
       severity: 'success',
-      summary: `Update Successful`,
+      summary: `Success!`,
       detail: 'Supplier updated successfully',
-      life: 700
+      life: 1000
     });
     this.routeTo.navigate(['/dashboard/partners']);
   }

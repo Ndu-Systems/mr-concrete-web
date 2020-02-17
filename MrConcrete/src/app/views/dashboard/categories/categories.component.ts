@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CateroryService } from 'src/app/_services';
 import { Caterory } from 'src/app/_models';
 import { ActionButton } from '../shared/constants/actions';
- import { Router } from '@angular/router';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-categories',
   templateUrl: './categories.component.html',
@@ -22,8 +22,8 @@ export class CategoriesComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.categories = this.categoryService.categoriesValue;
     this.categoryService.getCateries();
+    this.categoryService.categories.subscribe(data => this.categories = data);
   }
 
   updateCategory(category: Caterory) {

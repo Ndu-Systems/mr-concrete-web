@@ -1,4 +1,7 @@
+<p-messages [value]="msgs"></p-messages>
+
 <app-banner [subheading]="subheading" [heading]="heading" [actionButton]="actionButton"></app-banner>
+
 <div class="container" *ngIf="suppliers">
   <div class="heading col-1-of-4">
     <h1>name</h1>
@@ -44,10 +47,11 @@
             mat-button>
             <mat-icon matDatepickerToggleIcon>edit</mat-icon>
           </button>
-          <button class="buttons danger" [disabled]="item.StatusId === '1'" matTooltip="Archive this supplier."
+          <button class="buttons danger" [disabled]="item.StatusId !== '1'" (click)="archivePartner(item)" matTooltip="Archive this supplier."
             mat-button>
             <mat-icon matDatepickerToggleIcon>cancel</mat-icon>
           </button>
+         
         </div>
       </span>
     </mat-card>
