@@ -4,14 +4,19 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from 'src/app/_guards';
 import { DashboardHomeComponent } from './dashboard-home';
 import { DashboardNavComponent } from './dashboard-nav';
-import { OrdersComponent, ListOrdersComponent, CreateOrderComponent, ViewOrderComponent, SupplierListOrdersComponent } from './orders';
+import { OrdersComponent,
+  ListOrdersComponent,
+  CreateOrderComponent,
+  ViewOrderComponent,
+  SupplierListOrdersComponent } from './orders';
 import { SettingsComponent } from './settings';
 import { ActionsComponent, BannerComponent } from './shared';
 import { PartnersComponent, CreateSupplierComponent } from './partners';
-import { MeasurementsComponent, CreateMeasurementComponent } from './measurements';
-import { CategoriesComponent, CreateCategoryComponent } from './categories';
+import { MeasurementsComponent, CreateMeasurementComponent, EditMeasurementComponent } from './measurements';
+import { CategoriesComponent, CreateCategoryComponent, EditCategoryComponent } from './categories';
 import { MeasurenamePipe } from 'src/app/_pipes/measurename.pipe';
 import { OutcomeComponent } from './shared/outcome/outcome.component';
+import { EditPartnerComponent } from './partners/edit-partner';
 
 
 const routes: Routes = [
@@ -24,10 +29,13 @@ const routes: Routes = [
       { path: 'settings', component: SettingsComponent },
       { path: 'partners', component: PartnersComponent },
       { path: 'add-partner', component: CreateSupplierComponent },
+      { path: 'update-partner', component: EditPartnerComponent },
       { path: 'measurements', component: MeasurementsComponent },
       { path: 'add-measurement', component: CreateMeasurementComponent },
+      { path: 'edit-measurement', component: EditMeasurementComponent },
       { path: 'categories', component: CategoriesComponent },
       { path: 'add-category', component: CreateCategoryComponent },
+      { path: 'edit-category', component: EditCategoryComponent },
       { path: 'view-order', component: ViewOrderComponent },
       { path: 'outcome', component: OutcomeComponent }
     ]
@@ -45,6 +53,7 @@ export const declarations = [
   ActionsComponent,
   PartnersComponent,
   CreateSupplierComponent,
+  EditPartnerComponent,
   MeasurementsComponent,
   CategoriesComponent,
   CreateCategoryComponent,
@@ -52,6 +61,8 @@ export const declarations = [
   ViewOrderComponent,
   SupplierListOrdersComponent,
   OutcomeComponent,
+  EditMeasurementComponent,
+  EditCategoryComponent,
   // Pipes
   MeasurenamePipe,
 ];

@@ -1,22 +1,51 @@
+<p-messages [value]="msgs"></p-messages>
+
 <app-banner [subheading]="subheading" [heading]="heading" [actionButton]="actionButton"></app-banner>
-<div class="container col-1-of-4" *ngIf="measurements" >
-  <span *ngFor="let item of measurements" class="container-table">
-    <mat-card>
-      <span class="table-card col-1-of-1">
+<div class="container" *ngIf="measurements">
+  <div class="heading col-1-of-4">
+    <h1>description</h1>
+    <h1>status</h1>
+    <h1>unit of measurement</h1>
+    <h1>date created</h1>
+    <h1>actions</h1>
+  </div>
+  <div class="container-table">
+    <mat-card *ngFor="let item of measurements">
+      <span class="table-card col-1-of-4">
         <div class="header col-1-of-2">
           <img src="assets/images/dashboard/settings/image.svg" alt="image vector">
           <h1 class="header">
             {{item.Name}}
-            <span class="date">{{item.CreateDate | date:'mediumDate'}}</span>
           </h1>
         </div>
-        <div class="col-1-of-1">
-          <h1 class="data">
+        <div class="data">
+          <mat-chip-list class="chips">
+            <mat-chip class="chip success" *ngIf="item.StatusId == '1'">active</mat-chip>
+            <mat-chip class="chip cancelled" *ngIf="item.StatusId == '2'">disabled</mat-chip>
+          </mat-chip-list>
+        </div>
+        <div class="data">
+          <h1 class="text">
             {{item.UnitOfMeasurement}}
-            <span class="span">Unit of measurement</span>
           </h1>
+        </div>
+        <div class="data">
+          <h1 class="text">
+            {{item.CreateDate | date:'mediumDate'}}
+          </h1>
+        </div>
+
+        <div class="data">
+          <button class="buttons primary"  [disabled]="item.StatusId !== '1' && item.StatusId !== '2'"  (click)="editMeasurement(item)" matTooltip="Edit this measurement."
+            mat-button>
+            <mat-icon matDatepickerToggleIcon>edit</mat-icon>
+          </button>
+          <button class="buttons danger" [disabled]="item.StatusId !== '1'" (click)="archiveMeasurement(item)"   matTooltip="Archive this measurement."
+            mat-button>
+            <mat-icon matDatepickerToggleIcon>cancel</mat-icon>
+          </button>
         </div>
       </span>
     </mat-card>
-  </span>
+  </div>
 </div>

@@ -50,7 +50,7 @@ import { CdkTableModule } from '@angular/cdk/table';
     MatSelectModule,
     MatCardModule,
     MatSidenavModule,
-     CdkTableModule,
+    CdkTableModule,
     MatAutocompleteModule,
     MatButtonModule,
     MatButtonToggleModule,

@@ -1,0 +1,25 @@
+@import '../../general/colors';
+
+.chips {
+  .chip {
+    font-weight: 800;
+    font-size: .6rem;
+    border-radius: 5px;
+    padding: 0 12px;
+
+    &.success {
+      color: $success;
+      background: $light_success;
+    }
+
+    &.pending {
+      color: $orange;
+      background: $light_yellow;
+    }
+
+    &.cancelled {
+      color: $danger;
+      background: $light_danger;
+    }
+  }
+}

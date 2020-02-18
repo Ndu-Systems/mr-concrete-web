@@ -1,15 +1,17 @@
  @import '../../../../../assets/styles/general/colors';
 
  .mat-card {
-   height: 8em;
+   height: 6em;
  }
 
  .col-1-of-3 {
    grid-template-columns: 20% 50% auto;
+   margin-bottom: 0;
 
    h1 {
      font-size: 20px;
      font-weight: 500;
+     margin: 0;
    }
 
    .heading {
@@ -28,10 +30,9 @@
  }
 
  .mat-flat-button {
-   width: 15em;
-   height: 3em;
    position: absolute;
    right: 8em;
+   top: 4em;
    text-transform: capitalize;
  }
 
@@ -41,21 +42,22 @@
    }
 
    .mat-card {
-     height: 10em;
      overflow: hidden;
+     height: 7em;
 
    }
 
    .mat-flat-button {
-     width: 10em;
-     height: 3em;
      position: absolute;
+     top: 5em;
      right: 1em;
      text-transform: capitalize;
+     font-size: 0.75555em;
+     font-weight: 400;
    }
 
    .banner-heading {
-     font-size: 1.2em;
+     font-size: 1em;
    }
 
    h1.time {
@@ -63,7 +65,8 @@
        grid-template-columns: 50% auto;
      }
 
-     .timespan, .date {
+     .timespan,
+     .date {
        font-size: 0.8em;
      }
    }

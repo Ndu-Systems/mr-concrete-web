@@ -25,11 +25,12 @@
   </mat-toolbar>
 
   <div class="main contents">
-    <!-- drawer opened: {{drawer.opened}} -->
-    <router-outlet></router-outlet>
+     <router-outlet></router-outlet>
   </div>
 
   <mat-toolbar class="main footer">
     Footer
   </mat-toolbar>
 </mat-drawer-container>
+<p-toast [style]="{marginTop: '80px'}"></p-toast>
+<p-confirmDialog [style]="{width: '25vw'}"></p-confirmDialog>

@@ -1,52 +1,57 @@
 import { MessageService } from 'primeng/api';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserModel, Measurement } from 'src/app/_models';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AccountService, MeasurementService } from 'src/app/_services';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-create-measurement',
-  templateUrl: './create-measurement.component.html',
-  styleUrls: ['./create-measurement.component.scss']
+  selector: 'app-edit-measurement',
+  templateUrl: './edit-measurement.component.html',
+  styleUrls: ['./edit-measurement.component.scss']
 })
-export class CreateMeasurementComponent implements OnInit {
+export class EditMeasurementComponent implements OnInit {
   heading = 'Settings';
-  subheading = 'Create a new measurement';
-  rForm: FormGroup;
-  currentUser: UserModel;
+  subheading = 'Edit measurement';
   actionButton: any = {
     link: '/dashboard/measurements',
     label: 'View measurements'
   };
+  rForm: FormGroup;
+  currentUser: UserModel;
+  measurement: Measurement;
   constructor(
     private fb: FormBuilder,
     private accountService: AccountService,
-    private messageService: MessageService,
     private routeTo: Router,
+    private messageService: MessageService,
     private measurementService: MeasurementService
   ) { }
 
   ngOnInit() {
+    this.measurementService.measurement.subscribe(data => this.measurement = data);
+    this.initForm();
+  }
+  initForm() {
     this.currentUser = this.accountService.CurrentUserValue;
     this.rForm = this.fb.group({
-      Name: [null, Validators.required],
-      UnitOfMeasurement: [null, Validators.required],
+      MeasurementId: [this.measurement.MeasurementId],
+      Name: [this.measurement.Name, Validators.required],
+      UnitOfMeasurement: [this.measurement.UnitOfMeasurement, Validators.required],
       CreateUserId: [this.currentUser.UserId],
       ModifyUserId: [this.currentUser.UserId],
       StatusId: [1]
     });
   }
 
-  onSubmit(measureMent: Measurement) {
-    this.measurementService.addMeasurement(measureMent);
+  onSubmit(measurement: Measurement) {
+    this.measurementService.updateMeasurement(measurement);
     this.messageService.add({
       severity: 'success',
       summary: `Success!`,
-      detail: 'Measurement added successfully',
+      detail: 'Measurement updated successfully',
       life: 1000
     });
-    this.measurementService.getMeasurements();
     this.routeTo.navigate(['/dashboard/measurements']);
-   }
+  }
 }

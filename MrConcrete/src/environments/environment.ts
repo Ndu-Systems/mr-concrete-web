@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   API_URL: 'http://localhost:8200/mr-concrete-api',
-  EMAIL: 'becker@mail.com',
+  EMAIL: 'test@mail.com',
   PASSWORD: '12345'
 };
 

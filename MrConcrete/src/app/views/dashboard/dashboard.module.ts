@@ -4,12 +4,14 @@ import { DashboardComponent } from './dashboard.component';
 import { DashboardRoutingModule, declarations } from './dashboard-routing.module';
 import { MaterialModule } from 'src/app/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PrimengModule } from 'src/app/primeng';
 
 @NgModule({
   imports: [
     CommonModule,
     DashboardRoutingModule,
     MaterialModule,
+    PrimengModule,
     FormsModule,
     ReactiveFormsModule
   ],

@@ -1,10 +1,30 @@
 @import '../../../../assets/styles/general/colors';
 
+.col-1-of-4 {
+  grid-template-columns: 25% 10% 15% 15% 20% 10%;
+}
+
+.heading {
+  h1 {
+    font-size: 1em;
+    padding: 0 1em;
+    text-transform: uppercase;
+    color: #a4b0be;
+    font-weight: 500;
+
+  }
+
+  margin: 0;
+}
+
 .container-table {
+  overflow-y: scroll;
+  height: 40em;
+
   .table-card {
 
     h1 {
-      font-size: 20px;
+      font-size: 15px;
     }
 
     .header {
@@ -24,7 +44,7 @@
     .data {
       .text {
         font-weight: 400;
-        font-size: 18px;
+        font-size: 15px;
       }
 
       .span {
@@ -38,4 +58,62 @@
     }
   }
 
+  .mat-card {
+    padding: 0.5em;
+  }
+
+}
+
+.buttons {
+  padding: .2rem;
+  line-height: 20px;
+  color: #fff;
+  margin: .2rem;
+  min-width: 1rem;
+  margin-top: .5rem;
+
+  &:disabled {
+    background: $grey_light;
+    color: $grey;
+  }
+}
+
+button.sucees {
+  background: $success;
+}
+
+button.primary {
+  background: $primary;
+}
+
+button.danger {
+  background: $danger;
+}
+
+::ng-deep {
+  body .ui-dialog .ui-dialog-titlebar {
+    background: $yellow !important;
+    color: #fff !important;
+  }
+
+  body .ui-dialog .ui-dialog-titlebar .ui-dialog-titlebar-icon {
+    color: #fff !important;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+
+  .col-1-of-4 {
+    grid-template-columns: repeat(1, 100%);
+  }
+
+  .heading {
+    display: none;
+  }
+
+  ::ng-deep {
+    body .ui-dialog {
+      width: 95vw !important;
+    }
+  }
 }
