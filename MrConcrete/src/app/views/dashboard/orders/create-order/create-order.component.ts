@@ -51,8 +51,8 @@ export class CreateOrderComponent implements OnInit {
     });
     this.supplierService.suppliers.subscribe(data => {
       this.suppliers = data;
+      this.initOrder();
     });
-    this.initOrder();
   }
   initOrder() {
     this.concreteorderService.order.subscribe(data => {
@@ -61,8 +61,8 @@ export class CreateOrderComponent implements OnInit {
         this.order = order;
         this.order.measurements = this.getMeasurementLabels(this.order.measurements);
         this.selectSupplier(this.order.supplier);
+        this.suppliers$ = this.supplierService.suppliers;
         // this.order.measurements = this.mapMeasurements(this.order.measurements);
-
       }
     });
   }
@@ -92,10 +92,11 @@ export class CreateOrderComponent implements OnInit {
     console.log(this.order);
   }
   selectSupplier(supplier: Supplier) {
-    this.supplierService.resetCardClass(this.suppliers,supplier);
+    this.supplierService.resetCardClass(this.suppliers);
     supplier.Selected = 'yes';
     this.order.SupplierId = supplier.SupplierId;
     this.order.supplier = supplier;
+    this.supplierService.apendState(supplier);
   }
   preview() {
     this.order.isBusyWith = false;

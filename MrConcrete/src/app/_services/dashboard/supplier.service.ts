@@ -34,12 +34,29 @@ export class SupplierService {
     return this._suppliers.value;
   }
   apendState(data: Supplier) {
-    const state = this.suppliersValue || [];
-    state.push(data);
+    debugger
+    let state = this.suppliersValue || [];
+    const existingSupplier = state.find(x => x.SupplierId === data.SupplierId);
+    if (existingSupplier) {
+      state = state.filter(x => x.SupplierId !== data.SupplierId);
+      state.push(data);
+    } else {
+      state.push(data);
+    }
+    // sort
+    state.sort((x, y) => {
+      return new Date(y.CreateDate).getTime() - new Date(x.CreateDate).getTime();
+    });
     this._suppliers.next(state);
+    localStorage.setItem('suppliers', JSON.stringify(state));
+
   }
   setState(data: Supplier[]) {
+    data.sort((x, y) => {
+      return new Date(y.CreateDate).getTime() - new Date(x.CreateDate).getTime();
+    });
     this._suppliers.next(data);
+    
     localStorage.setItem('suppliers', JSON.stringify(data));
 
   }
@@ -91,12 +108,11 @@ export class SupplierService {
   getSupplier(supplierId: string, email: string): Observable<Supplier> {
     return this.http.get<Supplier>(`${this.url}/api/supplier/get-supplier.php?SupplierId=${supplierId}&Email=${email}`);
   }
-  resetCardClass(suppliers: Supplier[], supplier: Supplier) {
+  resetCardClass(suppliers: Supplier[]) {
     if (suppliers && suppliers.length) {
       suppliers.forEach(x => {
         x.Selected = 'no';
       });
-      supplier.Selected = 'yes';
       this._suppliers.next(suppliers);
     }
   }
