@@ -14,37 +14,6 @@
   }
 }
 
-.main-card {
-  color: $white;
-  cursor: pointer;
-
-  &.stats {
-    height: 11em;
-
-    &.success {
-      background-color: $success;
-    }
-
-    &.warning {
-      background-color: $yellow;
-    }
-
-    &.danger {
-      background-color: $danger;
-    }
-
-    h1 {
-      font-size: 2.5em;
-
-    }
-  }
-
-  .mat-card-subtitle {
-    display: block;
-    margin-bottom: 16px;
-    color: $white;
-  }
-}
 
 .recent-order {
   padding: 0em 2em;
