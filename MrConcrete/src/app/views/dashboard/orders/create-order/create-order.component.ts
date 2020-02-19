@@ -63,6 +63,9 @@ export class CreateOrderComponent implements OnInit {
         this.selectSupplier(this.order.supplier);
         this.suppliers$ = this.supplierService.suppliers;
         // this.order.measurements = this.mapMeasurements(this.order.measurements);
+      } else {
+        this.order.measurements = this.getNewMeasurementLabels();
+
       }
     });
   }
@@ -86,6 +89,15 @@ export class CreateOrderComponent implements OnInit {
     });
     return measurements;
   }
+  getNewMeasurementLabels() {
+    let all = this.measurements;
+    all.forEach(data => {
+      const check = this.measurements.find(x => x.MeasurementId === data.MeasurementId);
+      data.Name = check && check.Name || '';
+    });
+    return all;
+  }
+
   selectCatergory(caterory: Caterory) {
     this.order.CategoryId = caterory.CategoryId;
     this.order.category = caterory;
