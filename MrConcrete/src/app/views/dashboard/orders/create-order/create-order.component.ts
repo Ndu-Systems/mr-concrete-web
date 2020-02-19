@@ -47,7 +47,7 @@ export class CreateOrderComponent implements OnInit {
       this.order.CreateUserId = this.currentUser.UserId;
       this.order.ModifyUserId = this.currentUser.UserId;
       this.measurements = measurements;
-      // this.order.measurements = this.mapMeasurements(measurements);
+      this.order.measurements = this.mapMeasurements(measurements);
     });
     this.supplierService.suppliers.subscribe(data => {
       this.suppliers = data;
@@ -57,31 +57,26 @@ export class CreateOrderComponent implements OnInit {
   initOrder() {
     this.concreteorderService.order.subscribe(data => {
       const order = data;
-      if (order.isBusyWith) {
+      if (order && order.isBusyWith) {
         this.order = order;
         this.order.measurements = this.getMeasurementLabels(this.order.measurements);
         this.selectSupplier(this.order.supplier);
         this.suppliers$ = this.supplierService.suppliers;
         // this.order.measurements = this.mapMeasurements(this.order.measurements);
       } else {
-        this.order.measurements = this.getNewMeasurementLabels();
+        // if (order)
+        //  this.order.measurements = this.getNewMeasurementLabels();
 
       }
     });
   }
-  // mapMeasurements(measurements: Measurement[]): Measurement[] {
-  //   const concreteordermeasurements: Measurement[] = [];
-  //   measurements.forEach(data => {
-  //     const concreteordermeasurement: Measurement[];
-  //     concreteordermeasurement.MeasurementId = data.MeasurementId;
-  //     concreteordermeasurement.Name = data.Name;
-  //     concreteordermeasurement.Value = data.Value;
-  //     concreteordermeasurement.CreateUserId = this.currentUser.UserId;
-  //     concreteordermeasurement.ModifyUserId = this.currentUser.UserId;
-  //     concreteordermeasurements.push(concreteordermeasurement);
-  //   });
-  //   return concreteordermeasurements;
-  // }
+  mapMeasurements(measurements: Measurement[]): Measurement[] {
+    this.order.measurements = measurements;
+    this.order.measurements.forEach(data => {
+      data.Value = '';
+    });
+    return  this.order.measurements;
+  }
   getMeasurementLabels(measurements: Measurement[]) {
     measurements.forEach(data => {
       const check = this.measurements.find(x => x.MeasurementId === data.MeasurementId);
@@ -114,5 +109,8 @@ export class CreateOrderComponent implements OnInit {
     this.order.isBusyWith = false;
     this.concreteorderService.setStateForCurrentOrder(this.order);
     this.router.navigate(['dashboard/view-order']);
+  }
+  clear() {
+    this.concreteorderService.setStateForCurrentOrder(null);
   }
 }
