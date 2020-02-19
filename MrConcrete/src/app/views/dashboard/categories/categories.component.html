@@ -2,7 +2,7 @@
 
 <app-banner [subheading]="subheading" [heading]="heading" [actionButton]="actionButton"></app-banner>
 
-<div class="container" *ngIf="categories">
+<div class="container" *ngIf="categories else noCategories;">
   <div class="heading col-1-of-4">
     <h1>description</h1>
     <h1>status</h1>
@@ -43,3 +43,6 @@
     </mat-card>
   </div>
 </div>
+<ng-template #noCategories>
+  <app-placeholder [placeHolder]="placeHolder"></app-placeholder>
+</ng-template>

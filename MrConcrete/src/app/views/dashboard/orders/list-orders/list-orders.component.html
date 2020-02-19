@@ -1,5 +1,5 @@
 <app-banner [subheading]="subheading" [heading]="heading" [actionButton]="actionButton"></app-banner>
-<div class="container">
+<div class="container" *ngIf="!this.supplierOrder">
   <span *ngIf="orders$ | async as orders" class="container-table">
     <span *ngIf="orders.length > 0 else noOrder;">
       <mat-card *ngFor="let item of orders">
@@ -64,10 +64,10 @@
       </mat-card>
     </span>
   </span>
-  <div class="supplier" *ngIf="this.supplierOrder">
-    <app-supplier-list-orders [orders]="this.supplierOrder.Orders"></app-supplier-list-orders>
-  </div>
   <ng-template #noOrder>
-    <app-placeholder></app-placeholder>
+    <app-placeholder [placeHolder]="placeHolder"></app-placeholder>
   </ng-template>
+</div>
+<div class="supplier" *ngIf="this.supplierOrder">
+  <app-supplier-list-orders [orders]="this.supplierOrder.Orders"></app-supplier-list-orders>
 </div>

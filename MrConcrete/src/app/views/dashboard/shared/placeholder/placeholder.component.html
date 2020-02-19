@@ -1,9 +1,9 @@
-<div class="placeholder">
-  <img src="assets/images/dashboard/placeholders/empty-cart.svg" class="image" alt="empty cart">
+<div class="placeholder" *ngIf="placeHolder">
+   <img [src]="placeHolder.imageUrl" class="image" alt="empty cart">
   <div>
     <h1 class="message">
-      There are no orders recently
+      {{placeHolder.message}}
     </h1>
-    <a routerLink="/dashboard/create-orders" class="cta">Create Order</a>
+    <a [routerLink]="placeHolder.link" class="cta">{{placeHolder.linkLabel}}</a>
   </div>
 </div>

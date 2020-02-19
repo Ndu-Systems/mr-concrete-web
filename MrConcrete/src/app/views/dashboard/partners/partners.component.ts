@@ -1,6 +1,6 @@
 import { ConfirmationService, Message, MessageService } from 'primeng/api';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { Supplier, UserModel } from 'src/app/_models';
+import { Supplier, UserModel, Placeholder } from 'src/app/_models';
 import { SupplierService, AccountService } from 'src/app/_services';
 import { ActionButton } from '../shared/constants/actions';
 import { Router } from '@angular/router';
@@ -22,6 +22,13 @@ export class PartnersComponent implements OnInit {
   @Output() messages: EventEmitter<Message[]> = new EventEmitter<Message[]>();
   msgs: Message[] = [];
   currentUser: UserModel;
+
+  placeHolder: Placeholder = {
+    imageUrl: 'assets/images/dashboard/placeholders/supplier.svg',
+    message: 'There are no suppliers at the moment',
+    link: '/dashboard/add-partner',
+    linkLabel: 'Add a supplier'
+  };
   constructor(
     private supplierService: SupplierService,
     private routeTo: Router,

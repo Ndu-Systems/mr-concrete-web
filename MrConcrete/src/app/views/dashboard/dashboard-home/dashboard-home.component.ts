@@ -19,7 +19,13 @@ export class DashboardHomeComponent implements OnInit {
   orders: OrderView[] = [];
   recentOrder: OrderView;
   status: string;
-  placeHolder: Placeholder;
+
+  placeHolder: Placeholder = {
+    imageUrl: 'assets/images/dashboard/placeholders/empty-cart.svg',
+    message: 'There are no orders recently',
+    link: '/dashboard/create-orders',
+    linkLabel: 'Create Order'
+  };
   constructor(
     private orderService: ConcreteorderService,
     private accontService: AccountService,
@@ -29,12 +35,6 @@ export class DashboardHomeComponent implements OnInit {
   ngOnInit() {
     this.user = this.accontService.CurrentUserValue;
     this.getRecentOrderForSupplier(this.user);
-    this.placeHolder = {
-      imageUrl: 'assets/images/dashboard/placeholders/empty-cart.svg',
-      message: 'There are no orders recently.',
-      link: '/dashboard/create-orders',
-      linkLabel: 'Create Order'
-    };
   }
 
   getRecentOrderForSupplier(user: UserModel) {

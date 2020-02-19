@@ -1,7 +1,7 @@
 <p-messages [value]="msgs"></p-messages>
 
 <app-banner [subheading]="subheading" [heading]="heading" [actionButton]="actionButton"></app-banner>
-<div class="container" *ngIf="measurements">
+<div class="container" *ngIf="measurements else noMeasurements;">
   <div class="heading col-1-of-4">
     <h1>description</h1>
     <h1>status</h1>
@@ -36,12 +36,12 @@
         </div>
 
         <div class="data">
-          <button class="buttons primary"  [disabled]="item.StatusId !== '1' && item.StatusId !== '2'"  (click)="editMeasurement(item)" matTooltip="Edit this measurement."
-            mat-button>
+          <button class="buttons primary" [disabled]="item.StatusId !== '1' && item.StatusId !== '2'"
+            (click)="editMeasurement(item)" matTooltip="Edit this measurement." mat-button>
             <mat-icon matDatepickerToggleIcon>edit</mat-icon>
           </button>
-          <button class="buttons danger" [disabled]="item.StatusId !== '1'" (click)="archiveMeasurement(item)"   matTooltip="Archive this measurement."
-            mat-button>
+          <button class="buttons danger" [disabled]="item.StatusId !== '1'" (click)="archiveMeasurement(item)"
+            matTooltip="Archive this measurement." mat-button>
             <mat-icon matDatepickerToggleIcon>cancel</mat-icon>
           </button>
         </div>
@@ -49,3 +49,6 @@
     </mat-card>
   </div>
 </div>
+<ng-template #noMeasurements>
+  <app-placeholder [placeHolder]="placeHolder"></app-placeholder>
+</ng-template>
