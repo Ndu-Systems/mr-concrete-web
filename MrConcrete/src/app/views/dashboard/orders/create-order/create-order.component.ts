@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CateroryService, SupplierService, MeasurementService, AccountService } from 'src/app/_services';
 import { Observable } from 'rxjs';
 import { Caterory, Supplier, Measurement, UserModel } from 'src/app/_models';
@@ -11,7 +11,8 @@ import { Router } from '@angular/router';
   templateUrl: './create-order.component.html',
   styleUrls: ['./create-order.component.scss']
 })
-export class CreateOrderComponent implements OnInit {
+export class CreateOrderComponent implements OnInit, OnDestroy {
+
   caterories$: Observable<Caterory[]>;
   suppliers$: Observable<Supplier[]>;
   suppliers: Supplier[];
@@ -47,7 +48,6 @@ export class CreateOrderComponent implements OnInit {
       this.order.CreateUserId = this.currentUser.UserId;
       this.order.ModifyUserId = this.currentUser.UserId;
       this.measurements = measurements;
-      this.order.measurements = this.mapMeasurements(measurements);
     });
     this.supplierService.suppliers.subscribe(data => {
       this.suppliers = data;
@@ -57,13 +57,17 @@ export class CreateOrderComponent implements OnInit {
   initOrder() {
     this.concreteorderService.order.subscribe(data => {
       const order = data;
-      if (order && order.isBusyWith) {
-        this.order = order;
-        this.order.measurements = this.getMeasurementLabels(this.order.measurements);
-        this.selectSupplier(this.order.supplier);
-        this.suppliers$ = this.supplierService.suppliers;
+      if (order) {
+        if (order.isBusyWith) {
+          this.order = order;
+          this.order.measurements = this.getMeasurementLabels(this.order.measurements);
+        } else {
+          this.order.measurements = this.mapMeasurements(this.measurements);
+        }
+
+        // this.selectSupplier(this.order.supplier);
+        // this.suppliers$ = this.supplierService.suppliers;
         // this.order.measurements = this.mapMeasurements(this.order.measurements);
-      } else {
         // if (order)
         //  this.order.measurements = this.getNewMeasurementLabels();
 
@@ -75,7 +79,7 @@ export class CreateOrderComponent implements OnInit {
     this.order.measurements.forEach(data => {
       data.Value = '';
     });
-    return  this.order.measurements;
+    return this.order.measurements;
   }
   getMeasurementLabels(measurements: Measurement[]) {
     measurements.forEach(data => {
@@ -112,5 +116,11 @@ export class CreateOrderComponent implements OnInit {
   }
   clear() {
     this.concreteorderService.setStateForCurrentOrder(null);
+  }
+
+  ngOnDestroy(): void {
+    this.order.isBusyWith = false;
+    this.concreteorderService.setStateForCurrentOrder(this.order);
+
   }
 }
