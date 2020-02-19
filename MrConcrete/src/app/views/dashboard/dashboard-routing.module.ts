@@ -17,6 +17,7 @@ import { CategoriesComponent, CreateCategoryComponent, EditCategoryComponent } f
 import { MeasurenamePipe } from 'src/app/_pipes/measurename.pipe';
 import { OutcomeComponent } from './shared/outcome/outcome.component';
 import { EditPartnerComponent } from './partners/edit-partner';
+import { PlaceholderComponent } from './shared/placeholder';
 
 
 const routes: Routes = [
@@ -64,6 +65,7 @@ export const declarations = [
   EditMeasurementComponent,
   EditCategoryComponent,
   StatsComponent,
+  PlaceholderComponent,
   // Pipes
   MeasurenamePipe,
 ];

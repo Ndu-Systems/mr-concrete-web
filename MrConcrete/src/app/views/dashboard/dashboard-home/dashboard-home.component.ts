@@ -2,7 +2,7 @@ import { Supplier } from './../../../_models/supplier.model';
 import { Component, OnInit } from '@angular/core';
 import { ConcreteorderService } from 'src/app/_services/dashboard';
 import { AccountService, SupplierService } from 'src/app/_services';
-import { UserModel} from 'src/app/_models';
+import { UserModel, Placeholder } from 'src/app/_models';
 import { OrderView } from 'src/app/_models/orderview.model';
 import { Roles } from 'src/app/_shared';
 import { StatusEnum } from 'src/app/_shared/status.enum';
@@ -19,6 +19,7 @@ export class DashboardHomeComponent implements OnInit {
   orders: OrderView[] = [];
   recentOrder: OrderView;
   status: string;
+  placeHolder: Placeholder;
   constructor(
     private orderService: ConcreteorderService,
     private accontService: AccountService,
@@ -28,12 +29,18 @@ export class DashboardHomeComponent implements OnInit {
   ngOnInit() {
     this.user = this.accontService.CurrentUserValue;
     this.getRecentOrderForSupplier(this.user);
+    this.placeHolder = {
+      imageUrl: 'assets/images/dashboard/placeholders/empty-cart.svg',
+      message: 'There are no orders recently.',
+      link: '/dashboard/create-orders',
+      linkLabel: 'Create Order'
+    };
   }
 
   getRecentOrderForSupplier(user: UserModel) {
     if (user.Role.RoleName === Roles.SUPPLIER) {
       this.orderService.getOrdersForSupplier(user.UserId).subscribe(result => {
-        if (result) {
+        if (result.Orders) {
           const pendingOrders = result.Orders.filter(x => x.StatusId.toString() === '1').sort((x, y) => {
             return new Date(y.CreateDate).getTime() - new Date(x.CreateDate).getTime();
           });
