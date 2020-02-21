@@ -1,8 +1,6 @@
 <p-messages [value]="msgs"></p-messages>
-
 <app-banner [subheading]="subheading" [heading]="heading" [actionButton]="actionButton"></app-banner>
-
-<div class="container" *ngIf="suppliers">
+<div class="container" *ngIf="suppliers else noSuppliers;">
   <div class="heading col-1-of-4">
     <h1>name</h1>
     <h1>status</h1>
@@ -51,9 +49,11 @@
             mat-button>
             <mat-icon matDatepickerToggleIcon>cancel</mat-icon>
           </button>
-         
         </div>
       </span>
     </mat-card>
   </div>
 </div>
+<ng-template #noSuppliers>
+  <app-placeholder [placeHolder]="placeHolder"></app-placeholder>
+</ng-template>

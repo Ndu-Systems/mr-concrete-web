@@ -1,0 +1,9 @@
+<div class="placeholder" *ngIf="placeHolder">
+   <img [src]="placeHolder.imageUrl" class="image" alt="empty cart">
+  <div>
+    <h1 class="message">
+      {{placeHolder.message}}
+    </h1>
+    <a [routerLink]="placeHolder.link" class="cta">{{placeHolder.linkLabel}}</a>
+  </div>
+</div>

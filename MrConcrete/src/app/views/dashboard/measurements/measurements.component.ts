@@ -2,7 +2,7 @@ import { Message, ConfirmationService } from 'primeng/api';
 import { MeasurementService, AccountService } from 'src/app/_services';
 import { Component, OnInit } from '@angular/core';
 import { ActionButton } from '../shared/constants/actions';
-import { Measurement, UserModel } from 'src/app/_models';
+import { Measurement, UserModel, Placeholder } from 'src/app/_models';
 import { Router } from '@angular/router';
 
 @Component({
@@ -16,6 +16,13 @@ export class MeasurementsComponent implements OnInit {
   actionButton: ActionButton = {
     link: '/dashboard/add-measurement',
     label: 'add measurement'
+  };
+
+  placeHolder: Placeholder = {
+    imageUrl: 'assets/images/dashboard/placeholders/test.svg',
+    message: 'There are no measurements at the moment',
+    link: '/dashboard/add-measurement',
+    linkLabel: 'Create a measurement'
   };
   msgs: Message[] = [];
   currentUser: UserModel;

@@ -1,9 +1,9 @@
 <div class="col-1-of-2">
   <h1 class="header stats">Quick stats</h1>
   <h1 class="header">Recent order</h1>
-<app-stats></app-stats>
+  <app-stats></app-stats>
   <div class="recent-order">
-    <mat-card class="main-card" *ngIf="recentOrder">
+    <mat-card class="main-card" *ngIf="recentOrder else noOrder;">
       <mat-card-content>
         <span class="col-1-of-2">
           <h1 class="stat-header">Order #</h1>
@@ -16,7 +16,6 @@
         <span class="col-1-of-2">
           <h1 class="stat-header status">Status</h1>
           <!-- <h1 class="stat-value badge-pending">pending</h1> -->
-
           <mat-chip-list class="chips">
             <mat-chip class="chip pending">{{status}}</mat-chip>
             <!-- <mat-chip class="chip cancelled" *ngIf="item.StatusId == '0'">Cancelled</mat-chip> -->
@@ -32,5 +31,8 @@
         <button mat-button class="danger">Cancel order.</button>
       </mat-card-actions>
     </mat-card>
+    <ng-template #noOrder>
+      <app-placeholder [placeHolder]="placeHolder"></app-placeholder>
+    </ng-template>
   </div>
 </div>

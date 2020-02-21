@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ConcreteorderService } from 'src/app/_services/dashboard';
 import { Observable } from 'rxjs';
 import { OrderView } from 'src/app/_models/orderview.model';
-import { UserModel, SupplierOrdersModel } from 'src/app/_models';
+import { UserModel, SupplierOrdersModel, Placeholder } from 'src/app/_models';
 import { AccountService } from 'src/app/_services';
 import { Router } from '@angular/router';
 
@@ -23,6 +23,13 @@ export class ListOrdersComponent implements OnInit {
   actionButton: any = {
     link: '/dashboard/create-orders',
     label: 'Create Order'
+  };
+
+  placeHolder: Placeholder = {
+    imageUrl: 'assets/images/dashboard/placeholders/empty-cart.svg',
+    message: 'There are no orders recently',
+    link: '/dashboard/create-orders',
+    linkLabel: 'Create Order'
   };
   currentUser: UserModel;
   constructor(
@@ -58,6 +65,7 @@ export class ListOrdersComponent implements OnInit {
     } else {
       this.isSupplier = false;
     }
+
     if (this.currentUser.Role.RoleName === 'Engineer') { this.isEngineer = true; } else {
       this.isEngineer = false;
     }

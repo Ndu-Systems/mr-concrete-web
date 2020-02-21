@@ -1,7 +1,7 @@
 import { ConfirmationService, Message } from 'primeng/api';
 import { Component, OnInit } from '@angular/core';
 import { CateroryService, AccountService } from 'src/app/_services';
-import { Caterory, UserModel } from 'src/app/_models';
+import { Caterory, UserModel, Placeholder } from 'src/app/_models';
 import { ActionButton } from '../shared/constants/actions';
 import { Router } from '@angular/router';
 @Component({
@@ -16,6 +16,12 @@ export class CategoriesComponent implements OnInit {
   actionButton: ActionButton = {
     link: '/dashboard/add-category',
     label: 'add category'
+  };
+  placeHolder: Placeholder = {
+    imageUrl: 'assets/images/dashboard/placeholders/category.svg',
+    message: 'There are no categories at the moment.',
+    link: '/dashboard/add-category',
+    linkLabel: 'Create a category'
   };
   currentUser: UserModel;
   msgs: Message[] = [];

@@ -1,0 +1,16 @@
+.placeholder {
+  padding: 0 1em;
+  text-align: center;
+  color: $grey;
+  margin: 2.5em;
+  .message {
+    font-size: 0.938em;
+    font-weight: 500;
+    display: inline-block;
+  }
+  a.cta {
+    color: $primary;
+    margin-left: 0.5em;
+    font-weight: 700;
+  }
+}
