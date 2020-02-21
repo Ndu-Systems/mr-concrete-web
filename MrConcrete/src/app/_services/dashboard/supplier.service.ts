@@ -56,7 +56,7 @@ export class SupplierService {
       return new Date(y.CreateDate).getTime() - new Date(x.CreateDate).getTime();
     });
     this._suppliers.next(data);
-    
+
     localStorage.setItem('suppliers', JSON.stringify(data));
 
   }
@@ -97,8 +97,9 @@ export class SupplierService {
     return this.http.get<Supplier[]>(`${this.url}/api/supplier/get-suppliers.php?StatusId=${statusId}`).subscribe(resp => {
       const suppliers: Supplier[] = resp;
       localStorage.setItem('suppliers', JSON.stringify(suppliers));
-      this.dataStore.suppliers = suppliers;
-      this._suppliers.next(Object.assign({}, this.dataStore).suppliers);
+      this.setState(suppliers);
+      // this.dataStore.suppliers = suppliers;
+      // this._suppliers.next(Object.assign({}, this.dataStore).suppliers);
     }, error => {
       console.log(error);
     });
