@@ -50,6 +50,13 @@ export class ListOrdersComponent implements OnInit {
     this.concreteorderService.setStateForCurrentOrder(item);
     this.router.navigate(['dashboard/view-order']);
   }
+  remove(item: OrderView) {
+    item.StatusId = 6;
+    this.concreteorderService.updateOrder(item).subscribe(response => {
+      this.concreteorderService.setStateForCurrentOrder(response);
+      this.router.navigate(['dashboard/outcome']);
+    });
+  }
   setRoles() {
     if (this.currentUser.Role.RoleName === 'Admin') { this.isAdmin = true; } else {
       this.isAdmin = false;
