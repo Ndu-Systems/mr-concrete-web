@@ -3,7 +3,7 @@
     <li><a routerLink="/dashboard"><img src="assets/images/dashboard/dashboard-img.svg"
           alt="dashboard icon">&nbsp;
         Dashboard</a></li>
-    <li *ngIf="isAdmin || isEngineer"><a routerLink="/dashboard/create-orders"><img src="assets/images/dashboard/trolly.svg"
+    <li *ngIf="isAdmin || isEngineer"><a routerLink="/dashboard/create-orders"><img src="assets/images/dashboard/order.svg"
           alt="trolly icon">&nbsp;
         Create Order</a></li>
     <li><a routerLink="/dashboard/orders"><img src="assets/images/dashboard/trolly.svg" alt="trolly icon">&nbsp;
@@ -18,7 +18,7 @@
     <li *ngIf="isAdmin || isEngineer"><a routerLink="/dashboard" (click)="toggleNave()"><img src="assets/images/dashboard/dashboard-img.svg"
           alt="dashboard icon">&nbsp;
         Dashboard</a></li>
-    <li><a routerLink="/dashboard/create-orders" (click)="toggleNave()"><img src="assets/images/dashboard/trolly.svg"
+    <li><a routerLink="/dashboard/create-orders" (click)="toggleNave()"><img src="assets/images/dashboard/order.svg"
           alt="trolly icon">&nbsp;
         Create Order</a></li>
     <li><a routerLink="/dashboard/orders"  (click)="toggleNave()"><img src="assets/images/dashboard/trolly.svg" alt="trolly icon">&nbsp;

@@ -23,11 +23,11 @@
         </span>
       </mat-card-content>
       <mat-card-actions class="cta">
-        <button mat-button class="info" *ngIf="status === 'pending approval'">Accept order.</button>
-        <button mat-button class="info" *ngIf="status === 'accepted at supplier'">Order in progress.</button>
-        <button mat-button class="info" *ngIf="status === 'in progress'">On Delivery.</button>
-        <button mat-button class="success" *ngIf="status === 'on delivery'">Accepted by customer.</button>
-        <button mat-button class="success" *ngIf="status === 'confirmed by customer'">Complete Order.</button>
+        <button mat-button class="info" *ngIf="recentOrder.StatusId === '1'">Accept order.</button>
+        <button mat-button class="info" *ngIf="recentOrder.StatusId === '2'">Order in progress.</button>
+        <button mat-button class="info" *ngIf="recentOrder.StatusId === '3'">On Delivery.</button>
+        <button mat-button class="success" *ngIf="recentOrder.StatusId === '4'">Accepted by customer.</button>
+        <button mat-button class="success" *ngIf="recentOrder.StatusId === '5'">Complete Order.</button>
         <button mat-button class="danger">Cancel order.</button>
       </mat-card-actions>
     </mat-card>

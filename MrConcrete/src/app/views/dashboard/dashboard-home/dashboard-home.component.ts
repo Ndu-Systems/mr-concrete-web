@@ -19,6 +19,7 @@ export class DashboardHomeComponent implements OnInit {
   orders: OrderView[] = [];
   recentOrder: OrderView;
   status: string;
+  toStatusId: number;
 
   placeHolder: Placeholder = {
     imageUrl: 'assets/images/dashboard/placeholders/empty-cart.svg',
@@ -46,21 +47,27 @@ export class DashboardHomeComponent implements OnInit {
           });
           // this.recentOrder = new Concreteorder();
           this.recentOrder = pendingOrders[0];
-
           if (this.recentOrder.StatusId.toString() === '1') {
             this.status = StatusEnum.PENDING_APPROVAL;
+            this.toStatusId = 2;
           }
           if (this.recentOrder.StatusId.toString() === '2') {
             this.status = StatusEnum.ACCEPTED_AT_SUPPLIER;
+            this.toStatusId = 3;
+
           }
           if (this.recentOrder.StatusId.toString() === '3') {
             this.status = StatusEnum.IN_PROGRESS;
+            this.toStatusId = 4;
+
           }
           if (this.recentOrder.StatusId.toString() === '4') {
             this.status = StatusEnum.ON_DELIVERY;
+            this.toStatusId = 5;
           }
           if (this.recentOrder.StatusId.toString() === '5') {
             this.status = StatusEnum.CONFIRMED_BY_CUSTOMER;
+            this.toStatusId = 6;
           }
           if (this.recentOrder.StatusId.toString() === '6') {
             this.status = StatusEnum.COMPLETE;
@@ -72,4 +79,6 @@ export class DashboardHomeComponent implements OnInit {
       });
     }
   }
+
+
 }
