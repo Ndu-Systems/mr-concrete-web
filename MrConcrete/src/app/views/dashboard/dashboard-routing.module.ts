@@ -18,6 +18,7 @@ import { MeasurenamePipe } from 'src/app/_pipes/measurename.pipe';
 import { OutcomeComponent } from './shared/outcome/outcome.component';
 import { EditPartnerComponent } from './partners/edit-partner';
 import { PlaceholderComponent } from './shared/placeholder';
+import { UpdateOrderComponent } from './orders/update-order/update-order.component';
 
 
 const routes: Routes = [
@@ -26,6 +27,7 @@ const routes: Routes = [
     children: [
       { path: '', component: DashboardHomeComponent },
       { path: 'create-orders', component: CreateOrderComponent },
+      { path: 'update-order', component: UpdateOrderComponent },
       { path: 'orders', component: ListOrdersComponent },
       { path: 'settings', component: SettingsComponent },
       { path: 'partners', component: PartnersComponent },
@@ -66,6 +68,7 @@ export const declarations = [
   EditCategoryComponent,
   StatsComponent,
   PlaceholderComponent,
+  UpdateOrderComponent,
   // Pipes
   MeasurenamePipe,
 ];

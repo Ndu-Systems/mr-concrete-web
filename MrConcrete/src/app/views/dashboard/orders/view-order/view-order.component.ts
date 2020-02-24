@@ -50,7 +50,7 @@ export class ViewOrderComponent implements OnInit {
   }
 
   updateOder() {
-    this.concreteorderService.createOrder(this.order).subscribe(response => {
+    this.concreteorderService.updateOrder(this.order).subscribe(response => {
       this.concreteorderService.setStateForCurrentOrder(response);
       this.router.navigate(['dashboard/outcome']);
     });
@@ -58,7 +58,7 @@ export class ViewOrderComponent implements OnInit {
   edit() {
     this.order.isBusyWith = true;
     this.concreteorderService.setStateForCurrentOrder(this.order);
-    this.router.navigate(['dashboard/create-orders']);
+    this.router.navigate(['dashboard/update-order']);
 
   }
   action() {
