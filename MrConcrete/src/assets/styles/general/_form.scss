@@ -30,3 +30,32 @@
     padding: 0.2em;
   }
 }
+
+
+
+.buttons {
+  padding: .2rem;
+  line-height: 20px;
+  color: #fff;
+  margin: .2rem;
+  min-width: 1rem;
+  margin-top: .5rem;
+
+  &:disabled{
+    background: $grey_light;
+    color: $grey;
+  }
+}
+
+button.sucees {
+  background: $success;
+}
+
+button.primary {
+  background: $primary;
+  color: #fff;
+
+}
+button.danger {
+  background: $danger;
+}

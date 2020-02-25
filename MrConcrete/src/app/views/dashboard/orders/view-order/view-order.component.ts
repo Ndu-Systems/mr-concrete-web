@@ -61,6 +61,12 @@ export class ViewOrderComponent implements OnInit {
     this.router.navigate(['dashboard/update-order']);
 
   }
+  create() {
+    this.order.isBusyWith = true;
+    this.concreteorderService.setStateForCurrentOrder(this.order);
+    this.router.navigate(['dashboard/create-orders']);
+
+  }
   action() {
     console.log(this.order);
 
@@ -69,5 +75,12 @@ export class ViewOrderComponent implements OnInit {
       return true;
     }
     this.createNewOrder();
+  }
+  navigate() {
+    if (this.order.OrderId.length > 5) {
+      this.edit();
+      return true;
+    }
+    this.create();
   }
 }
