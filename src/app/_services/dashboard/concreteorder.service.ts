@@ -28,6 +28,7 @@ export class ConcreteorderService {
   public get orderViewValue(): OrderView[] {
     return this._orders.value;
   }
+
   apendState(data: OrderView) {
     const state = this.orderViewValue || [];
     state.push(data);
@@ -41,7 +42,6 @@ export class ConcreteorderService {
 
   }
   setStateForCurrentOrder(data: OrderView) {
-    debugger
     this._order.next(data);
     localStorage.setItem('order', JSON.stringify(data));
 

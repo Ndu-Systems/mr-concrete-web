@@ -26,9 +26,7 @@ export class ViewOrderComponent implements OnInit {
   constructor(private concreteorderService: ConcreteorderService,
     private accountService: AccountService,
     private measurementService: MeasurementService,
-    private router: Router,
-
-
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -62,8 +60,6 @@ export class ViewOrderComponent implements OnInit {
 
   }
   action() {
-    console.log(this.order);
-
     if (this.order.OrderId.length > 5) {
       this.updateOder();
       return true;

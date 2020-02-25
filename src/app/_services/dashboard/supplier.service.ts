@@ -33,8 +33,8 @@ export class SupplierService {
   public get suppliersValue(): Supplier[] {
     return this._suppliers.value;
   }
-  apendState(data: Supplier) {
-    debugger
+  appendState(data: Supplier) {
+
     let state = this.suppliersValue || [];
     const existingSupplier = state.find(x => x.SupplierId === data.SupplierId);
     if (existingSupplier) {
@@ -72,7 +72,7 @@ export class SupplierService {
   addSupplier(data: Supplier) {
     return this.http.post<any>(`${this.url}/api/supplier/add-supplier.php`, data).subscribe(resp => {
       const Supplier: Supplier = resp;
-      this.apendState(Supplier);
+      this.appendState(Supplier);
     }, error => {
       console.log(error);
     });

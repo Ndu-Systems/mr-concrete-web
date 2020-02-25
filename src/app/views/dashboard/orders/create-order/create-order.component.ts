@@ -37,23 +37,34 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
+    localStorage.removeItem('order');
     this.currentUser = this.accountService.CurrentUserValue;
+
     this.cateroryService.getCateries();
+
     this.supplierService.getSuppliers(1);
+
     this.measurementService.getMeasurements();
+
     this.caterories$ = this.cateroryService.categories;
+
     this.suppliers$ = this.supplierService.suppliers;
+
     this.measurements$ = this.measurementService.measurements;
+
     this.measurementService.measurements.subscribe(measurements => {
       this.order.CreateUserId = this.currentUser.UserId;
       this.order.ModifyUserId = this.currentUser.UserId;
       this.measurements = measurements;
     });
+
     this.supplierService.suppliers.subscribe(data => {
       this.suppliers = data;
       this.initOrder();
     });
+
   }
+
   initOrder() {
     this.concreteorderService.order.subscribe(data => {
       const order = data;
@@ -64,30 +75,30 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
         } else {
           this.order.measurements = this.mapMeasurements(this.measurements);
         }
-
-        // this.selectSupplier(this.order.supplier);
-        // this.suppliers$ = this.supplierService.suppliers;
-        // this.order.measurements = this.mapMeasurements(this.order.measurements);
-        // if (order)
-        //  this.order.measurements = this.getNewMeasurementLabels();
-
+      } else {
+        this.order.measurements = this.mapMeasurements(this.measurements);
       }
     });
   }
+
   mapMeasurements(measurements: Measurement[]): Measurement[] {
     this.order.measurements = measurements;
     this.order.measurements.forEach(data => {
-      data.Value = '';
+      data.Value = '0';
     });
     return this.order.measurements;
   }
+
   getMeasurementLabels(measurements: Measurement[]) {
     measurements.forEach(data => {
       const check = this.measurements.find(x => x.MeasurementId === data.MeasurementId);
       data.Name = check && check.Name || '';
     });
+
     return measurements;
+
   }
+
   getNewMeasurementLabels() {
     let all = this.measurements;
     all.forEach(data => {
@@ -102,18 +113,24 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
     this.order.category = caterory;
     console.log(this.order);
   }
+
   selectSupplier(supplier: Supplier) {
     this.supplierService.resetCardClass(this.suppliers);
     supplier.Selected = 'yes';
     this.order.SupplierId = supplier.SupplierId;
     this.order.supplier = supplier;
-    this.supplierService.apendState(supplier);
+    this.supplierService.appendState(supplier);
   }
+  clicked() {
+    alert('Clicked ');
+  }
+
   preview() {
     this.order.isBusyWith = false;
     this.concreteorderService.setStateForCurrentOrder(this.order);
     this.router.navigate(['dashboard/view-order']);
   }
+
   clear() {
     this.concreteorderService.setStateForCurrentOrder(null);
   }
@@ -121,6 +138,5 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.order.isBusyWith = false;
     this.concreteorderService.setStateForCurrentOrder(this.order);
-
   }
 }
