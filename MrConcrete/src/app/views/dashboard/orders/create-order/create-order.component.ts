@@ -20,7 +20,7 @@ export class CreateOrderComponent implements OnInit {
   measurements: Measurement[];
   order: OrderView = initOrderView;
   currentUser: UserModel;
-  tabIndex = 3;
+  tabIndex = 2;
 
   heading = 'Orders';
   subheading = '    Create an order';
@@ -49,7 +49,9 @@ export class CreateOrderComponent implements OnInit {
       this.order.CreateUserId = this.currentUser.UserId;
       this.order.ModifyUserId = this.currentUser.UserId;
       this.measurements = measurements;
-      this.order.measurements = this.mapMeasurements(measurements);
+      if (this.order.measurements.length === 0) {
+        this.order.measurements = this.mapMeasurements(measurements);
+      }
     });
     this.supplierService.suppliers.subscribe(data => {
       this.suppliers = data;

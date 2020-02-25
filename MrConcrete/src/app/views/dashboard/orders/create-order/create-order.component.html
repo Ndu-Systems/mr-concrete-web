@@ -67,7 +67,10 @@
         <mat-form-field appearance="outline" *ngFor="let measurement of order.measurements"
           class="input-field">
           <mat-label>{{measurement.Name}}</mat-label>
+
+          <!-- Text or Default -->
           <input matInput [placeholder]="measurement.Name" [(ngModel)]="measurement.Value">
+          
         </mat-form-field>
         <div class="actions">
           <button mat-button class="buttons primary" (click)="nextTab(3)">Next</button>
