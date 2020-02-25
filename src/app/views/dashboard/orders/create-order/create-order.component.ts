@@ -84,7 +84,7 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
   mapMeasurements(measurements: Measurement[]): Measurement[] {
     this.order.measurements = measurements;
     this.order.measurements.forEach(data => {
-      data.Value = '0';
+      data.Value = '';
     });
     return this.order.measurements;
   }
@@ -136,7 +136,5 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.order.isBusyWith = false;
-    this.concreteorderService.setStateForCurrentOrder(this.order);
   }
 }

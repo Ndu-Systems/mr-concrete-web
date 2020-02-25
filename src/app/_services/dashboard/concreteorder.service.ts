@@ -44,11 +44,12 @@ export class ConcreteorderService {
   setStateForCurrentOrder(data: OrderView) {
     this._order.next(data);
     localStorage.setItem('order', JSON.stringify(data));
-
   }
+
   createOrder(data): Observable<any> {
     return this.http.post<any>(`${this.url}/api/concreteorder/order.php`, data);
   }
+
   updateOrder(data): Observable<any> {
     return this.http.post<any>(`${this.url}/api/concreteorder/update-order.php`, data);
   }
