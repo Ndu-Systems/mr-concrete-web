@@ -22,7 +22,7 @@ export class UpdateOrderComponent implements OnInit {
   currentUser: UserModel;
 
   heading = 'Orders';
-  subheading = '    Create an order';
+  subheading = '    Edit an order';
   actionButton: any = {
     link: '/dashboard/orders',
     label: 'View Orders'

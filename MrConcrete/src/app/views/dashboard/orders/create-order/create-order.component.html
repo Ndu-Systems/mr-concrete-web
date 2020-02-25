@@ -1,6 +1,6 @@
 <app-banner [subheading]="subheading" [heading]="heading" [actionButton]="actionButton"></app-banner>
 
-<mat-tab-group class="tab-group" *ngIf="order">
+<mat-tab-group [(selectedIndex)]="tabIndex" class="tab-group" *ngIf="order">
   <mat-tab label="Catergory">
     <div class="catergory order-form">
       <div class="options">
@@ -13,10 +13,9 @@
 
         </mat-radio-group>
         <br> <br>
-        <!-- <div class="actions">
-          <button mat-button>Skip</button>
-          <button mat-button (click)="preview()">Save</button>
-        </div> -->
+        <div class="actions">
+          <button mat-button  class="buttons primary" (click)="nextTab(1)">Next</button>
+        </div>
         <p>
           Select the category that best relates to your order.
         </p>
@@ -50,6 +49,9 @@
           </div>
         </mat-card>
       </span>
+      <div class="actions">
+        <button mat-button  class="buttons primary" (click)="nextTab(2)">Next</button>
+      </div>
       <p>
         Select or add a new supplier for residential
       </p>
@@ -65,13 +67,15 @@
         <mat-form-field appearance="outline" *ngFor="let measurement of order.measurements"
           class="input-field">
           <mat-label>{{measurement.Name}}</mat-label>
+
+          <!-- Text or Default -->
           <input matInput [placeholder]="measurement.Name" [(ngModel)]="measurement.Value">
+
         </mat-form-field>
-        <!-- <div class="actions">
-          <button mat-button>Skip</button>
-          <button mat-button>Save</button>
-        </div> -->
-       </div>
+        <div class="actions">
+          <button mat-button class="buttons primary" (click)="nextTab(3)">Next</button>
+        </div>
+      </div>
     </div>
 
   </mat-tab>
@@ -124,7 +128,7 @@
         </mat-form-field>
 
         <div class="actions">
-          <button mat-button (click)="preview(order)">Complete order</button>
+          <button mat-button  class="buttons primary" (click)="preview(order)">Complete order</button>
           <!-- <button mat-button (click)="clear()">clear order</button> -->
         </div>
       </div>

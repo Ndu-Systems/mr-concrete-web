@@ -13,6 +13,19 @@
       <mat-error *ngIf="!rForm.controls['UnitOfMeasurement'].valid && rForm.controls['UnitOfMeasurement'].touched">your Supplier
         Unit Of Measurement is required</mat-error>
     </mat-form-field>
+
+
+    <mat-form-field appearance="outline" class="input-field-50">
+      <mat-label>Value Type</mat-label>
+      <select matNativeControl formControlName="Type" required>
+        <option value="Number">Number</option>
+        <option value="Text">Free Text</option>
+        <option value="Date">Date</option>
+      </select>
+      <mat-error *ngIf="!rForm.controls['Type'].valid && rForm.controls['Type'].touched">Type is required</mat-error>
+
+    </mat-form-field>
+
     <div class="col-1-of-2">
       <button mat-flat-button color="primary" (click)="onSubmit(rForm.value)" [disabled]="!rForm.valid">
         Create Measurement

@@ -5,6 +5,7 @@ export interface Measurement {
     Value?: string;
     Name?: string;
     UnitOfMeasurement?: string;
+    Type?: string;
     CreateDate: string;
     CreateUserId: string;
     ModifyDate: string;

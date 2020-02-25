@@ -38,6 +38,7 @@ export class EditMeasurementComponent implements OnInit {
       MeasurementId: [this.measurement.MeasurementId],
       Name: [this.measurement.Name, Validators.required],
       UnitOfMeasurement: [this.measurement.UnitOfMeasurement, Validators.required],
+      Type: [this.measurement.Type],
       CreateUserId: [this.currentUser.UserId],
       ModifyUserId: [this.currentUser.UserId],
       StatusId: [1]

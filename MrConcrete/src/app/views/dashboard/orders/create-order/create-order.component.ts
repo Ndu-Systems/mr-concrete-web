@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
   templateUrl: './create-order.component.html',
   styleUrls: ['./create-order.component.scss']
 })
-export class CreateOrderComponent implements OnInit, OnDestroy {
+export class CreateOrderComponent implements OnInit {
 
   caterories$: Observable<Caterory[]>;
   suppliers$: Observable<Supplier[]>;
@@ -20,6 +20,7 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
   measurements: Measurement[];
   order: OrderView = initOrderView;
   currentUser: UserModel;
+  tabIndex = 2;
 
   heading = 'Orders';
   subheading = '    Create an order';
@@ -48,32 +49,15 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
       this.order.CreateUserId = this.currentUser.UserId;
       this.order.ModifyUserId = this.currentUser.UserId;
       this.measurements = measurements;
+      if (this.order.measurements.length === 0) {
+        this.order.measurements = this.mapMeasurements(measurements);
+      }
     });
     this.supplierService.suppliers.subscribe(data => {
       this.suppliers = data;
-      this.initOrder();
     });
   }
-  initOrder() {
-    this.concreteorderService.order.subscribe(data => {
-      const order = data;
-      if (order) {
-        if (order.isBusyWith) {
-          this.order = order;
-          this.order.measurements = this.getMeasurementLabels(this.order.measurements);
-        } else {
-          this.order.measurements = this.mapMeasurements(this.measurements);
-        }
 
-        // this.selectSupplier(this.order.supplier);
-        // this.suppliers$ = this.supplierService.suppliers;
-        // this.order.measurements = this.mapMeasurements(this.order.measurements);
-        // if (order)
-        //  this.order.measurements = this.getNewMeasurementLabels();
-
-      }
-    });
-  }
   mapMeasurements(measurements: Measurement[]): Measurement[] {
     this.order.measurements = measurements;
     this.order.measurements.forEach(data => {
@@ -117,10 +101,7 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
   clear() {
     this.concreteorderService.setStateForCurrentOrder(null);
   }
-
-  ngOnDestroy(): void {
-    this.order.isBusyWith = false;
-    this.concreteorderService.setStateForCurrentOrder(this.order);
-
+  nextTab(i: number) {
+    this.tabIndex = i;
   }
 }

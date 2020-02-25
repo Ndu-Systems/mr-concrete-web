@@ -32,6 +32,7 @@ export class CreateMeasurementComponent implements OnInit {
     this.rForm = this.fb.group({
       Name: [null, Validators.required],
       UnitOfMeasurement: [null, Validators.required],
+      Type: [null],
       CreateUserId: [this.currentUser.UserId],
       ModifyUserId: [this.currentUser.UserId],
       StatusId: [1]
