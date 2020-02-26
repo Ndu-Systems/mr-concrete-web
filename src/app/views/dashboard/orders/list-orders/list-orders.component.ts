@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ConcreteorderService } from 'src/app/_services/dashboard';
 import { Observable } from 'rxjs';
 import { OrderView } from 'src/app/_models/orderview.model';
-import { UserModel, SupplierOrdersModel, Placeholder } from 'src/app/_models';
-import { AccountService } from 'src/app/_services';
+import { UserModel, SupplierOrdersModel, Placeholder, Supplier } from 'src/app/_models';
+import { AccountService, SupplierService } from 'src/app/_services';
 import { Router } from '@angular/router';
 
 @Component({
@@ -20,6 +20,8 @@ export class ListOrdersComponent implements OnInit {
   isAdmin: boolean;
   isEngineer: boolean;
   supplierOrder: SupplierOrdersModel;
+  supplier: Supplier;
+
   actionButton: any = {
     link: '/dashboard/create-orders',
     label: 'Create Order'
@@ -36,7 +38,7 @@ export class ListOrdersComponent implements OnInit {
     private concreteorderService: ConcreteorderService,
     private accountService: AccountService,
     private router: Router,
-
+    private supplierService: SupplierService
 
   ) { }
 
@@ -45,6 +47,7 @@ export class ListOrdersComponent implements OnInit {
     this.orders$ = this.concreteorderService.orders;
     this.concreteorderService.getOrders(this.currentUser.UserId);
     this.setRoles();
+    this.concreteorderService.resetOrder();
   }
   view(item) {
     this.concreteorderService.setStateForCurrentOrder(item);
@@ -63,11 +66,16 @@ export class ListOrdersComponent implements OnInit {
     }
     if (this.currentUser.Role.RoleName === 'Supplier') {
       this.isSupplier = true;
-      this.concreteorderService.getOrdersForSupplier(this.currentUser.UserId).subscribe(result => {
-        if (result) {
-          this.supplierOrder = new SupplierOrdersModel();
-          this.supplierOrder.Orders = result.Orders;
-        }
+      this.supplierService.getSupplier(this.currentUser.Email).subscribe(data => {
+        this.supplier = data;
+
+        this.concreteorderService.getOrdersForSupplier(this.supplier.SupplierId).subscribe(result => {
+          if (result) {
+            this.supplierOrder = new SupplierOrdersModel();
+            this.supplierOrder.Orders = result;
+            this.actionButton = undefined;
+           }
+        });
       });
     } else {
       this.isSupplier = false;

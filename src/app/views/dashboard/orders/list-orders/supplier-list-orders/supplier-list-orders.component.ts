@@ -21,8 +21,13 @@ export class SupplierListOrdersComponent implements OnInit {
   };
   ngOnInit() {
   }
-  view(item) {
-    this.concreteorderService.setStateForCurrentOrder(item);
-    this.router.navigate(['dashboard/view-order']);
+
+  updateOrderStatus(item: OrderView, statusId: number) {
+    item.StatusId = statusId;
+    this.concreteorderService.updateOrder(item).subscribe(response => {
+      this.concreteorderService.setStateForCurrentOrder(response);
+      this.router.navigate(['dashboard/outcome']);
+    });
   }
+
 }

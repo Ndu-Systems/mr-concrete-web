@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, EventEmitter, Output } from '@angular/core';
 import { CateroryService, SupplierService, MeasurementService, AccountService } from 'src/app/_services';
 import { Observable } from 'rxjs';
 import { Caterory, Supplier, Measurement, UserModel } from 'src/app/_models';
@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 })
 export class CreateOrderComponent implements OnInit, OnDestroy {
 
+  @Output() orderToCreateEmitter: EventEmitter<OrderView> = new EventEmitter<OrderView>();
   caterories$: Observable<Caterory[]>;
   suppliers$: Observable<Supplier[]>;
   suppliers: Supplier[];
@@ -37,6 +38,7 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
+    this.concreteorderService.setStateForCurrentOrder(null);
     localStorage.removeItem('order');
     this.currentUser = this.accountService.CurrentUserValue;
 
@@ -62,7 +64,9 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
       this.suppliers = data;
       this.initOrder();
     });
-
+    // let r = Math.random().toString(36).substring(7);
+    this.order.OrderNumber = Math.random().toString(36).toUpperCase().substring(6) + Math.random().toString().substring(9);
+    console.log("Order number", this.order.OrderNumber);
   }
 
   initOrder() {
@@ -84,7 +88,7 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
   mapMeasurements(measurements: Measurement[]): Measurement[] {
     this.order.measurements = measurements;
     this.order.measurements.forEach(data => {
-      data.Value = '';
+      data.Value = data.Value || '9502';
     });
     return this.order.measurements;
   }

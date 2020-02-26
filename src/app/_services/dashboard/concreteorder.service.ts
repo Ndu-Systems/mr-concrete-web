@@ -66,7 +66,11 @@ export class ConcreteorderService {
     });
   }
 
-  getOrdersForSupplier(UserId: string): Observable<SupplierOrdersModel> {
-    return this.http.get<SupplierOrdersModel>(`${this.url}/api/concreteorder/get-supplierorders.php?UserId=${UserId}`);
+  getOrdersForSupplier(UserId: string): Observable<OrderView[]> {
+    return this.http.get<OrderView[]>(`${this.url}/api/concreteorder/get-supplierorders.php?UserId=${UserId}`);
+  }
+
+  resetOrder() {
+    this.setStateForCurrentOrder(null);
   }
 }

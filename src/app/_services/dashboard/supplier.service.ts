@@ -33,6 +33,7 @@ export class SupplierService {
   public get suppliersValue(): Supplier[] {
     return this._suppliers.value;
   }
+
   appendState(data: Supplier) {
 
     let state = this.suppliersValue || [];
@@ -51,14 +52,15 @@ export class SupplierService {
     localStorage.setItem('suppliers', JSON.stringify(state));
 
   }
+
   setState(data: Supplier[]) {
     data.sort((x, y) => {
       return new Date(y.CreateDate).getTime() - new Date(x.CreateDate).getTime();
     });
     this._suppliers.next(data);
-
     localStorage.setItem('suppliers', JSON.stringify(data));
-
+    this.dataStore.suppliers = data;
+    this._suppliers.next(Object.assign({}, this.dataStore).suppliers);
   }
 
   updateCurrentSupplier(supplier: Supplier) {
@@ -105,8 +107,8 @@ export class SupplierService {
     });
   }
 
-  getSupplier(supplierId: string, email: string): Observable<Supplier> {
-    return this.http.get<Supplier>(`${this.url}/api/supplier/get-supplier.php?SupplierId=${supplierId}&Email=${email}`);
+  getSupplier(email: string): Observable<Supplier> {
+    return this.http.get<Supplier>(`${this.url}/api/supplier/get-supplier.php?Email=${email}`);
   }
   resetCardClass(suppliers: Supplier[]) {
     if (suppliers && suppliers.length) {

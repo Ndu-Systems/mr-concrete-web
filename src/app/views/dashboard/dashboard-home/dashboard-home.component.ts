@@ -40,43 +40,47 @@ export class DashboardHomeComponent implements OnInit {
 
   getRecentOrderForSupplier(user: UserModel) {
     if (user.Role.RoleName === Roles.SUPPLIER) {
-      this.orderService.getOrdersForSupplier(user.UserId).subscribe(result => {
-        if (result.Orders) {
-          const pendingOrders = result.Orders.filter(x => x.StatusId.toString() === '1').sort((x, y) => {
-            return new Date(y.CreateDate).getTime() - new Date(x.CreateDate).getTime();
-          });
-          // this.recentOrder = new Concreteorder();
-          this.recentOrder = pendingOrders[0];
-          if (this.recentOrder.StatusId.toString() === '1') {
-            this.status = StatusEnum.PENDING_APPROVAL;
-            this.toStatusId = 2;
-          }
-          if (this.recentOrder.StatusId.toString() === '2') {
-            this.status = StatusEnum.ACCEPTED_AT_SUPPLIER;
-            this.toStatusId = 3;
+      this.supplierService.getSupplier(this.user.Email).subscribe(data => {
+        this.supplier = data;
+        this.orderService.getOrdersForSupplier(this.supplier.SupplierId).subscribe(result => {
+          if (result) {
+            const pendingOrders = result.filter(x => x.StatusId.toString() === '1').sort((x, y) => {
+              return new Date(y.CreateDate).getTime() - new Date(x.CreateDate).getTime();
+            });
+            // this.recentOrder = new Concreteorder();
+            this.recentOrder = pendingOrders[0];
+            if (this.recentOrder.StatusId.toString() === '1') {
+              this.status = StatusEnum.PENDING_APPROVAL;
+              this.toStatusId = 2;
+            }
+            if (this.recentOrder.StatusId.toString() === '2') {
+              this.status = StatusEnum.ACCEPTED_AT_SUPPLIER;
+              this.toStatusId = 3;
 
-          }
-          if (this.recentOrder.StatusId.toString() === '3') {
-            this.status = StatusEnum.IN_PROGRESS;
-            this.toStatusId = 4;
+            }
+            if (this.recentOrder.StatusId.toString() === '3') {
+              this.status = StatusEnum.IN_PROGRESS;
+              this.toStatusId = 4;
 
+            }
+            if (this.recentOrder.StatusId.toString() === '4') {
+              this.status = StatusEnum.ON_DELIVERY;
+              this.toStatusId = 5;
+            }
+            if (this.recentOrder.StatusId.toString() === '5') {
+              this.status = StatusEnum.CONFIRMED_BY_CUSTOMER;
+              this.toStatusId = 6;
+            }
+            if (this.recentOrder.StatusId.toString() === '6') {
+              this.status = StatusEnum.COMPLETE;
+            }
+            if (this.recentOrder.StatusId.toString() === '7') {
+              this.status = StatusEnum.CANCELLED;
+            }
           }
-          if (this.recentOrder.StatusId.toString() === '4') {
-            this.status = StatusEnum.ON_DELIVERY;
-            this.toStatusId = 5;
-          }
-          if (this.recentOrder.StatusId.toString() === '5') {
-            this.status = StatusEnum.CONFIRMED_BY_CUSTOMER;
-            this.toStatusId = 6;
-          }
-          if (this.recentOrder.StatusId.toString() === '6') {
-            this.status = StatusEnum.COMPLETE;
-          }
-          if (this.recentOrder.StatusId.toString() === '7') {
-            this.status = StatusEnum.CANCELLED;
-          }
-        }
+        });
       });
+
     }
   }
 

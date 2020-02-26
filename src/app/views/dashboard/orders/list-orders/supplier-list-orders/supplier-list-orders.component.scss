@@ -53,6 +53,18 @@
 }
 
 
+.cta {
+  color: $white;
+  .info {
+    background-color:$primary;
+  }
+  .success {
+    background-color: $success;
+  }
+  .danger {
+    background-color: $danger;
+  }
+}
 
 .col-1-of-8 {
   display: grid;

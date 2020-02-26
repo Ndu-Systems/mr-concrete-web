@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 import { OrderView } from 'src/app/_models/orderview.model';
 import { ConcreteorderService } from 'src/app/_services/dashboard';
@@ -24,9 +24,9 @@ export class ViewOrderComponent implements OnInit {
   currentUser: UserModel;
   measurements;
   constructor(private concreteorderService: ConcreteorderService,
-    private accountService: AccountService,
-    private measurementService: MeasurementService,
-    private router: Router
+              private accountService: AccountService,
+              private measurementService: MeasurementService,
+              private router: Router
   ) { }
 
   ngOnInit() {
@@ -38,11 +38,12 @@ export class ViewOrderComponent implements OnInit {
     this.concreteorderService.order.subscribe(data => {
       this.order = data;
     });
+
   }
 
   createNewOrder() {
     this.concreteorderService.createOrder(this.order).subscribe(response => {
-      this.concreteorderService.setStateForCurrentOrder(response);
+      this.concreteorderService.resetOrder();
       this.router.navigate(['dashboard/outcome']);
     });
   }
