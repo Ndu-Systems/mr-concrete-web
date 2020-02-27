@@ -14,7 +14,9 @@
     &.warning {
       background-color: $yellow;
     }
-
+    &.primary {
+      background-color: $primary;
+    }
     &.danger {
       background-color: $danger;
     }
@@ -29,5 +31,14 @@
     display: block;
     margin-bottom: 16px;
     color: $white;
+  }
+}
+.header {
+  font-weight: 600;
+  font-size: 25px;
+  padding: 0 1.2em;
+
+  &.stats {
+    padding: 0;
   }
 }

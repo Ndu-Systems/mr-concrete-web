@@ -66,8 +66,7 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
     });
     // let r = Math.random().toString(36).substring(7);
     this.order.OrderNumber = Math.random().toString(36).toUpperCase().substring(6) + Math.random().toString().substring(9);
-    console.log("Order number", this.order.OrderNumber);
-  }
+   }
 
   initOrder() {
     this.concreteorderService.order.subscribe(data => {
@@ -88,7 +87,7 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
   mapMeasurements(measurements: Measurement[]): Measurement[] {
     this.order.measurements = measurements;
     this.order.measurements.forEach(data => {
-      data.Value = data.Value || '9502';
+      data.Value = data.Value || '';
     });
     return this.order.measurements;
   }

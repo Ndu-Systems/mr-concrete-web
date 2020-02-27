@@ -8,5 +8,6 @@ export * from './measurement.model';
 export * from './sign-up.model';
 export * from  './supplier-orders.model';
 export * from './placeholder';
+export * from './counter.model';
 // end:ng42.barrel
 

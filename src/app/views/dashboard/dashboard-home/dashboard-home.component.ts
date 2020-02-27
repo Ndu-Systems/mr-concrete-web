@@ -1,11 +1,12 @@
 import { Supplier } from './../../../_models/supplier.model';
 import { Component, OnInit } from '@angular/core';
-import { ConcreteorderService } from 'src/app/_services/dashboard';
+import { ConcreteorderService, CounterService } from 'src/app/_services/dashboard';
 import { AccountService, SupplierService } from 'src/app/_services';
-import { UserModel, Placeholder } from 'src/app/_models';
+import { UserModel, Placeholder, CounterModel } from 'src/app/_models';
 import { OrderView } from 'src/app/_models/orderview.model';
-import { Roles } from 'src/app/_shared';
+import { Roles, ConfirmationPageModel } from 'src/app/_shared';
 import { StatusEnum } from 'src/app/_shared/status.enum';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard-home',
@@ -20,29 +21,52 @@ export class DashboardHomeComponent implements OnInit {
   recentOrder: OrderView;
   status: string;
   toStatusId: number;
+  counter: CounterModel;
+
+  confirmationPageParams: ConfirmationPageModel = {
+    heading: 'Supplier orders',
+    subheading: 'Order status updated',
+    text: 'Thank you for your update, the relevant stakeholders have been notified.',
+    positiveNavLabel: 'View order',
+    positiveNavLink: 'dashboard/view-order',
+    negativeNavLabel: 'Done',
+    negativeNavLink: 'dashboard/orders',
+    actionLink: 'dashboard/orders',
+    actionLabel: 'Return to orders',
+    type: 'Order'
+  };
 
   placeHolder: Placeholder = {
-    imageUrl: 'assets/images/dashboard/placeholders/empty-cart.svg',
+    imageUrl: 'assets/images/dashboard/placeholders/no-order.svg',
     message: 'There are no orders recently',
-    link: '/dashboard/create-orders',
-    linkLabel: 'Create Order'
+    link: '/dashboard/orders',
+    linkLabel: 'View Orders'
   };
+
   constructor(
-    private orderService: ConcreteorderService,
+    private concreteorderService: ConcreteorderService,
     private accontService: AccountService,
-    private supplierService: SupplierService
+    private counterService: CounterService,
+    private supplierService: SupplierService,
+    private router: Router
   ) { }
 
   ngOnInit() {
     this.user = this.accontService.CurrentUserValue;
     this.getRecentOrderForSupplier(this.user);
+    this.counterService.getCounters();
+    this.counterService.counterModel.subscribe(data => {
+      if (data) {
+        this.counter = data;
+      }
+    });
   }
 
   getRecentOrderForSupplier(user: UserModel) {
     if (user.Role.RoleName === Roles.SUPPLIER) {
       this.supplierService.getSupplier(this.user.Email).subscribe(data => {
         this.supplier = data;
-        this.orderService.getOrdersForSupplier(this.supplier.SupplierId).subscribe(result => {
+        this.concreteorderService.getOrdersForSupplier(this.supplier.SupplierId).subscribe(result => {
           if (result) {
             const pendingOrders = result.filter(x => x.StatusId.toString() === '1').sort((x, y) => {
               return new Date(y.CreateDate).getTime() - new Date(x.CreateDate).getTime();
@@ -84,5 +108,12 @@ export class DashboardHomeComponent implements OnInit {
     }
   }
 
-
+  updateOrderStatus(item: OrderView, statusId: number) {
+    item.StatusId = statusId;
+    this.concreteorderService.updateOrder(item).subscribe(response => {
+      this.concreteorderService.setStateForCurrentOrder(response);
+      localStorage.setItem('confirmation', JSON.stringify(this.confirmationPageParams));
+      this.router.navigate(['dashboard/outcome']);
+    });
+  }
 }

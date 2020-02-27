@@ -90,3 +90,19 @@ padding: 1rem;
     background-color: $danger;
   }
 }
+
+@media only screen and (max-width: 600px) {
+  .main {
+    width: 100%;
+    grid-template-columns: 100%;
+    margin: 0;
+    .table-3 {
+      grid-template-columns: 100%;
+    }
+    .measurements {
+      &.table-3 {
+        grid-template-columns: repeat(3, 33.333333333%);
+      }
+    }
+  }
+ }

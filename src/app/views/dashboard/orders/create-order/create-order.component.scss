@@ -1,5 +1,6 @@
 @import '../../../../../assets/styles/general/colors';
 
+
 .mat-radio-button {
   margin-left: 16px;
   border: 1px solid $grey_light;
@@ -95,16 +96,19 @@ p {
 .active-no {
   border: 1px solid $grey;
 }
+
 .active-yes {
   border: 1px solid $yellow;
 }
-.mark-icon{
+
+.mark-icon {
   position: absolute;
   right: -12px;
   top: -13px;
 }
-.catergory{
-  .catergory-option{
+
+.catergory {
+  .catergory-option {
     background: $default-white;
     border: 1px solid $grey_lighter;
     width: 25%;
@@ -112,14 +116,56 @@ p {
     padding: 1rem;
   }
 }
-.tab-group{
+
+.tab-group {
   // background: red;
   width: 90%;
   margin: 0 auto;
 
 }
 
-.white-bg{
+.white-bg {
   background: $default-white;
   text-align: center;
+}
+
+
+@media only screen and (max-width: 600px) {
+  .order-form {
+    padding: 0.5em;
+    margin: 0;
+    width: 100%;
+
+    .input-field {
+      width: 45%;
+      margin: 0 0.3rem;
+    }
+
+    .input-field-50 {
+      width: 95%;
+      margin: 0.3rem;
+    }
+  }
+
+  .catergory {
+    .catergory-option {
+      background: $default-white;
+      border: 1px solid $grey_lighter;
+      width: 100%;
+      margin: .5rem;
+      padding: 1rem;
+    }
+  }
+
+  .suppliers {
+    display: block;
+
+    .suppliers-card {
+      width: 90%;
+    }
+  }
+
+  .options {
+    display: block;
+  }
 }

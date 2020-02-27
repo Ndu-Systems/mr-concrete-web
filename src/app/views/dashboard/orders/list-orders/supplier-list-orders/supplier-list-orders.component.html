@@ -54,7 +54,7 @@
       </div>
       <div class="data">
         <h1 class="text">
-          {{item.DeliveryDate }}
+          {{item.DeliveryDate | date}}
           <span class="span">
            </span>
         </h1>
@@ -73,7 +73,7 @@
           <button mat-button class="info" *ngIf="item.StatusId === '3'"(click)="updateOrderStatus(item,4)">On Delivery.</button>
           <button mat-button class="success" *ngIf="item.StatusId === '4'" (click)="updateOrderStatus(item,5)">Accepted by customer.</button>
           <button mat-button class="success" *ngIf="item.StatusId === '5'">Order Complete.</button>
-          <button mat-button class="danger">Cancel order.</button>
+          <button mat-button class="danger" (click)="updateOrderStatus(item,6)">Cancel order.</button>
         </mat-card-actions>
         <a class="anchor" (click)="viewOrder(item)">view order</a>
       </div>

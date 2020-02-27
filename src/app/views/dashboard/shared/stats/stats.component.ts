@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { CounterModel } from 'src/app/_models';
 
 @Component({
   selector: 'app-stats',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./stats.component.scss']
 })
 export class StatsComponent implements OnInit {
-
+  @Input() counter: CounterModel;
   constructor() { }
 
   ngOnInit() {
