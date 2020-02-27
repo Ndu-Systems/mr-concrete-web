@@ -213,6 +213,22 @@ button.danger {
   }
 }
 
+.chip {
+  &.info {
+    background-color: $light_primary;
+    color: $primary;
+  }
+
+  &.success {
+    color: $success;
+    background-color: $light_success;
+  }
+
+  &.danger {
+    color: $danger;
+    background: $light_danger;
+  }
+}
 @media only screen and (max-width: 600px) {
 
   .col-1-of-4 {

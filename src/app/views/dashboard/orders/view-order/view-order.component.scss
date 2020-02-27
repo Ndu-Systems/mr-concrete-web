@@ -74,3 +74,19 @@ padding: 1rem;
 
     }
 }
+
+.cta {
+  color: $white;
+  float: right;
+  .info {
+    background-color: $primary;
+  }
+
+  .success {
+    background-color: $success;
+  }
+
+  .danger {
+    background-color: $danger;
+  }
+}

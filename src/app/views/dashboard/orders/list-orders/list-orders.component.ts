@@ -5,6 +5,7 @@ import { OrderView } from 'src/app/_models/orderview.model';
 import { UserModel, SupplierOrdersModel, Placeholder, Supplier } from 'src/app/_models';
 import { AccountService, SupplierService } from 'src/app/_services';
 import { Router } from '@angular/router';
+import { ConfirmationPageModel } from 'src/app/_shared';
 
 @Component({
   selector: 'app-list-orders',
@@ -33,6 +34,21 @@ export class ListOrdersComponent implements OnInit {
     link: '/dashboard/create-orders',
     linkLabel: 'Create Order'
   };
+
+
+  confirmationPageParams: ConfirmationPageModel = {
+    heading: 'Supplier orders',
+    subheading: 'Order status updated',
+    text: 'Thank you for your update, the relevant stakeholders have been notified.',
+    positiveNavLabel: 'View order',
+    positiveNavLink: 'dashboard/view-order',
+    negativeNavLabel: 'Done',
+    negativeNavLink: 'dashboard/orders',
+    actionLink: 'dashboard/orders',
+    actionLabel: 'Return to orders',
+    type: 'Order'
+  };
+
   currentUser: UserModel;
   constructor(
     private concreteorderService: ConcreteorderService,
@@ -48,6 +64,7 @@ export class ListOrdersComponent implements OnInit {
     this.concreteorderService.getOrders(this.currentUser.UserId);
     this.setRoles();
     this.concreteorderService.resetOrder();
+    localStorage.removeItem('confirmation');
   }
   view(item) {
     this.concreteorderService.setStateForCurrentOrder(item);
@@ -57,6 +74,7 @@ export class ListOrdersComponent implements OnInit {
     item.StatusId = 6;
     this.concreteorderService.updateOrder(item).subscribe(response => {
       this.concreteorderService.setStateForCurrentOrder(response);
+      localStorage.setItem('confirmation', JSON.stringify(this.confirmationPageParams));
       this.router.navigate(['dashboard/outcome']);
     });
   }

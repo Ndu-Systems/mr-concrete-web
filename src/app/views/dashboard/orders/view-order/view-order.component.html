@@ -8,9 +8,6 @@
         <div class="basic-info table-3">
           <mat-card class="card">
             <span class="table-card col-1-of-1">
-
-
-
               <div class="data">
                 <h1 class="text">
                   {{order.OrderNumber}}
@@ -19,15 +16,10 @@
                   </span>
                 </h1>
               </div>
-
-
             </span>
           </mat-card>
           <mat-card class="card">
             <span class="table-card col-1-of-1">
-
-
-
               <div class="data">
                 <h1 class="text">
                   {{order.ProjectCode}}
@@ -36,15 +28,10 @@
                   </span>
                 </h1>
               </div>
-
-
             </span>
           </mat-card>
           <mat-card class="card">
             <span class="table-card col-1-of-1">
-
-
-
               <div class="data">
                 <h1 class="text">
                   {{order.category?.CategoryName}}
@@ -53,34 +40,26 @@
                   </span>
                 </h1>
               </div>
-
-
             </span>
           </mat-card>
         </div>
         <h1 class="separator">Metrics</h1>
-        <span >
+
+        <span *ngIf="order.measurements.length > 0 && measurements.length > 0">
           <div class="table-3">
             <mat-card class="card" *ngFor="let item of order.measurements">
               <span class="table-card col-1-of-1">
-
-
-
                 <div class="data">
                   <h1 class="text">
                     {{item?.Value}}
                     <span class="span">
                       {{item?.MeasurementId | measurename : measurements }}
-                      <!-- Compressive strength -->
                     </span>
                   </h1>
                 </div>
-
-
               </span>
             </mat-card>
           </div>
-
         </span>
       </div>
     </div>
@@ -142,10 +121,25 @@
       </div>
     </div>
     <div></div>
-    <div class="actions">
+    <div class="actions" *ngIf="currentUser.RoleId !=='3'">
       <h1 class="separator"></h1>
       <button mat-button class="primary" (click)="action()">Looks good, save</button>
       <button mat-button (click)="edit()" class="simple">Edit</button>
+    </div>
+    <div class="actions"  *ngIf="currentUser.RoleId ==='3'">
+      <h1 class="separator"></h1>
+      <mat-card-actions class="cta">
+        <button mat-button class="info" *ngIf="order.StatusId === '1'" (click)="updateOrderStatus(item,2)">Accept
+          order.</button>
+        <button mat-button class="info" *ngIf="order.StatusId === '2'" (click)="updateOrderStatus(item,3)">On its
+          way.</button>
+        <button mat-button class="info" *ngIf="order.StatusId === '3'" (click)="updateOrderStatus(item,4)">On
+          Delivery.</button>
+        <button mat-button class="success" *ngIf="order.StatusId === '4'" (click)="updateOrderStatus(item,5)">Accepted by
+          customer.</button>
+        <button mat-button class="success" *ngIf="order.StatusId === '5'">Order Complete.</button>
+        <button mat-button class="danger">Cancel order.</button>
+      </mat-card-actions>
     </div>
   </div>
 

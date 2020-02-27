@@ -31,9 +31,10 @@
             <mat-chip class="chip info" *ngIf="item.StatusId == '2'">Accepted at supplier</mat-chip>
             <mat-chip class="chip info" *ngIf="item.StatusId == '3'">In progress</mat-chip>
             <mat-chip class="chip info" *ngIf="item.StatusId == '4'">On delivery</mat-chip>
-            <mat-chip class="chip success" *ngIf="item.StatusId == '5'">Confirmed by customer</mat-chip>
-            <mat-chip class="chip success" *ngIf="item.StatusId == '6'">Complete</mat-chip>
-            <mat-chip class="chip danger" *ngIf="item.StatusId == '7'">Cancelled</mat-chip>
+            <mat-chip class="chip success" *ngIf="item.StatusId == '5'">Completed Order</mat-chip>
+            <mat-chip class="chip cancelled" *ngIf="item.StatusId == '6'">Cancelled</mat-chip>
+            <mat-chip class="chip cancelled" *ngIf="item.StatusId == '7'">Cancelled by customer</mat-chip>
+            <mat-chip class="chip cancelled" *ngIf="item.StatusId == '8'">Cancelled by supplier</mat-chip>
           </mat-chip-list>
         </h1>
       </div>
@@ -74,6 +75,7 @@
           <button mat-button class="success" *ngIf="item.StatusId === '5'">Order Complete.</button>
           <button mat-button class="danger">Cancel order.</button>
         </mat-card-actions>
+        <a class="anchor" (click)="viewOrder(item)">view order</a>
       </div>
     </span>
   </mat-card>

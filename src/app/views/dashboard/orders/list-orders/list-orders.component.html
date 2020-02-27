@@ -84,7 +84,13 @@
                 {{item.OrderNumber}}
                 <mat-chip-list class="chips">
                   <mat-chip class="chip pending" *ngIf="item.StatusId == '1'">Pending</mat-chip>
+                  <mat-chip class="chip info" *ngIf="item.StatusId == '2'">Accepted at supplier</mat-chip>
+                  <mat-chip class="chip info" *ngIf="item.StatusId == '3'">In progress</mat-chip>
+                  <mat-chip class="chip info" *ngIf="item.StatusId == '4'">On delivery</mat-chip>
+                  <mat-chip class="chip success" *ngIf="item.StatusId == '5'">Completed Order</mat-chip>
                   <mat-chip class="chip cancelled" *ngIf="item.StatusId == '6'">Cancelled</mat-chip>
+                  <mat-chip class="chip cancelled" *ngIf="item.StatusId == '7'">Cancelled by customer</mat-chip>
+                  <mat-chip class="chip cancelled" *ngIf="item.StatusId == '8'">Cancelled by supplier</mat-chip>
                 </mat-chip-list>
               </h1>
             </div>
@@ -92,35 +98,36 @@
               <h1 class="text">
                 {{item.ProjectCode}}
                 <span class="span">
-                 </span>
+                </span>
               </h1>
             </div>
             <div class="data">
               <h1 class="text">
                 {{item.category?.CategoryName}}
                 <span class="span">
-                 </span>
+                </span>
               </h1>
             </div>
             <div class="data">
               <h1 class="text">
-                 {{item.DeliveryDate}}
+                {{item.DeliveryDate}}
                 <span class="span">
-                 </span>
+                </span>
               </h1>
             </div>
             <div class="data">
               <h1 class="text">
                 {{item.supplier?.SupplierName}}
                 <span class="span">
-                 </span>
+                </span>
               </h1>
             </div>
             <div class="data">
               <button class="buttons sucees" mat-button (click)="view(item)">
                 <mat-icon matDatepickerToggleIcon matTooltip="View order full details">remove_red_eye</mat-icon>
               </button>
-              <button class="buttons primary" [disabled]="item.StatusId != '1'" matTooltip="Edit this order." mat-button>
+              <button class="buttons primary" [disabled]="item.StatusId != '1'" matTooltip="Edit this order."
+                mat-button>
                 <mat-icon matDatepickerToggleIcon>edit</mat-icon>
               </button>
               <button class="buttons danger" [disabled]="item.StatusId != '1'" (click)=remove(item)
