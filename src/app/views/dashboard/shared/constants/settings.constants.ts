@@ -18,12 +18,12 @@ export const INDUSTRY_ACTION_CONSTANTS: Actions[] = [
   {
     name: 'categories',
     link: '/dashboard/categories',
-    icon: 'assets/images/dashboard/settings/industry.svg'
+    icon: 'assets/images/dashboard/settings/category.svg'
   },
   {
     name: 'measurements',
     link: '/dashboard/measurements',
-    icon: 'assets/images/dashboard/settings/industry.svg'
+    icon: 'assets/images/dashboard/settings/test.svg'
   },
 ]
 

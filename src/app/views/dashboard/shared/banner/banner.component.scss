@@ -1,7 +1,7 @@
  @import '../../../../../assets/styles/general/colors';
 
  .mat-card {
-   height: 6em;
+  height: 8em;
  }
 
  .col-1-of-2 {
@@ -72,6 +72,7 @@
      overflow: hidden;
      height: 7em;
 
+
    }
 
    .mat-flat-button {
@@ -80,13 +81,14 @@
      font-size: 0.75555em;
      font-weight: 400;
    }
-   .action {
-    &.col-1-of-2 {
 
-      @media only screen and (max-width: 600px) {
-        grid-template-columns: 50% auto;
-      }
-    }
+   .action {
+     &.col-1-of-2 {
+
+       @media only screen and (max-width: 600px) {
+         grid-template-columns: 50% auto;
+       }
+     }
    }
 
    .banner-heading {

@@ -1,39 +1,73 @@
-<div class="col-1-of-2">
-  <app-stats *ngIf="user.RoleId == '1'" [counter]="counter"></app-stats>
-  <div class="recent-order" *ngIf="user.RoleId == '3'">
-    <h1 class="header">Recent order</h1>
-    <mat-card class="main-card" *ngIf="recentOrder else noOrder;">
+<div class="main">
+  <div class="dash">
+    <app-stats *ngIf="user.RoleId == '1'" [counter]="counter"></app-stats>
+    <div class="recent-order" *ngIf="user.RoleId == '3'">
+      <h1 class="header">Recent order</h1>
+      <mat-card class="main-card" *ngIf="recentOrder else noOrder;">
+        <mat-card-content>
+          <span class="col-1-of-2">
+            <h1 class="stat-header">Order #</h1>
+            <h1 class="stat-value">{{recentOrder.OrderNumber}}</h1>
+          </span>
+          <span class="col-1-of-2">
+            <h1 class="stat-header">Order date</h1>
+            <h1 class="stat-value">{{recentOrder.OrderDate  | date:'medium'}}</h1>
+          </span>
+          <span class="col-1-of-2">
+            <h1 class="stat-header status">Status</h1>
+            <mat-chip-list class="chips">
+              <mat-chip class="chip pending">{{status}}</mat-chip>
+            </mat-chip-list>
+          </span>
+        </mat-card-content>
+        <mat-card-actions class="cta">
+          <button mat-button class="info" *ngIf="recentOrder.StatusId === '1'"
+            (click)="updateOrderStatus(recentOrder,2)">Accept order.</button>
+          <button mat-button class="info" *ngIf="recentOrder.StatusId === '2'"
+            (click)="updateOrderStatus(recentOrder,3)">On
+            its way.</button>
+          <button mat-button class="info" *ngIf="recentOrder.StatusId === '3'"
+            (click)="updateOrderStatus(recentOrder,4)">On
+            Delivery.</button>
+          <button mat-button class="success" *ngIf="recentOrder.StatusId === '4'"
+            (click)="updateOrderStatus(recentOrder,5)">Accepted by customer.</button>
+          <button mat-button class="success" *ngIf="recentOrder.StatusId === '5'">Order Complete.</button>
+          <button mat-button class="danger" (click)="updateOrderStatus(recentOrder,6)">Cancel order.</button>
+        </mat-card-actions>
+      </mat-card>
+      <ng-template #noOrder>
+        <app-placeholder [placeHolder]="placeHolder"></app-placeholder>
+      </ng-template>
+    </div>
+  </div>
+  <div class="panel-table col-1-of-2">
+    <mat-card class="main-card">
+      <h1 class="header">Setup components</h1>
+      <h5>here is a comprehensive look at what is happening on the system.</h5>
       <mat-card-content>
-        <span class="col-1-of-2">
-          <h1 class="stat-header">Order #</h1>
-          <h1 class="stat-value">{{recentOrder.OrderNumber}}</h1>
-        </span>
-        <span class="col-1-of-2">
-          <h1 class="stat-header">Order date</h1>
-          <h1 class="stat-value">{{recentOrder.OrderDate  | date:'medium'}}</h1>
-        </span>
-        <span class="col-1-of-2">
-          <h1 class="stat-header status">Status</h1>
-          <mat-chip-list class="chips">
-            <mat-chip class="chip pending">{{status}}</mat-chip>
-          </mat-chip-list>
-        </span>
+        <div class="col-1-of-3">
+          <img src="assets/images/dashboard/placeholders/supplier.svg" class="image" alt="supplier">
+          <h1 class="stat">{{settingCounter.SupplierCount.Count}}</h1>
+          <h1 class="text">Suppliers</h1>
+        </div>
+        <div class="col-1-of-3">
+          <img src="assets/images/dashboard/placeholders/category.svg" class="image" alt="category">
+          <h1 class="stat">{{settingCounter.CategoryCount.Count}}</h1>
+          <h1 class="text">Categories</h1>
+        </div>
+        <div class="col-1-of-3">
+          <img src="assets/images/dashboard/placeholders/test.svg" class="image" alt="test">
+          <h1 class="stat">{{settingCounter.MeasurementCount.Count}}</h1>
+          <h1 class="text">Measurements</h1>
+        </div>
       </mat-card-content>
-      <mat-card-actions class="cta">
-        <button mat-button class="info" *ngIf="recentOrder.StatusId === '1'"
-          (click)="updateOrderStatus(recentOrder,2)">Accept order.</button>
-        <button mat-button class="info" *ngIf="recentOrder.StatusId === '2'"
-          (click)="updateOrderStatus(recentOrder,3)">On its way.</button>
-        <button mat-button class="info" *ngIf="recentOrder.StatusId === '3'"
-          (click)="updateOrderStatus(recentOrder,4)">On Delivery.</button>
-        <button mat-button class="success" *ngIf="recentOrder.StatusId === '4'"
-          (click)="updateOrderStatus(recentOrder,5)">Accepted by customer.</button>
-        <button mat-button class="success" *ngIf="recentOrder.StatusId === '5'">Order Complete.</button>
-        <button mat-button class="danger" (click)="updateOrderStatus(recentOrder,6)">Cancel order.</button>
-      </mat-card-actions>
     </mat-card>
-    <ng-template #noOrder>
-      <app-placeholder [placeHolder]="placeHolder"></app-placeholder>
-    </ng-template>
+    <mat-card class="main-card orders">
+      <h1 class="header">Recent orders in the system</h1>
+      <h5>Variables that enable an order to be captured in the system.</h5>
+      <mat-card-content *ngIf="orders.length > 0">
+        <app-recent-orders [orderList]="orders"></app-recent-orders>
+      </mat-card-content>
+    </mat-card>
   </div>
 </div>

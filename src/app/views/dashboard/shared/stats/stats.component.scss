@@ -1,9 +1,20 @@
 @import '../../../../../assets/styles/general/colors';
 
+h5 {
+  font-weight: 500;
+  text-transform: capitalize;
+  color: $grey;
+}
 .main-card {
   color: $white;
   cursor: pointer;
   height: 13em !important;
+  border-radius: 10px;
+  box-shadow: 10px 0px 48px -9px rgba(113, 128, 147, 0.08);
+  &:hover{
+    box-shadow: 10px 0px 48px -9px rgba(113, 128, 147, 0.5);
+
+  }
   &.stats {
     height: 11em;
 
@@ -40,5 +51,12 @@
 
   &.stats {
     padding: 0;
+  }
+}
+
+
+@media only screen and (max-width: 600px) {
+  .main-card {
+    border-radius: 5px;
   }
 }

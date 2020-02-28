@@ -2,11 +2,12 @@ import { Supplier } from './../../../_models/supplier.model';
 import { Component, OnInit } from '@angular/core';
 import { ConcreteorderService, CounterService } from 'src/app/_services/dashboard';
 import { AccountService, SupplierService } from 'src/app/_services';
-import { UserModel, Placeholder, CounterModel } from 'src/app/_models';
+import { UserModel, Placeholder, CounterModel, SettingCounterModel } from 'src/app/_models';
 import { OrderView } from 'src/app/_models/orderview.model';
 import { Roles, ConfirmationPageModel } from 'src/app/_shared';
 import { StatusEnum } from 'src/app/_shared/status.enum';
 import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-dashboard-home',
@@ -22,6 +23,7 @@ export class DashboardHomeComponent implements OnInit {
   status: string;
   toStatusId: number;
   counter: CounterModel;
+  settingCounter: SettingCounterModel;
 
   confirmationPageParams: ConfirmationPageModel = {
     heading: 'Supplier orders',
@@ -43,16 +45,17 @@ export class DashboardHomeComponent implements OnInit {
     linkLabel: 'View Orders'
   };
 
+
   constructor(
     private concreteorderService: ConcreteorderService,
-    private accontService: AccountService,
+    private accountService: AccountService,
     private counterService: CounterService,
     private supplierService: SupplierService,
     private router: Router
   ) { }
 
   ngOnInit() {
-    this.user = this.accontService.CurrentUserValue;
+    this.user = this.accountService.CurrentUserValue;
     this.getRecentOrderForSupplier(this.user);
     this.counterService.getCounters();
     this.counterService.counterModel.subscribe(data => {
@@ -60,6 +63,16 @@ export class DashboardHomeComponent implements OnInit {
         this.counter = data;
       }
     });
+
+    this.counterService.getSettingCounters();
+    this.counterService.settingCounterModel.subscribe(data => {
+      if (data) {
+        this.settingCounter = data;
+      }
+    });
+
+    this.concreteorderService.getOrders(this.user.UserId);
+    this.concreteorderService.orders.subscribe(data => this.orders = data);
   }
 
   getRecentOrderForSupplier(user: UserModel) {

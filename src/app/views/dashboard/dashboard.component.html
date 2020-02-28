@@ -14,18 +14,18 @@
       view_list
     </mat-icon>
     <div class="profile">
-     <h1 class="title">
-      Welcome,  {{currentUser.FirstName}} {{currentUser.LastName}}
-     </h1>
+      <h1 class="title">
+        Welcome, {{currentUser.FirstName}} {{currentUser.LastName}}
+      </h1>
     </div>
     <!-- <div>Menu</div> -->
     <div class="sign-out">
-      <img src="../../../assets/images/dashboard/off.svg" alt="sign-out" (click)="signOut()">
+      <img src="assets/images/dashboard/off.svg" alt="sign-out" (click)="signOut()">
     </div>
   </mat-toolbar>
 
   <div class="main contents">
-     <router-outlet></router-outlet>
+    <router-outlet></router-outlet>
   </div>
 
   <mat-toolbar class="main footer">
