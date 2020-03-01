@@ -46,7 +46,8 @@ export class ListOrdersComponent implements OnInit {
     negativeNavLink: 'dashboard/orders',
     actionLink: 'dashboard/orders',
     actionLabel: 'Return to orders',
-    type: 'Order'
+    type: 'Order',
+    imgUrl: 'assets/images/dashboard/successfully.svg'
   };
 
   currentUser: UserModel;
@@ -74,6 +75,10 @@ export class ListOrdersComponent implements OnInit {
     item.StatusId = 6;
     this.concreteorderService.updateOrder(item).subscribe(response => {
       this.concreteorderService.setStateForCurrentOrder(response);
+      this.confirmationPageParams.imgUrl = 'assets/images/dashboard/archived-icon.svg';
+      this.confirmationPageParams.subheading = 'Order archived successfully';
+      this.confirmationPageParams.positiveNavLink = '';
+      this.confirmationPageParams.positiveNavLabel = '';
       localStorage.setItem('confirmation', JSON.stringify(this.confirmationPageParams));
       this.router.navigate(['dashboard/outcome']);
     });
@@ -92,7 +97,7 @@ export class ListOrdersComponent implements OnInit {
             this.supplierOrder = new SupplierOrdersModel();
             this.supplierOrder.Orders = result;
             this.actionButton = undefined;
-           }
+          }
         });
       });
     } else {

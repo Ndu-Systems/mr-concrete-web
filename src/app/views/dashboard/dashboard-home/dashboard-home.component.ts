@@ -7,6 +7,7 @@ import { OrderView } from 'src/app/_models/orderview.model';
 import { Roles, ConfirmationPageModel } from 'src/app/_shared';
 import { StatusEnum } from 'src/app/_shared/status.enum';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -18,7 +19,7 @@ export class DashboardHomeComponent implements OnInit {
   order: OrderView;
   user: UserModel;
   supplier: Supplier;
-  orders: OrderView[] = [];
+  orders$: Observable<OrderView[]>;
   recentOrder: OrderView;
   status: string;
   toStatusId: number;
@@ -35,7 +36,8 @@ export class DashboardHomeComponent implements OnInit {
     negativeNavLink: 'dashboard/orders',
     actionLink: 'dashboard/orders',
     actionLabel: 'Return to orders',
-    type: 'Order'
+    type: 'Order',
+    imgUrl: 'assets/images/dashboard/successfully.svg'
   };
 
   placeHolder: Placeholder = {
@@ -72,7 +74,7 @@ export class DashboardHomeComponent implements OnInit {
     });
 
     this.concreteorderService.getOrders(this.user.UserId);
-    this.concreteorderService.orders.subscribe(data => this.orders = data);
+    this.orders$ = this.concreteorderService.orders;
   }
 
   getRecentOrderForSupplier(user: UserModel) {

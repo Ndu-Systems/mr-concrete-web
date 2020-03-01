@@ -29,16 +29,18 @@ export class ViewOrderComponent implements OnInit {
     negativeNavLink: 'dashboard/orders',
     actionLink: 'dashboard/orders',
     actionLabel: 'Return to orders',
-    type: 'Order'
+    type: 'Order',
+    imgUrl: 'assets/images/dashboard/successfully.svg'
+
   };
   order$: Observable<OrderView>;
   order: OrderView;
   currentUser: UserModel;
   measurements;
   constructor(private concreteorderService: ConcreteorderService,
-    private accountService: AccountService,
-    private measurementService: MeasurementService,
-    private router: Router
+              private accountService: AccountService,
+              private measurementService: MeasurementService,
+              private router: Router
   ) { }
 
   ngOnInit() {
@@ -59,7 +61,7 @@ export class ViewOrderComponent implements OnInit {
       this.concreteorderService.resetOrder();
       this.confirmationPageParams.heading = 'Create new order';
       this.confirmationPageParams.subheading = 'New order created';
-      this.confirmationPageParams.text = 'Thank you for your new order, the relevant stakeholders have been notified.'
+      this.confirmationPageParams.text = 'Thank you for your new order, the relevant stakeholders have been notified.';
       localStorage.setItem('confirmation', JSON.stringify(this.confirmationPageParams));
       this.router.navigate(['dashboard/outcome']);
     });

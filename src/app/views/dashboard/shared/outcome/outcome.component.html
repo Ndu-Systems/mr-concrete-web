@@ -3,7 +3,7 @@
 <div class="contianer">
   <mat-card class="card">
     <div class="icon">
-      <img src="assets/images/dashboard/successfully.svg" alt="">
+      <img [src]="confirmation.imgUrl" alt="">
     </div>
     <div class="data">
       <h4>
@@ -17,7 +17,7 @@
       </h3>
       <div class="actions">
         <button class="action" (click)="list()" mat-button>{{confirmation.negativeNavLabel}}</button>
-        <button class="action view" (click)="preview()" mat-button>{{confirmation.positiveNavLabel}}</button>
+        <button *ngIf="confirmation.positiveNavLabel" class="action view" (click)="preview()" mat-button>{{confirmation.positiveNavLabel}}</button>
       </div>
     </div>
   </mat-card>

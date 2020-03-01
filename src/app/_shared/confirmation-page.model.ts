@@ -9,4 +9,5 @@ export interface ConfirmationPageModel {
   negativeNavLabel: string;
   actionLink: string;
   actionLabel: string;
+  imgUrl?: string;
 }

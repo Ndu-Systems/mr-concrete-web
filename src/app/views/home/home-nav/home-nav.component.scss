@@ -1,7 +1,16 @@
 @import '../../../../assets/styles/general/colors';
 
+.mat-toolbar {
+  background-color: $yellow;
+
+   &.mat-toolbar-multiple-rows {
+    .mat-toolbar-row {}
+  }
+}
+
 .header-icon {
-  height: 2.5em;
+    height: 2.5em;
+
 }
 
 mat-toolbar-row {
@@ -28,6 +37,13 @@ mat-toolbar-row {
 }
 
 .mat-flat-button {
-background: $yellow;
-color: $default-white;
+  background: $yellow;
+  color: $default-white;
+}
+
+
+@media only screen and (max-width: 600px) {
+  .desktop {
+    display: none;
+  }
 }

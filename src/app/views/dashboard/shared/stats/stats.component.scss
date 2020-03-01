@@ -1,5 +1,8 @@
 @import '../../../../../assets/styles/general/colors';
 
+.col-1-of-4 {
+  grid-gap: 0rem;
+}
 h5 {
   font-weight: 500;
   text-transform: capitalize;

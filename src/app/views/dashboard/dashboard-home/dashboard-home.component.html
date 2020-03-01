@@ -65,7 +65,7 @@
     <mat-card class="main-card orders">
       <h1 class="header">Recent orders in the system</h1>
       <h5>Variables that enable an order to be captured in the system.</h5>
-      <mat-card-content *ngIf="orders.length > 0">
+      <mat-card-content *ngIf="orders$ | async as orders">
         <app-recent-orders [orderList]="orders"></app-recent-orders>
       </mat-card-content>
     </mat-card>

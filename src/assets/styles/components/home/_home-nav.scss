@@ -2,4 +2,6 @@
 .mat-toolbar {
   background: transparent !important;
   color: rgba(0, 0, 0, 0.87);
+  position: fixed;
+  z-index: 9999;
 }
