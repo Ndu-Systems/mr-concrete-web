@@ -87,4 +87,13 @@ export class ViewOrderComponent implements OnInit {
     }
     this.createNewOrder();
   }
+
+  updateOrderStatus(item: OrderView, statusId: number) {
+    item.StatusId = statusId;
+    this.concreteorderService.updateOrder(item).subscribe(response => {
+      this.concreteorderService.setStateForCurrentOrder(response);
+      localStorage.setItem('confirmation', JSON.stringify(this.confirmationPageParams));
+      this.router.navigate(['dashboard/outcome']);
+    });
+  }
 }

@@ -129,15 +129,15 @@
     <div class="actions"  *ngIf="currentUser.RoleId ==='3'">
       <h1 class="separator"></h1>
       <mat-card-actions class="cta">
-        <button mat-button class="info" *ngIf="order.StatusId === '1'" (click)="updateOrderStatus(item,2)">Accept
+        <button mat-button class="info" *ngIf="order.StatusId === 1" (click)="updateOrderStatus(order,2)">Accept
           order.</button>
-        <button mat-button class="info" *ngIf="order.StatusId === '2'" (click)="updateOrderStatus(item,3)">On its
+        <button mat-button class="info" *ngIf="order.StatusId === 2" (click)="updateOrderStatus(order,3)">On its
           way.</button>
-        <button mat-button class="info" *ngIf="order.StatusId === '3'" (click)="updateOrderStatus(item,4)">On
+        <button mat-button class="info" *ngIf="order.StatusId === 3" (click)="updateOrderStatus(order,4)">On
           Delivery.</button>
-        <button mat-button class="success" *ngIf="order.StatusId === '4'" (click)="updateOrderStatus(item,5)">Accepted by
+        <button mat-button class="success" *ngIf="order.StatusId === 4" (click)="updateOrderStatus(order,5)">Accepted by
           customer.</button>
-        <button mat-button class="success" *ngIf="order.StatusId === '5'">Order Complete.</button>
+        <button mat-button class="success" *ngIf="order.StatusId === 5">Order Complete.</button>
         <button mat-button class="danger">Cancel order.</button>
       </mat-card-actions>
     </div>

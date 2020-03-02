@@ -21,17 +21,17 @@
           </span>
         </mat-card-content>
         <mat-card-actions class="cta">
-          <button mat-button class="info" *ngIf="recentOrder.StatusId === '1'"
+          <button mat-button class="info" *ngIf="recentOrder.StatusId === 1"
             (click)="updateOrderStatus(recentOrder,2)">Accept order.</button>
-          <button mat-button class="info" *ngIf="recentOrder.StatusId === '2'"
+          <button mat-button class="info" *ngIf="recentOrder.StatusId === 2"
             (click)="updateOrderStatus(recentOrder,3)">On
             its way.</button>
-          <button mat-button class="info" *ngIf="recentOrder.StatusId === '3'"
+          <button mat-button class="info" *ngIf="recentOrder.StatusId === 3"
             (click)="updateOrderStatus(recentOrder,4)">On
             Delivery.</button>
-          <button mat-button class="success" *ngIf="recentOrder.StatusId === '4'"
+          <button mat-button class="success" *ngIf="recentOrder.StatusId === 4"
             (click)="updateOrderStatus(recentOrder,5)">Accepted by customer.</button>
-          <button mat-button class="success" *ngIf="recentOrder.StatusId === '5'">Order Complete.</button>
+          <button mat-button class="success" *ngIf="recentOrder.StatusId === 5">Order Complete.</button>
           <button mat-button class="danger" (click)="updateOrderStatus(recentOrder,6)">Cancel order.</button>
         </mat-card-actions>
       </mat-card>
