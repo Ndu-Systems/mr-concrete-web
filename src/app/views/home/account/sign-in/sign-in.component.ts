@@ -6,6 +6,7 @@ import { AccountService } from 'src/app/_services';
 import { Router, ActivatedRoute } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { Roles } from 'src/app/_shared';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-sign-in',
@@ -33,7 +34,8 @@ export class SignInComponent implements OnInit {
     private fb: FormBuilder,
     private accountService: AccountService,
     private routeTo: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private messageService: MessageService,
   ) { }
 
   ngOnInit() {
@@ -57,9 +59,11 @@ export class SignInComponent implements OnInit {
       .subscribe(data => {
         if (data.Email) {
           this.routeTo.navigate([this.returnUrl]);
+        } else {
+          this.error = 'This user does not exist!';
         }
       }, error => {
-        this.error = error;
+        this.error = 'ERROR: System error, please contact administrator';
       });
   }
 

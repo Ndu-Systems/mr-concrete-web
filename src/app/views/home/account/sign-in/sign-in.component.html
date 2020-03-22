@@ -27,5 +27,8 @@
         sign in
       </button>
     </div>
+    <div class="error" *ngIf="error">
+      <h1>{{error}}</h1>
+    </div>
   </form>
 </div>

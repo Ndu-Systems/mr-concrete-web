@@ -1,8 +1,7 @@
 
 export const environment = {
   production: true,
-  API_URL: 'https://portfolio.ndu-systems.net/api',
-  EMAIL: '',
-  PASSWORD: ''
-
+  API_URL: 'https://mrconcrete.co.za/api',
+  EMAIL: null,
+  PASSWORD: null
 };
