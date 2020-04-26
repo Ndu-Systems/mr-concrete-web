@@ -68,6 +68,7 @@
   .account-container {
     padding: 0;
   }
+
   .form {
     padding: 1em;
     width: 19em;
@@ -76,6 +77,23 @@
 
   .form-heading {
     font-size: 1.25em;
+    margin: 1em 0;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .account-container {
+    padding: 0;
+  }
+
+  .form {
+    padding: 1em;
+    width: 75%;
+    border-radius: 5px;
+  }
+
+  .form-heading {
+    font-size: 1.5em;
     margin: 1em 0;
   }
 }

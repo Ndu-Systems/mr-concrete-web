@@ -251,3 +251,135 @@
 
   }
 }
+// ipad pro
+@media only screen and (max-width: 1024px) {
+  .container {
+    .search {
+      padding: 4rem 1rem;
+      background: url('../../../../assets/images/home/home-bg.svg');
+      background-repeat: no-repeat;
+
+      h1 {
+        font-weight: 700;
+        margin: 0 auto;
+
+        &.heading {
+          color: $white;
+          width: 100%;
+          font-size: 1.25rem;
+        }
+      }
+
+
+      .dialog {
+        padding: 1rem 0;
+
+        form {
+          margin: 4rem 0;
+          background: $white;
+          padding: 1rem;
+
+
+          &.col-1-of-2 {
+            grid-template-columns: 100%;
+            margin: 0;
+            grid-gap: 0;
+          }
+
+
+        }
+      }
+
+      .mat-flat-button.mat-primary {
+        background-color: $black;
+        padding: 0.5em 2em;
+        font-size: 0.563rem;
+        font-weight: 500;
+        border-radius: 0;
+        height: 2.99rem;
+
+        &[disabled] {
+          background-color: #DCDDE1;
+          color: #B2BEC3;
+        }
+      }
+    }
+
+    .select-cards {
+      padding: 2rem 0.5rem;
+
+      .card {
+        width: 100%;
+      }
+    }
+
+
+    .locations {
+      border-top: solid 1px $grey;
+
+      h1 {
+        font-size: 1.875rem;
+      }
+
+      .regions {
+        &.col-1-of-4 {
+          grid-template-columns: repeat(2, 50%);
+        }
+
+        .value {
+          font-size: 1rem;
+          font-weight: 700;
+        }
+      }
+
+
+    }
+
+
+    .categories {
+      border-top: solid 1px $grey;
+
+      .col-1-of-4 {
+        grid-template-columns: repeat(2, 50%);
+        width: 95%;
+      }
+
+      .card {
+        width: 100%;
+        margin: 0 auto;
+
+        .card-title {
+          font-size: 1.125rem;
+          font-weight: 700;
+        }
+      }
+    }
+
+
+    .order-steps {
+      border-top: solid 1px $grey;
+
+      .col-1-of-4 {
+        grid-template-columns: repeat(2, 50%);
+        width: 95%;
+      }
+
+      .step {
+        text-align: center;
+        width: 10rem;
+
+        .text {
+          font-size: 0.75rem;
+          font-weight: 700;
+        }
+      }
+    }
+
+
+  }
+}
+
+
+@media only screen and (min-width: 768) {
+
+}

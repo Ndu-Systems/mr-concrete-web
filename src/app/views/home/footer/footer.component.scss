@@ -45,3 +45,15 @@
     }
   }
 }
+
+@media only screen and (max-width: 1024px) {
+  .footer-container {
+    padding: 1em;
+
+    .icon {
+      img {
+        height: 2.5em;
+      }
+    }
+  }
+}
