@@ -1,39 +1,26 @@
 @import '../../../assets/styles/general/colors';
 
 .home-container {
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  padding: 0 15rem;
+  background: $white;
+  margin: 7rem auto;
 }
 
-.home-is-mobile .home-toolbar {
-  // position: fixed;
-  /* Make sure the toolbar will stay on top of the content as it scrolls past. */
-  // z-index: 2;
-}
+.home-is-mobile .home-toolbar {}
 
 h1.home-app-name {
   margin-left: 8px;
 }
 
 .home-sidenav-container {
-  /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
-     causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
+
   flex: 1;
-  background: $black;
-  background-image: url('../../../assets/images/home/backround.svg');
-  background-repeat: no-repeat;
-  background-size: 100%;
-  min-height: 120vh;
+  // background: $black;
+
 }
 
 .home-is-mobile .home-sidenav-container {
-  /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the
-     `<body>` to be our scrolling element for mobile layouts. */
+
   flex: 1 0 auto;
 }
 
@@ -42,32 +29,90 @@ h1.home-app-name {
 }
 
 .mat-drawer.mat-sidenav {
-  background: $black;
-  width: 15em;
+  background: $white;
+  width: 100%;
+
   a {
+
     font-weight: 200;
     font-size: 25px;
-    color: $white;
+    color: $black;
+
+    .img {
+      display: block;
+    }
   }
 }
+
 .mat-icon-button .mat-icon {
   color: $white;
 }
 
 .header-icon {
-  height: 2.5em;
+  height: 2rem;
   float: right;
-  margin-left: 12em;
+  margin-left: 0;
 }
+
 @media only screen and (max-width: 600px) {
   .home-sidenav-container {
-    background-image: url('../../../assets/images/home/mobile-bg.svg');
-    background-size: 110%;
-    background-position-x: -1em;
+    margin-top: 0;
+
+    .col-1-of-3 {
+      grid-template-columns: repeat(3, 33.33%);
+      padding: 1rem;
+    }
+
+    a {
+      h1 {
+        margin: 0;
+        font-size: 16px;
+      }
+    }
+
+    .account {
+      margin: 10rem 1rem;
+
+      a {
+        margin: 1rem;
+
+        &.cta {
+          color: $white;
+
+        }
+      }
+
+      .mat-flat-button.mat-primary {
+        background-color: $yellow;
+        padding: 0.5rem 2rem;
+        font-size: 1em;
+        font-weight: 700;
+        border-radius: 25rem;
+
+        &.transparent {
+          background: $default-white;
+          font-weight: 700;
+          color: $grey;
+          border: solid 1px $grey;
+        }
+
+        &[disabled] {
+          background-color: #DCDDE1;
+          color: #B2BEC3;
+        }
+      }
+
+    }
+  }
+
+  .home-container {
+    padding: 0 1rem;
+    background: $white;
+    margin: 5rem auto;
   }
 
   .mobile {
     display: block;
-    background: $black !important;
+    background: $yellow !important;
   }
 }

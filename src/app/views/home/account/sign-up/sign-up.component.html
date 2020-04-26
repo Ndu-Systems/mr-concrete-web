@@ -1,36 +1,40 @@
 <div class="account-container">
   <form class="form" [formGroup]="rForm">
-    <h1 class="form-heading">Sign in to access your account.</h1>
-    <mat-form-field>
-      <input matInput placeholder="Name" formControlName="FirstName" MatFormFieldControl type="text" required>
-      <mat-error *ngIf="!rForm.controls['FirstName'].valid && rForm.controls['FirstName'].touched">first name(s) is
+    <h1 class="form-heading">Register a new customer account.</h1>
+    <span class="col-1-of-2">
+      <mat-form-field appearance="outline">
+        <input matInput placeholder="Name" formControlName="FirstName" MatFormFieldControl type="text" required>
+        <mat-error *ngIf="!rForm.controls['FirstName'].valid && rForm.controls['FirstName'].touched">first name(s) is
+          required</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <input matInput placeholder="Surname" formControlName="LastName" MatFormFieldControl type="text" required>
+        <mat-error *ngIf="!rForm.controls['LastName'].valid && rForm.controls['LastName'].touched">surname is required
+        </mat-error>
+      </mat-form-field>
+    </span>
+    <mat-form-field appearance="outline">
+      <input matInput placeholder="Cellphone number" formControlName="Cellphone" MatFormFieldControl type="text"
+        required>
+      <mat-error *ngIf="!rForm.controls['Cellphone'].valid && rForm.controls['Cellphone'].touched">a valid Cellphone is
         required</mat-error>
     </mat-form-field>
-    <mat-form-field>
-      <input matInput placeholder="Surname" formControlName="LastName" MatFormFieldControl type="text" required>
-      <mat-error *ngIf="!rForm.controls['LastName'].valid && rForm.controls['LastName'].touched">surname is required
-      </mat-error>
-    </mat-form-field>
-    <mat-form-field>
+    <mat-form-field appearance="outline">
       <input matInput placeholder="Email" formControlName="Email" MatFormFieldControl type="email" required>
       <mat-error *ngIf="!rForm.controls['Email'].valid && rForm.controls['Email'].touched">a valid email address is
         required</mat-error>
     </mat-form-field>
-    <mat-form-field>
+
+    <mat-form-field appearance="outline">
       <input matInput placeholder="Password" formControlName="Password" MatFormFieldControl
-        [type]="hidePassword ? 'password' : 'text'" required>
-      <mat-error *ngIf="!rForm.controls['Password'].valid && rForm.controls['Password'].touched">your password is
-        required</mat-error>
-    </mat-form-field>
-    <mat-form-field>
-      <input matInput placeholder="Confirm Password" formControlName="ConfirmPassword" MatFormFieldControl
         [type]="hidePassword ? 'password' : 'text'" required>
       <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'">
         <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
       </button>
-      <mat-error *ngIf="!rForm.controls['ConfirmPassword'].valid && rForm.controls['ConfirmPassword'].touched">your
-        password is required</mat-error>
+      <mat-error *ngIf="!rForm.controls['Password'].valid && rForm.controls['Password'].touched">your password is
+        required</mat-error>
     </mat-form-field>
+
     <div class="select">
       <mat-radio-group aria-label="Select an option" formControlName="TypeOfUser">
         <span *ngFor="let item of accessRoles">
@@ -40,13 +44,33 @@
         </span>
       </mat-radio-group>
     </div>
-    <mat-form-field *ngIf="isSupplier">
-      <input matInput placeholder="Supplier name" formControlName="SupplierName" MatFormFieldControl type="text">
+    <mat-form-field appearance="outline" *ngIf="isSupplier">
+      <input matInput placeholder="Company name" formControlName="SupplierName" MatFormFieldControl type="text">
+    </mat-form-field>
+    <mat-form-field appearance="outline" *ngIf="isSupplier">
+      <input matInput placeholder="Address" formControlName="Address" MatFormFieldControl type="text">
     </mat-form-field>
     <div class="col-1-of-2">
-      <button mat-flat-button color="primary" (click)="onSubmit(rForm.value)" [disabled]="!rForm.valid" >
-        Sign up
+      <mat-form-field appearance="outline" *ngIf="isSupplier">
+        <input matInput placeholder="City" formControlName="City" MatFormFieldControl type="text">
+      </mat-form-field>
+      <mat-form-field appearance="outline" *ngIf="isSupplier">
+        <input matInput placeholder="Province" formControlName="Province" MatFormFieldControl type="text">
+      </mat-form-field>
+    </div>
+    <div class="col-1-of-2">
+      <button mat-flat-button color="primary" (click)="onSubmit(rForm.value)" [disabled]="!rForm.valid">
+        Register for free
       </button>
+      <a  mat-flat-button color="primary" class="transparent" routerLink="/">cancel</a>
+
+    </div>
+
+    <div class="col-1-of-2 cta">
+      <h1>
+        I have an account
+      </h1>
+      <a  mat-flat-button color="primary" routerLink="/sign-in">Log in now</a>
     </div>
     <mat-error *ngIf="error">
       {{error}}

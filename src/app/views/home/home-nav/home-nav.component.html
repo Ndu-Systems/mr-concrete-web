@@ -1,16 +1,50 @@
 <mat-toolbar class="desktop">
+
   <mat-toolbar-row>
     <a routerLink=""><img src="assets/images/home/icon.svg" alt="header icon" class="header-icon"></a>
     <ul>
       <li><a routerLink="">Home</a></li>
-      <li><a routerLink="/sign-in">Sign in </a></li>
-      <li>
-        <a routerLink="/sign-up">
-          <button mat-flat-button>
-            Sign up
-          </button>
-        </a>
-      </li>
     </ul>
   </mat-toolbar-row>
+
+  <mat-toolbar-row>
+    <ul>
+      <li><a routerLink="/sign-in">become a supplier </a></li>
+      <!-- <li>
+          <a routerLink="/sign-up">
+            <button mat-flat-button>
+              Sign up
+            </button>
+          </a>
+        </li> -->
+    </ul>
+  </mat-toolbar-row>
+  <mat-toolbar-row>
+    <ul>
+      <!-- <li><a routerLink="/sign-in">
+        </li> -->
+      <li>
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+          <img src="assets/images/home/user.svg" alt="user icon">
+        </button>
+        <mat-menu #menu="matMenu">
+          <a routerLink="/sign-in">
+            <button mat-menu-item>
+              <img src="assets/images/home/login.svg" alt="login icon">
+              <span>login</span>
+            </button>
+          </a>
+          <a routerLink="/sign-up">
+            <button mat-menu-item>
+              <img src="assets/images/home/add-person.svg" alt="login icon">
+              <span>Register for free</span>
+            </button>
+          </a>
+
+        </mat-menu>
+      </li>
+
+    </ul>
+  </mat-toolbar-row>
+
 </mat-toolbar>

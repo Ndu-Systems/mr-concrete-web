@@ -1,11 +1,11 @@
 @import '../../../../assets/styles/general/colors';
 
 .mat-toolbar {
-  background-color: $yellow;
+  background-color: $default-white;
+  padding: 1rem 15rem;
+  display: grid;
+  grid-template-columns: 30% 60% auto;
 
-   &.mat-toolbar-multiple-rows {
-    .mat-toolbar-row {}
-  }
 }
 
 .header-icon {
@@ -14,21 +14,24 @@
 }
 
 mat-toolbar-row {
+
   ul {
     text-align: center;
     list-style-type: none;
     margin: 0;
     padding: 15px;
-    position: absolute;
-    right: 1em;
+    // position: absolute;
+    // right: 1em;
 
     li {
       display: inline;
       font-size: 17px;
 
       a {
-        color: #f2f2f2;
+        text-transform: lowercase;
+        color: $black;
         text-decoration: none;
+        font-weight: 600;
         padding: 14px;
       }
     }
@@ -40,7 +43,16 @@ mat-toolbar-row {
   background: $black;
   color: $default-white;
 }
-
+.mat-menu-item {
+  a {
+    color: $black;
+    font-weight: 700;
+  }
+  img {
+    margin-right: 1rem;
+    height: 1.4rem;
+  }
+}
 
 @media only screen and (max-width: 600px) {
   .desktop {

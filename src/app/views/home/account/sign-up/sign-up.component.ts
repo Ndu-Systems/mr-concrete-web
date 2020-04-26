@@ -42,13 +42,16 @@ export class SignUpComponent implements OnInit {
         ])
       ),
       Password: [null, Validators.required],
-      ConfirmPassword: [null, Validators.required],
+      Cellphone: [null, Validators.required],
       FirstName: [null, Validators.required],
       LastName: [null, Validators.required],
       TypeOfUser: [null, Validators.required],
       CreateUserId: ['sys'],
       ModifyUserId: ['sys'],
-      SupplierName: [null]
+      SupplierName: [null],
+      Address: [null],
+      City: [null],
+      Province: [null]
     });
   }
   onUserTypeClick(typeOfUser) {
@@ -58,10 +61,7 @@ export class SignUpComponent implements OnInit {
   }
 
   onSubmit(model: SignUpModel) {
-    if (model.Password !== model.ConfirmPassword) {
-      this.error = 'passwords must match';
-      return;
-    }
+
     this.accountService.signUp(model)
       .pipe(first())
       .subscribe(data => {

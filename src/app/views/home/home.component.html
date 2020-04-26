@@ -1,4 +1,4 @@
-<div class="home-container" [class.home-is-mobile]="mobileQuery.matches">
+<div [class.home-is-mobile]="mobileQuery.matches">
   <mat-toolbar class="home-toolbar mobile">
     <mat-toolbar-row>
       <button mat-icon-button (click)="snav.toggle()">
@@ -8,19 +8,29 @@
     </mat-toolbar-row>
   </mat-toolbar>
   <app-home-nav></app-home-nav>
-  <mat-sidenav-container class="home-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+  <mat-sidenav-container class="home-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 0 : 0">
     <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
       fixedTopGap="56">
-      <mat-nav-list>
-        <a mat-list-item routerLink="" (click)="snav.toggle()">Home</a>
-        <a mat-list-item routerLink="/sign-in" (click)="snav.toggle()">Sign in</a>
-        <a mat-list-item routerLink="/sign-up" (click)="snav.toggle()">Sign up</a>
-      </mat-nav-list>
+      <div class="col-1-of-3">
+        <a mat-list-item routerLink="" (click)="snav.toggle()">
+          <img src="assets/images/home/home-lined.svg" alt="home outlined">
+          <h1>
+            home
+          </h1>
+        </a>
+      </div>
+      <div class="account">
+        <a mat-list-item routerLink="/sign-in" (click)="snav.toggle()">
+          <img src="assets/images/home/user-yellow.svg" alt="home outlined">
+            Sign in
+        </a>
+        <a  mat-flat-button color="primary" class="cta" routerLink="/sign-up"  (click)="snav.toggle()">register for free</a>
+      </div>
     </mat-sidenav>
-    <mat-sidenav-content>
+    <mat-sidenav-content class="home-container">
       <router-outlet></router-outlet>
-      <app-footer></app-footer>
     </mat-sidenav-content>
   </mat-sidenav-container>
 </div>
+<app-footer></app-footer>
 <p-toast [style]="{marginTop: '80px'}"></p-toast>

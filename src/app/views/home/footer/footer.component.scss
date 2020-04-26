@@ -1,18 +1,18 @@
 @import '../../../../assets/styles/general/colors';
 
 .footer-container {
-  padding: 10em 20em;
-  background: $black;
+  padding: 2rem 15rem;
+  background: $yellow;
 
   .icon {
     img {
-      height: 7em;
+      height: 3rem;
     }
   }
 
   .quick-links {
     .heading {
-      font-size: 1.2em;
+      font-size: 1rem;
       color: $white;
     }
 

@@ -1,37 +1,40 @@
 @import '../../../../../assets/styles/general/colors';
 
 .account-container {
-  padding: 1em;
-  margin-top: 20em;
-  height: 40em;
-  background: $black;
-  background-image: url('../../../../../assets/images/home/sign-in-bg.svg');
-  background-repeat: no-repeat;
+  padding: 2rem 10rem;
 }
 
 .form {
   display: flex;
   flex-direction: column;
-  background: $white;
-  padding: 1em;
-  width: 25em;
-  border-radius: 5px;
-  position: absolute;
-  right: 5em;
-  top: 8em;
+  background: $default-white;
+  padding: 1rem 2rem;
+  width: 50%;
+  margin: 0 auto;
+
+  .col-1-of-2 {
+    width: 96%;
+
+    &.cta {
+      margin-top: 4rem;
+
+      h1 {
+        font-size: 0.875rem;
+      }
+    }
+  }
 }
 
 .form-heading {
-  font-size: 1.5em;
+  font-size: 1.65rem;
+  font-weight: 900;
   margin: 2em 0;
 }
 
 ::ng-deep {
   .mat-form-field-wrapper {
     .mat-form-field-flex {
-      background: #ffffff !important;
       padding: 0em 1em;
-      border: solid 1px #DCDDE1;
       border-radius: 5px;
     }
   }
@@ -43,6 +46,8 @@
   padding: 0.5em 4em;
   font-size: 1em;
   font-weight: 500;
+  border-radius: 25rem;
+
   &[disabled] {
     background-color: #DCDDE1;
     color: #B2BEC3;
@@ -60,13 +65,13 @@
 
 
 @media only screen and (max-width: 600px) {
+  .account-container {
+    padding: 0;
+  }
   .form {
     padding: 1em;
     width: 19em;
     border-radius: 5px;
-    position: absolute;
-    right: 1.5em;
-    top: 6em;
   }
 
   .form-heading {
