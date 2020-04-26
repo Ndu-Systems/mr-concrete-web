@@ -42,11 +42,14 @@
 
 
 .mat-flat-button.mat-primary {
-  background-color: $black;
+  background-color: $yellow;
   padding: 0.5em 4em;
   font-size: 1em;
   font-weight: 500;
   border-radius: 25rem;
+  &.cta-btn {
+    background-color: $black;
+  }
 
   &[disabled] {
     background-color: #DCDDE1;

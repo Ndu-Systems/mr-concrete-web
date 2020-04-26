@@ -40,11 +40,14 @@
 }
 
 .mat-flat-button.mat-primary {
-  background-color: $black;
+  background-color: $yellow;
   padding: 0.5em 2em;
   font-size: 1em;
   font-weight: 500;
   border-radius: 25rem;
+  &.cta-btn {
+    background-color: $black;
+  }
   &.transparent {
     background: $default-white;
     font-weight: 700;
