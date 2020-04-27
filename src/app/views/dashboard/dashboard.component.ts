@@ -14,7 +14,7 @@ import { Message } from 'primeng/api/message';
 export class DashboardComponent implements OnInit {
   currentUser: UserModel;
   mobileQuery: MediaQueryList;
-
+  showFiller = false;
   @Input() messages: Message[] = [];
   private _mobileQueryListener: () => void;
 
