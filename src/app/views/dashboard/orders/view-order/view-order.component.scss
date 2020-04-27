@@ -1,83 +1,87 @@
 @import '../../../../../assets/styles/general/colors';
-.contianer{
-    width: 100%;
-    background: $default-white;
-    padding-bottom: 4rem;
-    // display: block;
 
-
-}
-.main {
-  display: grid;
-  grid-template-columns: 60% auto;
+.contianer {
+  width: 100%;
   background: $default-white;
-  margin: 1rem auto;
-width: 80%;
-padding: 1rem;
+  padding-bottom: 4rem;
+ }
 
-
+.main {
 
   .table-3 {
     display: grid;
     grid-template-columns: repeat(3, 33.333333333%);
   }
-.card{
+  .main-content {
+    margin: 2rem;
+    height: 60vh;
+    overflow: scroll;
+    ::-webkit-scrollbar {
+      display: block;
+    }
+
+  }
+  .card {
     margin: 0;
     border-radius: 0;
     box-shadow: none;
     padding: .5rem;
-  .data {
-    .text {
-      font-weight: 400;
-      font-size: 18px;
-    }
 
-    .span {
-      display: block;
-      font-weight: 700;
-      font-size: 12px;
-      text-transform: uppercase;
-      margin: 1em 0;
-      color: $grey;
-    }
+    .data {
+      .text {
+        font-weight: 400;
+        font-size: 18px;
+      }
 
+      .span {
+        display: block;
+        font-weight: 700;
+        font-size: 12px;
+        text-transform: uppercase;
+        margin: 1em 0;
+        color: $grey;
+      }
+
+    }
   }
 }
+
+.separator {
+  border-bottom: 1px solid $grey;
+  padding-left: .5rem;
+  color: $grey;
+  font-weight: 300;
+  font-size: 1.8rem;
+
 }
 
-.separator{
-    border-bottom: 1px solid $grey;
-    padding-left: .5rem;
-    color: $grey;
-    font-weight: 300;
-    font-size: 1.8rem;
-
+.m-t {
+  margin-top: 6.6rem;
 }
-.m-t{
-    margin-top: 6.6rem;
-}
-.rigth{
-    padding-left: 2rem;
-}
-.actions{
 
-    .primary{
-        color: $default-white;
-        background: $primary;
-        margin: 0 .3rem;
-        float: right;
 
-    }
-    .simple{
-        background: $grey;
-        float: right;
 
-    }
+.actions {
+
+  .primary {
+    color: $default-white;
+    background: $primary;
+    margin: 0 .3rem;
+    float: right;
+
+  }
+
+  .simple {
+    background: $grey;
+    float: right;
+
+  }
 }
 
 .cta {
   color: $white;
   float: right;
+
   .info {
     background-color: $primary;
   }
@@ -96,13 +100,15 @@ padding: 1rem;
     width: 100%;
     grid-template-columns: 100%;
     margin: 0;
+
     .table-3 {
       grid-template-columns: 100%;
     }
+
     .measurements {
       &.table-3 {
         grid-template-columns: repeat(3, 33.333333333%);
       }
     }
   }
- }
+}

@@ -1,4 +1,5 @@
-<app-banner [subheading]="subheading" [heading]="heading" [actionButton]="actionButton"></app-banner>
+<div class="main">
+  <app-banner [subheading]="subheading" [heading]="heading" [actionButton]="actionButton"></app-banner>
  <div class="container" *ngIf="!this.supplierOrder">
   <div class="heading col-1-of-4">
     <h1>Order #</h1>
@@ -81,3 +82,5 @@
 <div class="supplier" *ngIf="this.supplierOrder">
   <app-supplier-list-orders [orders]="this.supplierOrder.Orders"></app-supplier-list-orders>
 </div>
+</div>
+

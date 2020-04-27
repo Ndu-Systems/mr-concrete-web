@@ -1,119 +1,122 @@
-<app-banner [subheading]="subheading" [heading]="heading" [actionButton]="actionButton"></app-banner>
+<div class="main">
+  <app-banner [subheading]="subheading" [heading]="heading" [actionButton]="actionButton"></app-banner>
 
-<mat-tab-group class="tab-group" *ngIf="order">
-  <mat-tab label="Catergory">
-    <div class="catergory order-form">
-      <div>
-        <mat-radio-group aria-label="Select an option">
-          <span *ngFor="let catergory of caterories$ | async" class="options">
-            <mat-radio-button class="catergory-option" [value]="catergory.CategoryId"
-              [checked]="catergory.CategoryId == order.CategoryId" (click)="selectCatergory(catergory)">
-              {{catergory.CategoryName}}
-            </mat-radio-button>
-          </span>
+  <mat-tab-group class="tab-group" *ngIf="order">
+    <mat-tab label="Catergory">
+      <div class="catergory order-form">
+        <div>
+          <mat-radio-group aria-label="Select an option">
+            <span *ngFor="let catergory of caterories$ | async" class="options">
+              <mat-radio-button class="catergory-option" [value]="catergory.CategoryId"
+                [checked]="catergory.CategoryId == order.CategoryId" (click)="selectCatergory(catergory)">
+                {{catergory.CategoryName}}
+              </mat-radio-button>
+            </span>
 
-        </mat-radio-group>
-        <br> <br>
+          </mat-radio-group>
+          <br> <br>
 
+          <p>
+            Select the category that best relates to your order.
+          </p>
+        </div>
+      </div>
+
+    </mat-tab>
+    <mat-tab label="Supplier">
+      <div class="order-form">
+        <span *ngFor="let supplier of suppliers$ | async" class="suppliers">
+          <mat-card class="suppliers-card active-{{supplier.Selected}}" (click)="selectSupplier(supplier)">
+            <img class="mark-icon" *ngIf="supplier.Selected =='yes'" src="assets/images/dashboard/correct.svg" alt="">
+            <div class="icon">
+              <img *ngIf="supplier.Selected =='no'" src="assets/images/dashboard/order/suppliers-inactive.svg" alt="">
+              <img *ngIf="supplier.Selected =='yes'" src="assets/images/dashboard/order/suppliers-active.svg" alt="">
+
+            </div>
+            <div class="data">
+              <h2>
+                {{supplier.SupplierName}}
+              </h2>
+              <h3>
+                {{supplier.City}}
+              </h3>
+              <h4>
+                {{supplier.ContactNumber}}
+              </h4>
+            </div>
+          </mat-card>
+        </span>
         <p>
-          Select the category that best relates to your order.
+          Select or add a new supplier for residential
         </p>
       </div>
-    </div>
 
-  </mat-tab>
-  <mat-tab label="Supplier">
-    <div class="order-form">
-      <span *ngFor="let supplier of suppliers$ | async" class="suppliers">
-        <mat-card class="suppliers-card active-{{supplier.Selected}}" (click)="selectSupplier(supplier)">
-          <img class="mark-icon" *ngIf="supplier.Selected =='yes'" src="assets/images/dashboard/correct.svg" alt="">
-          <div class="icon">
-            <img *ngIf="supplier.Selected =='no'" src="assets/images/dashboard/order/suppliers-inactive.svg" alt="">
-            <img *ngIf="supplier.Selected =='yes'" src="assets/images/dashboard/order/suppliers-active.svg" alt="">
+    </mat-tab>
+    <mat-tab label="Ready-mix">
 
-          </div>
-          <div class="data">
-            <h2>
-              {{supplier.SupplierName}}
-            </h2>
-            <h3>
-              {{supplier.City}}
-            </h3>
-            <h4>
-              {{supplier.ContactNumber}}
-            </h4>
-          </div>
-        </mat-card>
-      </span>
-      <p>
-        Select or add a new supplier for residential
-      </p>
-    </div>
-
-  </mat-tab>
-  <mat-tab label="Ready-mix">
-
-    <div class="order-form white-bg">
-      <h1>Ready-mix Concrete order form</h1>
-      <div class="example-container">
-        <mat-form-field appearance="outline" *ngFor="let measurement of order.measurements" class="input-field">
-          <mat-label>{{measurement.Name}}</mat-label>
-          <input matInput [placeholder]="measurement.Name" [(ngModel)]="measurement.Value">
-        </mat-form-field>
+      <div class="order-form white-bg">
+        <h1>Ready-mix Concrete order form</h1>
+        <div class="example-container">
+          <mat-form-field appearance="outline" *ngFor="let measurement of order.measurements" class="input-field">
+            <mat-label>{{measurement.Name}}</mat-label>
+            <input matInput [placeholder]="measurement.Name" [(ngModel)]="measurement.Value">
+          </mat-form-field>
+        </div>
       </div>
-    </div>
 
-  </mat-tab>
+    </mat-tab>
 
-  <mat-tab label="Complete  order">
+    <mat-tab label="Complete  order">
 
-    <div class="order-form white-bg">
-      <h1>Complete this order</h1>
+      <div class="order-form white-bg">
+        <h1>Complete this order</h1>
 
-      <div class="example-container">
-        <mat-form-field appearance="outline" class="input-field-50">
-          <mat-label>Order Number</mat-label>
-          <input matInput placeholder="Order Number" [(ngModel)]="order.OrderNumber" disabled value="ORD44">
-        </mat-form-field>
+        <div class="example-container">
+          <mat-form-field appearance="outline" class="input-field-50">
+            <mat-label>Order Number</mat-label>
+            <input matInput placeholder="Order Number" [(ngModel)]="order.OrderNumber" disabled value="ORD44">
+          </mat-form-field>
 
-        <mat-form-field appearance="outline" class="input-field-50">
-          <mat-label>Project title/number</mat-label>
-          <input matInput placeholder="Project title/number" [(ngModel)]="order.ProjectCode">
-        </mat-form-field>
+          <mat-form-field appearance="outline" class="input-field-50">
+            <mat-label>Project title/number</mat-label>
+            <input matInput placeholder="Project title/number" [(ngModel)]="order.ProjectCode">
+          </mat-form-field>
 
-        <mat-form-field appearance="outline" class="input-field-50">
-          <mat-label>Order date</mat-label>
-          <input matInput [matDatepicker]="picker" placeholder="Order date" [(ngModel)]="order.OrderDate">
-          <mat-datepicker-toggle matSuffix [for]="picker">
-            <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
-          </mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
+          <mat-form-field appearance="outline" class="input-field-50">
+            <mat-label>Order date</mat-label>
+            <input matInput [matDatepicker]="picker" placeholder="Order date" [(ngModel)]="order.OrderDate">
+            <mat-datepicker-toggle matSuffix [for]="picker">
+              <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+            </mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
 
-        <mat-form-field appearance="outline" class="input-field-50">
-          <mat-label>Delivery date</mat-label>
-          <input matInput [matDatepicker]="picker2" placeholder="Delivery date" [(ngModel)]="order.DeliveryDate">
-          <mat-datepicker-toggle matSuffix [for]="picker2">
-            <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
-          </mat-datepicker-toggle>
-          <mat-datepicker #picker2></mat-datepicker>
-        </mat-form-field>
+          <mat-form-field appearance="outline" class="input-field-50">
+            <mat-label>Delivery date</mat-label>
+            <input matInput [matDatepicker]="picker2" placeholder="Delivery date" [(ngModel)]="order.DeliveryDate">
+            <mat-datepicker-toggle matSuffix [for]="picker2">
+              <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+            </mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+          </mat-form-field>
 
-        <mat-form-field class="input-field-50" appearance="outline">
-          <mat-label>How to get there</mat-label>
-          <textarea matInput placeholder="How to get there" [(ngModel)]="order.Directions"></textarea>
-        </mat-form-field>
+          <mat-form-field class="input-field-50" appearance="outline">
+            <mat-label>How to get there</mat-label>
+            <textarea matInput placeholder="How to get there" [(ngModel)]="order.Directions"></textarea>
+          </mat-form-field>
 
-        <mat-form-field class="input-field-50" appearance="outline">
-          <mat-label>Special instructions</mat-label>
-          <textarea matInput placeholder="Special instructions" [(ngModel)]="order.SpecialInstructions"></textarea>
-        </mat-form-field>
+          <mat-form-field class="input-field-50" appearance="outline">
+            <mat-label>Special instructions</mat-label>
+            <textarea matInput placeholder="Special instructions" [(ngModel)]="order.SpecialInstructions"></textarea>
+          </mat-form-field>
 
-        <div class="actions">
-          <button mat-button (click)="preview()">Complete order</button>
-         </div>
+          <div class="actions">
+            <button mat-button (click)="preview()">Complete order</button>
+           </div>
+        </div>
       </div>
-    </div>
 
-  </mat-tab>
-</mat-tab-group>
+    </mat-tab>
+  </mat-tab-group>
+
+</div>

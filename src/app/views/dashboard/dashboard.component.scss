@@ -18,7 +18,7 @@ mat-icon {
   height: 100vh;
   min-width: 10vw;
   border-right: 1px solid #ccc;
-  background-color: $yellow;
+  background-color: $default-white;
 }
 
 .drawer .header {
@@ -60,7 +60,7 @@ mat-icon {
 
     a {
       text-decoration: none;
-      color: $white;
+      color: $black;
       font-weight: 400;
 
       &:hover {
