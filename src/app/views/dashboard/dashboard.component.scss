@@ -13,18 +13,107 @@ mat-icon {
   z-index: 2;
 }
 
+.mat-toolbar {
+  background: transparent !important;
+}
+
 .drawer {
   position: fixed;
   height: 100vh;
   min-width: 10vw;
-  border-right: 1px solid #ccc;
-  background-color: $yellow;
+  background-color: $default-white;
+  &.desktop {
+    display: block;
+  }
 }
 
-.drawer .header {
+h1.home-app-name {
+  margin-left: 8px;
+}
+
+.home-sidenav-container {
+
+  flex: 1;
+  // background: $black;
+  .col-1-of-3 {
+    grid-template-columns: repeat(2,auto);
+  }
+}
+.mat-drawer.mat-sidenav {
+  background: $yellow;
+  width: 100%;
+
+  a {
+
+    font-weight: 200;
+    font-size: 25px;
+    color: $black;
+
+    .nav-item {
+      padding: 0.5rem 1rem;
+      width: 11rem;
+      text-align: left;
+      img {
+        &.hl-on {
+          display: inline-block;
+        }
+
+      }
+      @media only screen and (max-width: 600px) {
+        background: $default-white;
+        margin: 1rem auto;
+        width: 10rem;
+        border-radius: 10px;
+        color: $black;
+        h1 {
+          font-size: 16px;
+          font-weight: 600;
+        }
+       }
+
+       @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+         background: green;
+       }
+    }
+
+    &.active-link {
+      font-weight: 800;
+      color: $black;
+
+      .nav-item {
+        padding: 0.5rem 1rem;
+        background: #ecb9005c;
+        border-radius: 50px 0px 0px 50px;
+        border-right: solid 5px $yellow;
+        img {
+          &.hl-on {
+            display: inline-block;
+          }
+
+        }
+      }
+    }
+  }
+  .account {
+    ul {
+      list-style: none;
+    }
+  }
+}
+.home-is-mobile .home-sidenav-container {
+
+  flex: 1 0 auto;
+}
+.drawer {
+
   position: absolute;
-  right: 0;
-  justify-content: space-between;
+  top: 0;
+ }
+.drawer .header {
+  // position: absolute;
+  // right: 0;
+  // top: 15rem;
+  // justify-content: space-between;
 }
 
 .drawer .contents {
@@ -36,18 +125,72 @@ mat-icon {
 }
 
 .main.header {
-  position: fixed;
-  top: 2em;
+
   width: 100%;
   color: $white;
   z-index: 2;
   border-bottom: 1px solid #ccc;
 }
-
+.mat-drawer-side {
+  border-right:0;
+}
 .header {
-  top: 2em;
   width: 100%;
   color: $white;
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 20rem;
+    li {
+      margin-top: 1rem;
+    }
+
+    a {
+      text-decoration: none;
+      font-size: 15px;
+      color: $black;
+      font-weight: 500;
+
+      .nav-item {
+        padding: 0.5rem 1rem;
+        width: 11rem;
+        text-align: center;
+        img {
+          &.hl-on {
+            display: none;
+          }
+          &.hl-off {
+            display: inline-block;
+          }
+        }
+      }
+
+      &.active-link {
+        font-weight: 800;
+        color: $black;
+
+        .nav-item {
+          padding: 0.5rem 1rem;
+          background: #ecb9005c;
+          border-radius: 50px 0px 0px 50px;
+          border-right: solid 5px $yellow;
+          img {
+            &.hl-on {
+              display: inline-block;
+            }
+            &.hl-off {
+              display: none;
+            }
+          }
+        }
+      }
+
+      &:hover {
+        font-weight: 700;
+      }
+    }
+  }
 }
 
 .menu-items {
@@ -56,11 +199,11 @@ mat-icon {
 
   ul {
     list-style: none;
-    padding: 0 1em;
+    padding: 0;
 
     a {
       text-decoration: none;
-      color: $white;
+      color: $black;
       font-weight: 400;
 
       &:hover {
@@ -82,15 +225,15 @@ mat-icon {
   position: absolute;
   right: 15em;
   cursor: pointer;
+
   img {
     height: 100%;
   }
 }
 
 .main.contents {
-  min-height: 100vh;
-  margin-top: 64px;
-  padding: 0 15px;
+
+
 }
 
 .main.footer {
@@ -107,22 +250,31 @@ mat-icon {
 }
 
 .profile {
-  margin: 0 30em;
+  margin-left: 1em;
 
   .title {
-    font-weight: 400;
+    font-weight: 600;
   }
 }
 
 @media only screen and (max-width: 600px) {
+  .main {
+    margin: 1rem;
+  }
   .sign-out {
     right: 1em;
   }
 
+  .mat-toolbar {
+    background: $default-white !important;
+  }
   .drawer {
-    width: 50vw !important;
+    width: 100% !important;
     height: 100%;
     overflow: auto;
     -webkit-overflow-scrolling: touch;
+    &.desktop {
+      display: none;
+    }
   }
 }

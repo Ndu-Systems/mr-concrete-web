@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, EventEmitter, Output } from '@angular/core';
 import { CateroryService, SupplierService, MeasurementService, AccountService } from 'src/app/_services';
 import { Observable } from 'rxjs';
 import { Caterory, Supplier, Measurement, UserModel } from 'src/app/_models';
@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 })
 export class CreateOrderComponent implements OnInit, OnDestroy {
 
+  @Output() orderToCreateEmitter: EventEmitter<OrderView> = new EventEmitter<OrderView>();
   caterories$: Observable<Caterory[]>;
   suppliers$: Observable<Supplier[]>;
   suppliers: Supplier[];
@@ -37,23 +38,36 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
+    this.concreteorderService.setStateForCurrentOrder(null);
+    localStorage.removeItem('order');
     this.currentUser = this.accountService.CurrentUserValue;
+
     this.cateroryService.getCateries();
+
     this.supplierService.getSuppliers(1);
+
     this.measurementService.getMeasurements();
+
     this.caterories$ = this.cateroryService.categories;
+
     this.suppliers$ = this.supplierService.suppliers;
+
     this.measurements$ = this.measurementService.measurements;
+
     this.measurementService.measurements.subscribe(measurements => {
       this.order.CreateUserId = this.currentUser.UserId;
       this.order.ModifyUserId = this.currentUser.UserId;
       this.measurements = measurements;
     });
+
     this.supplierService.suppliers.subscribe(data => {
       this.suppliers = data;
       this.initOrder();
     });
-  }
+    // let r = Math.random().toString(36).substring(7);
+    this.order.OrderNumber = Math.random().toString(36).toUpperCase().substring(6) + Math.random().toString().substring(9);
+   }
+
   initOrder() {
     this.concreteorderService.order.subscribe(data => {
       const order = data;
@@ -64,30 +78,30 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
         } else {
           this.order.measurements = this.mapMeasurements(this.measurements);
         }
-
-        // this.selectSupplier(this.order.supplier);
-        // this.suppliers$ = this.supplierService.suppliers;
-        // this.order.measurements = this.mapMeasurements(this.order.measurements);
-        // if (order)
-        //  this.order.measurements = this.getNewMeasurementLabels();
-
+      } else {
+        this.order.measurements = this.mapMeasurements(this.measurements);
       }
     });
   }
+
   mapMeasurements(measurements: Measurement[]): Measurement[] {
     this.order.measurements = measurements;
     this.order.measurements.forEach(data => {
-      data.Value = '';
+      data.Value = data.Value || '';
     });
     return this.order.measurements;
   }
+
   getMeasurementLabels(measurements: Measurement[]) {
     measurements.forEach(data => {
       const check = this.measurements.find(x => x.MeasurementId === data.MeasurementId);
       data.Name = check && check.Name || '';
     });
+
     return measurements;
+
   }
+
   getNewMeasurementLabels() {
     let all = this.measurements;
     all.forEach(data => {
@@ -102,25 +116,28 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
     this.order.category = caterory;
     console.log(this.order);
   }
+
   selectSupplier(supplier: Supplier) {
     this.supplierService.resetCardClass(this.suppliers);
     supplier.Selected = 'yes';
     this.order.SupplierId = supplier.SupplierId;
     this.order.supplier = supplier;
-    this.supplierService.apendState(supplier);
+    this.supplierService.appendState(supplier);
   }
+  clicked() {
+    alert('Clicked ');
+  }
+
   preview() {
     this.order.isBusyWith = false;
     this.concreteorderService.setStateForCurrentOrder(this.order);
     this.router.navigate(['dashboard/view-order']);
   }
+
   clear() {
     this.concreteorderService.setStateForCurrentOrder(null);
   }
 
   ngOnDestroy(): void {
-    this.order.isBusyWith = false;
-    this.concreteorderService.setStateForCurrentOrder(this.order);
-
   }
 }

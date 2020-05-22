@@ -1,27 +1,28 @@
-
 @import '../../../../assets/styles/general/colors';
 
 .footer-container {
-  padding: 10em 20em;
-  background: $black;
+  padding: 2rem 15rem;
+  background: $yellow;
 
   .icon {
-    img  {
-      height: 7em;
+    img {
+      height: 3rem;
     }
   }
 
   .quick-links {
     .heading {
-      font-size: 1.2em;
+      font-size: 1rem;
       color: $white;
     }
 
     ul {
       list-style: none;
       padding: 0;
+
       li {
         margin: 1em 0;
+
         a {
           color: #f2f2f2;
           text-decoration: none;
@@ -36,5 +37,23 @@
 @media only screen and (max-width: 600px) {
   .footer-container {
     padding: 1em;
+
+    .icon {
+      img {
+        height: 2.5em;
+      }
+    }
   }
- }
+}
+
+@media only screen and (max-width: 1024px) {
+  .footer-container {
+    padding: 1em;
+
+    .icon {
+      img {
+        height: 2.5em;
+      }
+    }
+  }
+}

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { ConfirmationPageModel } from 'src/app/_shared';
+import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 import { OrderView } from 'src/app/_models/orderview.model';
 import { UserModel } from 'src/app/_models';
@@ -12,23 +13,22 @@ import { Router } from '@angular/router';
   styleUrls: ['./outcome.component.scss']
 })
 export class OutcomeComponent implements OnInit {
-
-  heading = 'Orders';
-  subheading = 'View order';
+  heading = '';
+  subheading = '';
   actionButton: any = {
-    link: '/dashboard/orders',
-    label: 'Return to orders'
+    link: '',
+    label: ''
   };
 
   order$: Observable<OrderView>;
   order: OrderView;
   currentUser: UserModel;
+  confirmation: ConfirmationPageModel;
   measurements;
   constructor(private concreteorderService: ConcreteorderService,
     private accountService: AccountService,
     private measurementService: MeasurementService,
-    private router: Router,
-
+    private router: Router
 
   ) { }
 
@@ -41,14 +41,20 @@ export class OutcomeComponent implements OnInit {
     this.concreteorderService.order.subscribe(data => {
       this.order = data;
     });
-  }
+    this.confirmation = JSON.parse(localStorage.getItem('confirmation')) as ConfirmationPageModel;
+    this.actionButton.link = this.confirmation.actionLink;
+    this.actionButton.label = this.confirmation.actionLabel;
+    this.heading = this.confirmation.heading;
+    this.subheading = this.confirmation.subheading;
+   }
 
   preview() {
     this.concreteorderService.setStateForCurrentOrder(this.order);
-    this.router.navigate(['dashboard/view-order']);
+    this.router.navigate([this.confirmation.positiveNavLink]);
   }
   list() {
     this.concreteorderService.setStateForCurrentOrder(this.order);
     this.router.navigate(['dashboard/orders']);
   }
+
 }

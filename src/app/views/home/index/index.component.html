@@ -1,19 +1,109 @@
 <div class="container">
-  <div class="main-block">
-    <h1 class="header">
-      Breaking barriers through innovative digital <br /> solutions.
-    </h1>
-    <div class="col-1-of-2">
-      <div>
-        <h1 class="cta-text">Sign up for 60 day free trial.</h1>
-      </div>
-      <div>
-        <a routerLink="sign-up">
-          <button mat-flat-button color="primary">Sign up for free</button>
+  <div class="search">
+    <h1 class="heading">Get all your building material
+      online & delivered to you on site.</h1>
+    <div class="dialog">
+      <form [formGroup]="rForm" class="col-1-of-2">
+        <mat-form-field class="form-group" appearance="outline">
+          <mat-label>Search</mat-label>
+          <input matInput placeholder="Enter your product name here" formControlName="SearchText" required>
+        </mat-form-field>
+        <button mat-flat-button color="primary" (click)="onSubmit(rForm.value)" [disabled]="!rForm.valid">
+          Search
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <div class="select-cards col-1-of-2">
+    <mat-card class="card">
+      <img mat-card-image src="assets/images/home/architecture.svg" alt="photo of builders">
+      <mat-card-content>
+        <h1 class="card-title">
+          Buy or order online
+        </h1>
+      </mat-card-content>
+      <mat-card-actions class="cta">
+        <a routerLink="/sign-up">
+          Create a builder account
         </a>
+      </mat-card-actions>
+    </mat-card>
+    <mat-card class="card">
+      <img mat-card-image src="assets/images/home/vehicles.svg" alt="photo of construction tools">
+      <mat-card-content>
+        <h1 class="card-title">
+          Become a supplier
+        </h1>
+      </mat-card-content>
+      <mat-card-actions class="cta">
+        <a routerLink="/sign-up">
+          Create a supplier account
+        </a>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+  <div class="locations">
+    <div class="col-1-of-1">
+      <h1 class="title">
+        Available in
+      </h1>
+      <div class="regions col-1-of-4">
+        <h1 class="value" *ngFor="let item of [1,1,1,1,1,1]">Durban</h1>
       </div>
     </div>
   </div>
-  <app-material-section></app-material-section>
-  <app-commitment-section></app-commitment-section>
+  <div class="categories">
+    <div class="col-1-of-1">
+      <h1 class="title">
+       Top categories
+      </h1>
+      <div class="col-1-of-4">
+        <mat-card class="card" *ngFor="let item of [1,1,1,1,1,1]">
+          <img mat-card-image src="assets/images/home/vehicles.svg" alt="photo of construction tools">
+          <mat-card-content>
+            <h1 class="card-title">
+              Cement
+            </h1>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+
+  <div class="order-steps">
+    <div class="col-1-of-1">
+      <h1 class="title">
+        Online orders
+       </h1>
+    </div>
+    <div class="col-1-of-4">
+      <div class="step">
+        <img src="assets/images/home/step1.svg" alt="step 1">
+        <h1 class="text">
+          Place an order online as a customers.
+        </h1>
+      </div>
+      <div class="step">
+        <img src="assets/images/home/step2.svg" alt="step 2">
+        <h1 class="text">
+          The supplier will approve the order & update the order status
+        </h1>
+      </div>
+      <div class="step">
+        <img src="assets/images/home/step3.svg" alt="step 3">
+        <h1 class="text">
+          Once the order has been completed the customer will confirm order.
+        </h1>
+      </div>
+      <div class="step">
+        <img src="assets/images/home/step4.svg" alt="step 4">
+        <h1 class="text">
+          Leave a review online in order to improve our community.
+        </h1>
+      </div>
+    </div>
+  </div>
+
 </div>

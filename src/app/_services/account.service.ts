@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { CURRENT_USER } from '../_shared';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import { MessageService } from 'primeng/api';
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +15,10 @@ export class AccountService {
   private _user: BehaviorSubject<UserModel>;
   private user: Observable<UserModel>;
   url: string;
+
   constructor(
     private http: HttpClient,
+    private messageService: MessageService,
   ) {
     this._user = new BehaviorSubject<UserModel>(JSON.parse(localStorage.getItem(CURRENT_USER)));
     this.user = this._user.asObservable();
@@ -34,6 +37,13 @@ export class AccountService {
           this._user.next(response);
         }
         return response;
+      }, error => {
+        this.messageService.add({
+          severity: 'success',
+          summary: `Success!`,
+          detail: 'Supplier added successfully',
+          life: 1000
+        });
       }));
   }
 
@@ -47,6 +57,7 @@ export class AccountService {
         return response;
       }));
   }
+
   signOut() {
     localStorage.removeItem(CURRENT_USER);
     this._user.next(null);

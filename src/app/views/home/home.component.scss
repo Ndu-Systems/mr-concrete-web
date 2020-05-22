@@ -1,17 +1,189 @@
 @import '../../../assets/styles/general/colors';
 
 .home-container {
-  background: $black;
-  background-image: url('../../../assets/images/home/backround.svg');
-  background-repeat: no-repeat;
-  background-size: 100%;
-  min-height: 120vh;
+  padding: 0 15rem;
+  background: $white;
+  margin: 7rem auto;
 }
 
-@media only screen and (max-width: 600px) {
+.home-is-mobile .home-toolbar {}
+
+h1.home-app-name {
+  margin-left: 8px;
+}
+
+.home-sidenav-container {
+
+  flex: 1;
+  // background: $black;
+
+}
+
+.home-is-mobile .home-sidenav-container {
+
+  flex: 1 0 auto;
+}
+
+.mobile {
+  display: none;
+}
+
+.mat-drawer.mat-sidenav {
+  background: $white;
+  width: 100%;
+
+  a {
+
+    font-weight: 200;
+    font-size: 25px;
+    color: $black;
+
+    .img {
+      display: block;
+    }
+  }
+}
+
+.mat-icon-button .mat-icon {
+  color: $white;
+}
+
+.header-icon {
+  height: 2rem;
+  float: right;
+  margin-left: 0;
+}
+
+// ipad pro
+@media only screen and (max-width: 1024px) {
+  .home-sidenav-container {
+    margin-top: 0;
+
+    .col-1-of-3 {
+      grid-template-columns: repeat(3, 33.33%);
+      padding: 5rem 2rem;
+    }
+
+    a {
+      h1 {
+        margin: 0;
+        font-size: 16px;
+      }
+    }
+
+    .account {
+      border-top: solid 1px $grey;
+      margin: 5rem 1rem;
+
+      a {
+        margin: 1rem;
+
+        &.cta {
+          color: $white;
+
+        }
+      }
+
+      .mat-flat-button.mat-primary {
+        background-color: $yellow;
+        padding: 0.5rem 2rem;
+        font-size: 1em;
+        font-weight: 700;
+        border-radius: 25rem;
+
+        &.transparent {
+          background: $default-white;
+          font-weight: 700;
+          color: $grey;
+          border: solid 1px $grey;
+        }
+
+        &[disabled] {
+          background-color: #DCDDE1;
+          color: #B2BEC3;
+        }
+      }
+
+    }
+  }
+
   .home-container {
-    background-image: url('../../../assets/images/home/mobile-bg.svg');
-    background-size: 110%;
-    background-position-x: -1em;
+    padding: 0 1rem;
+    background: $white;
+    margin: 5rem auto;
+  }
+
+  .mobile {
+    display: block;
+    background: $yellow !important;
+  }
+}
+
+// ipad
+
+@media only screen and (max-width: 768) {}
+
+
+
+@media only screen and (max-width: 600px) {
+  .home-sidenav-container {
+    margin-top: 0;
+
+    .col-1-of-3 {
+      grid-template-columns: repeat(3, 33.33%);
+      padding: 1rem;
+    }
+
+    a {
+      h1 {
+        margin: 0;
+        font-size: 16px;
+      }
+    }
+
+    .account {
+      margin: 10rem 1rem;
+
+      a {
+        margin: 1rem;
+
+        &.cta {
+          color: $white;
+
+        }
+      }
+
+      .mat-flat-button.mat-primary {
+        background-color: $yellow;
+        padding: 0.5rem 2rem;
+        font-size: 1em;
+        font-weight: 700;
+        border-radius: 25rem;
+
+        &.transparent {
+          background: $default-white;
+          font-weight: 700;
+          color: $grey;
+          border: solid 1px $grey;
+        }
+
+        &[disabled] {
+          background-color: #DCDDE1;
+          color: #B2BEC3;
+        }
+      }
+
+    }
+  }
+
+  .home-container {
+    padding: 0 1rem;
+    background: $white;
+    margin: 5rem auto;
+  }
+
+  .mobile {
+    display: block;
+    background: $yellow !important;
   }
 }

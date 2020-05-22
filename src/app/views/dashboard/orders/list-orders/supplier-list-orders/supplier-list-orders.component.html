@@ -15,6 +15,11 @@
     <h1 class="title">
       Client
     </h1>
+
+    <h1 class="title">
+      actions
+    </h1>
+
   </span>
   <mat-card *ngFor="let item of orders">
     <span class="table-card col-1-of-8">
@@ -26,9 +31,10 @@
             <mat-chip class="chip info" *ngIf="item.StatusId == '2'">Accepted at supplier</mat-chip>
             <mat-chip class="chip info" *ngIf="item.StatusId == '3'">In progress</mat-chip>
             <mat-chip class="chip info" *ngIf="item.StatusId == '4'">On delivery</mat-chip>
-            <mat-chip class="chip success" *ngIf="item.StatusId == '5'">Confirmed by customer</mat-chip>
-            <mat-chip class="chip success" *ngIf="item.StatusId == '6'">Complete</mat-chip>
-            <mat-chip class="chip danger" *ngIf="item.StatusId == '7'">Cancelled</mat-chip>
+            <mat-chip class="chip success" *ngIf="item.StatusId == '5'">Completed Order</mat-chip>
+            <mat-chip class="chip cancelled" *ngIf="item.StatusId == '6'">Cancelled</mat-chip>
+            <mat-chip class="chip cancelled" *ngIf="item.StatusId == '7'">Cancelled by customer</mat-chip>
+            <mat-chip class="chip cancelled" *ngIf="item.StatusId == '8'">Cancelled by supplier</mat-chip>
           </mat-chip-list>
         </h1>
       </div>
@@ -36,44 +42,40 @@
         <h1 class="text">
           {{item.ProjectCode}}
           <span class="span">
-            <!-- {{item.StatusId}} -->
-          </span>
+           </span>
         </h1>
       </div>
       <div class="data">
         <h1 class="text">
           {{item.category?.CategoryName}}
           <span class="span">
-            <!-- {{item.StatusId}} -->
-          </span>
+           </span>
         </h1>
       </div>
       <div class="data">
         <h1 class="text">
-          {{item.DeliveryDate }}
+          {{item.DeliveryDate | date}}
           <span class="span">
-            <!-- {{item.StatusId}} -->
-          </span>
+           </span>
         </h1>
       </div>
       <div class="data">
         <h1 class="text">
           {{item.supplier?.SupplierName}}
           <span class="span">
-            <!-- {{item.StatusId}} -->
-          </span>
+           </span>
         </h1>
       </div>
       <div class="data">
-        <button class="buttons sucees" mat-button (click)="view(item)">
-          <mat-icon matDatepickerToggleIcon matTooltip="View order full details">remove_red_eye</mat-icon>
-        </button>
-        <button class="buttons primary" [disabled]="item.StatusId != '1'" matTooltip="Edit this order." mat-button>
-          <mat-icon matDatepickerToggleIcon>edit</mat-icon>
-        </button>
-        <button class="buttons danger" [disabled]="item.StatusId != '1'" matTooltip="Cancel this order." mat-button>
-          <mat-icon matDatepickerToggleIcon>cancel</mat-icon>
-        </button>
+        <mat-card-actions class="cta">
+          <button mat-button class="info" *ngIf="item.StatusId === '1'" (click)="updateOrderStatus(item,2)">Accept order.</button>
+          <button mat-button class="info" *ngIf="item.StatusId === '2'" (click)="updateOrderStatus(item,3)">On its way.</button>
+          <button mat-button class="info" *ngIf="item.StatusId === '3'"(click)="updateOrderStatus(item,4)">On Delivery.</button>
+          <button mat-button class="success" *ngIf="item.StatusId === '4'" (click)="updateOrderStatus(item,5)">Accepted by customer.</button>
+          <button mat-button class="success" *ngIf="item.StatusId === '5'">Order Complete.</button>
+          <button mat-button class="danger" (click)="updateOrderStatus(item,6)">Cancel order.</button>
+        </mat-card-actions>
+        <a class="anchor" (click)="viewOrder(item)">view order</a>
       </div>
     </span>
   </mat-card>

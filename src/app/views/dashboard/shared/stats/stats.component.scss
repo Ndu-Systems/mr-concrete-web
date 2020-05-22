@@ -1,9 +1,23 @@
 @import '../../../../../assets/styles/general/colors';
 
+.col-1-of-4 {
+  grid-gap: 0rem;
+}
+h5 {
+  font-weight: 500;
+  text-transform: capitalize;
+  color: $grey;
+}
 .main-card {
   color: $white;
   cursor: pointer;
   height: 13em !important;
+  border-radius: 10px;
+  box-shadow: 10px 0px 48px -9px rgba(113, 128, 147, 0.08);
+  &:hover{
+    box-shadow: 10px 0px 48px -9px rgba(113, 128, 147, 0.5);
+
+  }
   &.stats {
     height: 11em;
 
@@ -14,7 +28,9 @@
     &.warning {
       background-color: $yellow;
     }
-
+    &.primary {
+      background-color: $primary;
+    }
     &.danger {
       background-color: $danger;
     }
@@ -29,5 +45,21 @@
     display: block;
     margin-bottom: 16px;
     color: $white;
+  }
+}
+.header {
+  font-weight: 600;
+  font-size: 25px;
+  padding: 0 1.2em;
+
+  &.stats {
+    padding: 0;
+  }
+}
+
+
+@media only screen and (max-width: 600px) {
+  .main-card {
+    border-radius: 5px;
   }
 }

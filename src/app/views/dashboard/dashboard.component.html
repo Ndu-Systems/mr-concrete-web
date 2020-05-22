@@ -1,36 +1,81 @@
-<mat-drawer-container [class.drawer-opened]="drawer.opened" class="example-container">
-  <mat-drawer #drawer class="drawer" mode="side" opened="true">
-    <mat-toolbar class="header">
-      <div class="logo">
-        <img src="assets/images/dashboard/icon.svg" class="icon" alt="icon image">
-      </div>
-      <mat-icon class="close" (click)="drawer.close()">keyboard_arrow_right</mat-icon>
+   <mat-drawer-container [class.drawer-opened]="drawer.opened" class="example-container">
+    <mat-drawer #drawer class="drawer desktop" mode="side" opened="true">
+      <mat-toolbar class="header">
+        <ul>
+          <li><a routerLink="/dashboard" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">
+              <div class="nav-item">
+                <img src="assets/images/dashboard/nav/dashboard.svg" alt="feed" class="hl-on">
+                <img src="assets/images/dashboard/nav/dashboard-disabled.svg" alt="feed" class="hl-off">&nbsp;
+                Dashboard
+              </div>
+            </a></li>
+          <li>
+            <a routerLink="/dashboard/orders" routerLinkActive="active-link">
+              <div class="nav-item">
+                <img src="assets/images/dashboard/nav/order.svg" alt="feed" class="hl-on">
+                <img src="assets/images/dashboard/nav/order-disabled.svg" alt="feed" class="hl-off">&nbsp;
+                Orders
+              </div>
+            </a></li>
+        </ul>
+      </mat-toolbar>
+      <app-dashboard-nav></app-dashboard-nav>
+    </mat-drawer>
+    <mat-toolbar class="home-toolbar mobile">
+      <mat-toolbar-row>
+        <button mat-icon-button (click)="snav.toggle()">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <!-- <a routerLink=""><img src="assets/images/home/icon.svg" alt="header icon" class="header-icon"></a> -->
+      </mat-toolbar-row>
     </mat-toolbar>
-    <app-dashboard-nav (toggleNav)="drawer.close()"></app-dashboard-nav>
-  </mat-drawer>
+    <!-- <div class="main contents">
+      <router-outlet></router-outlet>
+    </div> -->
+    <mat-sidenav-container class="home-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 0 : 0">
+      <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
+        fixedTopGap="56">
+        <div class="col-1-of-3">
+          <a mat-list-item  routerLink="/dashboard" (click)="snav.toggle()">
+            <div class="nav-item">
+              <img src="assets/images/dashboard/nav/dashboard.svg" alt="dashboard" class="hl-on">
+              <h1>
+                Dashboard
+              </h1>
+            </div>
+          </a>
+          <a mat-list-item  routerLink="/dashboard/orders" (click)="snav.toggle()">
+            <div class="nav-item">
+              <img src="assets/images/dashboard/nav/order.svg" alt="feed" class="hl-on">&nbsp;
+              <h1>
+                Orders
+              </h1>
+            </div>
+          </a>
+        </div>
+        <div class="account">
+          <ul>
+            <li>
+              <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                <img src="assets/images/home/user.svg" alt="user icon">
+              </button>
+              <mat-menu #menu="matMenu">
+                <a routerLink="" (click)="signOut()">
+                  <button mat-menu-item>
+                    <img src="assets/images/home/login.svg" alt="login icon">
+                    <span>logout</span>
+                  </button>
+                </a>
+              </mat-menu>
+            </li>
+          </ul>
+        </div>
 
-  <mat-toolbar class="main header-main">
-    <mat-icon *ngIf="!drawer.opened" class="menu" (click)="drawer.toggle()">
-      view_list
-    </mat-icon>
-    <div class="profile">
-     <h1 class="title">
-      Welcome,  {{currentUser.FirstName}} {{currentUser.LastName}}
-     </h1>
-    </div>
-    <!-- <div>Menu</div> -->
-    <div class="sign-out">
-      <img src="../../../assets/images/dashboard/off.svg" alt="sign-out" (click)="signOut()">
-    </div>
-  </mat-toolbar>
+      </mat-sidenav>
+      <mat-sidenav-content class="contents">
+        <router-outlet></router-outlet>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
 
-  <div class="main contents">
-     <router-outlet></router-outlet>
-  </div>
-
-  <mat-toolbar class="main footer">
-    Footer
-  </mat-toolbar>
-</mat-drawer-container>
-<p-toast [style]="{marginTop: '80px'}"></p-toast>
-<p-confirmDialog [style]="{width: '25vw'}"></p-confirmDialog>
+    <p-toast [style]="{marginTop: '80px'}"></p-toast>
+    <p-confirmDialog [style]="{width: '25vw'}"></p-confirmDialog>

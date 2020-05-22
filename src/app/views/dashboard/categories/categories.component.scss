@@ -100,10 +100,31 @@ button.danger {
   .heading {
     display: none;
   }
-  
+
   ::ng-deep {
     body .ui-dialog {
       width: 95vw !important;
+    }
+  }
+
+  .container-table {
+    .mat-card {
+      padding: 0.5em;
+      height: 13em;
+    }
+
+    .col-1-of-4 {
+      grid-template-columns: repeat(2, auto);
+      grid-gap: 0;
+    }
+
+    .table-card {
+      .header {
+        &.col-1-of-2 {
+          grid-template-columns: repeat(1, auto);
+          margin-bottom: 0;
+        }
+      }
     }
   }
 }

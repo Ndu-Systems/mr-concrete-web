@@ -53,6 +53,21 @@
 }
 
 
+.cta {
+  color: $white;
+
+  .info {
+    background-color: $primary;
+  }
+
+  .success {
+    background-color: $success;
+  }
+
+  .danger {
+    background-color: $danger;
+  }
+}
 
 .col-1-of-8 {
   display: grid;
@@ -111,21 +126,30 @@ button.primary {
 button.danger {
   background: $danger;
 }
+
 .chip {
-   &.info {
-    color:$primary;
-    background-color:$light_primary;
+  &.info {
+    background-color: $light_primary;
+    color: $primary;
   }
+
   &.success {
     color: $success;
     background-color: $light_success;
   }
+
   &.danger {
     color: $danger;
     background: $light_danger;
   }
 }
-
+.anchor {
+  cursor: pointer;
+  font-weight: 800;
+  color: $primary;
+}
 @media only screen and (max-width: 600px) {
-  .header {display: none;}
+  .header {
+    display: none;
+  }
 }

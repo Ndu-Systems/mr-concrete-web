@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20.199" height="20.877" viewBox="0 0 20.199 20.877">
+  <g id="feed-disabled" transform="translate(-0.001)">
+    <g id="rss" transform="translate(0.001)">
+      <g id="Group_647" data-name="Group 647" transform="translate(0)">
+        <circle id="Ellipse_146" data-name="Ellipse 146" cx="2.5" cy="2.5" r="2.5" transform="translate(0 15.877)" fill="#bdc3c7"/>
+        <g id="Group_644" data-name="Group 644" transform="translate(3.801 10.1)">
+          <path id="Path_753" data-name="Path 753" d="M6.023,18.528a3.792,3.792,0,0,1,3.787,3.79h2.526A6.324,6.324,0,0,0,6.023,16Z" transform="translate(-6.023 -16)" fill="#bdc3c7"/>
+        </g>
+        <g id="Group_645" data-name="Group 645" transform="translate(3.784 5.05)">
+          <path id="Path_754" data-name="Path 754" d="M6,10.525a8.852,8.852,0,0,1,8.839,8.842h2.526A11.379,11.379,0,0,0,6,8Z" transform="translate(-5.996 -8)" fill="#bdc3c7"/>
+        </g>
+        <g id="Group_646" data-name="Group 646" transform="translate(3.784)">
+          <path id="Path_755" data-name="Path 755" d="M6,2.525a13.906,13.906,0,0,1,13.89,13.892h2.525A16.433,16.433,0,0,0,6,0Z" transform="translate(-5.996)" fill="#bdc3c7"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

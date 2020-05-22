@@ -1,12 +1,14 @@
  @import '../../../../../assets/styles/general/colors';
 
  .mat-card {
-   height: 6em;
+  height: 8em;
  }
 
- .col-1-of-3 {
-   grid-template-columns: 20% 50% auto;
+ .col-1-of-2 {
    margin-bottom: 0;
+ }
+
+ .header {
 
    h1 {
      font-size: 20px;
@@ -22,6 +24,30 @@
    .greeting {
      font-size: 18px;
    }
+
+
+   &.col-1-of-2 {
+
+     @media only screen and (max-width: 600px) {
+       grid-template-columns: 50% auto;
+     }
+   }
+
+   .time {
+     width: 34%;
+     color: $grey;
+     margin: 0 auto;
+     margin-right: 6em;
+     font-size: 1em;
+
+     &.col-1-of-2 {
+
+       @media only screen and (max-width: 600px) {
+         grid-template-columns: 100%;
+         width: 100%;
+       }
+     }
+   }
  }
 
  .banner-heading {
@@ -30,11 +56,12 @@
  }
 
  .mat-flat-button {
-   position: absolute;
-   right: 8em;
-   top: 4em;
+   height: 4vh;
+   margin: 1em auto;
+   margin-right: 9em;
    text-transform: capitalize;
  }
+
 
  @media only screen and (max-width: 600px) {
    .col-1-of-3 {
@@ -45,15 +72,23 @@
      overflow: hidden;
      height: 7em;
 
+
    }
 
    .mat-flat-button {
-     position: absolute;
-     top: 5em;
-     right: 1em;
-     text-transform: capitalize;
+     height: 4vh;
+     margin-right: 1em;
      font-size: 0.75555em;
      font-weight: 400;
+   }
+
+   .action {
+     &.col-1-of-2 {
+
+       @media only screen and (max-width: 600px) {
+         grid-template-columns: 50% auto;
+       }
+     }
    }
 
    .banner-heading {

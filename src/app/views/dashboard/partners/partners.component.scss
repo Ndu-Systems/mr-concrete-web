@@ -116,4 +116,23 @@ button.danger {
       width: 95vw !important;
     }
   }
+
+  .container-table {
+    .mat-card {
+      padding: 0.5em;
+      height: 20em;
+    }
+
+    .col-1-of-4 {
+      grid-template-columns: repeat(2, auto);
+    }
+
+    .table-card {
+      .header {
+        &.col-1-of-2 {
+          grid-template-columns: repeat(1, auto);
+        }
+      }
+    }
+  }
 }

@@ -91,7 +91,7 @@ export class CreateOrderComponent implements OnInit {
     supplier.Selected = 'yes';
     this.order.SupplierId = supplier.SupplierId;
     this.order.supplier = supplier;
-    this.supplierService.apendState(supplier);
+    this.supplierService.appendState(supplier);
   }
   preview() {
     this.order.isBusyWith = false;

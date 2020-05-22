@@ -28,6 +28,7 @@ export class ConcreteorderService {
   public get orderViewValue(): OrderView[] {
     return this._orders.value;
   }
+
   apendState(data: OrderView) {
     const state = this.orderViewValue || [];
     state.push(data);
@@ -41,14 +42,14 @@ export class ConcreteorderService {
 
   }
   setStateForCurrentOrder(data: OrderView) {
-    debugger
     this._order.next(data);
     localStorage.setItem('order', JSON.stringify(data));
-
   }
+
   createOrder(data): Observable<any> {
     return this.http.post<any>(`${this.url}/api/concreteorder/order.php`, data);
   }
+
   updateOrder(data): Observable<any> {
     return this.http.post<any>(`${this.url}/api/concreteorder/update-order.php`, data);
   }
@@ -65,7 +66,11 @@ export class ConcreteorderService {
     });
   }
 
-  getOrdersForSupplier(UserId: string): Observable<SupplierOrdersModel> {
-    return this.http.get<SupplierOrdersModel>(`${this.url}/api/concreteorder/get-supplierorders.php?UserId=${UserId}`);
+  getOrdersForSupplier(UserId: string): Observable<OrderView[]> {
+    return this.http.get<OrderView[]>(`${this.url}/api/concreteorder/get-supplierorders.php?UserId=${UserId}`);
+  }
+
+  resetOrder() {
+    this.setStateForCurrentOrder(null);
   }
 }

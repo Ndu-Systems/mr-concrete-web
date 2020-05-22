@@ -1,12 +1,11 @@
 <div class="account-container">
   <form class="form" [formGroup]="rForm">
     <h1 class="form-heading">Sign in to access your account.</h1>
-    <mat-form-field>
+    <mat-form-field appearance="outline">
       <input matInput placeholder="Email" formControlName="Email" MatFormFieldControl type="email" required>
       <mat-error *ngIf="!rForm.controls['Email'].valid && rForm.controls['Email'].touched">a valid email address is required</mat-error>
     </mat-form-field>
-
-    <mat-form-field>
+    <mat-form-field appearance="outline">
       <input matInput placeholder="Password" formControlName="Password" MatFormFieldControl [type]="hidePassword ? 'password' : 'text'"  required>
       <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'">
         <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -24,8 +23,18 @@
     </div>
     <div class="col-1-of-2">
       <button mat-flat-button color="primary" (click)="onSubmit(rForm.value)" [disabled]="!rForm.valid">
-        sign in
+        Log in
       </button>
+    </div>
+    <div class="col-1-of-2 cta">
+      <h1>
+        Sign up for 14 day free trial.
+      </h1>
+      <a  mat-flat-button color="primary" class="cta-btn" routerLink="/sign-up">register for free</a>
+    </div>
+
+    <div class="error" *ngIf="error">
+      <h1>{{error}}</h1>
     </div>
   </form>
 </div>
