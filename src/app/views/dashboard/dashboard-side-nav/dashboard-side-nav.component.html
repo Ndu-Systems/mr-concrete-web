@@ -1,0 +1,27 @@
+<mat-toolbar class="header">
+  <div class="col-1-of-1 items">
+    <div class="profile">
+      <app-user-profile></app-user-profile>
+    </div>
+
+      <ul>
+        <li><a routerLink="/dashboard" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">
+            <div class="nav-item">
+              <img src="assets/images/dashboard/nav/dashboard.svg" alt="feed" class="hl-on">
+              <img src="assets/images/dashboard/nav/dashboard-disabled.svg" alt="feed" class="hl-off">&nbsp;
+              Dashboard
+            </div>
+          </a></li>
+        <li>
+          <a routerLink="/dashboard/orders" routerLinkActive="active-link">
+            <div class="nav-item">
+              <img src="assets/images/dashboard/nav/order.svg" alt="feed" class="hl-on">
+              <img src="assets/images/dashboard/nav/order-disabled.svg" alt="feed" class="hl-off">&nbsp;
+              Orders
+            </div>
+          </a></li>
+      </ul>
+  </div>
+
+
+</mat-toolbar>

@@ -1,0 +1,20 @@
+.main-container {
+  .dp {
+    text-align: center;
+    img {
+      height: 8rem;
+      margin: 0 auto;
+    }
+  }
+
+  h1 {
+    font-weight: 900;
+    font-size: 1rem;
+    text-transform: capitalize;
+    text-align: center;
+
+    .title {
+      font-weight: 400;
+    }
+  }
+}

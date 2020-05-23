@@ -1,0 +1,74 @@
+@import '../../../../assets/styles/general/colors';
+
+.header {
+  width: 10vw;
+  height: 100vh;
+  color: $black;
+  padding: 7rem 1rem;
+  background:$default-white;
+  box-shadow: 0px -2px 37px -10px #b3b3b347;
+
+  .items {
+    position: absolute;
+    top: 8rem;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 0rem;
+
+    li {
+      margin-top: 1rem;
+    }
+
+    a {
+      text-decoration: none;
+      font-size: 12px;
+      color: $black;
+      font-weight: 500;
+
+      .nav-item {
+        padding: 0.5rem 1rem;
+        width: 11rem;
+        text-align: center;
+
+        img {
+          &.hl-on {
+            display: none;
+          }
+
+          &.hl-off {
+            display: inline-block;
+          }
+        }
+      }
+
+      &.active-link {
+        font-weight: 800;
+        color: $black;
+
+        .nav-item {
+          padding: 0.5rem 1rem;
+          background: #ecb9005c;
+          border-radius: 50px 0px 0px 50px;
+          border-right: solid 5px $yellow;
+
+          img {
+            &.hl-on {
+              display: inline-block;
+            }
+
+            &.hl-off {
+              display: none;
+            }
+          }
+        }
+      }
+
+      &:hover {
+        font-weight: 700;
+      }
+    }
+  }
+}
