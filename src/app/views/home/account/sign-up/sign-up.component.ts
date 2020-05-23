@@ -45,7 +45,7 @@ export class SignUpComponent implements OnInit {
       Cellphone: [null, Validators.required],
       FirstName: [null, Validators.required],
       LastName: [null, Validators.required],
-      TypeOfUser: [null, Validators.required],
+      TypeOfUser: [null],
       CreateUserId: ['sys'],
       ModifyUserId: ['sys'],
       SupplierName: [null],

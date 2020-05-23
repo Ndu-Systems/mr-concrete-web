@@ -48,7 +48,7 @@ export class SignInComponent implements OnInit {
         ])
       ),
       Password: [this.password, Validators.required],
-      TypeOfUser: [null, Validators.required]
+      TypeOfUser: [null]
     });
     this.returnUrl = this.route.snapshot.queryParams.returnUrl || 'dashboard';
   }

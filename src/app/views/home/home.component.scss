@@ -45,7 +45,7 @@ h1.home-app-name {
 }
 
 .mat-icon-button .mat-icon {
-  color: $white;
+  color: $black;
 }
 
 .header-icon {
@@ -131,7 +131,7 @@ h1.home-app-name {
 
     .col-1-of-3 {
       grid-template-columns: repeat(3, 33.33%);
-      padding: 1rem;
+      padding: 2rem;
     }
 
     a {
@@ -144,6 +144,10 @@ h1.home-app-name {
     .account {
       margin: 10rem 1rem;
 
+      .login {
+        padding: 1rem;
+      }
+
       a {
         margin: 1rem;
 
@@ -151,14 +155,16 @@ h1.home-app-name {
           color: $white;
 
         }
+
       }
 
       .mat-flat-button.mat-primary {
         background-color: $yellow;
-        padding: 0.5rem 2rem;
-        font-size: 1em;
+        padding: 0rem 2rem;
+        font-size: 1rem;
         font-weight: 700;
         border-radius: 25rem;
+        height: 2.5rem;
 
         &.transparent {
           background: $default-white;
@@ -174,16 +180,37 @@ h1.home-app-name {
       }
 
     }
+
+    .mat-drawer.mat-sidenav {
+      background: $white;
+      width: 100%;
+      padding: 2rem 0;
+      a {
+
+        font-weight: 600;
+        font-size: 1rem;
+
+        .img {
+          display: block;
+        }
+      }
+
+    }
+
+
   }
 
   .home-container {
     padding: 0 1rem;
     background: $white;
-    margin: 5rem auto;
+    margin: 9rem auto;
   }
 
   .mobile {
     display: block;
-    background: $yellow !important;
+    background: $white !important;
+    padding: 2rem 0;
   }
+
+  .mat-drawer-inner-container {background-color: green;}
 }

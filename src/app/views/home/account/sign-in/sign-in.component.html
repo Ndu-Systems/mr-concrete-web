@@ -12,7 +12,7 @@
       </button>
       <mat-error *ngIf="!rForm.controls['Password'].valid && rForm.controls['Password'].touched">your password is required</mat-error>
     </mat-form-field>
-    <div class="select">
+    <!-- <div class="select">
       <mat-radio-group aria-label="Select an option" formControlName="TypeOfUser">
          <span *ngFor="let item of accessRoles">
           <mat-radio-button [value]="item.role">
@@ -20,7 +20,7 @@
           </mat-radio-button>
          </span>
       </mat-radio-group>
-    </div>
+    </div> -->
     <div class="col-1-of-2">
       <button mat-flat-button color="primary" (click)="onSubmit(rForm.value)" [disabled]="!rForm.valid">
         Log in
@@ -30,7 +30,7 @@
       <h1>
         Sign up for 14 day free trial.
       </h1>
-      <a  mat-flat-button color="primary" class="cta-btn" routerLink="/sign-up">register for free</a>
+      <a  mat-flat-button color="primary" class="cta-btn" routerLink="/register">register for free</a>
     </div>
 
     <div class="error" *ngIf="error">

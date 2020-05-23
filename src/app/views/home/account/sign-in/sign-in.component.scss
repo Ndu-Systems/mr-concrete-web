@@ -47,6 +47,7 @@
   font-size: 1em;
   font-weight: 500;
   border-radius: 25rem;
+
   &.cta-btn {
     background-color: $black;
   }
@@ -82,11 +83,27 @@
     font-size: 1.25em;
     margin: 1em 0;
   }
+
+  .mat-flat-button.mat-primary {
+    background-color: $yellow;
+    padding: 0rem 2rem;
+    font-size: 1em;
+    font-weight: 500;
+    border-radius: 25rem;
+    height: 2.5rem;
+
+    &.cta-btn {
+      background-color: $black;
+    }
+
+    &[disabled] {
+      background-color: #DCDDE1;
+      color: #B2BEC3;
+    }
+  }
 }
 
-@media only screen
-and (min-device-width : 768px)
-and (max-device-width : 1024px)  {
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
   .account-container {
     padding: 0;
   }
