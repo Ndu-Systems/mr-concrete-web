@@ -6,6 +6,7 @@ import { CURRENT_USER } from '../_shared';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { MessageService } from 'primeng/api';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +20,7 @@ export class AccountService {
   constructor(
     private http: HttpClient,
     private messageService: MessageService,
+    private routTo: Router
   ) {
     this._user = new BehaviorSubject<UserModel>(JSON.parse(localStorage.getItem(CURRENT_USER)));
     this.user = this._user.asObservable();
@@ -61,5 +63,6 @@ export class AccountService {
   signOut() {
     localStorage.removeItem(CURRENT_USER);
     this._user.next(null);
+    this.routTo.navigate(['/']);
   }
 }

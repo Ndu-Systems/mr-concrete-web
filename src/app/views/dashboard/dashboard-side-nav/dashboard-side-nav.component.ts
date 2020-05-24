@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AccountService } from 'src/app/_services';
 
 @Component({
   selector: 'app-dashboard-side-nav',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardSideNavComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private accountService: AccountService
+  ) { }
 
   ngOnInit() {
   }
-
+  logout(){
+    this.accountService.signOut();
+  }
 }

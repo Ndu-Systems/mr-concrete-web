@@ -11,8 +11,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./measurements.component.scss']
 })
 export class MeasurementsComponent implements OnInit {
-  heading = 'Settings';
-  subheading = 'Measurements';
+  heading = 'Measurements';
+  subheading = 'List of measurements in the system';
   actionButton: ActionButton = {
     link: '/dashboard/add-measurement',
     label: 'add measurement'

@@ -13,6 +13,7 @@ export class DashboardNavComponent implements OnInit {
   isAdmin: boolean;
   isEngineer: boolean;
   user: UserModel;
+  today: number = Date.now();
 
   constructor(
     private accountService: AccountService,
@@ -36,7 +37,6 @@ export class DashboardNavComponent implements OnInit {
     if (this.user.Role.RoleName === 'Engineer') { this.isEngineer = true; }else {
       this.isEngineer = false;
     }
-
   }
 
 }

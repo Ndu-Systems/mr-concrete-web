@@ -9,11 +9,11 @@ import { PARTNERS_CONSTANTS, INDUSTRY_ACTION_CONSTANTS } from '../shared/constan
 })
 export class SettingsComponent implements OnInit {
   heading = 'Settings';
-  subheading = 'System Settings';
+  subheading = 'Configure the systems settings here';
   partnerActions: Actions[];
   industryActions: Actions[];
   partnerHeader = 'Partners';
-  industryHeader = 'Industry Standards';
+  industryHeader = 'General settings';
   constructor() { }
 
   ngOnInit() {

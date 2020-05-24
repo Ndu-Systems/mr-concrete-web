@@ -1,22 +1,25 @@
-<app-banner [subheading]="subheading" [heading]="heading" [actionButton]="actionButton"></app-banner>
-<div class="container">
-  <form class="form" [formGroup]="rForm">
-    <mat-form-field appearance="outline" class="input-field-50">
-      <mat-label>Measurement Name</mat-label>
-      <input matInput placeholder="Measurement Name" formControlName="Name">
-      <mat-error *ngIf="!rForm.controls['Name'].valid && rForm.controls['Name'].touched">your Supplier
-        Measurement Name is required</mat-error>
-    </mat-form-field>
-    <mat-form-field appearance="outline" class="input-field-50">
-      <mat-label>Unit Of Measurement</mat-label>
-      <input matInput placeholder="Unit Of Measurement" formControlName="UnitOfMeasurement">
-      <mat-error *ngIf="!rForm.controls['UnitOfMeasurement'].valid && rForm.controls['UnitOfMeasurement'].touched">your Supplier
-        Unit Of Measurement is required</mat-error>
-    </mat-form-field>
-    <div class="col-1-of-2">
-      <button mat-flat-button color="primary" (click)="onSubmit(rForm.value)" [disabled]="!rForm.valid">
-        Create Measurement
-      </button>
-    </div>
-  </form>
+<div class="main">
+  <app-banner [subheading]="subheading" [heading]="heading" [actionButton]="actionButton"></app-banner>
+  <div class="container">
+    <form class="form" [formGroup]="rForm">
+      <mat-form-field appearance="outline" class="input-field-50">
+        <mat-label>Measurement Name</mat-label>
+        <input matInput placeholder="Measurement Name" formControlName="Name">
+        <mat-error *ngIf="!rForm.controls['Name'].valid && rForm.controls['Name'].touched">your Supplier
+          Measurement Name is required</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="input-field-50">
+        <mat-label>Unit Of Measurement</mat-label>
+        <input matInput placeholder="Unit Of Measurement" formControlName="UnitOfMeasurement">
+        <mat-error *ngIf="!rForm.controls['UnitOfMeasurement'].valid && rForm.controls['UnitOfMeasurement'].touched">
+          your Supplier
+          Unit Of Measurement is required</mat-error>
+      </mat-form-field>
+      <div class="col-1-of-2">
+        <button mat-flat-button color="primary" (click)="onSubmit(rForm.value)" [disabled]="!rForm.valid">
+          Create Measurement
+        </button>
+      </div>
+    </form>
+  </div>
 </div>

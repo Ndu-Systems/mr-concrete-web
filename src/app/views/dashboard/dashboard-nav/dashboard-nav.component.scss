@@ -4,7 +4,7 @@
   background-color: $default-white;
   padding: 1rem 3rem;
   display: grid;
-  grid-template-columns:   90% auto;
+  grid-template-columns:   80% auto;
   box-shadow: 0px -2px 37px -10px #b3b3b347;
 }
 
@@ -20,8 +20,6 @@ mat-toolbar-row {
     list-style-type: none;
     margin: 0;
     padding: 15px;
-    // position: absolute;
-    // right: 1em;
 
     li {
       display: inline;
@@ -34,10 +32,29 @@ mat-toolbar-row {
         font-weight: 600;
         padding: 14px;
       }
+
+      h1 {
+        &.time {
+          width: 34%;
+          color: $grey;
+          margin: 0 auto;
+          margin-right: 6em;
+          font-size: 1em;
+
+          &.col-1-of-2 {
+            @media only screen and (max-width: 600px) {
+              grid-template-columns: 100%;
+              width: 100%;
+            }
+          }
+        }
+      }
     }
   }
 
 }
+
+
 
 .mat-flat-button {
   background: $black;

@@ -1,20 +1,26 @@
  @import '../../../../../assets/styles/general/colors';
 
  .mat-card {
-  height: 8em;
+   height: 8em;
+   padding: 1rem 2rem;
+   border-radius: 25px;
  }
 
  .col-1-of-2 {
    margin-bottom: 0;
  }
 
- .header {
+ h5 {
+   font-weight: 500;
+   text-transform: capitalize;
+   color: $grey;
 
-   h1 {
-     font-size: 20px;
-     font-weight: 500;
-     margin: 0;
-   }
+ }
+
+ h1.header {
+
+   font-weight: 600;
+   font-size: 1.25rem;
 
    .heading {
      font-weight: 400;
@@ -24,6 +30,7 @@
    .greeting {
      font-size: 18px;
    }
+
 
 
    &.col-1-of-2 {

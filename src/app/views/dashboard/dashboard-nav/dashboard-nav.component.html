@@ -8,17 +8,10 @@
   <mat-toolbar-row>
     <ul>
       <li>
-        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-          <img src="assets/images/home/user.svg" alt="user icon">
-        </button>
-        <mat-menu #menu="matMenu">
-          <a routerLink="" (click)="signOut()">
-            <button mat-menu-item>
-              <img src="assets/images/home/login.svg" alt="login icon">
-              <span>logout</span>
-            </button>
-          </a>
-        </mat-menu>
+        <h1 class="time col-1-of-2">
+          <span class="timespan">{{today | date: 'shortTime'}}</span>
+          <span class="date">{{today | date: 'mediumDate'}}</span>
+        </h1>
       </li>
     </ul>
   </mat-toolbar-row>

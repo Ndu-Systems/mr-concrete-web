@@ -11,8 +11,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./partners.component.scss']
 })
 export class PartnersComponent implements OnInit {
-  heading = 'Settings';
-  subheading = 'Suppliers';
+  heading = 'Suppliers';
+  subheading = 'A list of suppliers in the system';
   suppliers: Supplier[] = [];
   position: string;
   actionButton: ActionButton = {

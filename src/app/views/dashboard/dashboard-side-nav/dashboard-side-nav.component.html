@@ -3,7 +3,6 @@
     <div class="profile">
       <app-user-profile></app-user-profile>
     </div>
-
       <ul>
         <li><a routerLink="/dashboard" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">
             <div class="nav-item">
@@ -20,8 +19,20 @@
               Orders
             </div>
           </a></li>
+        <li>
+          <a routerLink="/dashboard/settings" routerLinkActive="active-link">
+            <div class="nav-item">
+              <img src="assets/images/dashboard/nav/settings.svg" alt="feed" class="hl-on">
+              <img src="assets/images/dashboard/nav/settings-disabled.svg" alt="feed" class="hl-off">&nbsp;
+              Settings
+            </div>
+          </a></li>
+      </ul>
+      <ul>
+        <li>
+           <a  (click)="logout()" class="logout">logout</a>
+        </li>
       </ul>
   </div>
-
 
 </mat-toolbar>

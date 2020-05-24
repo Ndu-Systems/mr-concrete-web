@@ -4,7 +4,7 @@ export const PARTNERS_CONSTANTS: Actions[] = [
   {
     name: 'suppliers',
     link: '/dashboard/partners',
-    icon: 'assets/images/dashboard/settings/supplier.svg'
+    icon: 'assets/images/dashboard/settings/Truck.svg'
   },
   // {
   //   name: 'customers',
@@ -23,7 +23,7 @@ export const INDUSTRY_ACTION_CONSTANTS: Actions[] = [
   {
     name: 'measurements',
     link: '/dashboard/measurements',
-    icon: 'assets/images/dashboard/settings/test.svg'
+    icon: 'assets/images/dashboard/settings/measure.svg'
   },
 ]
 
