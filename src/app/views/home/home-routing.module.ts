@@ -7,7 +7,7 @@ import { IndexComponent } from './index/index.component';
 import { MaterialSectionComponent } from './index/material-section';
 import { CommitmentSectionComponent } from './index/commitment-section';
 import { FooterComponent } from './footer';
-import { SignUpComponent, SignInComponent } from './account';
+import { SignUpComponent, SignInComponent, ForgotPasswordComponent } from './account';
 
 
 
@@ -18,6 +18,7 @@ const routes: Routes = [
       { path: '', component: IndexComponent },
       { path: 'login', component: SignInComponent },
       { path: 'register', component: SignUpComponent },
+      { path: 'forgot-password', component: ForgotPasswordComponent },
     ]
   }
 ];
@@ -30,7 +31,8 @@ export const declarations = [
   CommitmentSectionComponent,
   FooterComponent,
   SignInComponent,
-  SignUpComponent
+  SignUpComponent,
+  ForgotPasswordComponent
 ];
 
 @NgModule({

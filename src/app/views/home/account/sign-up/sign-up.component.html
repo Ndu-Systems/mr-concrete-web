@@ -35,7 +35,7 @@
         required</mat-error>
     </mat-form-field>
 
-    <div class="select">
+    <!-- <div class="select">
       <mat-radio-group aria-label="Select an option" formControlName="TypeOfUser">
         <span *ngFor="let item of accessRoles">
           <mat-radio-button [value]="item.role" (click)="onUserTypeClick(item.role)">
@@ -43,7 +43,7 @@
           </mat-radio-button>
         </span>
       </mat-radio-group>
-    </div>
+    </div> -->
     <mat-form-field appearance="outline" *ngIf="isSupplier">
       <input matInput placeholder="Company name" formControlName="SupplierName" MatFormFieldControl type="text">
     </mat-form-field>
