@@ -2,7 +2,7 @@ import { Actions } from './actions';
 
 export const PARTNERS_CONSTANTS: Actions[] = [
   {
-    name: 'suppliers',
+    name: 'Suppliers in the system',
     link: '/dashboard/partners',
     icon: 'assets/images/dashboard/settings/Truck.svg'
   },
@@ -16,14 +16,15 @@ export const PARTNERS_CONSTANTS: Actions[] = [
 
 export const INDUSTRY_ACTION_CONSTANTS: Actions[] = [
   {
-    name: 'categories',
-    link: '/dashboard/categories',
-    icon: 'assets/images/dashboard/settings/category.svg'
-  },
-  {
-    name: 'measurements',
+    name: 'Order measurements',
     link: '/dashboard/measurements',
     icon: 'assets/images/dashboard/settings/measure.svg'
   },
+  {
+    name: 'Industry categories',
+    link: '/dashboard/categories',
+    icon: 'assets/images/dashboard/settings/category.svg'
+  },
+
 ]
 
