@@ -1,12 +1,13 @@
 import { environment } from 'src/environments/environment';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
-import { SignInModel } from 'src/app/_models';
+import { SignInModel, TokenModel } from 'src/app/_models';
 import { AccountService } from 'src/app/_services';
 import { Router, ActivatedRoute } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { Roles } from 'src/app/_shared';
 import { MessageService } from 'primeng/api';
+import { LocationStrategy } from '@angular/common';
 
 @Component({
   selector: 'app-sign-in',
@@ -20,6 +21,8 @@ export class SignInComponent implements OnInit {
   returnUrl: string;
   email = environment.EMAIL;
   password = environment.PASSWORD;
+  verificationEmail;
+  token;
   accessRoles: any[] = [
     {
       description: 'I am an engineer',
@@ -35,10 +38,15 @@ export class SignInComponent implements OnInit {
     private accountService: AccountService,
     private routeTo: Router,
     private route: ActivatedRoute,
+    private location: LocationStrategy,
     private messageService: MessageService,
   ) { }
 
   ngOnInit() {
+    const baseUrlMain: string = (this.location as any)._platformLocation.location.href;
+    // get token
+    this.token = baseUrlMain.substring(baseUrlMain.indexOf('=' + 1));
+    this.activateUser();
     this.rForm = this.fb.group({
       Email: new FormControl(
         this.email,
@@ -51,6 +59,20 @@ export class SignInComponent implements OnInit {
       TypeOfUser: [null]
     });
     this.returnUrl = this.route.snapshot.queryParams.returnUrl || 'dashboard';
+  }
+
+  activateUser() {
+    const tokenModel: TokenModel = { Token: this.token };
+    if (this.token) {
+      this.accountService.activateUser(this.token).subscribe(data => {
+        if (data > 0) {
+          alert('Account activated successfully');
+        } else {
+          alert('he is dead jimmy');
+        }
+      });
+    }
+
   }
 
   onSubmit(model: SignInModel) {

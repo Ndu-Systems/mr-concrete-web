@@ -10,5 +10,6 @@ export * from  './supplier-orders.model';
 export * from './placeholder';
 export * from './counter.model';
 export * from './setting-counter.model';
+export * from './email.model';
 // end:ng42.barrel
 

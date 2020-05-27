@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AccountService } from 'src/app/_services';
+import { AccountService, EmailService } from 'src/app/_services';
 import { Roles } from 'src/app/_shared';
-import { SignUpModel } from 'src/app/_models';
+import { SignUpModel, Email } from 'src/app/_models';
 import { first } from 'rxjs/operators';
 
 @Component({
@@ -29,6 +29,7 @@ export class SignUpComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private accountService: AccountService,
+    private emailService: EmailService,
     private routeTo: Router
   ) { }
 
@@ -45,13 +46,8 @@ export class SignUpComponent implements OnInit {
       Cellphone: [null, Validators.required],
       FirstName: [null, Validators.required],
       LastName: [null, Validators.required],
-      TypeOfUser: [null],
       CreateUserId: ['sys'],
       ModifyUserId: ['sys'],
-      SupplierName: [null],
-      Address: [null],
-      City: [null],
-      Province: [null]
     });
   }
   onUserTypeClick(typeOfUser) {
@@ -66,7 +62,20 @@ export class SignUpComponent implements OnInit {
       .pipe(first())
       .subscribe(data => {
         if (data.Email) {
-          this.routeTo.navigate(['dashboard']);
+          const email: Email = {
+            Email: data.Email,
+            Subject: 'Welcome & Activation',
+            Message: '',
+            Link: this.accountService.generateAccountActivationReturnLink(data.Email, data.Token)
+          };
+
+          this.emailService.sendAccountActivationEmail(email).subscribe(response => {
+            if (response > 0) {
+              alert('email sent successfully');
+            } else {
+              alert('He is dead Jimmy');
+            }
+          });
         }
       }, error => {
         this.error = error;

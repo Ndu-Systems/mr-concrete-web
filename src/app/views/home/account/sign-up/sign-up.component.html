@@ -35,42 +35,18 @@
         required</mat-error>
     </mat-form-field>
 
-    <!-- <div class="select">
-      <mat-radio-group aria-label="Select an option" formControlName="TypeOfUser">
-        <span *ngFor="let item of accessRoles">
-          <mat-radio-button [value]="item.role" (click)="onUserTypeClick(item.role)">
-            {{item.description}}
-          </mat-radio-button>
-        </span>
-      </mat-radio-group>
-    </div> -->
-    <mat-form-field appearance="outline" *ngIf="isSupplier">
-      <input matInput placeholder="Company name" formControlName="SupplierName" MatFormFieldControl type="text">
-    </mat-form-field>
-    <mat-form-field appearance="outline" *ngIf="isSupplier">
-      <input matInput placeholder="Address" formControlName="Address" MatFormFieldControl type="text">
-    </mat-form-field>
-    <div class="col-1-of-2">
-      <mat-form-field appearance="outline" *ngIf="isSupplier">
-        <input matInput placeholder="City" formControlName="City" MatFormFieldControl type="text">
-      </mat-form-field>
-      <mat-form-field appearance="outline" *ngIf="isSupplier">
-        <input matInput placeholder="Province" formControlName="Province" MatFormFieldControl type="text">
-      </mat-form-field>
-    </div>
     <div class="col-1-of-2">
       <button mat-flat-button color="primary" (click)="onSubmit(rForm.value)" [disabled]="!rForm.valid">
         Register for free
       </button>
-      <a  mat-flat-button color="primary" class="transparent" routerLink="/">cancel</a>
-
+      <a mat-flat-button color="primary" class="transparent" routerLink="/">cancel</a>
     </div>
 
     <div class="col-1-of-2 cta">
       <h1>
         I have an account
       </h1>
-      <a  mat-flat-button color="primary" class="cta-btn" routerLink="/login">Log in now</a>
+      <a mat-flat-button color="primary" class="cta-btn" routerLink="/login">Log in now</a>
     </div>
     <mat-error *ngIf="error">
       {{error}}

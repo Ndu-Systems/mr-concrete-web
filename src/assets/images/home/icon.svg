@@ -8,25 +8,16 @@
       <feComposite in="SourceGraphic"/>
     </filter>
   </defs>
-  <g id="icon" transform="translate(-142 -357)">
-    <g id="icon-2" data-name="icon" transform="translate(-504 164.903)">
-      <g transform="matrix(1, 0, 0, 1, 646, 192.1)" filter="url(#Ellipse_207)">
-        <circle id="Ellipse_207-2" data-name="Ellipse 207" cx="130" cy="130" r="130" transform="translate(75 53)" fill="#fbc531"/>
-      </g>
-      <g id="constructor" transform="translate(777 270.096)">
-        <g id="Group_1461" data-name="Group 1461" transform="translate(23.648 3.378)">
-          <rect id="Rectangle_576" data-name="Rectangle 576" width="33.8" height="19.918" transform="translate(60.853 182.534)" fill="#2f3542"/>
-          <path id="Path_955" data-name="Path 955" d="M211.377,8a47.046,47.046,0,0,0-26.769,8.321l6.5,32.218h40.539l6.5-32.218A47.045,47.045,0,0,0,211.377,8Z" transform="translate(-160.704 -8)" fill="#2f3542"/>
-          <path id="Path_956" data-name="Path 956" d="M305.783,372.27H272L282.135,352h30.4Z" transform="translate(-211.191 -206.735)" fill="#2f3542"/>
-          <path id="Path_960" data-name="Path 960" d="M0,0H33.8V19.918H0Z" transform="translate(6.531 182.534)" fill="#2f3542"/>
-          <path id="Path_957" data-name="Path 957" d="M134.757,372.27h33.783L158.4,352H128Z" transform="translate(-128 -206.735)" fill="#2f3542"/>
+  <g id="icon" transform="translate(-146 -357)">
+    <text id="MR.KONKRETE" transform="translate(508 594)" fill="#1e272e" font-size="150" font-family="Montserrat-BlackItalic, Montserrat" font-weight="800" font-style="italic"><tspan x="0" y="0">MR.KONKRETE</tspan></text>
+    <g id="icon-2" data-name="icon">
+      <g id="icon-3" data-name="icon" transform="translate(-500 164.903)">
+        <g transform="matrix(1, 0, 0, 1, 646, 192.1)" filter="url(#Ellipse_207)">
+          <circle id="Ellipse_207-2" data-name="Ellipse 207" cx="130" cy="130" r="130" transform="translate(75 53)" fill="#fbc531"/>
         </g>
-        <circle id="Ellipse_205" data-name="Ellipse 205" cx="3.32" cy="3.32" r="3.32" transform="translate(54.322 71.232)" fill="#fff"/>
-        <circle id="Ellipse_206" data-name="Ellipse 206" cx="3.32" cy="3.32" r="3.32" transform="translate(88.123 71.232)" fill="#fff"/>
-        <path id="Path_958" data-name="Path 958" d="M229.513,229.513A13.527,13.527,0,0,0,243.026,216H236.27a6.757,6.757,0,0,1-13.513,0H216A13.527,13.527,0,0,0,229.513,229.513Z" transform="translate(-155.191 -124.787)" fill="#fff"/>
-        <path id="Path_959" data-name="Path 959" d="M204.475,134.066,169.969,122.56V113.1a37.223,37.223,0,0,0,12.125-18.709A16.854,16.854,0,0,0,197,77.7V50.674a50.674,50.674,0,1,0-101.348,0V77.7a16.854,16.854,0,0,0,14.9,16.689A37.223,37.223,0,0,0,122.674,113.1v9.462l-34.505,11.5A23.618,23.618,0,0,0,72,156.494v52.957H220.643V156.494A23.611,23.611,0,0,0,204.475,134.066Zm9.412,22.428v19.175h-20.27v-3.557a37.153,37.153,0,0,1,1.905-11.753l6.648-19.945.166.054A16.878,16.878,0,0,1,213.887,156.494Zm-110.361,1.73-6.648-19.942,17.327-5.777,10.023,20.05-.051.034.277.416,8.354,16.705V202.7H105.783V172.112A43.808,43.808,0,0,0,103.526,158.224Zm29.414-3.358L146.1,146.1l.226-.155.226.155,13.155,8.77-6.625,13.25V202.7H139.565v-34.58Zm26.894,14.844L168.189,153l.277-.416-.051-.034,10.023-20.05,17.327,5.777-6.648,19.942a43.807,43.807,0,0,0-2.257,13.888V202.7H159.835Zm12.128-39.363-9.216,18.432-10.787-7.192,15.351-12.79Zm-62.8-70.393v1.2a16.774,16.774,0,0,0-6.757,3.122V53.326A30.335,30.335,0,0,0,109.161,59.954ZM106.651,47.3h79.338c-3.719,7.75-19.236,16.891-39.671,16.891S110.374,55.045,106.651,47.3Zm76.832,12.658a30.47,30.47,0,0,0,6.756-6.625V64.275a16.728,16.728,0,0,0-6.756-3.122Zm-.142,27.3c.071-.929.142-1.855.142-2.8V68.187a10.072,10.072,0,0,1-.142,19.07Zm-30.773-80L150.1,27.026h-7.547L140.075,7.253a39.533,39.533,0,0,1,12.493,0ZM133.447,8.689l3.135,25.094h19.479L159.2,8.689A44.081,44.081,0,0,1,183.27,27.026h-6.544v6.757H186.85a43.865,43.865,0,0,1,2.162,6.757H103.631a43.146,43.146,0,0,1,2.162-6.757h10.125V27.026h-6.544A44.081,44.081,0,0,1,133.447,8.689ZM102.4,77.7a10.121,10.121,0,0,1,6.757-9.513v16.27c0,.946.071,1.872.142,2.8A10.117,10.117,0,0,1,102.4,77.7Zm13.513,6.757v-20.4a70.545,70.545,0,0,0,60.809,0v20.4a30.4,30.4,0,1,1-60.809,0Zm30.4,37.161a36.919,36.919,0,0,0,16.891-4.1v5.9l-16.891,14.077L129.43,123.411v-5.9A36.918,36.918,0,0,0,146.322,121.617ZM125.332,128.8l15.351,12.79L129.9,148.778l-9.216-18.432ZM90.307,140.471l.166-.054,6.648,19.945a37.132,37.132,0,0,1,1.905,11.75v3.557H78.757V156.494A16.871,16.871,0,0,1,90.307,140.471Zm-11.55,41.955h20.27V202.7H78.757ZM193.617,202.7V182.426h20.27V202.7Z" transform="translate(-72 0)" fill="#f1f2f6"/>
       </g>
+      <text id="K" transform="translate(228 591)" fill="#fff" font-size="200" font-family="Montserrat-BlackItalic, Montserrat" font-weight="800" font-style="italic"><tspan x="0" y="0">K</tspan></text>
+      <path id="Path_1078" data-name="Path 1078" d="M-21092.227-11621l-64.678,64.678,72.076,74.7" transform="translate(21548 12082)" fill="none" stroke="#fff" stroke-width="29"/>
     </g>
-    <text id="MR.KONKRETE" transform="translate(504 594)" fill="#1e272e" font-size="150" font-family="Montserrat-BlackItalic, Montserrat" font-weight="800" font-style="italic"><tspan x="0" y="0">MR.KONKRETE</tspan></text>
   </g>
 </svg>

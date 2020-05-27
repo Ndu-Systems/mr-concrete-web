@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { UserModel, SignInModel, SignUpModel } from '../_models';
+import { UserModel, SignInModel, SignUpModel, TokenModel } from '../_models';
 import { HttpClient } from '@angular/common/http';
 import { CURRENT_USER } from '../_shared';
 import { map } from 'rxjs/operators';
@@ -32,7 +32,7 @@ export class AccountService {
   }
 
   signIn(data: SignInModel): Observable<UserModel> {
-    return this.http.post<UserModel>(`${this.url}/api/users/sign-in.php`, data)
+    return this.http.post<UserModel>(`${this.url}/api/accounts/sign-in.php`, data)
       .pipe(map(response => {
         if (response) {
           localStorage.setItem(CURRENT_USER, JSON.stringify(response));
@@ -50,7 +50,7 @@ export class AccountService {
   }
 
   signUp(data: SignUpModel): Observable<UserModel> {
-    return this.http.post<UserModel>(`${this.url}/api/users/sign-up.php`, data)
+    return this.http.post<UserModel>(`${this.url}/api/accounts/sign-up.php`, data)
       .pipe(map(response => {
         if (response) {
           localStorage.setItem(CURRENT_USER, JSON.stringify(response));
@@ -60,9 +60,26 @@ export class AccountService {
       }));
   }
 
+  activateUser(data: TokenModel): Observable<any> {
+    return this.http.post<any>(`${this.url}/api/accounts/activate-user-account.php`, data);
+  }
+
+  getUserByToken(data: TokenModel): Observable<UserModel> {
+    return this.http.post<UserModel>(`${this.url}/api/accounts/get-user-by-token.php`, data);
+  }
+
   signOut() {
     localStorage.removeItem(CURRENT_USER);
     this._user.next(null);
     this.routTo.navigate(['/']);
   }
+
+  // link generation here
+  generateAccountActivationReturnLink(email: string, token: string) {
+    return `${this.url}/login?token=${token}`;
+  }
+  generateForgotPasswordReturnLink(token: string) {
+    return `${this.url}/reset-password?token=${token}`;
+  }
+
 }

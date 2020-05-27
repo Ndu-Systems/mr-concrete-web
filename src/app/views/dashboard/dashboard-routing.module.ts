@@ -21,6 +21,7 @@ import { PlaceholderComponent } from './shared/placeholder';
 import { UpdateOrderComponent } from './orders/update-order/update-order.component';
 import { DashboardSideNavComponent } from './dashboard-side-nav';
 import { UserProfileComponent } from './user-profile';
+import { UserDpComponent } from './user-profile/user-dp';
 
 
 const routes: Routes = [
@@ -74,6 +75,7 @@ export const declarations = [
   RecentOrdersComponent,
   DashboardSideNavComponent,
   UserProfileComponent,
+  UserDpComponent,
   // Pipes
   MeasurenamePipe,
 ];

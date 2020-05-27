@@ -107,6 +107,5 @@ export class ListOrdersComponent implements OnInit {
     if (this.currentUser.Role.RoleName === 'Engineer') { this.isEngineer = true; } else {
       this.isEngineer = false;
     }
-
   }
 }

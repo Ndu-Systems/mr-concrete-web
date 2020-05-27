@@ -1,6 +1,7 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { AccountService } from 'src/app/_services';
 import { UserModel } from 'src/app/_models';
+import { Roles } from 'src/app/_shared';
 
 @Component({
   selector: 'app-dashboard-nav',
@@ -12,6 +13,7 @@ export class DashboardNavComponent implements OnInit {
   isSupplier: boolean;
   isAdmin: boolean;
   isEngineer: boolean;
+  isCustomer: boolean;
   user: UserModel;
   today: number = Date.now();
 
@@ -28,15 +30,9 @@ export class DashboardNavComponent implements OnInit {
     this.toggleNav.emit(true);
   }
   setRoles() {
-    if (this.user.Role.RoleName === 'Admin') { this.isAdmin = true; }else {
-      this.isAdmin = false;
-    }
-    if (this.user.Role.RoleName === 'Supplier') { this.isSupplier = true; }else {
-      this.isSupplier = false;
-    }
-    if (this.user.Role.RoleName === 'Engineer') { this.isEngineer = true; }else {
-      this.isEngineer = false;
-    }
+    if (this.user.Role.RoleName === Roles.ADMIN) { this.isAdmin = true; }
+    if (this.user.Role.RoleName === Roles.SUPPLIER) { this.isSupplier = true; }
+    if (this.user.Role.RoleName === Roles.CUSTOMER) { this.isCustomer = true; }
   }
 
 }
