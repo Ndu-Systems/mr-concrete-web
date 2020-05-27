@@ -1,7 +1,7 @@
 import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { TokenModel } from 'src/app/_models';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { TokenModel, ChangePasswordModel } from 'src/app/_models';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { AccountService } from 'src/app/_services';
 import { LocationStrategy } from '@angular/common';
 import { MessageService } from 'primeng/api';
@@ -12,9 +12,10 @@ import { MessageService } from 'primeng/api';
   styleUrls: ['./reset-password.component.scss']
 })
 export class ResetPasswordComponent implements OnInit {
-  token: TokenModel;
+  token;
   rForm: FormGroup;
-
+  hidePassword = true;
+  error: string;
   constructor(
     private fb: FormBuilder,
     private accountService: AccountService,
@@ -26,26 +27,67 @@ export class ResetPasswordComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
+    this.rForm = this.fb.group({
+      Email: new FormControl(
+        null,
+        Validators.compose([
+          Validators.required,
+          Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
+        ])
+      ),
+      Password: [null, Validators.required],
+      ConfirmPassword: [null, Validators.required],
+      TypeOfUser: [null]
+    });
     const baseUrlMain: string = (this.location as any)._platformLocation.location.href;
-    // get token
-    this.token.Token = baseUrlMain.substring(baseUrlMain.indexOf('=' + 1));
+    this.token = baseUrlMain.substring(baseUrlMain.indexOf('=') + 1);
   }
 
   getUserByToken() {
     if (!this.token) {
-      this.invalidRequestRedirect('You should not be here');
+      this.errorMessage('You should not be here');
+      setTimeout(() => {
+        this.routeTo.navigate(['forgot-password']);
+      }, 2000);
     }
+    const tokenModel: TokenModel = { Token: this.token };
 
+    this.accountService.getUserByToken(tokenModel);
   }
-  invalidRequestRedirect(message: string) {
+  errorMessage(message: string) {
     this.messageService.add({
       severity: 'warn',
       summary: 'Oops',
       detail: message,
       life: 7000
     });
-    setTimeout(() => {
-      this.routeTo.navigate(['forgot-password']);
-    }, 2000);
+  }
+
+  successMassage(msg: string) {
+    this.messageService.add({
+      severity: 'success',
+      summary: 'Password updated successfully',
+      detail: msg,
+      life: 7000
+    });
+  }
+
+  onSubmit(model: ChangePasswordModel) {
+    if (model.ConfirmPassword !== model.Password) {
+      this.errorMessage('Password(s) do not match, Please try again');
+      return;
+    }
+    this.accountService.changePassword(model).subscribe(data => {
+      if (data) {
+        this.successMassage('please login with your new credentials');
+        setTimeout(() => {
+          this.routeTo.navigate(['/login']);
+        }, 2000);
+      } else {
+        this.errorMessage('something went wrong, please try again later');
+        this.routeTo.navigate(['/']);
+      }
+    });
   }
 }

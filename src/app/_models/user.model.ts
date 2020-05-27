@@ -26,3 +26,10 @@ export class RoleModel {
   StatusId: string;
 
 }
+
+
+export class ChangePasswordModel{
+  Email: string;
+  Password?: string;
+  ConfirmPassword?: string;
+}

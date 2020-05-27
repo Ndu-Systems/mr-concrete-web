@@ -1,10 +1,11 @@
-import { Email } from './../../../../_models/email.model';
+import { Email, EmailGetRequestModel } from './../../../../_models/email.model';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { environment } from 'src/environments/environment';
-import { AccountService } from 'src/app/_services';
+import { AccountService, NotificationService } from 'src/app/_services';
 import { Router, ActivatedRoute } from '@angular/router';
 import { EmailService } from 'src/app/_services/communication/email.service';
+import { UserService } from 'src/app/_services/dashboard';
 
 @Component({
   selector: 'app-forgot-password',
@@ -17,9 +18,12 @@ export class ForgotPasswordComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private accountService: AccountService,
+    private userService: UserService,
     private routeTo: Router,
     private route: ActivatedRoute,
-    private emailService: EmailService
+    private emailService: EmailService,
+    private messageService: NotificationService
+
   ) { }
 
   ngOnInit() {
@@ -35,22 +39,45 @@ export class ForgotPasswordComponent implements OnInit {
     });
   }
 
-  onSubmit(form) {
-    // TEST email
-    const email: Email = {
-      Email: form.Email,
-      Subject: 'Reset password',
-      Message: '',
-      Link: 'test'
-    };
+  onSubmit(form: EmailGetRequestModel) {
+    this.userService.getUserByEmail(form).subscribe
+      (data => {
+        if (data) {
+          const emailGetRequestModel: EmailGetRequestModel = {
+            Email: data.Email
+          };
+          this.accountService.generateToken(emailGetRequestModel).subscribe(
+            userWithToken => {
+              // TEST email
+              const email: Email = {
+                Email: form.Email,
+                Subject: 'Reset password',
+                Message: '',
+                Link: this.accountService.generateForgotPasswordReturnLink(userWithToken.Token)
+              };
 
-    this.emailService.sendResetPasswordEmail(email).subscribe(data => {
-      if (data > 0) {
-        alert('email sent successfully');
-      } else {
-        alert('He is dead Jimmy');
-      }
-    });
+              this.emailService.sendResetPasswordEmail(email).subscribe(response => {
+                if (response > 0) {
+                  this.messageService.successMassage('Success', 'Please check your email to reset password');
+                  this.goHome();
+
+                } else {
+                  this.messageService.errorMessage('Oops', 'Something went wrong please try again later');
+                  this.goHome();
+
+                }
+              });
+
+            });
+        }
+      });
+
+
+  }
+  goHome() {
+    setTimeout(() => {
+      this.routeTo.navigate(['/']);
+    }, 1700);
   }
 
 }

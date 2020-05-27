@@ -9,3 +9,7 @@ export interface Email {
 export interface TokenModel {
   Token: string;
 }
+
+export interface EmailGetRequestModel {
+  Email: string;
+}

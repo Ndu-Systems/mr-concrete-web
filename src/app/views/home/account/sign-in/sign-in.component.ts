@@ -2,7 +2,7 @@ import { environment } from 'src/environments/environment';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { SignInModel, TokenModel } from 'src/app/_models';
-import { AccountService } from 'src/app/_services';
+import { AccountService, NotificationService } from 'src/app/_services';
 import { Router, ActivatedRoute } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { Roles } from 'src/app/_shared';
@@ -22,7 +22,7 @@ export class SignInComponent implements OnInit {
   email = environment.EMAIL;
   password = environment.PASSWORD;
   verificationEmail;
-  token;
+  token: string;
   accessRoles: any[] = [
     {
       description: 'I am an engineer',
@@ -39,14 +39,10 @@ export class SignInComponent implements OnInit {
     private routeTo: Router,
     private route: ActivatedRoute,
     private location: LocationStrategy,
-    private messageService: MessageService,
+    private messageService: NotificationService
   ) { }
 
   ngOnInit() {
-    const baseUrlMain: string = (this.location as any)._platformLocation.location.href;
-    // get token
-    this.token = baseUrlMain.substring(baseUrlMain.indexOf('=' + 1));
-    this.activateUser();
     this.rForm = this.fb.group({
       Email: new FormControl(
         this.email,
@@ -58,21 +54,23 @@ export class SignInComponent implements OnInit {
       Password: [this.password, Validators.required],
       TypeOfUser: [null]
     });
+    const baseUrlMain: string = (this.location as any)._platformLocation.location.href;
+    this.token = baseUrlMain.substring(baseUrlMain.indexOf('=') + 1);
+
+    this.activateUser();
     this.returnUrl = this.route.snapshot.queryParams.returnUrl || 'dashboard';
   }
 
   activateUser() {
     const tokenModel: TokenModel = { Token: this.token };
-    if (this.token) {
-      this.accountService.activateUser(this.token).subscribe(data => {
+    console.log(tokenModel);
+    if (tokenModel.Token) {
+      this.accountService.activateUser(tokenModel).subscribe(data => {
         if (data > 0) {
-          alert('Account activated successfully');
-        } else {
-          alert('he is dead jimmy');
+          this.messageService.successMassage('account activated successfully', 'please login');
         }
       });
     }
-
   }
 
   onSubmit(model: SignInModel) {
@@ -80,9 +78,9 @@ export class SignInComponent implements OnInit {
       .pipe(first())
       .subscribe(data => {
         if (data.Email) {
-          this.routeTo.navigate([this.returnUrl]);
-        } else {
-          this.error = 'This user does not exist!';
+          setTimeout(() => {
+            this.routeTo.navigate([this.returnUrl]);
+          }, 1500);
         }
       }, error => {
         this.error = 'ERROR: System error, please contact administrator';

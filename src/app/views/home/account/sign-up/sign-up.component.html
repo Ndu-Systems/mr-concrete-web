@@ -14,7 +14,7 @@
       </mat-form-field>
     </span>
     <mat-form-field appearance="outline">
-      <input matInput placeholder="Cellphone number" formControlName="Cellphone" MatFormFieldControl type="text"
+      <input matInput placeholder="Cellphone number" formControlName="Cellphone" MatFormFieldControl type="number"
         required>
       <mat-error *ngIf="!rForm.controls['Cellphone'].valid && rForm.controls['Cellphone'].touched">a valid Cellphone is
         required</mat-error>
