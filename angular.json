@@ -131,6 +131,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "MrConcrete"
+    }
+  },
+  "defaultProject": "MrConcrete",
+  "cli": {
+    "analytics": "81b7103a-0508-457d-83f4-948216d8e8cd"
+  }
 }
