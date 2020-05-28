@@ -12,5 +12,6 @@ export * from './counter.model';
 export * from './setting-counter.model';
 export * from './email.model';
 export * from './image.model';
+export * from './persona.model';
 // end:ng42.barrel
 
