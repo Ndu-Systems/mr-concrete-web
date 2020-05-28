@@ -6,6 +6,7 @@ import { ProductService } from 'src/app/_services/dashboard/product.service';
 import { AccountService } from 'src/app/_services';
 import { UserModel } from 'src/app/_models';
 import { Property } from 'src/app/_models/property.model';
+import { UploadService } from 'src/app/_services/dashboard/upload.service';
 
 @Component({
   selector: 'app-create-product',
@@ -22,12 +23,14 @@ export class CreateProductComponent implements OnInit {
   rForm: FormGroup;
   currentUser: UserModel;
   propertiesArray: Property[] = [];
+  images: string[] = [];
 
   constructor(
     private fb: FormBuilder,
     private routeTo: Router,
     private productService: ProductService,
     private accountService: AccountService,
+    private uploadService: UploadService,
 
 
   ) {
@@ -54,6 +57,9 @@ export class CreateProductComponent implements OnInit {
   ngOnInit() {
     this.addPropertyRow('1');
     this.addPropertyRow('2');
+    this.uploadService.images.subscribe(images => {
+      this.images = images || [];
+    });
   }
 
   get formValues() {
@@ -79,6 +85,7 @@ export class CreateProductComponent implements OnInit {
   }
 
   onSubmit(product: Product) {
+    product.Images = this.images;
     this.productService.addProduct(product).subscribe(response => {
       // this.messageService.add({
       //   severity: 'success',

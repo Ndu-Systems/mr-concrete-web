@@ -11,18 +11,18 @@ export class UploadService {
 
 
 
-  private _images: BehaviorSubject<Image[]>;
-  public images: Observable<Image[]>;
+  private _images: BehaviorSubject<string[]>;
+  public images: Observable<string[]>;
   url: string;
   constructor(
     private http: HttpClient
   ) {
-    this._images = new BehaviorSubject<Image[]>(JSON.parse(localStorage.getItem('images')) || []);
+    this._images = new BehaviorSubject<string[]>(JSON.parse(localStorage.getItem('images')) || []);
     this.images = this._images.asObservable();
     this.url = environment.API_URL;
   }
 
-  public get currentImageValue(): Image[] {
+  public get currentImageValue(): string[] {
     return this._images.value;
   }
   apendState(data: any) {
@@ -33,7 +33,7 @@ export class UploadService {
     state.push(data);
     this.updateState(state);
   }
-  updateState(data: Image[]) {
+  updateState(data: string[]) {
     this._images.next(data);
     localStorage.setItem('images', JSON.stringify(data));
   }
@@ -48,21 +48,4 @@ export class UploadService {
     }, error => {
     });
   }
-  update(data: Image) {
-    return this.http.post<any>(`${this.url}/api/image/update-image.php`, data).subscribe(resp => {
-      const state = this.currentImageValue.filter(x => x.ImageId !== data.ImageId);
-      this.updateState(state);
-    }, error => {
-    });
-  }
-
-  getImages(otherId) {
-    return this.http.get<any>(`${this.url}/api/image/get-image.php?OtherId=${otherId}`).subscribe(resp => {
-      const images: Image[] = resp;
-      this.updateState(images);
-    }, error => {
-    });
-  }
-
-
 }
