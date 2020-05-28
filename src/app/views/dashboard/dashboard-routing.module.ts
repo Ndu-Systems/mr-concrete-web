@@ -27,6 +27,7 @@ import { UserDpComponent } from './user-profile/user-dp';
 import { ListProductsComponent, CreateProductComponent } from './products';
 import { ProductImagesComponent } from './products/product-images/product-images.component';
 import { FileUploadComponent } from './products/file-upload/file-upload.component';
+import { EmployeesComponent } from './employees';
 
 
 const routes: Routes = [
@@ -51,6 +52,7 @@ const routes: Routes = [
       { path: 'outcome', component: OutcomeComponent },
       { path: 'products', component: ListProductsComponent },
       { path: 'create-product', component: CreateProductComponent },
+      {path:'employees', component: EmployeesComponent}
     ]
   }
 ];
@@ -87,6 +89,7 @@ export const declarations = [
   CreateProductComponent,
   ProductImagesComponent,
   FileUploadComponent,
+  EmployeesComponent,
   // Pipes
   MeasurenamePipe,
 ];
