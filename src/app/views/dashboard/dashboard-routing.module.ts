@@ -22,6 +22,7 @@ import { UpdateOrderComponent } from './orders/update-order/update-order.compone
 import { DashboardSideNavComponent } from './dashboard-side-nav';
 import { UserProfileComponent } from './user-profile';
 import { UserDpComponent } from './user-profile/user-dp';
+import { ListProductsComponent, CreateProductComponent } from './products';
 
 
 const routes: Routes = [
@@ -43,7 +44,9 @@ const routes: Routes = [
       { path: 'add-category', component: CreateCategoryComponent },
       { path: 'edit-category', component: EditCategoryComponent },
       { path: 'view-order', component: ViewOrderComponent },
-      { path: 'outcome', component: OutcomeComponent }
+      { path: 'outcome', component: OutcomeComponent },
+      { path: 'products', component: ListProductsComponent },
+      { path: 'create-product', component: CreateProductComponent },
     ]
   }
 ];
@@ -76,6 +79,8 @@ export const declarations = [
   DashboardSideNavComponent,
   UserProfileComponent,
   UserDpComponent,
+  ListProductsComponent,
+  CreateProductComponent,
   // Pipes
   MeasurenamePipe,
 ];

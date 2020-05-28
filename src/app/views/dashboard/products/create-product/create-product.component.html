@@ -1,0 +1,58 @@
+<div class="main">
+  <app-banner [subheading]="subheading" [heading]="heading" [actionButton]="actionButton"></app-banner>
+  <div class="create-product-form form">
+    <form [formGroup]="rForm"  *ngIf="rForm" (ngSubmit)="onSubmit(rForm.value)">
+      <mat-tab-group class="tab-group">
+        <mat-tab label="General">
+
+          <div class="form-fields">
+            <div class="input-group">
+              <label>Product Name **</label>
+              <input matInput formControlName="ProductName">
+            </div>
+
+            <div class="input-group">
+              <label>Short Description</label>
+              <input matInput formControlName="ShortDescription">
+            </div>
+
+            <div class="input-group">
+              <label>Description</label>
+              <input matInput formControlName="Description">
+            </div>
+
+            <div class="input-group">
+              <label>Product Code</label>
+              <input matInput formControlName="ProductCode">
+            </div>
+            <div class="col-2">
+              <div class="input-group">
+                <label>Price **</label>
+                <input type="number" matInput formControlName="Price" class="shoter-input" placeholder="750.99">
+              </div>
+              <div class="input-group">
+                <label>Units</label>
+                <input matInput formControlName="Units" placeholder="each or kg">
+              </div>
+            </div>
+            <div class="input-group">
+              <label>Quantity **</label>
+              <input type="number" matInput formControlName="Quantity">
+            </div>
+          </div>
+
+        </mat-tab>
+        <mat-tab label="Properties">
+
+        </mat-tab>
+        <mat-tab label="Images">
+
+        </mat-tab>
+      </mat-tab-group>
+      <div class="actions">
+        <button type="submit"  [disabled]="!rForm.valid" class="btn">Create product</button>
+        <button type="button" class="btn secondary">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,79 @@
+@import '../../../../../assets/styles/general/colors';
+
+.form {
+  background: $default-white;
+  padding: 1rem 2rem;
+
+  .form-fields {
+    padding: 2rem 0;
+
+    .input-group {
+      padding: .3rem 1rem;
+
+      label,
+      input {
+        display: block;
+      }
+
+      label {
+        font-weight: 700;
+        font-size: .8rem;
+      }
+
+      input {
+        border: 1px solid $grey;
+        padding: .5rem 1rem;
+        margin: .4rem 0;
+        border-radius: 3px;
+        width: 25rem;
+
+      }
+    }
+
+    .col-2 {
+      display: grid;
+      width: 25rem;
+      grid-template-columns: repeat(2, 50%);
+
+      .input-group {
+        padding: .3rem 1rem;
+
+        input {
+          width: 12.5rem;
+        }
+
+        .shoter-input {
+          width: 11.5rem;
+        }
+      }
+
+    }
+
+
+  }
+
+  .actions {
+    padding: .1rem 1rem;
+
+    .btn {
+      background: $yellow;
+      color: $default-white;
+      padding: .5rem 1rem;
+      font-weight: 700;
+      border: none;
+      border-radius: 2rem;
+      cursor: pointer;
+      &:disabled{
+        opacity: .3;
+        cursor: no-drop;
+      }
+    }
+
+    .secondary {
+      background: $lighter-grey;
+      color: $strong-grey;
+      margin-left: 1rem;
+    }
+  }
+
+}
