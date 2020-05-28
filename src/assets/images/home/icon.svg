@@ -1,14 +1,23 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="178" height="42" viewBox="0 0 178 42">
-  <g id="icon" transform="translate(-416 -33)">
-    <g id="Group_574" data-name="Group 574" transform="translate(-351 -314)">
-      <rect id="Rectangle_110" data-name="Rectangle 110" width="47" height="42" transform="translate(767 347)" fill="#fbc531"/>
-      <g id="protection-helmet" transform="translate(779.573 357.009)">
-        <path id="Path_81" data-name="Path 81" d="M24.3,80.844l-1.1-1.6a11.02,11.02,0,0,0-2.442-6.329c-1.539-1.694-3.739-2.518-6.725-2.518-.421,0-.864.017-1.318.05-5.088.372-7.813,6.233-8.891,9.279l-.162.07C1.2,80.879,0,82.089,0,83.49a2.87,2.87,0,0,0,1.007,1.831A14.861,14.861,0,0,0,2.949,87c.879.646,3.122,2.158,4.975,2.231.083,0,.171,0,.264,0h0c2.917,0,12.152-1.721,16.1-7.259A.992.992,0,0,0,24.3,80.844Zm-4.972,1.165c-.235.158-.476.308-.72.452a18.4,18.4,0,0,1-1.644.856,17.038,17.038,0,0,1-3.334,1.155,8.331,8.331,0,0,1-3.221.2,9.729,9.729,0,0,1-2.947-1.019,8.278,8.278,0,0,1-2.5-1.917q.62.272,1.25.518a25.107,25.107,0,0,1,.959-2.745,8.763,8.763,0,0,1,1.417-2.417,10.529,10.529,0,0,1,2.6-2.1,8.774,8.774,0,0,1,2.585-1.043,7.453,7.453,0,0,0-1.052.481,10.423,10.423,0,0,0-2.685,2.188,6.5,6.5,0,0,0-.928,1.249,7.267,7.267,0,0,0-.567,1.584A22.093,22.093,0,0,0,8,82.756c-.011.116-.007.106.108.137l.218.059c.131.039.265.071.4.1.276.066.554.124.832.181a13.774,13.774,0,0,0,5.278-.359c1.393-.31,2.776-.665,4.166-.988l.044-.01.084-.019c.194-.044.389-.087.585-.125C19.717,81.793,19.373,81.98,19.331,82.009Z" transform="translate(0 -70.394)" fill="#fff"/>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1554" height="410" viewBox="0 0 1554 410">
+  <defs>
+    <filter id="Ellipse_207" x="0" y="0" width="410" height="410" filterUnits="userSpaceOnUse">
+      <feOffset dy="22" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="25" result="blur"/>
+      <feFlood flood-color="#535c68" flood-opacity="0.098"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="icon" transform="translate(-146 -357)">
+    <text id="MR.KONKRETE" transform="translate(508 594)" fill="#1e272e" font-size="150" font-family="Montserrat-BlackItalic, Montserrat" font-weight="800" font-style="italic"><tspan x="0" y="0">MR.KONKRETE</tspan></text>
+    <g id="icon-2" data-name="icon">
+      <g id="icon-3" data-name="icon" transform="translate(-500 164.903)">
+        <g transform="matrix(1, 0, 0, 1, 646, 192.1)" filter="url(#Ellipse_207)">
+          <circle id="Ellipse_207-2" data-name="Ellipse 207" cx="130" cy="130" r="130" transform="translate(75 53)" fill="#fbc531"/>
+        </g>
       </g>
-    </g>
-    <g id="Group_575" data-name="Group 575" transform="translate(468.377 48.937)">
-      <text id="MR." transform="translate(-0.377 17.063)" fill="#1e272e" font-size="20" font-family="Ubuntu-Bold, Ubuntu" font-weight="700"><tspan x="0" y="0">MR.</tspan></text>
-      <text id="Konkrete" transform="translate(36.623 17.063)" fill="#1e272e" font-size="20" font-family="Ubuntu-Bold, Ubuntu" font-weight="700"><tspan x="0" y="0">Konkrete</tspan></text>
+      <text id="K" transform="translate(228 591)" fill="#fff" font-size="200" font-family="Montserrat-BlackItalic, Montserrat" font-weight="800" font-style="italic"><tspan x="0" y="0">K</tspan></text>
+      <path id="Path_1078" data-name="Path 1078" d="M-21092.227-11621l-64.678,64.678,72.076,74.7" transform="translate(21548 12082)" fill="none" stroke="#fff" stroke-width="29"/>
     </g>
   </g>
 </svg>

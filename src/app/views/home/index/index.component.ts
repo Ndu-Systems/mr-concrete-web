@@ -17,5 +17,7 @@ export class IndexComponent implements OnInit {
       SearchText: [null, Validators.required]
     });
   }
+  onSubmit(SearchText) {
 
+  }
 }

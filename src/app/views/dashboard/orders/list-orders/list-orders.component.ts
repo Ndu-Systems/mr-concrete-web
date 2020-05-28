@@ -15,7 +15,7 @@ import { ConfirmationPageModel } from 'src/app/_shared';
 export class ListOrdersComponent implements OnInit {
 
   heading = 'Orders';
-  subheading = 'Order list';
+  subheading = 'A list of orders in the system.';
   orders$: Observable<OrderView[]>;
   isSupplier: boolean;
   isAdmin: boolean;
@@ -107,6 +107,5 @@ export class ListOrdersComponent implements OnInit {
     if (this.currentUser.Role.RoleName === 'Engineer') { this.isEngineer = true; } else {
       this.isEngineer = false;
     }
-
   }
 }

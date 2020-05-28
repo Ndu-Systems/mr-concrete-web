@@ -1,16 +1,19 @@
-<app-banner [subheading]="subheading" [heading]="heading" [actionButton]="actionButton"></app-banner>
-<div class="container">
-  <form class="form" [formGroup]="rForm">
-    <mat-form-field appearance="outline" class="input-field-50">
-      <mat-label>Category Name</mat-label>
-      <input matInput placeholder="Category Name" formControlName="CategoryName">
-      <mat-error *ngIf="!rForm.controls['CategoryName'].valid && rForm.controls['CategoryName'].touched">your Supplier
-        Category Name is required</mat-error>
-    </mat-form-field>
-    <div class="col-1-of-2">
-      <button mat-flat-button color="primary" (click)="onSubmit(rForm.value)" [disabled]="!rForm.valid">
-        Create category
-      </button>
-    </div>
-  </form>
+<div class="main">
+  <app-banner [subheading]="subheading" [heading]="heading" [actionButton]="actionButton"></app-banner>
+  <div class="container">
+    <form class="form" [formGroup]="rForm">
+      <mat-form-field appearance="outline" class="input-field-50">
+        <mat-label>Category Name</mat-label>
+        <input matInput placeholder="Category Name" formControlName="CategoryName">
+        <mat-error *ngIf="!rForm.controls['CategoryName'].valid && rForm.controls['CategoryName'].touched">your Supplier
+          Category Name is required</mat-error>
+      </mat-form-field>
+      <div class="col-1-of-2">
+        <button mat-flat-button color="primary" (click)="onSubmit(rForm.value)" [disabled]="!rForm.valid">
+          Create category
+        </button>
+      </div>
+    </form>
+  </div>
+
 </div>

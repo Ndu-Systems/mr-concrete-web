@@ -20,11 +20,14 @@
         </a>
       </div>
       <div class="account">
-        <a mat-list-item routerLink="/sign-in" (click)="snav.toggle()">
-          <img src="assets/images/home/user-yellow.svg" alt="home outlined">
-            Sign in
+        <a mat-list-item routerLink="/login" (click)="snav.toggle()">
+          <div class="login">
+            <img src="assets/images/home/user-yellow.svg" alt="home outlined">
+            log in
+          </div>
         </a>
-        <a  mat-flat-button color="primary" class="cta" routerLink="/sign-up"  (click)="snav.toggle()">register for free</a>
+        <a mat-flat-button color="primary" class="cta" routerLink="/register" (click)="snav.toggle()">register for
+          free</a>
       </div>
     </mat-sidenav>
     <mat-sidenav-content class="home-container">

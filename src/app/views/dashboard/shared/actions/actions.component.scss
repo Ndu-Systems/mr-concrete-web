@@ -3,28 +3,45 @@
 a {
   text-decoration: none;
 }
+
 .actions {
-  width: 50rem;
+  width: 80%;
 }
 
 .header {
-  font-size: 25px;
+  font-size: 18px;
   text-transform: capitalize;
-  font-weight: 500;
-  color: $grey;
+  font-weight: 700;
+  color: #000000;
 }
 
 .mat-card {
-  width: 10em;
-  border-radius: 5px;
+  width: 100%;
+  border-radius: 15px;
+  margin: 0 auto;
   cursor: pointer;
-
+  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12) !important;
   img {
-    height: 3em;
+    height: 2.063rem;
   }
 
   .name {
-    font-size: 1.2em;
-    font-weight: 900;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+}
+
+
+@media only screen and (max-width: 600px) {
+  .actions {
+    width: 100%;
+  }
+
+  .container {
+    padding: 1rem initial;
+  }
+
+  .col-1-of-4 {
+    grid-template-columns: 50% auto;
   }
 }

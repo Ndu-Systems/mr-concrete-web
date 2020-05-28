@@ -10,8 +10,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./categories.component.scss']
 })
 export class CategoriesComponent implements OnInit {
-  heading = 'Settings';
-  subheading = 'Categories';
+  heading = 'Categories';
+  subheading = 'A list of industry categories';
   categories: Caterory[] = [];
   actionButton: ActionButton = {
     link: '/dashboard/add-category',

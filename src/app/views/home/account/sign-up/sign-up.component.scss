@@ -11,10 +11,13 @@
   padding: 1rem 2rem;
   width: 50%;
   margin: 0 auto;
+
   .col-1-of-2 {
     width: 96%;
+
     &.cta {
       margin-top: 2rem;
+
       h1 {
         font-size: 0.875rem;
       }
@@ -26,8 +29,8 @@
 
 .form-heading {
   font-size: 1.65rem;
-  font-weight: 900;
-  margin: 2em 0;
+  font-weight: 700;
+  margin: 1em 0;
 }
 
 ::ng-deep {
@@ -41,19 +44,22 @@
 
 .mat-flat-button.mat-primary {
   background-color: $yellow;
-  padding: 0.5em 2em;
+  padding: 0rem 2rem;
   font-size: 1em;
-  font-weight: 500;
+  font-weight: 700;
   border-radius: 25rem;
+  height: 2.5rem;
   &.cta-btn {
     background-color: $black;
   }
+
   &.transparent {
     background: $default-white;
     font-weight: 700;
     color: $grey;
     border: solid 1px $grey;
   }
+
   &[disabled] {
     background-color: #DCDDE1;
     color: #B2BEC3;
@@ -62,6 +68,7 @@
 
 .select {
   padding: 1em 0;
+
   .mat-radio-button {
     margin: 1em;
   }
@@ -73,6 +80,7 @@
   .account-container {
     padding: 0;
   }
+
   .form {
     padding: 1em;
     width: 100%;
@@ -83,12 +91,28 @@
     font-size: 1.25em;
     margin: 1em 0;
   }
+
+  .mat-flat-button.mat-primary {
+    background-color: $yellow;
+    padding: 0rem 2rem;
+    font-size: 1em;
+    font-weight: 500;
+    border-radius: 25rem;
+    height: 2.5rem;
+
+    &.cta-btn {
+      background-color: $black;
+    }
+
+    &[disabled] {
+      background-color: #DCDDE1;
+      color: #B2BEC3;
+    }
+  }
 }
 
 
-@media only screen
-and (min-device-width : 768px)
-and (max-device-width : 1024px)  {
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
   .account-container {
     padding: 0;
   }

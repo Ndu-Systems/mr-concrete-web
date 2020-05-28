@@ -20,8 +20,6 @@ mat-toolbar-row {
     list-style-type: none;
     margin: 0;
     padding: 15px;
-    // position: absolute;
-    // right: 1em;
 
     li {
       display: inline;
@@ -33,6 +31,12 @@ mat-toolbar-row {
         text-decoration: none;
         font-weight: 600;
         padding: 14px;
+        &.cta-btn {
+          color: $white;
+          border-radius: 3.125rem;
+          height: 2.5rem;
+          padding: 0 2rem;
+        }
       }
     }
   }

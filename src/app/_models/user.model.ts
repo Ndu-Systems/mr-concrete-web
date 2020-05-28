@@ -12,6 +12,7 @@ export class UserModel {
   ModifyDate: string;
   ModifyUserId: string;
   StatusId: string;
+  Token?: string;
   Role: RoleModel;
 }
 
@@ -24,4 +25,11 @@ export class RoleModel {
   ModifyUserId: string;
   StatusId: string;
 
+}
+
+
+export class ChangePasswordModel{
+  Email: string;
+  Password?: string;
+  ConfirmPassword?: string;
 }
