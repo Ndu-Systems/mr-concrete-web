@@ -153,8 +153,11 @@
      }
 
      .col-1-of-2 {
-       grid-template-columns: 20% auto;
+      grid-template-columns: 30% auto;
      }
+     .mat-flat-button.mat-primary {
+      width: 8.438rem;
+    }
    }
  }
 
