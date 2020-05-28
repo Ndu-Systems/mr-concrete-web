@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl, FormArray } from '@angular/forms';
 import { Product } from 'src/app/_models/product.model';
 import { Router } from '@angular/router';
 import { ProductService } from 'src/app/_services/dashboard/product.service';
 import { AccountService } from 'src/app/_services';
 import { UserModel } from 'src/app/_models';
+import { Property } from 'src/app/_models/property.model';
 
 @Component({
   selector: 'app-create-product',
@@ -20,6 +21,7 @@ export class CreateProductComponent implements OnInit {
   };
   rForm: FormGroup;
   currentUser: UserModel;
+  propertiesArray: Property[] = [];
 
   constructor(
     private fb: FormBuilder,
@@ -44,12 +46,36 @@ export class CreateProductComponent implements OnInit {
       CreateUserId: [this.currentUser.UserId, Validators.required],
       ModifyUserId: [this.currentUser.UserId, Validators.required],
       StatusId: [1, Validators.required],
-      Properties: [null]
+      Image: new FormControl(null),
+      Properties: this.fb.array([])
     });
   }
 
   ngOnInit() {
+    this.addPropertyRow('1');
+    this.addPropertyRow('2');
+  }
 
+  get formValues() {
+    return this.rForm.controls;
+  }
+
+  get formProperties() {
+    return this.rForm.get('Properties') as FormArray;
+  }
+  addPropertyRow(id = '') {
+    const property = this.fb.group(
+      {
+        Name: 'Property ' + id,
+        Code: '',
+        Value: '',
+        Units: ''
+      }
+    );
+    this.formProperties.push(property);
+  }
+  deleteId(i) {
+    this.formProperties.removeAt(i);
   }
 
   onSubmit(product: Product) {

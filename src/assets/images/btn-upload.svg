@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="237" height="98" viewBox="0 0 237 98">
+  <g id="btn-upload" transform="translate(-1451 -334)">
+    <g id="Rectangle_454" data-name="Rectangle 454" transform="translate(1451 334)" fill="#fff" stroke="#bdc3c7" stroke-width="1" stroke-dasharray="5">
+      <rect width="237" height="98" rx="5" stroke="none"/>
+      <rect x="0.5" y="0.5" width="236" height="97" rx="4.5" fill="none"/>
+    </g>
+    <text id="Upload_order_attachments" data-name="Upload order 
+attachments" transform="translate(1569.5 365.415)" fill="#b2bec3" font-size="15" font-family="Montserrat-Bold, Montserrat" font-weight="700"><tspan x="-53.528" y="0">Upload order </tspan><tspan x="-50.392" y="19">attachments</tspan></text>
+    <text id="Click_to_browse" data-name="Click to browse" transform="translate(1570 403)" fill="#bdc3c7" font-size="12" font-family="Montserrat-SemiBold, Montserrat" font-weight="600"><tspan x="-47.37" y="0">Click to browse</tspan></text>
+  </g>
+</svg>

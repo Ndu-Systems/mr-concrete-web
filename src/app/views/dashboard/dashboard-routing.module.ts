@@ -4,11 +4,13 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from 'src/app/_guards';
 import { DashboardHomeComponent, RecentOrdersComponent } from './dashboard-home';
 import { DashboardNavComponent } from './dashboard-nav';
-import { OrdersComponent,
+import {
+  OrdersComponent,
   ListOrdersComponent,
   CreateOrderComponent,
   ViewOrderComponent,
-  SupplierListOrdersComponent } from './orders';
+  SupplierListOrdersComponent
+} from './orders';
 import { SettingsComponent } from './settings';
 import { ActionsComponent, BannerComponent, StatsComponent } from './shared';
 import { PartnersComponent, CreateSupplierComponent } from './partners';
@@ -23,6 +25,8 @@ import { DashboardSideNavComponent } from './dashboard-side-nav';
 import { UserProfileComponent } from './user-profile';
 import { UserDpComponent } from './user-profile/user-dp';
 import { ListProductsComponent, CreateProductComponent } from './products';
+import { ProductImagesComponent } from './products/product-images/product-images.component';
+import { FileUploadComponent } from './products/file-upload/file-upload.component';
 
 
 const routes: Routes = [
@@ -81,6 +85,8 @@ export const declarations = [
   UserDpComponent,
   ListProductsComponent,
   CreateProductComponent,
+  ProductImagesComponent,
+  FileUploadComponent,
   // Pipes
   MeasurenamePipe,
 ];

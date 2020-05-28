@@ -11,5 +11,6 @@ export * from './placeholder';
 export * from './counter.model';
 export * from './setting-counter.model';
 export * from './email.model';
+export * from './image.model';
 // end:ng42.barrel
 

@@ -25,25 +25,50 @@
         padding: .5rem 1rem;
         margin: .4rem 0;
         border-radius: 3px;
-        width: 25rem;
+        width: 30%;
 
+      }
+
+      .label-input {
+        border: 2px dotted $grey;
+        font-weight: 700;
+        font-size: .8rem;
       }
     }
 
     .col-2 {
       display: grid;
-      width: 25rem;
+      width: 31.5%;
       grid-template-columns: repeat(2, 50%);
 
       .input-group {
         padding: .3rem 1rem;
 
         input {
-          width: 12.5rem;
+          width: 100%;
         }
 
         .shoter-input {
-          width: 11.5rem;
+          width: 95%;
+        }
+      }
+
+    }
+
+    .col-3 {
+      display: grid;
+      width: 40%;
+      grid-template-columns: 35% 35% auto;
+
+      .input-group {
+        padding: .3rem 1rem;
+
+        input {
+          width: 100%;
+        }
+
+        .btn {
+          margin-top: .2rem;
         }
       }
 
@@ -54,26 +79,39 @@
 
   .actions {
     padding: .1rem 1rem;
+  }
 
-    .btn {
-      background: $yellow;
-      color: $default-white;
-      padding: .5rem 1rem;
-      font-weight: 700;
-      border: none;
-      border-radius: 2rem;
-      cursor: pointer;
-      &:disabled{
-        opacity: .3;
-        cursor: no-drop;
-      }
-    }
+  .btn {
+    background: $yellow;
+    color: $default-white;
+    padding: .5rem 1rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 2rem;
+    cursor: pointer;
 
-    .secondary {
-      background: $lighter-grey;
-      color: $strong-grey;
-      margin-left: 1rem;
+    &:disabled {
+      opacity: .3;
+      cursor: no-drop;
     }
+  }
+
+  .secondary {
+    background: $lighter-grey;
+    color: $strong-grey;
+    margin-left: 1rem;
+  }
+
+  .danger {
+    background: $danger;
+  }
+
+  .success {
+    background: $success;
+  }
+  .cta{
+    border-radius: 3px;
+    padding: .6rem 1rem;
   }
 
 }

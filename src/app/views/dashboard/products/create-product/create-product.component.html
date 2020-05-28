@@ -1,7 +1,7 @@
 <div class="main">
   <app-banner [subheading]="subheading" [heading]="heading" [actionButton]="actionButton"></app-banner>
   <div class="create-product-form form">
-    <form [formGroup]="rForm"  *ngIf="rForm" (ngSubmit)="onSubmit(rForm.value)">
+    <form [formGroup]="rForm" *ngIf="rForm" (ngSubmit)="onSubmit(rForm.value)">
       <mat-tab-group class="tab-group">
         <mat-tab label="General">
 
@@ -43,15 +43,37 @@
 
         </mat-tab>
         <mat-tab label="Properties">
+          <div formArrayName="Properties" class="form-fields"> 
+            <div *ngFor="let property of formProperties.controls; let i=index" [formGroupName]="i">
+              <div class="col-3">
+                <div class="input-group">
+                  <input type="text" class="label-input" matInput formControlName="Name">
+                </div>
+                <div class="input-group">
+                  <input type="text" matInput formControlName="Value">
+                </div>
+                <div class="input-group">
+                  <button class="btn danger" type="button" (click)="deleteId(i)">Delete</button>
+                </div>
+              </div>
+            
+            </div>
+            <div class="input-group">
+              <button class="btn success" type="button" (click)="addPropertyRow()">Add property</button>
 
+            </div>
+          </div>
         </mat-tab>
         <mat-tab label="Images">
+          <div class="input-group">
+            <app-file-upload formControlName="Image"></app-file-upload>
 
+          </div>
         </mat-tab>
       </mat-tab-group>
       <div class="actions">
-        <button type="submit"  [disabled]="!rForm.valid" class="btn">Create product</button>
-        <button type="button" class="btn secondary">Cancel</button>
+        <button type="submit" [disabled]="!rForm.valid" class="btn cta">Create product</button>
+        <button type="button" class="btn secondary cta">Cancel</button>
       </div>
     </form>
   </div>
