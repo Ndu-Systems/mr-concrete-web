@@ -4,7 +4,8 @@
   background-color: $default-white;
   padding: 1rem 3rem;
   display: grid;
-  grid-template-columns:   80% auto;
+  grid-template-columns:   70% auto;
+  height: 5rem;
   box-shadow: 0px -2px 37px -10px #b3b3b347;
 }
 
@@ -35,12 +36,12 @@ mat-toolbar-row {
 
       h1 {
         &.time {
-          width: 34%;
-          color: $grey;
+
+          color: $black;
           margin: 0 auto;
           margin-right: 6em;
-          font-size: 1em;
-
+          font-size: .75em;
+          font-weight: 600;
           &.col-1-of-2 {
             @media only screen and (max-width: 600px) {
               grid-template-columns: 100%;

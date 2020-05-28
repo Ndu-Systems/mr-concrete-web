@@ -1,31 +1,15 @@
-<!-- <mat-card>
-  <div class="header col-1-of-2">
-    <h1 class="heading">{{heading}}</h1>
-    <h1 class="time col-1-of-2">
-      <span class="timespan">{{today | date: 'shortTime'}}</span>
-      <span class="date">{{today | date: 'mediumDate'}}</span>
-    </h1>
-  </div>
-  <div class="action col-1-of-2">
-    <h1 class="banner-heading">
-      {{subheading}}
-    </h1>
-    <button *ngIf="actionButton" mat-flat-button color="primary" (click)="navigateTo(actionButton.link)">
-      {{actionButton.label}}
-    </button>
-  </div>
-
-</mat-card> -->
-<mat-card>
+<mat-card class="banner">
   <div class="col-1-of-2">
     <span>
-      <h1 class="header">{{heading}}</h1>
-      <h4>{{subheading}}</h4>
+      <h1 class="header">{{heading}}
+        <span class="text">
+          {{subheading}}
+        </span>
+      </h1>
+
     </span>
     <button *ngIf="actionButton" mat-flat-button color="primary" (click)="navigateTo(actionButton.link)">
       {{actionButton.label}}
     </button>
   </div>
-
 </mat-card>
-
