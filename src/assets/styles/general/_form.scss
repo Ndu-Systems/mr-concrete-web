@@ -1,32 +1,115 @@
-// .form {
-//   display: flex;
-//   flex-direction: column;
-//   background: #ffffff;
-//   padding: 1em;
-//   width: 25em;
-//   border-radius: 5px;
-//   margin: 0 auto;
-// }
 
-// .form-heading {
-//   font-size: 1.5em;
-//   margin: 2em 0;
-// }
+.form {
+  background: $default-white;
+  padding: 1rem 2rem;
 
-// ::ng-deep {
-//   .mat-form-field-wrapper {
-//     .mat-form-field-flex {
-//       background: #ffffff !important;
-//       padding: 0em 1em;
-//       border: solid 1px #DCDDE1;
-//       border-radius: 5px;
-//     }
-//   }
-// }
+  .form-fields {
+    padding: 2rem 0;
 
-// @media only screen and (max-width: 600px) {
-//   .form {
-//     width: 100%;
-//     padding: 0.2em;
-//   }
-// }
+    .input-group {
+      padding: .3rem 1rem;
+
+      label,
+      input {
+        display: block;
+      }
+
+      label {
+        font-weight: 700;
+        font-size: .8rem;
+      }
+
+      input {
+        border: 1px solid $grey;
+        padding: .5rem 1rem;
+        margin: .4rem 0;
+        border-radius: 3px;
+        width: 30%;
+
+      }
+
+      .label-input {
+        font-weight: 700;
+        font-size: .8rem;
+      }
+    }
+
+    .col-2 {
+      display: grid;
+      width: 31.5%;
+      grid-template-columns: repeat(2, 50%);
+
+      .input-group {
+        padding: .3rem 1rem;
+
+        input {
+          width: 100%;
+        }
+
+        .shoter-input {
+          width: 95%;
+        }
+      }
+
+    }
+
+    .col-3 {
+      display: grid;
+      width: 40%;
+      grid-template-columns: 35% 35% auto;
+
+      .input-group {
+        padding: .3rem 1rem;
+
+        input {
+          width: 100%;
+        }
+
+        .btn {
+          margin-top: .2rem;
+        }
+      }
+
+    }
+
+
+  }
+
+  .actions {
+    padding: .1rem 1rem;
+  }
+
+  .btn {
+    background: $yellow;
+    color: $default-white;
+    padding: .5rem 1rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 2rem;
+    cursor: pointer;
+
+    &:disabled {
+      opacity: .3;
+      cursor: no-drop;
+    }
+  }
+
+  .secondary {
+    background: $lighter-grey;
+    color: $strong-grey;
+    margin-left: 1rem;
+  }
+
+  .danger {
+    background: $danger;
+  }
+
+  .success {
+    background: $success;
+  }
+  .cta{
+    border-radius: 3px;
+    padding: .6rem 1rem;
+  }
+
+}

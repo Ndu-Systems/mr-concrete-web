@@ -72,7 +72,7 @@ export class CreateProductComponent implements OnInit {
   addPropertyRow(id = '') {
     const property = this.fb.group(
       {
-        Name: 'Property ' + id,
+        Name: '',
         Code: '',
         Value: '',
         Units: ''
