@@ -24,7 +24,7 @@ import { UpdateOrderComponent } from './orders/update-order/update-order.compone
 import { DashboardSideNavComponent } from './dashboard-side-nav';
 import { UserProfileComponent, CreatePersonaComponent } from './user-profile';
 import { UserDpComponent } from './user-profile/user-dp';
-import { ListProductsComponent, CreateProductComponent } from './products';
+import { ListProductsComponent, CreateProductComponent, UpdateProductComponent } from './products';
 import { ProductImagesComponent } from './products/product-images/product-images.component';
 import { FileUploadComponent } from './products/file-upload/file-upload.component';
 import { EmployeesComponent } from './employees';
@@ -52,7 +52,8 @@ const routes: Routes = [
       { path: 'outcome', component: OutcomeComponent },
       { path: 'products', component: ListProductsComponent },
       { path: 'create-product', component: CreateProductComponent },
-      {path:'employees', component: EmployeesComponent}
+      { path: 'edit-product', component: UpdateProductComponent },
+      { path: 'employees', component: EmployeesComponent }
     ]
   }
 ];
@@ -92,6 +93,7 @@ export const declarations = [
   EmployeesComponent,
   BannerTutorialComponent,
   CreatePersonaComponent,
+  UpdateProductComponent,
   // Pipes
   MeasurenamePipe,
 ];

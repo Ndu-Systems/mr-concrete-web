@@ -28,8 +28,7 @@
       height: 5rem;
 
       img {
-        // width: 96%;
-        height: 4.2rem;
+        width: 4.5rem
       }
 
       b {
@@ -48,7 +47,8 @@
         display: block;
         background: $active-fill;
         color: $success;
-        padding: .6rem;
+        border:1px solid $success;
+        padding: .4rem .6rem;
         font-weight: 800;
         font-size: .8rem;
         width: 5rem;

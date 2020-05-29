@@ -1,3 +1,90 @@
-<p>
-  update-product works!
-</p>
+<div class="main">
+  <app-banner [subheading]="subheading" [heading]="heading" [actionButton]="actionButton"></app-banner>
+  <div class="create-product-form form">
+    <form [formGroup]="rForm" *ngIf="rForm" (ngSubmit)="onSubmit(rForm.value)">
+      <mat-tab-group class="tab-group">
+        <mat-tab label="General">
+          <div class="form-fields">
+            <div class="input-group">
+              <label>Product Name **</label>
+              <input matInput formControlName="ProductName">
+            </div>
+
+            <div class="input-group">
+              <label>Category</label>
+              <select formControlName="CategoryId">
+                <option value="">Select Category</option>
+                <option *ngFor="let catergory of catergories$ | async" [value]="catergory.CategoryId">
+                  {{catergory.CategoryName}}
+                </option>
+              </select>
+            </div>
+
+            <div class="input-group">
+              <label>Short Description</label>
+              <input matInput formControlName="ShortDescription">
+            </div>
+
+            <div class="input-group">
+              <label>Description</label>
+              <input matInput formControlName="Description">
+            </div>
+
+            <div class="input-group">
+              <label>Product Code</label>
+              <input matInput formControlName="ProductCode">
+            </div>
+            <div class="col-2">
+              <div class="input-group">
+                <label>Price **</label>
+                <input type="number" matInput formControlName="Price" class="shoter-input" placeholder="750.99">
+              </div>
+              <div class="input-group">
+                <label>Units</label>
+                <input matInput formControlName="Units" placeholder="each or kg">
+              </div>
+            </div>
+            <div class="input-group">
+              <label>Quantity **</label>
+              <input type="number" matInput formControlName="Quantity">
+            </div>
+          </div>
+
+        </mat-tab>
+        <mat-tab label="Properties">
+          <div formArrayName="Properties" class="form-fields">
+            <div *ngFor="let property of formProperties.controls; let i=index" [formGroupName]="i">
+              <div class="col-3">
+                <div class="input-group">
+                  <label>Property Name</label>
+                  <input type="text" class="label-input" matInput formControlName="Name">
+                </div>
+                <div class="input-group">
+                  <label>Property Value</label>
+                  <input type="text" matInput formControlName="Value">
+                </div>
+                <div class="input-group">
+                  <button class="btn danger" type="button" (click)="deleteId(i,property)">Delete</button>
+                </div>
+              </div>
+
+            </div>
+            <div class="input-group">
+              <button class="btn success" type="button" (click)="addNewPropertyRow()">Add property</button>
+
+            </div>
+          </div>
+        </mat-tab>
+        <mat-tab label="Images">
+          <div class="input-group">
+            <app-product-images *ngIf="product" [productId]="product.ProductId"></app-product-images>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+      <div class="actions">
+        <button type="submit" [disabled]="!rForm.valid" class="btn cta">Save changes</button>
+        <button type="button" class="btn secondary cta">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>

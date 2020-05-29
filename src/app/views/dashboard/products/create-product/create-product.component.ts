@@ -57,7 +57,7 @@ export class CreateProductComponent implements OnInit {
   ngOnInit() {
     this.addPropertyRow('1');
     this.addPropertyRow('2');
-    this.uploadService.images.subscribe(images => {
+    this.uploadService.imagesUrlsToUpload.subscribe(images => {
       this.images = images || [];
     });
     this.catergories$ = this.categoryService.categories;

@@ -31,8 +31,8 @@ export class ProductImagesComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.uploadService.getImages(this.productId);
-    // this.images$ = this.uploadService.images;
+    this.uploadService.getImages(this.productId);
+    this.images$ = this.uploadService.images;
     this.user = this.accountService.CurrentUserValue;
   }
   add() {
@@ -44,7 +44,7 @@ export class ProductImagesComponent implements OnInit {
       accept: () => {
         image.StatusId = 2;
         image.OtherId = `removed-${image.OtherId}`;
-        // this.uploadService.update(image);
+        this.uploadService.update(image);
         this.messageService.add({
           severity: 'success',
           summary: 'Success!',

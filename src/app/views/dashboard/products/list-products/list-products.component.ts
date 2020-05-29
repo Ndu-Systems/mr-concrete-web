@@ -35,4 +35,9 @@ export class ListProductsComponent implements OnInit {
 
   }
 
+  more(product: Product) {
+    this.productService.updateProductState(product);
+    this.router.navigate(['/dashboard/edit-product']);
+  }
+
 }
