@@ -35,7 +35,11 @@
           </span>
          </b>
       </div>
-      <div class="item">
+      <div class="item" *ngIf="item.Category">
+        {{item.Category.CategoryName}}
+      </div>
+      <div class="item" *ngIf="!item.Category">
+       <span>No Category</span>
       </div>
       <div class="item">
         <button mat-icon-button aria-label="Example icon button with a vertical three dot icon" (click)="more(item)">
