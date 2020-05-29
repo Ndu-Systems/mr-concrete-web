@@ -11,6 +11,16 @@
             </div>
 
             <div class="input-group">
+              <label>Category</label>
+              <select formControlName="CategoryId">
+                <option value="">Select Category</option>
+                <option *ngFor="let catergory of catergories$ | async" [value]="catergory.CategoryId">
+                  {{catergory.CategoryName}}
+                </option>
+              </select>
+            </div>
+
+            <div class="input-group">
               <label>Short Description</label>
               <input matInput formControlName="ShortDescription">
             </div>

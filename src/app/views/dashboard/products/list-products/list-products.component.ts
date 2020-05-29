@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductService } from 'src/app/_services/dashboard/product.service';
+import { Router } from '@angular/router';
+import { AccountService } from 'src/app/_services';
+import { Observable } from 'MrConcrete/node_modules/rxjs';
+import { Product } from 'src/app/_models/product.model';
+import { UserModel } from 'src/app/_models';
 
 @Component({
   selector: 'app-list-products',
@@ -12,9 +18,21 @@ export class ListProductsComponent implements OnInit {
     link: '/dashboard/create-product',
     label: 'Create Product'
   };
-  constructor() { }
+  products$: Observable<Product[]>;
+  user: UserModel;
+
+  constructor(
+    private productService: ProductService,
+    private router: Router,
+    private accountService: AccountService,
+  ) { }
 
   ngOnInit() {
+    this.user = this.accountService.CurrentUserValue;
+    this.products$ = this.productService.products;
+    this.productService.getProductsByUserId(this.user.UserId);
+
+
   }
 
 }

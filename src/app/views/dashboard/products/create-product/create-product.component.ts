@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators, FormControl, FormArray } from '@ang
 import { Product } from 'src/app/_models/product.model';
 import { Router } from '@angular/router';
 import { ProductService } from 'src/app/_services/dashboard/product.service';
-import { AccountService } from 'src/app/_services';
+import { AccountService, CateroryService } from 'src/app/_services';
 import { UserModel } from 'src/app/_models';
 import { Property } from 'src/app/_models/property.model';
 import { UploadService } from 'src/app/_services/dashboard/upload.service';
@@ -24,6 +24,7 @@ export class CreateProductComponent implements OnInit {
   currentUser: UserModel;
   propertiesArray: Property[] = [];
   images: string[] = [];
+  catergories$: any;
 
   constructor(
     private fb: FormBuilder,
@@ -31,8 +32,7 @@ export class CreateProductComponent implements OnInit {
     private productService: ProductService,
     private accountService: AccountService,
     private uploadService: UploadService,
-
-
+    private categoryService: CateroryService,
   ) {
     this.currentUser = this.accountService.CurrentUserValue;
     this.rForm = this.fb.group({
@@ -60,6 +60,8 @@ export class CreateProductComponent implements OnInit {
     this.uploadService.images.subscribe(images => {
       this.images = images || [];
     });
+    this.catergories$ = this.categoryService.categories;
+    this.categoryService.getCateries();
   }
 
   get formValues() {
