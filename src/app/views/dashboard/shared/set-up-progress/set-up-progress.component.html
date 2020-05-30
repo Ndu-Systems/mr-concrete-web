@@ -1,0 +1,26 @@
+<mat-card class="banner">
+  <div class="col-1-of-1">
+    <span>
+      <h1 class="header">
+        Start experience
+      </h1>
+      <hr class="line">
+    </span>
+
+  </div>
+  <div class="check-list" *ngIf="setupIcons">
+    <div class="col-1-of-3" *ngFor="let item of setupIcons">
+      <div class="img">
+        <img [src]="item.icon" alt="set up">
+      </div>
+      <h1 class="desc">{{item.description}}</h1>
+      <div class="cta">
+        <div class="img" *ngIf="item.isComplete">
+          <img src="assets/images/dashboard/setup/correct.svg" class="correct"alt="correct">
+        </div>
+        <a *ngIf="!item.isComplete" [routerLink]="item.cta" class="cta-link">{{item.ctaName}}</a>
+      </div>
+    </div>
+    <hr class="line">
+  </div>
+</mat-card>

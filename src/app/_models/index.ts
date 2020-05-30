@@ -15,5 +15,6 @@ export * from './image.model';
 export * from './persona.model';
 export * from './Company.model';
 export * from './role.enum.model';
+export * from './setup.progress.model';
  // end:ng42.barrel
 

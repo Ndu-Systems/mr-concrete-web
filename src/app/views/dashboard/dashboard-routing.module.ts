@@ -12,7 +12,7 @@ import {
   SupplierListOrdersComponent
 } from './orders';
 import { SettingsComponent } from './settings';
-import { ActionsComponent, BannerComponent, StatsComponent, BannerTutorialComponent } from './shared';
+import { ActionsComponent, BannerComponent, StatsComponent, BannerTutorialComponent, SetUpProgressComponent } from './shared';
 import { PartnersComponent, CreateSupplierComponent } from './partners';
 import { MeasurementsComponent, CreateMeasurementComponent, EditMeasurementComponent } from './measurements';
 import { CategoriesComponent, CreateCategoryComponent, EditCategoryComponent } from './categories';
@@ -28,6 +28,7 @@ import { ListProductsComponent, CreateProductComponent, UpdateProductComponent }
 import { ProductImagesComponent } from './products/product-images/product-images.component';
 import { FileUploadComponent } from './products/file-upload/file-upload.component';
 import { EmployeesComponent } from './employees';
+import { CompaniesComponent } from './companies';
 
 
 const routes: Routes = [
@@ -94,6 +95,8 @@ export const declarations = [
   BannerTutorialComponent,
   CreatePersonaComponent,
   UpdateProductComponent,
+  SetUpProgressComponent,
+  CompaniesComponent,
   // Pipes
   MeasurenamePipe,
 ];

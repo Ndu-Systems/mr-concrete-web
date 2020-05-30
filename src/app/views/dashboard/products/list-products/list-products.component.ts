@@ -39,5 +39,5 @@ export class ListProductsComponent implements OnInit {
     this.productService.updateProductState(product);
     this.router.navigate(['/dashboard/edit-product']);
   }
-
+  add() {}
 }
