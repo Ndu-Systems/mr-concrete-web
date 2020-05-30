@@ -76,6 +76,9 @@ export class CreatePersonaComponent implements OnInit {
     this.companyService.addCompany(model).subscribe(data => {
       if (data.CompanyId) {
         this.messageService.successMassage('Company created successfully', 'No action required');
+        this.user.CompanyId = data.CompanyId;
+        this.accountService.updateUserState(this.user);
+        this.showCompleteProfileForm = false;
       }
     });
 
