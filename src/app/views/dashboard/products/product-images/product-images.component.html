@@ -11,12 +11,13 @@
     <div class="image uplaod">
         <div class="file-drop-area">
             <span class="fake-btn">
-              <img src="assets/images/btn-upload.svg" alt="">
+              <img class="btn-upload" src="assets/images/btn-upload.svg" alt="">
+              <input class="file-input" type="file" (change)="onChange($event.target.files)" multiple>
             </span>
-            <input class="file-input" type="file" (change)="onChange($event.target.files)" multiple>
+         
           </div>
     </div>
   </div>
 </div>
 
-<p-confirmDialog  header="Confirm Delete"></p-confirmDialog>
+<!-- <p-confirmDialog  header="Confirm Delete"></p-confirmDialog> -->

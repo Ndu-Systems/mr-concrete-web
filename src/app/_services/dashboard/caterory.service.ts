@@ -77,7 +77,7 @@ export class CateroryService {
       localStorage.setItem('categories', JSON.stringify(caterory));
       this._categories.next(caterory);
       this.dataStore.categories = resp;
-      this._categories.next(Object.assign({}, this.dataStore).categories);
+      // this._categories.next(Object.assign({}, this.dataStore).categories);
     }, error => {
       console.log(error);
     });
