@@ -13,5 +13,7 @@ export * from './setting-counter.model';
 export * from './email.model';
 export * from './image.model';
 export * from './persona.model';
-// end:ng42.barrel
+export * from './Company.model';
+export * from './role.enum.model';
+ // end:ng42.barrel
 

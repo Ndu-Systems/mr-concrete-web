@@ -83,3 +83,11 @@ export const PROVINCE_LIST: Region[] = [
   },
 
 ];
+
+
+// Local storage Model
+
+export const LOCALE: any = {
+  COMPANIES_LCLSTR: 'Companies',
+  COMPANY_LCLSTR: 'Company',
+};
