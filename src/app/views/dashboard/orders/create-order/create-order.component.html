@@ -1,131 +1,197 @@
 <div class="main">
   <app-banner [subheading]="subheading" [heading]="heading" [actionButton]="actionButton"></app-banner>
   <div class="create-product-form form">
+    <div class="label">Filter products by <b>catergories</b></div>
+    <div class="catergories-tab" *ngIf="catergories$ | async as catergories">
+      <div class="catergory catergory-active">
+        All
+      </div>
+      <div *ngFor="let catergory of catergories" class="list-catergories">
+        <div class="catergory">
+          {{catergory.CategoryName}}
+        </div>
+      </div>
+    </div>
 
-
-    <mat-tab-group class="tab-group">
-
-
-      <mat-tab label="Order datils">
-        <form [formGroup]="rForm" *ngIf="rForm" (ngSubmit)="onSubmit(rForm.value)">
-          <div class="form-fields">
-
-            <div class="input-group">
-              <label>Enter Customer</label>
-              <input type="search" formControlName="CustomerId"
-                placeholder="Select the customer/partner that this order is for.">
-            </div>
-
-            <div class="input-group">
-              <label>Enter Project title / number</label>
-              <input matInput formControlName="ProjectNumber" placeholder="Project title / number.">
-            </div>
-
-            <div class="col-2">
-              <div class="input-group">
-                <label>Delivery date</label>
-                <input type="date" matInput formControlName="DeliveryDate" class="shoter-input" placeholder="750.99">
-              </div>
-              <div class="input-group">
-                <label>Delivery time</label>
-                <input matInput type="time" formControlName="DeliveryTime" placeholder="each or kg">
-              </div>
-            </div>
-
-            <div class="input-group">
-              <label>Delivery address</label>
-              <textarea formControlName="DeliveryAddress"></textarea>
-            </div>
-
-            <div class="input-group">
-              <label>Special instructions</label>
-              <textarea formControlName="SpecialInstructions"></textarea>
-            </div>
-
-
+    <div class="main" *ngIf="products$  | async as products">
+      <div class="table" *ngIf="products.length > 0; else notFound">
+        <div class="header">
+          <div class="item">Product Name</div>
+          <div class="item">Product Code</div>
+          <div class="item"> Price</div>
+          <div class="item"> Category</div>
+          <div class="item"> </div>
+        </div>
+        <div class="row" *ngFor="let item of products">
+          <div class="item">
+            <img [src]="item.Images[0].Url" alt="" *ngIf="item.Images" />
+            <img src="assets/images/product-placeholder.png" *ngIf="!item.Images" alt="" />
           </div>
-        </form>
-      </mat-tab>
-
-
-      <mat-tab label="Order products">
-        <div class="label">Filter products by <b>catergories</b></div>
-        <div class="catergories-tab" *ngIf="catergories$ | async as catergories">
-          <div class="catergory catergory-active">
-            All
+          <div class="item">
+            <b>
+              {{item.ProductName}}
+            </b>
           </div>
-          <div *ngFor="let catergory of catergories" class="list-catergories">
-            <div class="catergory">
-              {{catergory.CategoryName}}
+          <div class="item">
+            {{item.ProductCode}}
+          </div>
+          <div class="item">
+            <b class="mt1">
+              {{item.Price | currency:'R'}}
+              <span *ngIf="item.Units">
+                / {{item.Units}}
+              </span>
+            </b>
+          </div>
+          <div class="item" *ngIf="item.Category">
+            {{item.Category.CategoryName}}
+          </div>
+          <div class="item" *ngIf="!item.Category">
+            <span class="small-text">No Category</span>
+          </div>
+          <div class="item">
+            <button mat-icon-button class="btn" aria-label="Example icon button with a vertical three dot icon"
+              (click)="addToCart(item)">
+              <mat-icon>add_shopping_cart</mat-icon> Add to cart
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <ng-template #notFound>
+        <div class="not-found">
+          <!-- <img [src]="notFoundModel.Image" alt="no items found"> -->
+          <h1 class="message">
+            No product found
+            <span>
+              <a class="link-add" (click)="add()"> add new product.</a>
+            </span>
+          </h1>
+        </div>
+      </ng-template>
+    </div>
+
+  </div>
+</div>
+<div class="overlay" *ngIf="selectedProduct">
+  <div class="overlay-modal" *ngIf="!cartView">
+    <div class="image">
+      <img *ngIf="selectedProduct.Images" [src]="selectedProduct.Images[0].Url" alt="">
+      <img *ngIf="!selectedProduct.Images" src="assets/images/product-placeholder.png" alt="" />
+    </div>
+    <div class="details">
+      <h1>{{selectedProduct.ProductName}}</h1>
+      <h5>{{selectedProduct.ShortDescription}}</h5>
+
+      <div class="options">
+        <div class="col-2">
+          <div class="label qty-label">
+            Quanty ({{selectedProduct.Units}})
+          </div>
+          <div class="btn-qty">
+            <div class="action">
+              <button mat-mini-fab aria-label="Example icon button with a plus one icon" (click)="addQty(-1)">
+                <mat-icon>remove</mat-icon>
+              </button>
+            </div>
+            <div>
+              <input type="number" [(ngModel)]="qty">
+            </div>
+            <div class="action">
+              <button mat-mini-fab aria-label="Example icon button with a plus one icon" (click)="addQty(1)">
+                <mat-icon>add</mat-icon>
+              </button>
             </div>
           </div>
         </div>
+      </div>
 
-        <div class="main" *ngIf="products$  | async as products">
-          <div class="table" *ngIf="products.length > 0; else notFound">
-            <div class="header">
-              <div class="item">Product Name</div>
-              <div class="item">Product Code</div>
-              <div class="item"> Price</div>
-              <div class="item"> Category</div>
-              <div class="item"> </div>
-            </div>
-            <div class="row" *ngFor="let item of products">
-              <div class="item">
-                <img [src]="item.Images[0].Url" alt="" *ngIf="item.Images" />
-                <img src="assets/images/product-placeholder.png" *ngIf="!item.Images" alt="" />
-              </div>
-              <div class="item">
-                <b>
-                  {{item.ProductName}}
-                </b>
-                <span class="active">
-                  Active
-                </span>
-              </div>
-              <div class="item">
-                {{item.ProductCode}}
-              </div>
-              <div class="item">
-                <b class="mt1">
-                  {{item.Price | currency:'R'}}
-                  <span *ngIf="item.Units">
-                    / {{item.Units}}
-                  </span>
-                </b>
-              </div>
-              <div class="item" *ngIf="item.Category">
-                {{item.Category.CategoryName}}
-              </div>
-              <div class="item" *ngIf="!item.Category">
-                <span class="small-text">No Category</span>
-              </div>
-              <div class="item">
-                <button mat-icon-button class="btn" aria-label="Example icon button with a vertical three dot icon"
-                  (click)="addToCart(item)">
-                  <mat-icon>add_shopping_cart</mat-icon> Add to cart
-                </button>
-              </div>
-            </div>
-          </div>
+      <div class="cart">
+        <button mat-icon-button class="btn btn-cart" aria-label="Example icon button with a vertical three dot icon"
+          (click)="confirmItemToCart(selectedProduct)">
+          <mat-icon>add_shopping_cart</mat-icon> Add to cart
+        </button>
+      </div>
+    </div>
 
-          <ng-template #notFound>
-            <div class="not-found">
-              <!-- <img [src]="notFoundModel.Image" alt="no items found"> -->
-              <h1 class="message">
-                No product found
-                <span>
-                  <a class="link-add" (click)="add()"> add new product.</a>
-                </span>
-              </h1>
-            </div>
-          </ng-template>
+
+  </div>
+
+  <div class="overlay-modal" *ngIf="cartView">
+    <h1><mat-icon>check_circle_outline</mat-icon>  {{shopHeadingStatus}}</h1>
+    <div class="cart-items" *ngFor="let item of orderProducts">
+      <div class="item">
+        <img [src]="item.Images[0].Url" alt="" *ngIf="item.Images" />
+        <img src="assets/images/product-placeholder.png" *ngIf="!item.Images" alt="" />
+      </div>
+      <div class="item">
+        {{item.ProductName}}
+      </div>
+      <div class="item">
+        <b>
+          <u>
+            x {{item.Quantity}}
+          </u>
+        </b>
+      </div>
+      <div class="item">
+        <b>
+          {{item.Price*item.Quantity | currency:'R'}}
+        </b>
+      </div>
+    </div>
+
+
+
+    <span *ngIf="!showCheckout">
+      <h1>
+        Total
+        <span>
+          {{total | currency:'R'}}
+        </span>
+      </h1>
+      <div class="cart">
+        <button mat-icon-button class="btn btn-cart" aria-label="Example icon button with a vertical three dot icon"
+          (click)="continueOrdering()">
+          Continue ordering
+        </button>
+      </div>
+      <div class="cart">
+        <button mat-icon-button class="btn btn-grey" aria-label="Example icon button with a vertical three dot icon"
+          (click)="checkout()">
+          <mat-icon>shopping_basket</mat-icon> Check out
+        </button>
+      </div>
+    </span>
+
+    <span *ngIf="showCheckout">
+
+      <div class="delivery">
+        <div class="image">
+          <img src="assets/images/delivery-date.svg">
         </div>
+        <div class="input-group">
+          <label>Delivery date **</label>
+          <input type="date" matInput [(ngModel)]="DeliveryDate" class="shoter-input" placeholder="750.99">
+        </div>
+        <div class="input-group">
+          <label>Delivery time **</label>
+          <input matInput type="time" [(ngModel)]="DeliveryTime" placeholder="each or kg">
+        </div>
+        <div class="input-group">
+          <label>Delivery Location **</label>
+          <input matInput type="search" [(ngModel)]="DeliveryAddress" placeholder="Search your address">
+        </div>
+      </div>
 
+      <div class="cart">
+        <button mat-icon-button class="btn btn-cart" aria-label="Example icon button with a vertical three dot icon"
+          (click)="placOrder()">
+          Place Order | {{total | currency:'R'}}
+        </button>
+      </div>
 
-      </mat-tab>
-      <mat-tab label="Order Summary">
-      </mat-tab>
-    </mat-tab-group>
+    </span>
+
   </div>
 </div>

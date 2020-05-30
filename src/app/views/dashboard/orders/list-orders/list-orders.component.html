@@ -1,86 +1,60 @@
 <div class="main">
   <app-banner [subheading]="subheading" [heading]="heading" [actionButton]="actionButton"></app-banner>
- <div class="container" *ngIf="!this.supplierOrder">
-  <div class="heading col-1-of-4">
-    <h1>Order #</h1>
-    <h1>Project #</h1>
-    <h1>Category name</h1>
-    <h1>Delivery date</h1>
-    <h1>Supplier name</h1>
-    <h1>actions</h1>
-  </div>
-  <div class="container-table">
-    <span *ngIf="orders$ | async as orders">
-      <span *ngIf="orders.length > 0 else noOrder;">
-        <mat-card *ngFor="let item of orders">
-          <span class="table-card col-1-of-8">
-            <div class="data">
-              <h1 class="text">
-                {{item.OrderNumber}}
-                <mat-chip-list class="chips">
-                  <mat-chip class="chip pending" *ngIf="item.StatusId == '1'">Pending</mat-chip>
-                  <mat-chip class="chip info" *ngIf="item.StatusId == '2'">Accepted at supplier</mat-chip>
-                  <mat-chip class="chip info" *ngIf="item.StatusId == '3'">In progress</mat-chip>
-                  <mat-chip class="chip info" *ngIf="item.StatusId == '4'">On delivery</mat-chip>
-                  <mat-chip class="chip success" *ngIf="item.StatusId == '5'">Completed Order</mat-chip>
-                  <mat-chip class="chip cancelled" *ngIf="item.StatusId == '6'">Cancelled</mat-chip>
-                  <mat-chip class="chip cancelled" *ngIf="item.StatusId == '7'">Cancelled by customer</mat-chip>
-                  <mat-chip class="chip cancelled" *ngIf="item.StatusId == '8'">Cancelled by supplier</mat-chip>
-                </mat-chip-list>
-              </h1>
-            </div>
-            <div class="data">
-              <h1 class="text">
-                {{item.ProjectCode}}
-                <span class="span">
-                </span>
-              </h1>
-            </div>
-            <div class="data">
-              <h1 class="text">
-                {{item.category?.CategoryName}}
-                <span class="span">
-                </span>
-              </h1>
-            </div>
-            <div class="data">
-              <h1 class="text">
-                {{item.DeliveryDate | date}}
-                <span class="span">
-                </span>
-              </h1>
-            </div>
-            <div class="data">
-              <h1 class="text">
-                {{item.supplier?.SupplierName}}
-                <span class="span">
-                </span>
-              </h1>
-            </div>
-            <div class="data">
-              <button class="buttons sucees" mat-button (click)="view(item)">
-                <mat-icon matDatepickerToggleIcon matTooltip="View order full details">remove_red_eye</mat-icon>
-              </button>
-              <button class="buttons primary" [disabled]="item.StatusId != '1'" matTooltip="Edit this order."
-                mat-button>
-                <mat-icon matDatepickerToggleIcon>edit</mat-icon>
-              </button>
-              <button class="buttons danger" [disabled]="item.StatusId != '1'" (click)=remove(item)
-                matTooltip="Cancel this order." mat-button>
-                <mat-icon matDatepickerToggleIcon>cancel</mat-icon>
-              </button>
-            </div>
-          </span>
-        </mat-card>
-      </span>
-    </span>
-    <ng-template #noOrder>
-      <app-placeholder [placeHolder]="placeHolder"></app-placeholder>
-    </ng-template>
-  </div>
 </div>
-<div class="supplier" *ngIf="this.supplierOrder">
-  <app-supplier-list-orders [orders]="this.supplierOrder.Orders"></app-supplier-list-orders>
-</div>
+
+
+<div class="main" *ngIf="orders$  | async as orders">
+  <div class="table" *ngIf="orders.length > 0; else notFound">
+    <div class="header">
+      <div class="item">Order</div>
+      <div class="item">Product Code</div>
+      <div class="item"> Total</div>
+      <div class="item"> Delivery Date</div>
+      <div class="item"> </div>
+    </div>
+    <div class="row" *ngFor="let item of orders">
+      <div class="item">
+        <img [src]="item.Images[0].Url" alt="" *ngIf="item.Images" />
+        <img src="assets/images/product-placeholder.png" *ngIf="!item.Images" alt="" />
+      </div>
+      <div class="item">
+        <b>
+          ODR-7832173 <br>
+        </b>
+       <span>
+        {{item.CreateDate | date:'fullDate'}}
+       </span>
+      </div>
+      <div class="item">
+          {{item.ProductCode}}
+      </div>
+      <div class="item">
+         <b class="mt1">
+          {{item.Total | currency:'R'}}  
+         </b>
+      </div>
+      <div class="item" >
+        {{item.DeliveryDate | date:'fullDate'}} <br>
+        <b> {{item.DeliveryTime}}</b>
+      </div>
+      <div class="item">
+        <button mat-icon-button aria-label="Example icon button with a vertical three dot icon" (click)="more(item)">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #notFound>
+    <div class="not-found">
+      <!-- <img [src]="notFoundModel.Image" alt="no items found"> -->
+      <h1 class="message">
+        No product found
+        <span>
+          <a class="link-add" (click)="add()"> add new product.</a>
+        </span>
+      </h1>
+    </div>
+  </ng-template>
 </div>
 

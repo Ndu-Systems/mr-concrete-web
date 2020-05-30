@@ -28,6 +28,7 @@ import { ListProductsComponent, CreateProductComponent, UpdateProductComponent }
 import { ProductImagesComponent } from './products/product-images/product-images.component';
 import { FileUploadComponent } from './products/file-upload/file-upload.component';
 import { EmployeesComponent } from './employees';
+import { CartViewComponent } from './orders/cart-view/cart-view.component';
 
 
 const routes: Routes = [
@@ -94,6 +95,7 @@ export const declarations = [
   BannerTutorialComponent,
   CreatePersonaComponent,
   UpdateProductComponent,
+  CartViewComponent,
   // Pipes
   MeasurenamePipe,
 ];

@@ -1,7 +1,7 @@
 import { Orderproduct } from './orderproduct .model';
 
 export interface Order {
-    OrderId: string;
+    OrderId?: string;
     CustomerId: string;
     SupplierId: string;
     ProjectNumber: string;
@@ -9,11 +9,11 @@ export interface Order {
     DeliveryTime: string;
     DeliveryAddress: string;
     SpecialInstructions: string;
-    Total: string;
-    CreateDate: string;
+    Total: number;
+    CreateDate?: string;
     CrateUserId: string;
-    ModifyDate: string;
+    ModifyDate?: string;
     ModifyUserId: string;
-    StatusId: string;
+    StatusId: number;
     Orderproducts: Orderproduct[];
 }

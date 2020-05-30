@@ -8,6 +8,8 @@ import { FormGroup, FormBuilder, Validators, FormControl, FormArray } from '@ang
 import { Product } from 'src/app/_models/product.model';
 import { ProductService } from 'src/app/_services/dashboard/product.service';
 import { Orderproduct } from 'src/app/_models/orderproduct .model';
+import { Order } from 'src/app/_models/order.model';
+import { OrderService } from 'src/app/_services/dashboard/order.service';
 
 @Component({
   selector: 'app-create-order',
@@ -20,8 +22,9 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
   catergories$: Observable<Caterory[]>;
   order: OrderView = initOrderView;
   currentUser: UserModel;
-  rForm: FormGroup;
   products$: Observable<Product[]>;
+  display = false;
+  orderProducts: Orderproduct[] = [];
 
 
   heading = ' Create an order';
@@ -30,33 +33,32 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
     link: '/dashboard/orders',
     label: 'View Orders'
   };
+  selectedProduct: Product;
+  cartView: boolean;
+  shopHeadingStatus: string;
+  qty = 1;
+  total = 0;
+  showCheckout: boolean;
+  DeliveryDate: any;
+  DeliveryTime: any;
+  DeliveryAddress: any;
   constructor(
     private cateroryService: CateroryService,
     private accountService: AccountService,
     private productService: ProductService,
+    private orderService: OrderService,
     private router: Router,
-    private fb: FormBuilder
-
   ) {
-    this.currentUser = this.accountService.CurrentUserValue;
-    this.rForm = this.fb.group({
-      CustomerId: [null],
-      ProjectNumber: [null],
-      DeliveryDate: [null],
-      DeliveryTime: [null],
-      DeliveryAddress: [null],
-      SpecialInstructions: [null],
-      Total: [0],
-      CreateUserId: [this.currentUser.UserId, Validators.required],
-      ModifyUserId: [this.currentUser.UserId, Validators.required],
-      StatusId: [1, Validators.required]
-    });
   }
 
   ngOnInit() {
+    this.currentUser = this.accountService.CurrentUserValue;
     this.catergories$ = this.cateroryService.categories;
     this.cateroryService.getCateries();
     this.products$ = this.productService.products;
+    this.productService.products.subscribe(p => {
+      // this.selectedProduct = p[0];
+    });
 
   }
 
@@ -68,20 +70,76 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
     console.log(this.order);
   }
   addToCart(product: Product) {
+    this.selectedProduct = product;
+    this.cartView = false;
+  }
+  confirmItemToCart(product: Product) {
     const orderProduct: Orderproduct = {
       OrderProductId: '',
       OrderId: '',
       ProductId: product.ProductId,
       ProductName: product.ProductName,
-      Price: product.ProductId,
-      Quantity: product.Quantity,
+      Price: product.Price,
+      Quantity: this.qty,
       Units: product.Units,
       CrateUserId: this.currentUser.UserId,
       ModifyUserId: this.currentUser.UserId,
-      StatusId: 1
+      StatusId: 1,
+      Images: product.Images
     };
+    this.orderProducts.push(orderProduct);
+    console.log(' this.orderProducts', this.orderProducts);
+    this.cartView = true;
+    this.shopHeadingStatus = 'Added to Cart';
+    this.total += Number(product.Price) * this.qty;
+    this.qty = 1;
+
+  }
+
+  continueOrdering() {
+    this.cartView = true;
+    this.selectedProduct = null;
+  }
+  checkout() {
+    this.showCheckout = true;
+    this.shopHeadingStatus = 'Check Out';
+  }
+
+
+  placOrder() {
+    if (!this.orderProducts.length) {
+      alert('Your cart is empty');
+      return false;
+    }
+
+    const order: Order = {
+      CustomerId: this.currentUser.UserId,
+      SupplierId: this.currentUser.UserId,
+      ProjectNumber: 'na',
+      DeliveryDate: this.DeliveryDate,
+      DeliveryTime: this.DeliveryTime,
+      DeliveryAddress: this.DeliveryAddress,
+      SpecialInstructions: '',
+      Total: this.total,
+      CrateUserId: this.currentUser.UserId,
+      ModifyUserId: this.currentUser.UserId,
+      StatusId: 1,
+      Orderproducts: this.orderProducts
+    };
+
+    this.orderService.addOrder(order).subscribe(data => {
+      console.log(data);
+
+    })
   }
 
   ngOnDestroy(): void {
+  }
+
+  addQty(qty) {
+    if (qty < 0 && this.qty < 1) {
+      return false;
+    }
+    this.qty += qty;
   }
 }

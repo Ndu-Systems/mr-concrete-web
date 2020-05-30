@@ -38,11 +38,77 @@
 
 .table {
   .row {
-    border: 2rem solid $white;
-    border-radius: 5px;
+    border: .1rem solid $white;
+    border-radius: 2px;
   }
 }
 
-.mat-icon-button{
+.mat-icon-button {
   width: 50%;
+}
+
+.mat-accent {
+  background: $tab-selected-bg;
+  color: $black;
+}
+
+.cart {
+  text-align: center;
+  padding: .7rem;
+
+  .btn-cart {
+    color: $black;
+    background: $yellow;
+    border-radius: 4px;
+    font-weight: 700;
+  }
+
+  .btn-grey {
+    color: $black;
+    background: $grey;
+    border-radius: 4px;
+  }
+}
+
+.cart-items {
+  display: grid;
+  grid-template-columns: 10% 50% 15% auto;
+
+  .item {
+    font-size: .8rem;
+    margin: .3rem 0;
+
+    img {
+      width: 2rem;
+    }
+  }
+}
+
+.cta {
+  padding: 0.5rem 1rem !important;
+}
+
+.delivery {
+  margin: 1rem 0;
+  text-align: center;
+
+  .image {
+    height: auto;
+    padding-bottom: 0;
+
+    img {
+      width: 15%;
+    }
+  }
+
+  label {
+    font-size: .7rem;
+    font-weight: 800;
+    display: block;
+    margin: .4rem 0;
+  }
+
+  input {
+    border: 2px solid $strong-grey;
+  }
 }
