@@ -3,6 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { PERSONA_LIST } from 'src/app/_shared';
 import { CompanyModel } from 'src/app/_models/Company.model';
+import { AccountService, NotificationService } from 'src/app/_services';
+import { UserModel } from 'src/app/_models';
+import { CompanyService } from 'src/app/_services/dashboard/company.service';
 
 @Component({
   selector: 'app-create-persona',
@@ -15,12 +18,23 @@ export class CreatePersonaComponent implements OnInit {
   personas = PERSONA_LIST;
   provinces = PROVINCE_LIST;
   subRegions: Region[] = [];
+  user: UserModel;
+  selected;
+  showCompleteProfileForm: boolean;
   constructor(
     private fb: FormBuilder,
+    private accountService: AccountService,
+    private companyService: CompanyService,
+    private messageService: NotificationService
   ) { }
 
 
   ngOnInit() {
+    this.user = this.accountService.CurrentUserValue;
+    if (this.user.CompanyId === null ||
+      this.user.CompanyId === undefined) {
+      this.showCompleteProfileForm = true;
+    }
     this.rForm = this.fb.group({
       CompanyName: [null, Validators.required],
       CompanyPhone: [null, Validators.required],
@@ -29,8 +43,16 @@ export class CreatePersonaComponent implements OnInit {
       PostalCode: [null, Validators.required],
       Province: [null],
       CompanyLink: [null],
-      personaTYpe: [null, Validators.required],
+      personaType: [null, Validators.required],
+      IsDeleted: [false],
+      CreateUserId: [this.user.UserId],
+      ModifyUserId: [this.user.UserId],
+      CompanyEmail: [''],
+      ParentId: [this.user.CompanyId],
+      StatusId: [1],
+      CompanyType: ['HeadQuarter']
     });
+
     this.loadSubRegions();
   }
 
@@ -42,9 +64,23 @@ export class CreatePersonaComponent implements OnInit {
     });
   }
 
-  onSelect(parentId) {
-   }
+  onProvinceSelect(parentId) {
+    this.loadSubRegions();
+    this.subRegions = this.subRegions.filter(x => x.parentId === parentId);
+  }
+
   onSubmit(model: CompanyModel) {
     // code service api
-   }
+    let provinceName = this.provinces.find(x => x.id = model.Province);
+    console.log(provinceName);
+    this.companyService.addCompany(model).subscribe(data => {
+      if (data.CompanyId) {
+        this.messageService.successMassage('Company created successfully', 'No action required');
+        this.user.CompanyId = data.CompanyId;
+        this.accountService.updateUserState(this.user);
+        this.showCompleteProfileForm = false;
+      }
+    });
+
+  }
 }

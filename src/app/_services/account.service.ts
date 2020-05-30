@@ -31,6 +31,11 @@ export class AccountService {
     return this._user.value;
   }
 
+  updateUserState(user: UserModel) {
+    this._user.next(user);
+    localStorage.setItem(CURRENT_USER, JSON.stringify(user));
+  }
+
   signIn(data: SignInModel): Observable<UserModel> {
     return this.http.post<UserModel>(`${this.url}/api/accounts/sign-in.php`, data)
       .pipe(map(response => {

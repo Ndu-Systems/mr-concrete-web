@@ -1,113 +1,84 @@
- <p>form here</p>
- <!-- <form class="form" [formGroup]="rForm">
-  <h1 class="form-heading">Sign in to access your account.</h1>
-  <mat-form-field appearance="outline">
-    <input matInput placeholder="Email" formControlName="Email" MatFormFieldControl type="email" required>
-    <mat-error *ngIf="!rForm.controls['Email'].valid && rForm.controls['Email'].touched">a valid email address is required</mat-error>
-  </mat-form-field>
-  <mat-form-field appearance="outline">
-    <input matInput placeholder="Password" formControlName="Password" MatFormFieldControl [type]="hidePassword ? 'password' : 'text'"  required>
-    <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'">
-      <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
-    </button>
-    <mat-error *ngIf="!rForm.controls['Password'].valid && rForm.controls['Password'].touched">your password is required</mat-error>
-  </mat-form-field>
-  <div class="col-1-of-2">
-    <button mat-flat-button color="primary" (click)="onSubmit(rForm.value)" [disabled]="!rForm.valid">
-      Log in
-    </button>
-    <a  mat-flat-button color="primary" class="transparent" routerLink="/forgot-password">forgot password?</a>
-  </div>
-  <div class="col-1-of-2 cta">
-    <h1>
-      Sign up for 14 day free trial.
+  <form class="form" [formGroup]="rForm" *ngIf="rForm && showCompleteProfileForm" (ngSubmit)="onSubmit(rForm.value)">
+    <h1 class="heading">
+      Almost done let us complete your profile details
     </h1>
-    <a  mat-flat-button color="primary" class="cta-btn" routerLink="/register">register for free</a>
-  </div>
+    <hr class="line">
+    <div class="">
+      <div class="form-fields">
+        <div class="input-group">
+          <label>What do you do?</label>
+          <select matNativeControl formControlName="personaType">
+            <option label="--select something --"></option>
+            <option *ngFor="let item of personas" value="{{item.Key}}">
+              {{item.Description}}
+            </option>
+          </select>
+          <mat-error class="error"
+            *ngIf="!rForm.controls['personaType'].valid && rForm.controls['personaType'].touched">
+            Your purpose for system is required</mat-error>
+        </div>
+        <div class="col-1-of-2">
+          <div class="input-group">
+            <label>Company name</label>
+            <input matInput formControlName="CompanyName">
+            <mat-error class="error"
+              *ngIf="!rForm.controls['CompanyName'].valid && rForm.controls['CompanyName'].touched">
+              Company name is required</mat-error>
+          </div>
+          <div class="input-group">
+            <label>Company phone</label>
+            <input matInput formControlName="CompanyPhone" type="number">
+            <mat-error class="error"
+              *ngIf="!rForm.controls['CompanyPhone'].valid && rForm.controls['CompanyPhone'].touched">
+              Company Phone is required</mat-error>
+          </div>
+        </div>
+        <div class="input-group">
+          <label>Company Address</label>
+          <input matInput formControlName="CompanyAddress">
+          <mat-error class="error"
+            *ngIf="!rForm.controls['CompanyAddress'].valid && rForm.controls['CompanyAddress'].touched">
+            Company Address is required</mat-error>
+        </div>
+        <div class="col-1-of-2">
+          <div class="input-group">
+            <label>Select Province</label>
+            <select matNativeControl formControlName="Province" #selected (change)='onProvinceSelect(selected.value)'>
+              <option label="--select something --"></option>
+              <option *ngFor="let item of provinces" [value]="item.id">
+                {{item.name}}
+              </option>
+            </select>
+            <mat-error *ngIf="!rForm.controls['Province'].valid && rForm.controls['Province'].touched">
+              City is required</mat-error>
+          </div>
+          <div class="input-group">
+            <label>Select City/town</label>
+            <select matNativeControl required formControlName="City">
+              <option label="--select something --"></option>
+              <option *ngFor="let item of subRegions" value="{{item.name}}">
+                {{item.name}}
+              </option>
+            </select>
+            <mat-error *ngIf="!rForm.controls['City'].valid && rForm.controls['City'].touched">
+              City/town is required</mat-error>
+          </div>
+        </div>
+        <div class="col-1-of-2">
+          <div class="input-group">
+            <label>Postal Code</label>
+            <input matInput formControlName="PostalCode">
+            <mat-error class="error"
+              *ngIf="!rForm.controls['PostalCode'].valid && rForm.controls['PostalCode'].touched">
+              Postal Code is required</mat-error>
+          </div>
+        </div>
 
-  <div class="error" *ngIf="error">
-    <h1>{{error}}</h1>
-  </div>
-</form> -->
- <form class="form" [formGroup]="rForm" *ngIf="rForm" (ngSubmit)="onSubmit(rForm.value)">
-   <h1 class="heading">
-     Almost done let us complete your persona
-   </h1>
-   <hr class="line">
-   <div class="">
-     <div class="form-fields">
-       <div class="input-group">
-         <label>What do you do?</label>
-         <select matNativeControl formControlName="personaTYpe">
-           <option label="--select something --"></option>
-           <option *ngFor="let item of personas" value="{{item.Key}}">
-             {{item.Description}}
-           </option>
-         </select>
-         <mat-error class="error" *ngIf="!rForm.controls['personaTYpe'].valid && rForm.controls['personaTYpe'].touched">
-           Your purpose for system is required</mat-error>
-       </div>
-       <div class="col-1-of-2">
-         <div class="input-group">
-           <label>Company name</label>
-           <input matInput formControlName="CompanyName">
-           <mat-error class="error"
-             *ngIf="!rForm.controls['CompanyName'].valid && rForm.controls['CompanyName'].touched">
-             Company name is required</mat-error>
-         </div>
-         <div class="input-group">
-           <label>Company phone</label>
-           <input matInput formControlName="CompanyPhone" type="number">
-           <mat-error class="error"
-             *ngIf="!rForm.controls['CompanyPhone'].valid && rForm.controls['CompanyPhone'].touched">
-             Company Phone is required</mat-error>
-         </div>
-       </div>
-       <div class="input-group">
-         <label>Company Address</label>
-         <input matInput formControlName="CompanyAddress">
-         <mat-error class="error"
-           *ngIf="!rForm.controls['CompanyAddress'].valid && rForm.controls['CompanyAddress'].touched">
-           Company Address is required</mat-error>
-       </div>
-       <div class="col-1-of-2">
-         <div class="input-group">
-           <label>Select Province</label>
-           <select matNativeControl formControlName="Province" (selectionChange)="onSelect($event)">
-             <option label="--select something --"></option>
-             <option *ngFor="let item of provinces" value="{{item.id}}">
-               {{item.name}}
-             </option>
-           </select>
-           <mat-error *ngIf="!rForm.controls['Province'].valid && rForm.controls['Province'].touched">
-             City is required</mat-error>
-         </div>
-         <div class="input-group">
-           <label>Select City/town</label>
-           <select matNativeControl required formControlName="City">
-             <option label="--select something --"></option>
-             <option *ngFor="let item of subRegions" value="{{item.id}}">
-               {{item.name}}
-             </option>
-           </select>
-           <mat-error *ngIf="!rForm.controls['City'].valid && rForm.controls['City'].touched">
-             City/town is required</mat-error>
-         </div>
-       </div>
-       <div class="col-1-of-2">
-         <div class="input-group">
-           <label>Postal Code</label>
-           <input matInput formControlName="PostalCode">
-           <mat-error class="error" *ngIf="!rForm.controls['PostalCode'].valid && rForm.controls['PostalCode'].touched">
-             Postal Code is required</mat-error>
-         </div>
-       </div>
+        <div class="actions">
+          <button type="submit" [disabled]="!rForm.valid" class="btn cta">Save changes</button>
+          <button type="button" class="btn secondary cta">Cancel</button>
+        </div>
 
-       <div class="actions">
-         <button type="submit" [disabled]="!rForm.valid" class="btn cta" (click)="onSubmit(rForm.value)" >Save changes</button>
-         <button type="button" class="btn secondary cta">Cancel</button>
-       </div>
-
-     </div>
-   </div>
- </form>
+      </div>
+    </div>
+  </form>

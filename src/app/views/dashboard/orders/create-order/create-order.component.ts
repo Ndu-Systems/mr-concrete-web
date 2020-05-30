@@ -142,4 +142,8 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
     }
     this.qty += qty;
   }
+  onSubmit(form) {
+
+  }
+  add() {}
 }

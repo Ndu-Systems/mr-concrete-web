@@ -1,0 +1,188 @@
+@import '../../../../../assets/styles/general/colors';
+
+.mat-card {
+  height: 8em;
+  padding: 1rem 2rem;
+  border-radius: 25px;
+}
+
+.col-1-of-2 {
+  margin-bottom: 0;
+}
+
+h4 {
+  font-weight: 500;
+  text-transform: capitalize;
+  color: $grey;
+
+}
+
+h1.header {
+  font-weight: 600;
+  font-size: 1rem;
+
+  .text {
+    font-size: .81rem;
+    display: block;
+    color: $grey;
+    font-weight: 500;
+    margin-top: 0.5rem;
+  }
+
+  .heading {
+    font-weight: 400;
+    color: $grey;
+  }
+
+  .greeting {
+    font-size: 18px;
+  }
+
+
+
+  &.col-1-of-2 {
+
+    @media only screen and (max-width: 600px) {
+      grid-template-columns: 50% auto;
+    }
+  }
+
+  .time {
+    width: 34%;
+    color: $grey;
+    margin: 0 auto;
+    margin-right: 6em;
+    font-size: 1em;
+
+    &.col-1-of-2 {
+
+      @media only screen and (max-width: 600px) {
+        grid-template-columns: 100%;
+        width: 100%;
+      }
+    }
+  }
+}
+
+
+.banner-heading {
+  font-size: 1.8em;
+  font-weight: 900;
+}
+
+.mat-flat-button {
+  height: 4vh;
+  margin: 1em auto;
+  margin-right: 9em;
+  text-transform: capitalize;
+}
+
+.mat-flat-button.mat-primary {
+  background-color: $yellow;
+
+  font-size: 1em;
+  font-weight: 700;
+  border-radius: 25rem;
+  height: 2.5rem;
+  margin: 0;
+
+  &.cta-btn {
+    background-color: $black;
+  }
+
+  &.transparent {
+    background: $default-white;
+    font-weight: 700;
+    color: $grey;
+    border: solid 1px $grey;
+  }
+
+  &[disabled] {
+    background-color: #DCDDE1;
+    color: #B2BEC3;
+  }
+}
+
+.banner {
+  height: 100%;
+  padding: 1rem 2rem;
+  border-radius: 15px;
+
+  .mat-flat-button.mat-primary {
+    width: 100%;
+  }
+}
+
+.check-list {
+  .col-1-of-3 {
+    grid-template-columns: 5% 70% auto;
+  }
+
+  .img {
+    padding: 0.5rem;
+
+    img {
+      height: 36.2px;
+    }
+    .correct {
+      height: 1rem;
+    }
+  }
+
+  .desc {
+    font-size: 0.813rem;
+    padding: 1rem;
+  }
+
+  .cta {
+    padding: 1rem;
+
+    a.cta-link {
+      font-weight: 700;
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .col-1-of-3 {
+    grid-template-columns: 10% 70% auto;
+  }
+
+  .mat-card {
+    overflow: hidden;
+    height: 7em;
+
+
+  }
+
+  .mat-flat-button {
+    height: 4vh;
+    margin-right: 1em;
+    font-size: 0.75555em;
+    font-weight: 400;
+  }
+
+  .action {
+    &.col-1-of-2 {
+
+      @media only screen and (max-width: 600px) {
+        grid-template-columns: 50% auto;
+      }
+    }
+  }
+
+  .banner-heading {
+    font-size: 1em;
+  }
+
+  h1.time {
+    &.col-1-of-2 {
+      grid-template-columns: 50% auto;
+    }
+
+    .timespan,
+    .date {
+      font-size: 0.8em;
+    }
+  }
+}
