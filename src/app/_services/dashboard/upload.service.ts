@@ -24,7 +24,7 @@ export class UploadService {
     this._imagesUrlsToUpload = new BehaviorSubject<string[]>(JSON.parse(localStorage.getItem('imagesUrlsToUpload')) || []);
     this.imagesUrlsToUpload = this._imagesUrlsToUpload.asObservable();
 
-    this._images = new BehaviorSubject<Image[]>(JSON.parse(localStorage.getItem('imagesUrlsToUpload')) || []);
+    this._images = new BehaviorSubject<Image[]>(JSON.parse(localStorage.getItem('images')) || []);
     this.images = this._images.asObservable();
 
     this.url = environment.API_URL;

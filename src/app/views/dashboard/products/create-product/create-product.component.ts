@@ -95,6 +95,7 @@ export class CreateProductComponent implements OnInit {
       //   detail: 'product created '
       // });
       console.log(response);
+      this.uploadService.updateUrlsToUploadState([]);
       this.routeTo.navigate([`/dashboard/products`]);
     });
 

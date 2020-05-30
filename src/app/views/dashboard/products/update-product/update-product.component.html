@@ -40,8 +40,29 @@
                 <input type="number" matInput formControlName="Price" class="shoter-input" placeholder="750.99">
               </div>
               <div class="input-group">
-                <label>Units</label>
-                <input matInput formControlName="Units" placeholder="each or kg">
+                <label>Unit of measure</label>
+                <!-- <input matInput formControlName="Units" placeholder="each or kg"> -->
+                <select formControlName="Units">
+                  <option value="each" selected>
+                    Each
+                  </option>
+                  <option value="metre">
+                    per metre
+                  </option>
+                  <option value="kg">
+                    per Kg
+                  </option>
+                  <option value="litre">
+                    per litre
+                  </option>
+                
+                  <option value="mm">
+                    per MM
+                  </option>
+                  <option value="cm">
+                    per cm
+                  </option>
+                </select>
               </div>
             </div>
             <div class="input-group">

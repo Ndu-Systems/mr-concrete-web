@@ -108,7 +108,7 @@ export class FileUploadComponent implements ControlValueAccessor {
           formData.append('name', 'mrk');
           this.documentsService.uploadFile(formData).subscribe(response => {
             this.imgURL.push(`${environment.API_URL}/api/upload/${response}`);
-            this.uploadService.updateState(this.imgURL);
+            this.uploadService.updateUrlsToUploadState(this.imgURL);
             console.log(response);
           });
 
