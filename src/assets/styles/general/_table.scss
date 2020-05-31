@@ -28,14 +28,24 @@
       height: 5rem;
       font-size: .8rem;
 
+      .image {
+        width: 4rem;
+        height: 4rem;
+        text-align: center;
+        padding: 0;
+        overflow: hidden;
+        border-radius: 4px;
+      }
+
       img {
-        width: 4.5rem
+        width: 100%
       }
 
       b {
         font-weight: 900;
       }
-      .mt1{
+
+      .mt1 {
         margin-top: 1rem;
         display: block;
       }
@@ -48,7 +58,7 @@
         display: block;
         background: $active-fill;
         color: $success;
-        border:1px solid $success;
+        border: 1px solid $success;
         padding: .4rem .6rem;
         font-weight: 800;
         font-size: .8rem;

@@ -13,7 +13,7 @@
       </div>
     </div>
 
-    <div class="main" *ngIf="products$  | async as products">
+    <div class="products" *ngIf="products$  | async as products">
       <div class="table" *ngIf="products.length > 0; else notFound">
         <div class="header">
           <div class="item">Product Name</div>
@@ -24,8 +24,10 @@
         </div>
         <div class="row" *ngFor="let item of products">
           <div class="item">
-            <img [src]="item.Images[0].Url" alt="" *ngIf="item.Images" />
-            <img src="assets/images/product-placeholder.png" *ngIf="!item.Images" alt="" />
+            <div class="image">
+              <img [src]="item.Images[0].Url" alt="" *ngIf="item.Images" />
+              <img src="assets/images/product-placeholder.png" *ngIf="!item.Images" alt="" />
+            </div>
           </div>
           <div class="item">
             <b>
@@ -205,6 +207,13 @@
           <span *ngIf="loading">
             <i class="pi pi-spin pi-spinner" style="font-size: 1.2rem; color: #535C68"></i> Creating Order...
           </span>
+        </button>
+      </div>
+
+      <div class="cart">
+        <button mat-icon-button class="btn btn-grey" aria-label="Example icon button with a vertical three dot icon"
+          (click)="continueOrdering()">
+          <mat-icon>add_shopping_cart</mat-icon> Continue ordering
         </button>
       </div>
 
