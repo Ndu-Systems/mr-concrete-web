@@ -75,13 +75,16 @@
 </div>
 <div class="overlay" *ngIf="selectedProduct">
   <div class="overlay-modal" *ngIf="!cartView">
-    <div class="image">
+    <div class="image main-product-image">
       <img *ngIf="selectedProduct.Images" [src]="selectedProduct.Images[0].Url" alt="">
       <img *ngIf="!selectedProduct.Images" src="assets/images/product-placeholder.png" alt="" />
     </div>
     <div class="details">
       <h1>{{selectedProduct.ProductName}}</h1>
-      <h5>{{selectedProduct.ShortDescription}}</h5>
+      <p>{{selectedProduct.ShortDescription}}</p>
+      <h1 class="price">
+        {{selectedProduct.Price | currency:'R'}}
+      </h1>
 
       <div class="options">
         <div class="col-2">
@@ -112,13 +115,23 @@
           <mat-icon>add_shopping_cart</mat-icon> Add to cart
         </button>
       </div>
+      <div class="cart">
+        <button mat-icon-button class="btn btn-grey" aria-label="Example icon button with a vertical three dot icon"
+          (click)="continueOrdering()">
+          Continue ordering
+        </button>
+      </div>
     </div>
 
 
   </div>
 
   <div class="overlay-modal" *ngIf="cartView">
-    <h1><mat-icon>check_circle_outline</mat-icon>  {{shopHeadingStatus}}</h1>
+    <h1 class="success">
+      <span class="material-icons">
+        check_circle_outline
+      </span> {{shopHeadingStatus}}
+    </h1>
     <div class="cart-items" *ngFor="let item of orderProducts">
       <div class="item">
         <img [src]="item.Images[0].Url" alt="" *ngIf="item.Images" />
@@ -144,7 +157,7 @@
 
 
     <span *ngIf="!showCheckout">
-      <h1>
+      <h1 class="price">
         Total
         <span>
           {{total | currency:'R'}}
@@ -187,11 +200,43 @@
       <div class="cart">
         <button mat-icon-button class="btn btn-cart" aria-label="Example icon button with a vertical three dot icon"
           (click)="placOrder()">
-          Place Order | {{total | currency:'R'}}
+
+          <span *ngIf="!loading"> Place Order | {{total | currency:'R'}} </span>
+          <span *ngIf="loading">
+            <i class="pi pi-spin pi-spinner" style="font-size: 1.2rem; color: #535C68"></i> Creating Order...
+          </span>
         </button>
       </div>
 
     </span>
 
+  </div>
+
+
+</div>
+
+<div class="overlay" *ngIf="orderCreated">
+  <div class="overlay-modal">
+    <h1 class="success">
+      <span class="material-icons">
+        check_circle_outline
+      </span> Done
+    </h1>
+
+    <p>
+      <b> ORD231321</b> <br> was created successfully
+    </p>
+    <div class="cart">
+      <button mat-icon-button class="btn btn-cart" aria-label="Example icon button with a vertical three dot icon"
+        (click)="viewOrder()">
+        View this Order
+      </button>
+    </div>
+    <div class="cart">
+      <button mat-icon-button class="btn btn-grey" aria-label="Example icon button with a vertical three dot icon"
+        (click)="list()">
+        <mat-icon>list</mat-icon> All Orders
+      </button>
+    </div>
   </div>
 </div>

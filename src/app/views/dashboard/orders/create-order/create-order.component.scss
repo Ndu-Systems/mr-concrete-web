@@ -112,3 +112,60 @@
     border: 2px solid $strong-grey;
   }
 }
+
+.overlay-modal {
+  h1 {
+    font-size: 1.2rem;
+    text-align: center;
+    margin: 1rem 0;
+
+    span {
+      display: block;
+    }
+  }
+
+  h1.price {
+    font-size: .85rem;
+    font-weight: 900;
+    margin-top: 0;
+  }
+  h1.success {
+   color: $success;
+  }
+
+  p {
+    text-align: center;
+    padding: .5rem 4rem;
+    margin: 0;
+  }
+
+
+  .image {
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid $grey_light;
+    padding: 1rem;
+
+    img {
+      width: 25%;
+    }
+  }
+
+  .main-product-image {
+    height: 12rem;
+    overflow: hidden;
+
+    img {
+      width: 45%;
+    }
+  }
+
+  .details {
+    height: 20rem;
+    padding: 1rem;
+    width: 100%;
+
+  }
+
+
+}

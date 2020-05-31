@@ -42,6 +42,8 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
   DeliveryDate: any;
   DeliveryTime: any;
   DeliveryAddress: any;
+  loading: boolean;
+  orderCreated: boolean;
   constructor(
     private cateroryService: CateroryService,
     private accountService: AccountService,
@@ -126,11 +128,12 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
       StatusId: 1,
       Orderproducts: this.orderProducts
     };
-
+    this.loading = true;
     this.orderService.addOrder(order).subscribe(data => {
-      console.log(data);
-
-    })
+      this.loading = false;
+      this.orderCreated = true;
+      this.selectedProduct = null;
+    });
   }
 
   ngOnDestroy(): void {
@@ -145,5 +148,9 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
   onSubmit(form) {
 
   }
-  add() {}
+  add() { }
+  list() {
+    this.router.navigate(['/dashboard/orders']);
+  }
+  viewOrder() { this.router.navigate(['/dashboard/orders']); }
 }
