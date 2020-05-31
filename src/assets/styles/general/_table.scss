@@ -8,7 +8,7 @@
   .header {
     background: $default-white;
     padding: 1rem;
-    grid-template-columns: 25% 15% 15% 15% auto;
+    grid-template-columns: 40% 15% 15% auto;
 
 
     .item {
@@ -17,7 +17,7 @@
   }
 
   .row {
-    grid-template-columns: 5% 20% 15% 15% 15% auto;
+    grid-template-columns: 5% 35% 15% 15% auto;
     background: $default-white;
     margin: .5rem;
 
@@ -55,17 +55,35 @@
       }
 
       span.active {
-        display: block;
         background: $active-fill;
         color: $success;
         border: 1px solid $success;
-        padding: .4rem .6rem;
+        padding: .2rem .5rem;
         font-weight: 800;
-        font-size: .8rem;
+        font-size: .7rem;
         width: 5rem;
         text-align: center;
         border-radius: 1rem;
         margin-top: .5rem;
+      }
+
+      span.number {
+        background: $lighter-grey;
+        color: $black;
+        border: 1px solid$lighter-grey;
+        padding: .2rem .5rem;
+        font-weight: 500;
+        font-size: .7rem;
+        width: 7rem;
+        text-align: center;
+        border-radius: 5px;
+        margin-top: .5rem;
+        margin-left: 1rem;
+        display: flex;
+      }
+      button{
+        background: $yellow;
+        color: $black;
       }
     }
   }

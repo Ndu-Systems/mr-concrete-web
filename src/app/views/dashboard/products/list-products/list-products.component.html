@@ -6,7 +6,6 @@
   <div class="table" *ngIf="products.length > 0; else notFound">
     <div class="header">
       <div class="item">Product Name</div>
-      <div class="item">Product Code</div>
       <div class="item"> Price</div>
       <div class="item"> Category</div>
       <div class="item"> </div>
@@ -27,10 +26,12 @@
         <span class="active">
           Active
         </span>
+        <span class="number" *ngIf="item.ProductCode">
+          Code:<b> {{item.ProductCode}} </b>
+
+        </span>
       </div>
-      <div class="item">
-        {{item.ProductCode}}
-      </div>
+  
       <div class="item">
         <b class="mt1">
           {{item.Price | currency:'R'}}

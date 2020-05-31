@@ -1,7 +1,9 @@
 @import '../../../../../assets/styles/general/colors';
-.form{
+
+.form {
   background: none;
 }
+
 .main {
   .label {
     font-size: .8rem;
@@ -46,7 +48,7 @@
 }
 
 .mat-icon-button {
-  width: 50%;
+  width: 40%;
 }
 
 .mat-accent {
@@ -131,8 +133,9 @@
     font-weight: 900;
     margin-top: 0;
   }
+
   h1.success {
-   color: $success;
+    color: $success;
   }
 
   p {
