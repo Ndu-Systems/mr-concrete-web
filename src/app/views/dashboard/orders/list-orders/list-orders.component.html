@@ -20,22 +20,24 @@
         </div>
       </div>
       <div class="item">
-        <b>
-          ODR-7832173 <br>
+        <p>
+          <b>
+            ODR-{{item.OrderNo}} <br>
+          </b>
+          <span>
+            {{item.CreateDate | date:'fullDate'}}
+          </span>
+        </p>
+      </div>
+      <div class="item">
+        {{item.ProductCode}}
+      </div>
+      <div class="item">
+        <b class="mt1">
+          {{item.Total | currency:'R'}}
         </b>
-       <span>
-        {{item.CreateDate | date:'fullDate'}}
-       </span>
       </div>
       <div class="item">
-          {{item.ProductCode}}
-      </div>
-      <div class="item">
-         <b class="mt1">
-          {{item.Total | currency:'R'}}  
-         </b>
-      </div>
-      <div class="item" >
         {{item.DeliveryDate | date:'fullDate'}} <br>
         <b> {{item.DeliveryTime}}</b>
       </div>
@@ -59,4 +61,3 @@
     </div>
   </ng-template>
 </div>
-

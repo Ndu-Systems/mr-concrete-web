@@ -2,6 +2,7 @@ import { Orderproduct } from './orderproduct .model';
 
 export interface Order {
     OrderId?: string;
+    OrderNo?: number;
     CustomerId: string;
     SupplierId: string;
     ProjectNumber: string;

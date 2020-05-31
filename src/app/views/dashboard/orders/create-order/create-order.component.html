@@ -30,9 +30,11 @@
             </div>
           </div>
           <div class="item">
-            <b>
-              {{item.ProductName}}
-            </b>
+            <p>
+              <b>
+                {{item.ProductName}}
+              </b>
+            </p>
           </div>
           <div class="item">
             {{item.ProductCode}}
@@ -233,7 +235,7 @@
     </h1>
 
     <p>
-      <b> ORD231321</b> <br> was created successfully
+      <b> ORD-{{createdOrder.OrderNo}}</b> <br> was created successfully
     </p>
     <div class="cart">
       <button mat-icon-button class="btn btn-cart" aria-label="Example icon button with a vertical three dot icon"

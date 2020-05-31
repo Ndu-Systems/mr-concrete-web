@@ -8,7 +8,7 @@
   .header {
     background: $default-white;
     padding: 1rem;
-    grid-template-columns: 30% 15% 15% 15% auto;
+    grid-template-columns: 25% 15% 15% 15% auto;
 
 
     .item {
@@ -17,13 +17,13 @@
   }
 
   .row {
-    grid-template-columns: 10% 20% 15% 15% 15% auto;
+    grid-template-columns: 5% 20% 15% 15% 15% auto;
     background: $default-white;
     margin: .5rem;
 
     .item {
       font-weight: 400;
-      padding: .75rem .5rem;
+      padding: .75rem 1rem;
       box-sizing: border-box;
       height: 5rem;
       font-size: .8rem;
