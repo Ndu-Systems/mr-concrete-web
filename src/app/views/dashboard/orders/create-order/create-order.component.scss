@@ -48,7 +48,7 @@
 }
 
 .mat-icon-button {
-  width: 40%;
+  width: 12rem;
 }
 
 .mat-accent {
@@ -110,10 +110,24 @@
     font-weight: 800;
     display: block;
     margin: .4rem 0;
+    text-align: left;
+    padding-left: 1rem;
   }
 
   input {
     border: 2px solid $strong-grey;
+    width: 92%;
+    font-size: 1.2rem;
+    padding: .4rem;
+    margin-bottom: 1rem;
+  }
+
+  textarea {
+    width: 96%;
+    border: 2px solid $strong-grey;
+    font-size: 1.2rem;
+    padding: .4rem;
+
   }
 }
 
@@ -152,7 +166,7 @@
     padding: 1rem;
 
     img {
-      width: 25%;
+      width: 18%;
     }
   }
 

@@ -31,9 +31,16 @@
       </div>
       <div class="item">
         <p class="description">
-         {{item.Orderroducts | formatOrderproducts}}
+          <span class="name"  *ngFor="let product of item.Orderroducts">
+            <b> <u>{{product.Quantity}} {{product.Units}}  </u></b> {{product.ProductName}}
+          </span>
         </p>
       </div>
+      <!-- <div class="item">
+        <p class="description">
+         {{item.Orderroducts | formatOrderproducts}}
+        </p>
+      </div> -->
 
       <div class="item">
         <b class="mt1">

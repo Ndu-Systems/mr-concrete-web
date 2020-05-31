@@ -109,21 +109,26 @@
                 <mat-icon>add</mat-icon>
               </button>
             </div>
+
           </div>
         </div>
       </div>
 
-      <div class="cart">
-        <button mat-icon-button class="btn btn-cart" aria-label="Example icon button with a vertical three dot icon"
-          (click)="confirmItemToCart(selectedProduct)">
-          <mat-icon>add_shopping_cart</mat-icon> Add to cart
-        </button>
-      </div>
-      <div class="cart">
-        <button mat-icon-button class="btn btn-grey" aria-label="Example icon button with a vertical three dot icon"
-          (click)="continueOrdering()">
-          Continue ordering
-        </button>
+
+
+      <div class="col-2 mt2">
+        <div class="cart">
+          <button mat-icon-button class="btn btn-cart" aria-label="Example icon button with a vertical three dot icon"
+            (click)="confirmItemToCart(selectedProduct)">
+            <mat-icon>add_shopping_cart</mat-icon> Add to cart
+          </button>
+        </div>
+        <div class="cart">
+          <button mat-icon-button class="btn btn-grey" aria-label="Example icon button with a vertical three dot icon"
+            (click)="continueOrdering()">
+            Continue ordering
+          </button>
+        </div>
       </div>
     </div>
 
@@ -167,18 +172,22 @@
           {{total | currency:'R'}}
         </span>
       </h1>
-      <div class="cart">
-        <button mat-icon-button class="btn btn-cart" aria-label="Example icon button with a vertical three dot icon"
-          (click)="continueOrdering()">
-          Continue ordering
-        </button>
+
+      <div class="col-2 mt2">
+        <div class="cart">
+          <button mat-icon-button class="btn btn-cart" aria-label="Example icon button with a vertical three dot icon"
+            (click)="continueOrdering()">
+            Continue ordering
+          </button>
+        </div>
+        <div class="cart">
+          <button mat-icon-button class="btn btn-grey" aria-label="Example icon button with a vertical three dot icon"
+            (click)="checkout()">
+            <mat-icon>shopping_basket</mat-icon> Check out
+          </button>
+        </div>
       </div>
-      <div class="cart">
-        <button mat-icon-button class="btn btn-grey" aria-label="Example icon button with a vertical three dot icon"
-          (click)="checkout()">
-          <mat-icon>shopping_basket</mat-icon> Check out
-        </button>
-      </div>
+
     </span>
 
     <span *ngIf="showCheckout">
@@ -187,36 +196,49 @@
         <div class="image">
           <img src="assets/images/delivery-date.svg">
         </div>
-        <div class="input-group">
-          <label>Delivery date **</label>
-          <input type="date" matInput [(ngModel)]="DeliveryDate" class="shoter-input" placeholder="750.99">
+
+
+
+        <div class="col-2">
+          <div class="input-group">
+            <label>Delivery date</label>
+            <input type="date" matInput [(ngModel)]="DeliveryDate" class="shoter-input" placeholder="750.99">
+          </div>
+          <div class="input-group">
+            <label>Delivery time</label>
+            <input matInput type="time" [(ngModel)]="DeliveryTime" placeholder="each or kg">
+          </div>
+
         </div>
         <div class="input-group">
-          <label>Delivery time **</label>
-          <input matInput type="time" [(ngModel)]="DeliveryTime" placeholder="each or kg">
+          <label>Delivery Location</label>
+          <input style="width: 96%;" matInput type="search" [(ngModel)]="DeliveryAddress"
+            placeholder="Search your address">
         </div>
         <div class="input-group">
-          <label>Delivery Location **</label>
-          <input matInput type="search" [(ngModel)]="DeliveryAddress" placeholder="Search your address">
+          <label>Special Instructions</label>
+          <textarea [(ngModel)]="SpecialInstructions"></textarea>
         </div>
       </div>
+      <div class="col-2 mt2">
 
-      <div class="cart">
-        <button mat-icon-button class="btn btn-cart" aria-label="Example icon button with a vertical three dot icon"
-          (click)="placOrder()">
+        <div class="cart">
+          <button mat-icon-button class="btn btn-cart" aria-label="Example icon button with a vertical three dot icon"
+            (click)="placOrder()">
 
-          <span *ngIf="!loading"> Place Order | {{total | currency:'R'}} </span>
-          <span *ngIf="loading">
-            <i class="pi pi-spin pi-spinner" style="font-size: 1.2rem; color: #535C68"></i> Creating Order...
-          </span>
-        </button>
-      </div>
+            <span *ngIf="!loading"> Place Order | {{total | currency:'R'}} </span>
+            <span *ngIf="loading">
+              <i class="pi pi-spin pi-spinner" style="font-size: 1.2rem; color: #535C68"></i> Creating Order...
+            </span>
+          </button>
+        </div>
 
-      <div class="cart">
-        <button mat-icon-button class="btn btn-grey" aria-label="Example icon button with a vertical three dot icon"
-          (click)="continueOrdering()">
-          <mat-icon>add_shopping_cart</mat-icon> Continue ordering
-        </button>
+        <div class="cart">
+          <button mat-icon-button class="btn btn-grey" aria-label="Example icon button with a vertical three dot icon"
+            (click)="continueOrdering()">
+            <mat-icon>add_shopping_cart</mat-icon> Continue ordering
+          </button>
+        </div>
       </div>
 
     </span>

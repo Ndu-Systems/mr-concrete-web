@@ -56,10 +56,10 @@ a {
   z-index: 1000000;
 
   .overlay-modal {
-    margin: 15rem 51rem;
+    margin: 8rem auto;
     background: $default-white;
     padding: 1rem;
-    width: 30rem;
+    width: 40rem;
   }
 }
 
@@ -67,4 +67,7 @@ a {
   display: grid;
   grid-template-columns: repeat(2, 50%);
 
+}
+.mt2{
+  margin: 2rem ;
 }
