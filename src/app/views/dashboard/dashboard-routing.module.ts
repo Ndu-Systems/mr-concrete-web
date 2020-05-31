@@ -30,6 +30,7 @@ import { FileUploadComponent } from './products/file-upload/file-upload.componen
 import { EmployeesComponent } from './employees';
 import { CartViewComponent } from './orders/cart-view/cart-view.component';
 import { CompaniesComponent } from './companies';
+import { FormatOrderproductPipeCustomer } from 'src/app/_pipes/format-dashboard-options.pipe-customer';
 
 
 const routes: Routes = [
@@ -104,6 +105,7 @@ export const declarations = [
   ChangePasswordComponent,
   // Pipes
   MeasurenamePipe,
+  FormatOrderproductPipeCustomer,
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],

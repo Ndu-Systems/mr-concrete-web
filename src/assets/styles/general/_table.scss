@@ -8,16 +8,17 @@
   .header {
     background: $default-white;
     padding: 1rem;
-    grid-template-columns: 40% 15% 15% auto;
+    grid-template-columns: 20% 25% 15% auto;
 
 
     .item {
       font-weight: 700;
+      padding: .2rem 1rem;
     }
   }
 
   .row {
-    grid-template-columns: 5% 35% 15% 15% auto;
+    grid-template-columns: 5% 15% 25% 15% auto;
     background: $default-white;
     margin: .5rem;
 
@@ -81,7 +82,8 @@
         margin-left: 1rem;
         display: flex;
       }
-      button{
+
+      button {
         background: $yellow;
         color: $black;
       }

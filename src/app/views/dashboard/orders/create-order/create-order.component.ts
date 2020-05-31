@@ -45,6 +45,7 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
   loading: boolean;
   orderCreated: boolean;
   createdOrder: Order;
+  SpecialInstructions: string;
   constructor(
     private cateroryService: CateroryService,
     private accountService: AccountService,
@@ -119,10 +120,10 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
       CustomerId: this.currentUser.UserId,
       SupplierId: this.currentUser.UserId,
       ProjectNumber: 'na',
-      DeliveryDate: this.DeliveryDate,
-      DeliveryTime: this.DeliveryTime,
-      DeliveryAddress: this.DeliveryAddress,
-      SpecialInstructions: '',
+      DeliveryDate: this.DeliveryDate || '',
+      DeliveryTime: this.DeliveryTime || '',
+      DeliveryAddress: this.DeliveryAddress || '',
+      SpecialInstructions: this.SpecialInstructions || '',
       Total: this.total,
       CrateUserId: this.currentUser.UserId,
       ModifyUserId: this.currentUser.UserId,

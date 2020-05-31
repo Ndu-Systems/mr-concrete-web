@@ -1,146 +1,26 @@
 @import '.../../../../../../../assets/styles/general/colors';
 
 
-.col-1-of-4 {
-  grid-template-columns: 15% 13% 16% 15% 15% 10%;
-  @media only screen and (max-width: 600px) {
-    display: none;
-  }
-}
-
-.heading {
-  h1 {
-    font-size: 1em;
-    padding: 0 1em;
-    text-transform: uppercase;
-    color: #a4b0be;
-    font-weight: 500;
-
+.table {
+  .header {
+    grid-template-columns: 25% 20% 15% 15% auto;
   }
 
-  margin: 0;
-}
+  .row {
+    grid-template-columns: 5% 20% 20% 15% 15% auto;
+  }
 
-.container-table {
-  overflow-y: scroll;
-  height: 40em;
-
-  .table-card {
-
-    h1 {
-      font-size: 15px;
-    }
-
-    .header {
-      &.col-1-of-2 {
-        grid-template-columns: 20% auto;
-      }
-    }
-    &.col-1-of-8 {
-      display: grid;
-        grid-template-columns: repeat(8, 16%);
-
-        @media only screen and (max-width: 600px) {
-          grid-template-columns: 100%;
-        }
-    }
-    .date {
-      display: block;
-      margin: 0.5em 0;
+  .item {
+    .description {
       font-weight: 600;
-      font-size: .9em;
       color: $grey;
-    }
-
-    .data {
-      .text {
-        font-weight: 400;
-        font-size: 15px;
-      }
-
-      .span {
+      max-height: 2.6rem;
+      overflow: hidden;
+      .name{
         display: block;
-        font-weight: 700;
-        font-size: 15px;
-        text-transform: uppercase;
-        margin: 1em 0;
-        color: $grey;
+        margin: .3rem;
+
       }
-    }
-  }
-
-  .mat-card {
-    padding: 0.5em;
-  }
-
-}
-
-.buttons {
-  padding: .2rem;
-  line-height: 20px;
-  color: #fff;
-  margin: .2rem;
-  min-width: 1rem;
-  margin-top: .5rem;
-
-  &:disabled {
-    background: $grey_light;
-    color: $grey;
-  }
-}
-
-button.sucees {
-  background: $success;
-}
-
-button.primary {
-  background: $primary;
-}
-
-button.danger {
-  background: $danger;
-}
-
-::ng-deep {
-  body .ui-dialog .ui-dialog-titlebar {
-    background: $yellow !important;
-    color: #fff !important;
-  }
-
-  body .ui-dialog .ui-dialog-titlebar .ui-dialog-titlebar-icon {
-    color: #fff !important;
-  }
-}
-
-.chip {
-  &.info {
-    background-color: $light_primary;
-    color: $primary;
-  }
-
-  &.success {
-    color: $success;
-    background-color: $light_success;
-  }
-
-  &.danger {
-    color: $danger;
-    background: $light_danger;
-  }
-}
-@media only screen and (max-width: 600px) {
-
-  .col-1-of-4 {
-    grid-template-columns: repeat(1, 100%);
-  }
-
-  .heading {
-    display: none;
-  }
-
-  ::ng-deep {
-    body .ui-dialog {
-      width: 95vw !important;
     }
   }
 }
