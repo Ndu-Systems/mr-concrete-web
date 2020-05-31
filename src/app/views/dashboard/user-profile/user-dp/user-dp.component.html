@@ -1,3 +1,19 @@
-<p>
-  user-dp works!
-</p>
+<div class="main-container" *ngIf="user">
+  <div class="dp">
+    <img src="assets/images/home/avatar.svg" alt="avatar">
+  </div>
+  <button mat-button [matMenuTriggerFor]="subMenu" aria-label="Example icon-button with a menu">
+    <h1 class="main">hello, <span class="title">{{user.FirstName}} {{user.LastName}}</span> ></h1>
+  </button>
+  <mat-menu #subMenu="matMenu" class="menu">
+    <button mat-menu-item (click)="navigateTo('profile')">
+      edit profile
+    </button>
+    <button mat-menu-item (click)="navigateTo('change-password')">
+      change password
+    </button>
+    <button mat-menu-item (click)="signOut()">
+      logout
+    </button>
+  </mat-menu>
+</div>
