@@ -1,3 +1,5 @@
+import { CompanyModel } from './Company.model';
+
 export class UserModel {
 
   UserId: string;
@@ -15,6 +17,7 @@ export class UserModel {
   CompanyId?: string;
   Token?: string;
   Role: RoleModel;
+  Company: CompanyModel;
 }
 
 export class RoleModel {

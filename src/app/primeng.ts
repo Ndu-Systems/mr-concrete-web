@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-
+import {RatingModule} from 'primeng/rating';
 import { DialogModule } from 'primeng/dialog';
 import {ToastModule} from 'primeng/toast';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
@@ -10,13 +10,15 @@ import {MessageModule} from 'primeng/message';
     DialogModule,
     ToastModule,
     ConfirmDialogModule,
-    MessageModule
+    MessageModule,
+    RatingModule
   ],
   exports: [
     DialogModule,
     ToastModule,
     ConfirmDialogModule,
-    MessagesModule
+    MessagesModule,
+    RatingModule
   ]
 })
 export class PrimengModule {

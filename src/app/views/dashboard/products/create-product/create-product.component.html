@@ -3,7 +3,7 @@
   <div class="create-product-form form">
     <form [formGroup]="rForm" *ngIf="rForm" (ngSubmit)="onSubmit(rForm.value)">
       <mat-tab-group class="tab-group">
-        <mat-tab label="General">
+        <mat-tab t-tab label="General">
           <div class="form-fields">
             <div class="input-group">
               <label>Product Name **</label>
@@ -49,7 +49,6 @@
               <input type="number" matInput formControlName="Quantity">
             </div>
           </div>
-
         </mat-tab>
         <mat-tab label="Properties">
           <div formArrayName="Properties" class="form-fields">

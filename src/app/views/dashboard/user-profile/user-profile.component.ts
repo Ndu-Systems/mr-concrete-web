@@ -9,6 +9,14 @@ import { UserModel } from 'src/app/_models';
 })
 export class UserProfileComponent implements OnInit {
   user: UserModel;
+  heading = 'My Profile';
+  subheading = 'This is your system profile information';
+  rating = 3;
+  actionButton: any = {
+    link: '/dashboard/update-profile',
+    label: 'Update profile'
+  };
+
   constructor(
     private accountService: AccountService
   ) { }

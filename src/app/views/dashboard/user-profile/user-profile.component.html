@@ -1,6 +1,82 @@
 <div class="main">
-  <app-banner [subheading]="subheading" [heading]="heading"></app-banner>
+  <app-banner [subheading]="subheading" [heading]="heading" [actionButton]="actionButton"></app-banner>
   <div class="container">
-
+    <div class="profile col-1-of-2">
+      <div class="general">
+        <div class="dp">
+          <img src="assets/images/home/avatar.svg" alt="avatar">
+        </div>
+        <div class="work">
+          <h1 class="heading">Work</h1>
+          <hr class="line">
+          <div class="content col-1-of-1">
+            <span *ngFor="let item of [1,1,1,1]">
+              <h1>
+                Jim Jones Machines Pty. Ltd
+                <span class="badge">Director</span>
+              </h1>
+              <h1 class="address">
+                Ntuzuma ZK, 21 Rd Durban, Kwa-Zulu Natal 3001
+              </h1>
+            </span>
+          </div>
+        </div>
+        <div class="work">
+          <h1 class="heading">Role(s)/Access</h1>
+          <hr class="line">
+          <div class="">
+            <h1 class="address">
+              Director
+            </h1>
+          </div>
+        </div>
+      </div>
+      <div class="detailed">
+        <div class="content col-1-of-2">
+          <h1 class="heading">
+            John Sibongo
+            <span class="span">
+              Owner
+            </span>
+          </h1>
+          <div class="address">
+            <h1 class="text">Durban, Kwa-Zulu Natal</h1>
+          </div>
+          <div class="rating">
+            <h1 class="subHeading">
+              System Ranking
+            </h1>
+            <div class="score col-1-of-2">
+              <h1 class="value">{{rating}}</h1>
+              <p-rating readonly="true" [(ngModel)]="rating" disabled="true" [cancel]="false"></p-rating>
+            </div>
+          </div>
+        </div>
+        <div class="tab-content">
+          <mat-tab-group class="tab-group">
+            <mat-tab t-tab label="About">
+              <h1 class="subHeading">
+                Contact information
+              </h1>
+              <div class="details col-1-of-2">
+                <h1 class="text">Fullname:</h1>
+                <h1 class="value">John Sibongo</h1>
+              </div>
+              <div class="details col-1-of-2">
+                <h1 class="text">Phone:</h1>
+                <h1 class="value span">074 501 5840</h1>
+              </div>
+              <div class="details col-1-of-2">
+                <h1 class="text">Email:</h1>
+                <h1 class="value">js@jjmachines.co.za</h1>
+              </div>
+            </mat-tab>
+            <mat-tab t-tab label="Activity">
+              <p>Activity information</p>
+            </mat-tab>
+          </mat-tab-group>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
