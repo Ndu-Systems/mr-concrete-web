@@ -1,5 +1,9 @@
  @import '../../../../../assets/styles/general/colors';
 
+ .banner {
+   margin-top: 7rem;
+ }
+
  .mat-card {
    height: 8em;
    padding: 1rem 2rem;
@@ -20,6 +24,7 @@
  h1.header {
    font-weight: 600;
    font-size: 1rem;
+
    .text {
      font-size: .81rem;
      display: block;
@@ -27,6 +32,7 @@
      font-weight: 500;
      margin-top: 0.5rem;
    }
+
    .heading {
      font-weight: 400;
      color: $grey;
@@ -153,11 +159,12 @@
      }
 
      .col-1-of-2 {
-      grid-template-columns: 30% auto;
+       grid-template-columns: 30% auto;
      }
+
      .mat-flat-button.mat-primary {
        width: 8.438rem;
-    }
+     }
    }
  }
 
