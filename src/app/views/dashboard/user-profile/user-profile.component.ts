@@ -15,7 +15,6 @@ export class UserProfileComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.accountService.CurrentUserValue;
-
   }
 
 }

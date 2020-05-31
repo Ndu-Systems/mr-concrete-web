@@ -1,7 +1,7 @@
 <mat-toolbar class="header">
   <div class="col-1-of-1 items">
     <div class="profile">
-      <app-user-profile></app-user-profile>
+      <app-user-dp></app-user-dp>
     </div>
     <ul>
       <li><a routerLink="/dashboard" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">
@@ -51,9 +51,6 @@
             Settings
           </div>
         </a>
-      </li>
-      <li>
-        <a (click)="logout()" class="logout">logout</a>
       </li>
     </ul>
   </div>

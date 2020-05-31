@@ -22,7 +22,7 @@ import { EditPartnerComponent } from './partners/edit-partner';
 import { PlaceholderComponent } from './shared/placeholder';
 import { UpdateOrderComponent } from './orders/update-order/update-order.component';
 import { DashboardSideNavComponent } from './dashboard-side-nav';
-import { UserProfileComponent, CreatePersonaComponent } from './user-profile';
+import { UserProfileComponent, CreatePersonaComponent, ChangePasswordComponent } from './user-profile';
 import { UserDpComponent } from './user-profile/user-dp';
 import { ListProductsComponent, CreateProductComponent, UpdateProductComponent } from './products';
 import { ProductImagesComponent } from './products/product-images/product-images.component';
@@ -55,7 +55,9 @@ const routes: Routes = [
       { path: 'products', component: ListProductsComponent },
       { path: 'create-product', component: CreateProductComponent },
       { path: 'edit-product', component: UpdateProductComponent },
-      { path: 'employees', component: EmployeesComponent }
+      { path: 'employees', component: EmployeesComponent },
+      { path: 'profile', component: UserProfileComponent},
+      {path: 'change-password', component: ChangePasswordComponent}
     ]
   }
 ];
@@ -99,6 +101,7 @@ export const declarations = [
   CartViewComponent,
   SetUpProgressComponent,
   CompaniesComponent,
+  ChangePasswordComponent,
   // Pipes
   MeasurenamePipe,
 ];
