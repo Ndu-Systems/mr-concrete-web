@@ -60,6 +60,12 @@ a {
     background: $default-white;
     padding: 1rem;
     width: 40rem;
+
+    @media only screen and (max-width: 600px) {
+      width: 90%;
+      max-height: 36rem;
+      overflow-y: scroll;
+    }
   }
 }
 
@@ -67,7 +73,12 @@ a {
   display: grid;
   grid-template-columns: repeat(2, 50%);
 
+  @media only screen and (max-width: 600px) {
+    grid-template-columns: 100%;
+  }
+
 }
-.mt2{
-  margin: 2rem ;
+
+.mt2 {
+  margin: 2rem;
 }

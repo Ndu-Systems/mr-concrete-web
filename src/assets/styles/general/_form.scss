@@ -2,6 +2,11 @@
   background: $default-white;
   padding: 1rem 2rem;
 
+  @media only screen and (max-width: 600px) {
+    padding: 0;
+  }
+
+
   .form-fields {
     padding: 2rem 0;
 
@@ -27,6 +32,10 @@
         border-radius: 3px;
         width: 30%;
 
+        @media only screen and (max-width: 600px) {
+          width: 100%;
+        }
+
       }
 
 
@@ -40,6 +49,10 @@
       display: grid;
       width: 31.5%;
       grid-template-columns: repeat(2, 50%);
+
+      @media only screen and (max-width: 600px) {
+        width: 100%;
+      }
 
       .input-group {
         padding: .3rem 1rem;
@@ -60,6 +73,10 @@
       display: grid;
       width: 40%;
       grid-template-columns: 35% 35% auto;
+      @media only screen and (max-width: 600px) {
+        width: 100%;
+      }
+
 
       .input-group {
         padding: .3rem 1rem;
@@ -128,6 +145,10 @@
   padding: 0rem;
   font-size: 1.5rem;
 
+  @media only screen and (max-width: 600px) {
+    margin: 0 auto;
+  }
+
   .action {
     text-align: center;
   }
@@ -142,6 +163,7 @@
     font-size: 1.5rem;
   }
 }
-.qty-label{
+
+.qty-label {
   padding: 1rem 2rem;
 }
