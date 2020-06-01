@@ -28,7 +28,7 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
 
 
   heading = ' Create an order';
-  subheading = 'Order List >> create order';
+  subheading = 'Order List > create order';
   actionButton: any = {
     link: '/dashboard/orders',
     label: 'View Orders'

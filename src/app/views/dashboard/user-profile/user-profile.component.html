@@ -1,6 +1,6 @@
 <div class="main">
   <app-banner [subheading]="subheading" [heading]="heading" [actionButton]="actionButton"></app-banner>
-  <div class="container">
+  <div class="container" *ngIf="user">
     <div class="profile col-1-of-2">
       <div class="general">
         <div class="dp">
@@ -10,15 +10,27 @@
           <h1 class="heading">Work</h1>
           <hr class="line">
           <div class="content col-1-of-1">
-            <span *ngFor="let item of [1,1,1,1]">
+            <span *ngIf="user.Company">
               <h1>
-                Jim Jones Machines Pty. Ltd
-                <span class="badge">Director</span>
+                {{user.Company.CompanyName}}
+                <span class="badge">{{user?.Roles.RoleName}}</span>
               </h1>
               <h1 class="address">
-                Ntuzuma ZK, 21 Rd Durban, Kwa-Zulu Natal 3001
+                {{user.Company.CompanyAddress}} {{user.Company.City}}, {{user.Company.Province}}
               </h1>
             </span>
+            <span *ngIf="user.Company?.SubBranches">
+              <span *ngFor="let item of user.Company?.SubBranches">
+                <h1>
+                  {{item.CompanyName}}
+                  <span class="badge">{{user?.Roles.RoleName}}</span>
+                </h1>
+                <h1 class="address">
+                  {{user.Company.CompanyAddress}} {{user.Company.City}}, {{user.Company.Province}}
+                </h1>
+              </span>
+            </span>
+
           </div>
         </div>
         <div class="work">
@@ -26,7 +38,7 @@
           <hr class="line">
           <div class="">
             <h1 class="address">
-              Director
+              {{user?.Roles.RoleName}}
             </h1>
           </div>
         </div>
@@ -34,13 +46,13 @@
       <div class="detailed">
         <div class="content col-1-of-2">
           <h1 class="heading">
-            John Sibongo
+            {{user?.FirstName}} {{user?.LastName}}
             <span class="span">
-              Owner
+              {{user?.Roles.RoleName}}
             </span>
           </h1>
-          <div class="address">
-            <h1 class="text">Durban, Kwa-Zulu Natal</h1>
+          <div class="address" *ngIf="user.Address">
+            <h1 class="text">{{user.Address[0].City}}, {{user.Address[0].Province}}</h1>
           </div>
           <div class="rating">
             <h1 class="subHeading">
@@ -60,36 +72,44 @@
               </h1>
               <div class="details col-1-of-2">
                 <h1 class="text">Fullname:</h1>
-                <h1 class="value">John Sibongo</h1>
+                <h1 class="value">{{user?.FirstName}} {{user?.LastName}}</h1>
               </div>
               <div class="details col-1-of-2">
                 <h1 class="text">Phone:</h1>
-                <h1 class="value span">074 501 5840</h1>
+                <h1 class="value span">{{user?.Cellphone}}</h1>
               </div>
               <div class="details col-1-of-2">
                 <h1 class="text">Email:</h1>
-                <h1 class="value">js@jjmachines.co.za</h1>
+                <h1 class="value">{{user?.Email}}</h1>
               </div>
             </mat-tab>
             <mat-tab t-tab label="Address(s)">
               <h1 class="subHeading">
                 Address information
               </h1>
-              <div class="details col-1-of-2">
-                <h1 class="text">Address:</h1>
-                <h1 class="value">Ntuzuma ZK, 21 Rd</h1>
-              </div>
-              <div class="details col-1-of-2">
-                <h1 class="text">City:</h1>
-                <h1 class="value">Durban</h1>
-              </div>
-              <div class="details col-1-of-2">
-                <h1 class="text">Province:</h1>
-                <h1 class="value">Kwa-Zulu Natal</h1>
-              </div>
-              <div class="details col-1-of-2">
-                <h1 class="text">Post Code:</h1>
-                <h1 class="value">3001</h1>
+              <div class="addresses tab-content">
+                <mat-tab-group *ngFor="let i of user.Address" class="tab-group">
+                  <mat-tab t-tab label="{{i?.AddressType}}">
+                    <span class="item">
+                      <div class="details col-1-of-2">
+                        <h1 class="text">Address:</h1>
+                        <h1 class="value">{{i?.AddressLine1}},{{i?.AddressLine2}} <br> {{i?.AddressLine3}}</h1>
+                      </div>
+                      <div class="details col-1-of-2">
+                        <h1 class="text">City:</h1>
+                        <h1 class="value">{{i?.City}}</h1>
+                      </div>
+                      <div class="details col-1-of-2">
+                        <h1 class="text">Province:</h1>
+                        <h1 class="value">{{i?.Province}}</h1>
+                      </div>
+                      <div class="details col-1-of-2">
+                        <h1 class="text">Post Code:</h1>
+                        <h1 class="value">{{i?.PostalCode}}</h1>
+                      </div>
+                    </span>
+                  </mat-tab>
+                </mat-tab-group>
               </div>
             </mat-tab>
           </mat-tab-group>

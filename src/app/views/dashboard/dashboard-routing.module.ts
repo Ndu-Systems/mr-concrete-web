@@ -22,7 +22,7 @@ import { EditPartnerComponent } from './partners/edit-partner';
 import { PlaceholderComponent } from './shared/placeholder';
 import { UpdateOrderComponent } from './orders/update-order/update-order.component';
 import { DashboardSideNavComponent } from './dashboard-side-nav';
-import { UserProfileComponent, CreatePersonaComponent, ChangePasswordComponent } from './user-profile';
+import { UserProfileComponent, CreatePersonaComponent, ChangePasswordComponent, UpdateProfileComponent } from './user-profile';
 import { UserDpComponent } from './user-profile/user-dp';
 import { ListProductsComponent, CreateProductComponent, UpdateProductComponent } from './products';
 import { ProductImagesComponent } from './products/product-images/product-images.component';
@@ -103,6 +103,7 @@ export const declarations = [
   SetUpProgressComponent,
   CompaniesComponent,
   ChangePasswordComponent,
+  UpdateProfileComponent,
   // Pipes
   MeasurenamePipe,
   FormatOrderproductPipeCustomer,

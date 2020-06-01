@@ -1,7 +1,7 @@
+import { AddressModel } from './address.model';
 import { CompanyModel } from './Company.model';
 
 export class UserModel {
-
   UserId: string;
   FirstName: string;
   LastName: string;
@@ -16,8 +16,9 @@ export class UserModel {
   StatusId: string;
   CompanyId?: string;
   Token?: string;
-  Role: RoleModel;
+  Roles: RoleModel;
   Company: CompanyModel;
+  Address: AddressModel[];
 }
 
 export class RoleModel {

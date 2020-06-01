@@ -166,13 +166,17 @@
 
             &.text,
             &.value {
-              margin: 1.5rem 0;
+              margin: 1rem 0;
               color: $grey;
               font-size: 0.938rem;
               font-weight: 600;
             }
 
           }
+
+          --gutter: 20px;
+
+
 
           .details {
             width: 25rem;
@@ -182,17 +186,28 @@
               margin: 0;
               grid-gap: 0;
             }
+
             h1 {
               font-weight: 500;
+
               &.value {
                 color: $black;
                 font-weight: 700;
+
                 &.span {
                   color: $yellow;
                 }
               }
             }
           }
+
+          .addresses {
+            width: 60rem;
+            height: 20rem;
+            overflow-y: scroll;
+          }
+
+
 
         }
       }
