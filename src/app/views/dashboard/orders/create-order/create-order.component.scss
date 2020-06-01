@@ -163,7 +163,6 @@
     width: 100%;
     text-align: center;
     border-bottom: 1px solid $grey_light;
-    padding: 1rem;
 
     img {
       width: 18%;
@@ -173,6 +172,10 @@
   .main-product-image {
     height: 12rem;
     overflow: hidden;
+
+    @media only screen and (max-width: 600px) {
+      height: auto;
+    }
 
     img {
       width: 45%;

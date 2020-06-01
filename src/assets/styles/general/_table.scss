@@ -1,4 +1,7 @@
 .table {
+  @media only screen and (max-width: 600px) {
+    display: none;
+  }
 
   .header,
   .row {
@@ -89,4 +92,63 @@
       }
     }
   }
+}
+
+
+.table-mobile {
+  display: none;
+
+
+  @media only screen and (max-width: 600px) {
+    display: block;
+  }
+
+  .row {
+    display: grid;
+    grid-template-columns: 20% 60% auto;
+
+    .item {
+      font-weight: 400;
+      box-sizing: border-box;
+      height: 5rem;
+      font-size: .7rem;
+      background: $default-white;
+
+      .image {
+        width: 3.5rem;
+        height: 3.5rem;
+        text-align: center;
+        padding: 0;
+        overflow: hidden;
+        border-radius: 4px;
+
+        img {
+          height: 3.5rem;
+        }
+      }
+
+      p {
+
+        b {
+          font-weight: 700;
+        }
+
+        .price {
+          display: block;
+          font-weight: 500;
+        }
+      }
+
+      button {
+        background: $yellow;
+        color: $black;
+        width: 4rem;
+        font-size: .8rem;
+        border-radius: 2rem;
+      }
+    }
+
+  }
+
+
 }

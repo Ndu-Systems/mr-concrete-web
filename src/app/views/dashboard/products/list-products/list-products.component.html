@@ -54,6 +54,34 @@
     </div>
   </div>
 
+  <div class="table-mobile">
+    <div class="row" *ngFor="let item of products">
+      <div class="item">
+        <div class="image">
+          <img [src]="item.Images[0].Url" alt="" *ngIf="item.Images" />
+          <img src="assets/images/product-placeholder.png" *ngIf="!item.Images" alt="" />
+        </div>
+      </div>
+      <div class="item">
+        <p>
+          <b>
+            {{item.ProductName}}
+          </b>
+       
+          <span class="price" *ngIf="item.Units">
+            {{item.Price | currency:'R'}}  / {{item.Units}}
+          </span>
+        </p>
+      </div>
+
+      <div class="item">
+        <button mat-icon-button aria-label="Example icon button with a vertical three dot icon" (click)="more(item)">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+
   <ng-template #notFound>
     <div class="not-found">
       <!-- <img [src]="notFoundModel.Image" alt="no items found"> -->

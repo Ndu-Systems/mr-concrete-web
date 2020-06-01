@@ -2,6 +2,11 @@
   background: $default-white;
   padding: 1rem 2rem;
 
+  @media only screen and (max-width: 600px) {
+    padding: 0;
+  }
+
+
   .form-fields {
     padding: 2rem 0;
 
@@ -128,6 +133,10 @@
   padding: 0rem;
   font-size: 1.5rem;
 
+  @media only screen and (max-width: 600px) {
+    margin: 0 auto;
+  }
+
   .action {
     text-align: center;
   }
@@ -142,6 +151,7 @@
     font-size: 1.5rem;
   }
 }
-.qty-label{
+
+.qty-label {
   padding: 1rem 2rem;
 }
