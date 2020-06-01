@@ -32,6 +32,10 @@
         border-radius: 3px;
         width: 30%;
 
+        @media only screen and (max-width: 600px) {
+          width: 100%;
+        }
+
       }
 
 
@@ -45,6 +49,10 @@
       display: grid;
       width: 31.5%;
       grid-template-columns: repeat(2, 50%);
+
+      @media only screen and (max-width: 600px) {
+        width: 100%;
+      }
 
       .input-group {
         padding: .3rem 1rem;
@@ -65,6 +73,10 @@
       display: grid;
       width: 40%;
       grid-template-columns: 35% 35% auto;
+      @media only screen and (max-width: 600px) {
+        width: 100%;
+      }
+
 
       .input-group {
         padding: .3rem 1rem;
