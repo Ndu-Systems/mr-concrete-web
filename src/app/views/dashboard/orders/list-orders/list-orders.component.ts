@@ -48,5 +48,6 @@ export class ListOrdersComponent implements OnInit {
     // this.concreteorderService.setStateForCurrentOrder(item);
     this.router.navigate(['dashboard/view-order']);
   }
-
+  more(item) { }
+  add() { }
 }

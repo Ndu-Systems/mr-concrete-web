@@ -1,5 +1,5 @@
 <div class="main">
-  <app-banner [subheading]="subheading" [heading]="heading" [actionButton]="actionButton"></app-banner>
+  <app-banner [subheading]="subheading" [heading]="heading"></app-banner>
   <div class="container" *ngIf="user">
     <div class="profile">
       <form *ngIf="rForm" class="form" [formGroup]="rForm" (ngSubmit)="onSubmit(rForm.value)">

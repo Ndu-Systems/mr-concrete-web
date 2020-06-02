@@ -12,7 +12,7 @@ import {
   SupplierListOrdersComponent
 } from './orders';
 import { SettingsComponent } from './settings';
-import { ActionsComponent, BannerComponent, StatsComponent, BannerTutorialComponent, SetUpProgressComponent } from './shared';
+import { ActionsComponent, BannerComponent, StatsComponent, BannerTutorialComponent, SetUpProgressComponent, ActionCardComponent } from './shared';
 import { PartnersComponent, CreateSupplierComponent } from './partners';
 import { MeasurementsComponent, CreateMeasurementComponent, EditMeasurementComponent } from './measurements';
 import { CategoriesComponent, CreateCategoryComponent, EditCategoryComponent } from './categories';
@@ -105,6 +105,7 @@ export const declarations = [
   CompaniesComponent,
   ChangePasswordComponent,
   UpdateProfileComponent,
+  ActionCardComponent,
   // Pipes
   MeasurenamePipe,
   FormatOrderproductPipeCustomer,

@@ -1,0 +1,157 @@
+@import '../../../../../assets/styles/general/colors';
+
+a {
+  text-decoration: none;
+}
+
+.actions {
+  width: 80%;
+}
+
+.header {
+  font-size: 18px;
+  text-transform: capitalize;
+  font-weight: 400;
+  color: $black;
+}
+
+.heading {
+  font-size: 18px;
+  text-transform: capitalize;
+  font-weight: 900;
+  color: $black;
+
+  .text {
+    font-weight: 400;
+    font-size: .95rem;
+    color: $grey;
+  }
+}
+
+.stats {
+  font-weight: 400;
+  color: $grey;
+  font-size: .95rem;
+  text-align: right;
+
+  .value {
+    font-weight: 900;
+    color: $black;
+    display: block;
+    font-size: 25px;
+  }
+}
+
+
+.mat-card {
+  width: 95%;
+  border-radius: 15px;
+  height: 20rem  !important;
+  margin: 0 auto;
+  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12) !important;
+  &.action-card {
+    height: 5rem;
+  }
+  img {
+    height: 2.063rem;
+  }
+
+  .name {
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  .actions {
+    padding: .1rem 1rem;
+
+    .btn {
+      background: $yellow;
+      color: $black;
+      padding: .5rem 1rem;
+      font-weight: 700;
+      border: none;
+      border-radius: 1.563rem;
+      cursor: pointer;
+
+      &:disabled {
+        opacity: .3;
+        cursor: no-drop;
+      }
+    }
+
+    .secondary {
+      background: $lighter-grey;
+      color: $strong-grey;
+      margin-left: 1rem;
+    }
+
+    .danger {
+      background: $danger;
+    }
+
+    .success {
+      background: $success;
+    }
+
+    .cta {
+      border-radius: 1.563rem;
+      height: 3rem;
+      padding: 0 1rem;
+    }
+  }
+
+  .card-body {
+    .col-1-of-1 {
+      padding: 0rem 2rem;
+      grid-gap: 0;
+      margin-bottom: 0;
+    }
+    .description {
+      width: 100%;
+      display: none;
+      .text {
+        font-weight: 400;
+        font-size: 1rem;
+      }
+    }
+    .image {
+      display: none;
+      text-align: right;
+      img {
+        height: 10rem;
+      }
+    }
+  }
+
+  &.primary {
+    background: $yellow;
+
+    .header, .heading, .text, .stats {
+      color: $default-white;
+    }
+    .actions {
+      .btn {
+        background: $default-white;
+      }
+    }
+  }
+}
+
+
+
+
+@media only screen and (max-width: 600px) {
+  .actions {
+    width: 100%;
+  }
+
+  .container {
+    padding: 1rem initial;
+  }
+  .mat-card {
+    height: 26rem !important;
+  }
+  .col-1-of-4 {
+    grid-template-columns: 50% auto;
+  }
+}
