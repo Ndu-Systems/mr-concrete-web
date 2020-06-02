@@ -13,7 +13,7 @@ export class CompanyModel {
   CreateUserId: string;
   ModifyDate: string;
   ModifyUserId: string;
-  IsDeleted: string;
+  IsDeleted: boolean;
   StatusId: string;
   SubBranches?: CompanyModel[];
 }

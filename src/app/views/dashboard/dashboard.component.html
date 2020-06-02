@@ -8,8 +8,8 @@
          <button mat-icon-button (click)="snav.toggle()">
            <mat-icon>menu</mat-icon>
          </button>
-         <!-- <a routerLink=""><img src="assets/images/home/icon.svg" alt="header icon" class="header-icon"></a> -->
-       </mat-toolbar-row>
+          <a routerLink="/dashboard"><img src="assets/images/home/icon.svg" alt="header icon" class="header-icon"></a>
+        </mat-toolbar-row>
      </mat-toolbar>
      <!-- <div class="main contents">
       <router-outlet></router-outlet>
@@ -27,7 +27,7 @@
                </h1>
              </div>
            </a>
-           <a mat-list-item routerLink="/dashboard/orders" (click)="snav.toggle()">
+           <a mat-list-item routerLink="/dashboard/products" (click)="snav.toggle()">
             <div class="nav-item">
               <img src="assets/images/dashboard/nav/products.svg" alt="products" class="hl-on">&nbsp;
               <h1>

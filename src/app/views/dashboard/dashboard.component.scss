@@ -109,10 +109,11 @@ h1.home-app-name {
 }
 
 .home-is-mobile .home-sidenav-container {
-
   flex: 1 0 auto;
 }
-
+.header-icon {
+  height: 2rem;
+}
 .drawer {
 
   position: absolute;

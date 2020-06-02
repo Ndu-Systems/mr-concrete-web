@@ -32,4 +32,8 @@ export class UserService {
   getUserByEmail(model: EmailGetRequestModel): Observable<UserModel> {
     return this.http.post<UserModel>(`${this.url}/api/users/get-user-by-email.php`, model);
   }
+
+  updateUser(model: UserModel): Observable<UserModel> {
+    return this.http.post<UserModel>(`${this.url}/api/users/update-user.php`, model);
+  }
 }
