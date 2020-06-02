@@ -149,7 +149,12 @@ a {
     padding: 1rem initial;
   }
   .mat-card {
-    height: 26rem !important;
+    height: 22rem !important;
+    .card-body {
+      .col-1-of-1 {
+        grid-template-columns: 50% auto;
+      }
+    }
   }
   .col-1-of-4 {
     grid-template-columns: 50% auto;
