@@ -94,3 +94,39 @@
     }
   }
 }
+
+
+@media only screen and (max-width: 600px) {
+
+  .container {
+    padding: 1rem 2rem;
+  }
+
+  .main-container {
+    .dp {
+      text-align: center;
+
+      img {
+        height: 10rem;
+        margin: 0 auto;
+      }
+    }
+
+    h1 {
+      font-weight: 900;
+      font-size: 0.8rem;
+      text-transform: capitalize;
+      text-align: center;
+
+      .title {
+        font-weight: 400;
+      }
+    }
+
+    .mat-button {
+      margin-left: 0rem;
+      width: 100%;
+      font-weight: 700;
+    }
+  }
+}

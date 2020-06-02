@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { UserModel } from 'src/app/_models';
 import { AccountService } from 'src/app/_services';
 import { Route, Router } from '@angular/router';
@@ -9,7 +9,7 @@ import { Route, Router } from '@angular/router';
   styleUrls: ['./user-dp.component.scss']
 })
 export class UserDpComponent implements OnInit {
-
+  @Output() toggle: EventEmitter<any> = new EventEmitter();
   user: UserModel;
   constructor(
     private accountService: AccountService,
@@ -24,5 +24,9 @@ export class UserDpComponent implements OnInit {
   }
   navigateTo(url: string) {
     this.routeTo.navigate(['/dashboard/' + url]);
+  }
+
+  toggleClick() {
+    this.toggle.emit(true);
   }
 }

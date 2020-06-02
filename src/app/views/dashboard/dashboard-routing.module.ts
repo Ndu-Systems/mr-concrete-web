@@ -58,6 +58,7 @@ const routes: Routes = [
       { path: 'edit-product', component: UpdateProductComponent },
       { path: 'employees', component: EmployeesComponent },
       { path: 'profile', component: UserProfileComponent},
+      { path: 'update-profile', component: UpdateProfileComponent},
       {path: 'change-password', component: ChangePasswordComponent}
     ]
   }

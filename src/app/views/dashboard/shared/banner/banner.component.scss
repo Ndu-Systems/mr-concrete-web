@@ -89,7 +89,8 @@
    border-radius: 25rem;
    height: 2.5rem;
    margin: 0;
-  color: $black;
+   color: $black;
+
    &.cta-btn {
      background-color: $black;
    }
@@ -145,7 +146,7 @@
        }
 
        &.text {
-        font-size: 0.75rem;
+         font-size: 0.75rem;
          font-weight: 500;
          margin-bottom: 2rem;
        }
@@ -169,6 +170,10 @@
  }
 
  @media only screen and (max-width: 600px) {
+   .banner {
+     margin-top: 4rem;
+   }
+
    .col-1-of-3 {
      grid-template-columns: 20% 20% auto;
    }
@@ -176,9 +181,8 @@
    .mat-card {
      overflow: hidden;
      height: 7em;
-
-
    }
+
 
    .mat-flat-button {
      height: 4vh;
@@ -208,6 +212,25 @@
      .timespan,
      .date {
        font-size: 0.8em;
+     }
+   }
+
+   .booking {
+     height: 38rem;
+     padding: 1rem;
+     border-radius: 0.5rem;
+     margin: 0.5em 0;
+
+     .context {
+       .col-1-of-2 {
+         grid-template-columns: 100%;
+       }
+     }
+
+     .image {
+       img {
+         width: 100%;
+       }
      }
    }
  }

@@ -22,6 +22,7 @@ mat-icon {
   height: 100vh;
   min-width: 10vw;
   background-color: $default-white;
+
   &.desktop {
     display: block;
   }
@@ -34,11 +35,14 @@ h1.home-app-name {
 .home-sidenav-container {
   height: 100vh;
   flex: 1;
+
   // background: $black;
   .col-1-of-3 {
-    grid-template-columns: repeat(2,auto);
+    grid-template-columns: repeat(2, auto);
+    grid-gap: 0rem;
   }
 }
+
 .mat-drawer.mat-sidenav {
   background: $yellow;
   width: 100%;
@@ -53,27 +57,28 @@ h1.home-app-name {
       padding: 0.5rem 1rem;
       width: 11rem;
       text-align: left;
+
       img {
         &.hl-on {
           display: inline-block;
         }
 
       }
+
       @media only screen and (max-width: 600px) {
         background: $default-white;
         margin: 1rem auto;
         width: 10rem;
         border-radius: 10px;
         color: $black;
+
         h1 {
           font-size: 16px;
           font-weight: 600;
         }
-       }
+      }
 
-       @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
-         background: green;
-       }
+      @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {}
     }
 
     &.active-link {
@@ -85,6 +90,7 @@ h1.home-app-name {
         background: #ecb9005c;
         border-radius: 50px 0px 0px 50px;
         border-right: solid 5px $yellow;
+
         img {
           &.hl-on {
             display: inline-block;
@@ -94,21 +100,25 @@ h1.home-app-name {
       }
     }
   }
+
   .account {
     ul {
       list-style: none;
     }
   }
 }
+
 .home-is-mobile .home-sidenav-container {
 
   flex: 1 0 auto;
 }
+
 .drawer {
 
   position: absolute;
   top: 0;
- }
+}
+
 .drawer .header {
   // position: absolute;
   // right: 0;
@@ -131,9 +141,11 @@ h1.home-app-name {
   z-index: 2;
   border-bottom: 1px solid #ccc;
 }
+
 .mat-drawer-side {
-  border-right:0;
+  border-right: 0;
 }
+
 .header {
   width: 100%;
   color: $white;
@@ -142,6 +154,7 @@ h1.home-app-name {
     list-style: none;
     padding: 0;
     margin-top: 20rem;
+
     li {
       margin-top: 1rem;
     }
@@ -156,10 +169,12 @@ h1.home-app-name {
         padding: 0.5rem 1rem;
         width: 11rem;
         text-align: center;
+
         img {
           &.hl-on {
             display: none;
           }
+
           &.hl-off {
             display: inline-block;
           }
@@ -175,10 +190,12 @@ h1.home-app-name {
           background: #ecb9005c;
           border-radius: 50px 0px 0px 50px;
           border-right: solid 5px $yellow;
+
           img {
             &.hl-on {
               display: inline-block;
             }
+
             &.hl-off {
               display: none;
             }
@@ -231,10 +248,7 @@ h1.home-app-name {
   }
 }
 
-.main.contents {
-
-
-}
+.main.contents {}
 
 .main.footer {
   // position: fixed;
@@ -261,6 +275,7 @@ h1.home-app-name {
   .main {
     margin: 1rem;
   }
+
   .sign-out {
     right: 1em;
   }
@@ -268,11 +283,13 @@ h1.home-app-name {
   .mat-toolbar {
     background: $default-white !important;
   }
+
   .drawer {
     width: 100% !important;
     height: 100%;
     overflow: auto;
     -webkit-overflow-scrolling: touch;
+
     &.desktop {
       display: none;
     }

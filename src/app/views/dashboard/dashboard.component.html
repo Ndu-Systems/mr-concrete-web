@@ -1,63 +1,80 @@
    <mat-drawer-container [class.drawer-opened]="drawer.opened" class="example-container">
-    <mat-drawer #drawer class="drawer desktop" mode="side" opened="true">
-      <app-dashboard-side-nav></app-dashboard-side-nav>
-      <app-dashboard-nav></app-dashboard-nav>
-    </mat-drawer>
-    <mat-toolbar class="home-toolbar mobile">
-      <mat-toolbar-row>
-        <button mat-icon-button (click)="snav.toggle()">
-          <mat-icon>menu</mat-icon>
-        </button>
-        <!-- <a routerLink=""><img src="assets/images/home/icon.svg" alt="header icon" class="header-icon"></a> -->
-      </mat-toolbar-row>
-    </mat-toolbar>
-    <!-- <div class="main contents">
+     <mat-drawer #drawer class="drawer desktop" mode="side" opened="true">
+       <app-dashboard-side-nav></app-dashboard-side-nav>
+       <app-dashboard-nav></app-dashboard-nav>
+     </mat-drawer>
+     <mat-toolbar class="home-toolbar mobile">
+       <mat-toolbar-row>
+         <button mat-icon-button (click)="snav.toggle()">
+           <mat-icon>menu</mat-icon>
+         </button>
+         <!-- <a routerLink=""><img src="assets/images/home/icon.svg" alt="header icon" class="header-icon"></a> -->
+       </mat-toolbar-row>
+     </mat-toolbar>
+     <!-- <div class="main contents">
       <router-outlet></router-outlet>
     </div> -->
-    <mat-sidenav-container class="home-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 0 : 0">
-      <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
-        fixedTopGap="56">
-        <div class="col-1-of-3">
-          <a mat-list-item  routerLink="/dashboard" (click)="snav.toggle()">
+     <mat-sidenav-container class="home-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 0 : 0">
+       <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
+         fixedTopGap="56">
+         <app-user-dp (toggle)="snav.toggle()"></app-user-dp>
+         <div class="col-1-of-3">
+           <a mat-list-item routerLink="/dashboard" (click)="snav.toggle()">
+             <div class="nav-item">
+               <img src="assets/images/dashboard/nav/dashboard.svg" alt="dashboard" class="hl-on">
+               <h1>
+                 Dashboard
+               </h1>
+             </div>
+           </a>
+           <a mat-list-item routerLink="/dashboard/orders" (click)="snav.toggle()">
             <div class="nav-item">
-              <img src="assets/images/dashboard/nav/dashboard.svg" alt="dashboard" class="hl-on">
+              <img src="assets/images/dashboard/nav/products.svg" alt="products" class="hl-on">&nbsp;
               <h1>
-                Dashboard
-              </h1>
+               Products
+             </h1>
             </div>
           </a>
-          <a mat-list-item  routerLink="/dashboard/orders" (click)="snav.toggle()">
-            <div class="nav-item">
-              <img src="assets/images/dashboard/nav/order.svg" alt="feed" class="hl-on">&nbsp;
-              <h1>
-                Orders
-              </h1>
-            </div>
-          </a>
-        </div>
-        <div class="account">
-          <ul>
-            <li>
-              <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-                <img src="assets/images/home/user.svg" alt="user icon">
-              </button>
-              <mat-menu #menu="matMenu">
-                <a routerLink="" (click)="signOut()">
-                  <button mat-menu-item>
-                    <img src="assets/images/home/login.svg" alt="login icon">
-                    <span>logout</span>
-                  </button>
-                </a>
-              </mat-menu>
-            </li>
-          </ul>
-        </div>
+           <a mat-list-item routerLink="/dashboard/orders" (click)="snav.toggle()">
+             <div class="nav-item">
+               <img src="assets/images/dashboard/nav/order.svg" alt="order" class="hl-on">&nbsp;
+               <h1>
+                 Orders
+               </h1>
+             </div>
+           </a>
+           <a mat-list-item routerLink="/dashboard/employees" (click)="snav.toggle()">
+             <div class="nav-item">
+               <img src="assets/images/dashboard/nav/staff.svg" alt="staff" class="hl-on">&nbsp;
+               <h1>
+                Employees
+               </h1>
+             </div>
+           </a>
+         </div>
+         <div class="account">
+           <!-- <ul>
+             <li>
+               <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                 <img src="assets/images/home/user.svg" alt="user icon">
+               </button>
+               <mat-menu #menu="matMenu">
+                 <a routerLink="" (click)="signOut()">
+                   <button mat-menu-item>
+                     <img src="assets/images/home/login.svg" alt="login icon">
+                     <span>logout</span>
+                   </button>
+                 </a>
+               </mat-menu>
+             </li>
+           </ul> -->
+         </div>
 
-      </mat-sidenav>
-      <mat-sidenav-content class="contents">
-        <router-outlet></router-outlet>
-      </mat-sidenav-content>
-    </mat-sidenav-container>
+       </mat-sidenav>
+       <mat-sidenav-content class="contents">
+         <router-outlet></router-outlet>
+       </mat-sidenav-content>
+     </mat-sidenav-container>
 
-    <p-toast [style]="{marginTop: '80px'}"></p-toast>
-    <p-confirmDialog header="Confirm" [style]="{width: '25vw'}"></p-confirmDialog>
+     <p-toast [style]="{marginTop: '80px'}"></p-toast>
+     <p-confirmDialog header="Confirm" [style]="{width: '25vw'}"></p-confirmDialog>
