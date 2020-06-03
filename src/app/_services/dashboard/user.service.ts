@@ -1,7 +1,7 @@
 import { MessageService } from 'primeng/api';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { UserModel, EmailGetRequestModel } from 'src/app/_models';
+import { UserModel, EmailGetRequestModel, UserQueryModel } from 'src/app/_models';
 import { HttpClient } from '@angular/common/http';
 import { CURRENT_USER } from 'MrConcrete/src/app/_shared/constants';
 import { environment } from 'src/environments/environment';
@@ -28,12 +28,22 @@ export class UserService {
   public get CurrentUserValue(): UserModel {
     return this._user.value;
   }
+  getAllUsers(queryModel: UserQueryModel): Observable<UserModel[]> {
+    return this.http.post<UserModel[]>(`${this.url}/api/users/get-all-users.php`, queryModel);
+  }
 
   getUserByEmail(model: EmailGetRequestModel): Observable<UserModel> {
     return this.http.post<UserModel>(`${this.url}/api/users/get-user-by-email.php`, model);
   }
 
+  addUser(model: UserModel): Observable<UserModel> {
+    return this.http.post<UserModel>(`${this.url}/api/users/add-user.php`, model);
+  }
+
   updateUser(model: UserModel): Observable<UserModel> {
     return this.http.post<UserModel>(`${this.url}/api/users/update-user.php`, model);
   }
+
+
+
 }

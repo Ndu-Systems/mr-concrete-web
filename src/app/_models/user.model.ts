@@ -21,7 +21,7 @@ export class UserModel {
   Company: CompanyModel;
   Address: AddressModel[];
   Images: Image[];
- }
+}
 export class UserProfileUpdateModel {
   UserId: string;
   FirstName: string;
@@ -49,7 +49,7 @@ export class UserProfileUpdateModel {
   CompanyCreateDate?: string;
   CompanyIsDeleted?: boolean;
   CompanyStatusId?: string;
- }
+}
 
 export class RoleModel {
   Id: string;
@@ -67,4 +67,8 @@ export class ChangePasswordModel {
   ConfirmPassword?: string;
 }
 
+export class UserQueryModel {
+  StatusId: string;
+  TypeOfUser: string;
+}
 

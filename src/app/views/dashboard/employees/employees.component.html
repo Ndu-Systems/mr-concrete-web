@@ -1,17 +1,16 @@
 <div class="main">
   <app-banner [subheading]="subheading" [heading]="heading" [actionButton]="actionButton"></app-banner>
-  <div class="table" *ngIf="true">
+  <div class="table" *ngIf="employees">
     <div class="header">
       <div class="item">FullName</div>
       <div class="item">Contact number</div>
       <div class="item">Email</div>
       <div class="item">Role</div>
-      <div class="item">Stationed At</div>
       <div class="item">Start Date</div>
       <div class="item">Actions</div>
     </div>
     <div class="table-content">
-      <div class="row" *ngFor="let item of [1,1,1,1]">
+      <div class="row" *ngFor="let item of employees">
         <div class="item">
           <div class="image">
             <!-- <img [src]="item.Images[0].Url" alt="" *ngIf="item.Images" /> -->
@@ -20,35 +19,30 @@
         </div>
         <div class="item">
           <p>
-            <b>Samson Ntunjambili</b>
-            <span>
-              {{dummyDate | date:'fullDate'}}
-            </span>
+            <b>{{item.FirstName}} {{item.LastName}}</b>
+          </p>
+          <span>
+            {{item.CreateDate | date:'fullDate'}}
+          </span>
+        </div>
+        <div class="item">
+          <p>
+            {{item.Cellphone}}
           </p>
         </div>
         <div class="item">
           <p>
-            information will
+            {{item.Email}}
           </p>
         </div>
         <div class="item">
           <p>
-            information will
-          </p>
-        </div>
+            {{item.RoleId}}
+          </p>        </div>
+
         <div class="item">
           <p>
-            information will
-          </p>
-        </div>
-        <div class="item">
-          <p>
-            information will
-          </p>
-        </div>
-        <div class="item">
-          <p>
-            information will
+            {{item.CreateDate}}
           </p>
         </div>
         <div class="item">

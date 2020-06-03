@@ -6,5 +6,6 @@ export * from './dashboard/caterory.service';
 export * from './dashboard/supplier.service';
 export * from './dashboard/measurement.service';
 export * from './communication';
+export * from './dashboard';
 // end:ng42.barrel
 
