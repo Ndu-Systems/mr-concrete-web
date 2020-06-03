@@ -1,4 +1,4 @@
-<div class="main">
+<!-- <div class="main">
 
   <p-messages [value]="msgs"></p-messages>
 
@@ -50,4 +50,51 @@
     <app-placeholder [placeHolder]="placeHolder"></app-placeholder>
   </ng-template>
 
+</div> -->
+
+<div class="main">
+  <app-banner [subheading]="subheading" [heading]="heading" [actionButton]="actionButton"></app-banner>
+  <div class="table" *ngIf="categories else noCategories;">
+    <div class="header">
+      <div class="item">description</div>
+      <div class="item">status</div>
+       <div class="item">actions</div>
+    </div>
+    <div class="table-content">
+      <div class="row" *ngFor="let item of categories">
+        <div class="item">
+          <div class="image">
+            <!-- <img [src]="item.Images[0].Url" alt="" *ngIf="item.Images" /> -->
+            <img src="assets/images/product-placeholder.png" *ngIf="!item.Images" alt="category image" />
+          </div>
+        </div>
+        <div class="item">
+          <p>
+            <b>{{item.CategoryName}}</b>
+          </p>
+          <p>
+            <span>
+              {{item.CreateDate | date:'fullDate'}}
+            </span>
+          </p>
+        </div>
+        <div class="item">
+          <p>
+            information here
+          </p>
+        </div>
+        <div class="item">
+          <button mat-icon-button [matMenuTriggerFor]="subMenu"
+            aria-label="Example icon button with a vertical three dot icon" (click)="more(item)">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #subMenu="matMenu" class="menu">
+            <button mat-menu-item>
+              update
+            </button>
+          </mat-menu>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

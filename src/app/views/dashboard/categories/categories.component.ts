@@ -13,6 +13,8 @@ export class CategoriesComponent implements OnInit {
   heading = 'Categories';
   subheading = 'A list of industry categories';
   categories: Caterory[] = [];
+  dummyDate = Date.now();
+
   actionButton: ActionButton = {
     link: '/dashboard/add-category',
     label: 'add category'

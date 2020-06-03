@@ -12,6 +12,7 @@ export class EmployeesComponent implements OnInit, OnDestroy {
     link: '/dashboard/employees',
     label: 'Add employee'
   };
+  dummyDate = Date.now();
   constructor() { }
 
   ngOnInit() {}

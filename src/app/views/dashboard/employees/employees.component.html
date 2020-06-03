@@ -12,7 +12,56 @@
     </div>
     <div class="table-content">
       <div class="row" *ngFor="let item of [1,1,1,1]">
-
+        <div class="item">
+          <div class="image">
+            <!-- <img [src]="item.Images[0].Url" alt="" *ngIf="item.Images" /> -->
+            <img src="assets/images/dashboard/placeholders/employee.png" *ngIf="!item.Images" alt="place holder" />
+          </div>
+        </div>
+        <div class="item">
+          <p>
+            <b>Samson Ntunjambili</b>
+            <span>
+              {{dummyDate | date:'fullDate'}}
+            </span>
+          </p>
+        </div>
+        <div class="item">
+          <p>
+            information will
+          </p>
+        </div>
+        <div class="item">
+          <p>
+            information will
+          </p>
+        </div>
+        <div class="item">
+          <p>
+            information will
+          </p>
+        </div>
+        <div class="item">
+          <p>
+            information will
+          </p>
+        </div>
+        <div class="item">
+          <p>
+            information will
+          </p>
+        </div>
+        <div class="item">
+          <button mat-icon-button [matMenuTriggerFor]="subMenu"
+            aria-label="Example icon button with a vertical three dot icon" (click)="more(item)">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #subMenu="matMenu" class="menu">
+            <button mat-menu-item>
+              update
+            </button>
+          </mat-menu>
+        </div>
       </div>
     </div>
 
