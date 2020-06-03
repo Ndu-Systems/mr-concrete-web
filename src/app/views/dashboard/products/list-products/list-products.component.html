@@ -8,48 +8,50 @@
       <div class="item">Product Name</div>
       <div class="item"> Price</div>
       <div class="item"> Category</div>
-      <div class="item"> </div>
+      <div class="item"></div>
     </div>
-    <div class="row" *ngFor="let item of products">
-      <div class="item">
-        <div class="image">
-          <img [src]="item.Images[0].Url" alt="" *ngIf="item.Images" />
-          <img src="assets/images/product-placeholder.png" *ngIf="!item.Images" alt="" />
+    <div class="table-content">
+      <div class="row" *ngFor="let item of products">
+        <div class="item">
+          <div class="image">
+            <img [src]="item.Images[0].Url" alt="" *ngIf="item.Images" />
+            <img src="assets/images/product-placeholder.png" *ngIf="!item.Images" alt="" />
+          </div>
         </div>
-      </div>
-      <div class="item">
-        <p>
-          <b>
-            {{item.ProductName}}
-          </b>
-        </p>
-        <span class="active">
-          Active
-        </span>
-        <span class="number" *ngIf="item.ProductCode">
-          Code:<b> {{item.ProductCode}} </b>
-
-        </span>
-      </div>
-  
-      <div class="item">
-        <b class="mt1">
-          {{item.Price | currency:'R'}}
-          <span *ngIf="item.Units">
-            / {{item.Units}}
+        <div class="item">
+          <p>
+            <b>
+              {{item.ProductName}}
+            </b>
+          </p>
+          <span class="active">
+            Active
           </span>
-        </b>
-      </div>
-      <div class="item" *ngIf="item.Category">
-        {{item.Category.CategoryName}}
-      </div>
-      <div class="item" *ngIf="!item.Category">
-        <span class="small-text">No Category</span>
-      </div>
-      <div class="item">
-        <button mat-icon-button aria-label="Example icon button with a vertical three dot icon" (click)="more(item)">
-          <mat-icon>more_vert</mat-icon>
-        </button>
+          <span class="number" *ngIf="item.ProductCode">
+            Code:<b> {{item.ProductCode}} </b>
+
+          </span>
+        </div>
+
+        <div class="item">
+          <b class="mt1">
+            {{item.Price | currency:'R'}}
+            <span *ngIf="item.Units">
+              / {{item.Units}}
+            </span>
+          </b>
+        </div>
+        <div class="item" *ngIf="item.Category">
+          {{item.Category.CategoryName}}
+        </div>
+        <div class="item" *ngIf="!item.Category">
+          <span class="small-text">No Category</span>
+        </div>
+        <div class="item">
+          <button mat-icon-button aria-label="Example icon button with a vertical three dot icon" (click)="more(item)">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -67,7 +69,7 @@
           <b>
             {{item.ProductName}}
           </b>
-       
+
           <span class="price" *ngIf="item.Units">
             {{item.Price | currency:'R'}}  / {{item.Units}}
           </span>

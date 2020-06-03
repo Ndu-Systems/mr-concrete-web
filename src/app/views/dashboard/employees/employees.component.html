@@ -1,3 +1,20 @@
-<p>
-  employees works!
-</p>
+<div class="main">
+  <app-banner [subheading]="subheading" [heading]="heading" [actionButton]="actionButton"></app-banner>
+  <div class="table" *ngIf="true">
+    <div class="header">
+      <div class="item">FullName</div>
+      <div class="item">Contact number</div>
+      <div class="item">Email</div>
+      <div class="item">Role</div>
+      <div class="item">Stationed At</div>
+      <div class="item">Start Date</div>
+      <div class="item">Actions</div>
+    </div>
+    <div class="table-content">
+      <div class="row" *ngFor="let item of [1,1,1,1]">
+
+      </div>
+    </div>
+
+  </div>
+</div>
