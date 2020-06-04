@@ -96,18 +96,14 @@
           {{item?.Company?.CompanyName}}
         </p>
       </div>
-      <div class="item">
-        <p>
-          {{item.CreateDate | date:'fullDate'}}
-        </p>
-      </div>
+
       <div class="item">
         <button mat-icon-button [matMenuTriggerFor]="subMenu"
-          aria-label="Example icon button with a vertical three dot icon" (click)="more(item)">
+          aria-label="Example icon button with a vertical three dot icon">
           <mat-icon>more_vert</mat-icon>
         </button>
         <mat-menu #subMenu="matMenu" class="menu">
-          <button mat-menu-item>
+          <button mat-menu-item (click)="onUpdateClick(item)">
             update
           </button>
         </mat-menu>

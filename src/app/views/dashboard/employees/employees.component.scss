@@ -25,7 +25,12 @@
 }
 
 .table-mobile {
-  grid-template-columns: 50% auto;
+  .row {
+    grid-template-columns: 30% 40% auto;
+    box-shadow: 10px 0px 48px -9px rgba(113, 128, 147, 0.08);
+    margin: 1rem 0.5rem;
+    border-radius: 25px !important;
+  }
 }
 
 
