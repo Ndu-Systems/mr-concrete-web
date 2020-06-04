@@ -1,0 +1,118 @@
+<div class="main">
+  <app-banner [subheading]="subheading" [heading]="heading"></app-banner>
+  <div class="container" *ngIf="userView">
+    <div class="profile">
+      <form *ngIf="rForm" class="form" [formGroup]="rForm" (ngSubmit)="onSubmit(rForm.value)">
+        <mat-tab-group class="tab-group">
+          <mat-tab t-tab label="General information">
+            <div class="form-fields">
+              <div class="col-1-of-1">
+                <div class="input-group">
+                  <label>First name</label>
+                  <input matInput formControlName="FirstName">
+                  <mat-error class="error"
+                    *ngIf="!rForm.controls['FirstName'].valid && rForm.controls['FirstName'].touched">
+                    First name is required</mat-error>
+                </div>
+                <div class="input-group">
+                  <label>Surname</label>
+                  <input matInput formControlName="LastName">
+                  <mat-error class="error"
+                    *ngIf="!rForm.controls['LastName'].valid && rForm.controls['LastName'].touched">
+                    Surname is required</mat-error>
+                </div>
+              </div>
+
+              <div class="col-1-of-1">
+                <div class="input-group">
+                  <label>Email address</label>
+                  <input matInput formControlName="Email" readonly>
+                  <mat-error class="error" *ngIf="!rForm.controls['Email'].valid && rForm.controls['Email'].touched">
+                    Email is required</mat-error>
+                </div>
+                <div class="input-group">
+                  <label>Phone number</label>
+                  <input matInput formControlName="Cellphone">
+                  <mat-error class="error"
+                    *ngIf="!rForm.controls['Cellphone'].valid && rForm.controls['Cellphone'].touched">
+                    Cellphone is required</mat-error>
+                </div>
+              </div>
+            </div>
+          </mat-tab>
+          <mat-tab t-tab label="Company information" *ngIf="userView.Company">
+            <div class="form-fields">
+              <div class="col-1-of-2">
+                <div class="input-group">
+                  <label>Company name</label>
+                  <input matInput formControlName="CompanyName">
+                  <mat-error class="error"
+                    *ngIf="!rForm.controls['CompanyName'].valid && rForm.controls['CompanyName'].touched">
+                    Company name is required</mat-error>
+                </div>
+                <div class="input-group">
+                  <label>Company Type</label>
+                  <input matInput formControlName="CompanyType">
+                  <mat-error class="error"
+                    *ngIf="!rForm.controls['CompanyType'].valid && rForm.controls['CompanyType'].touched">
+                    Company type name is required</mat-error>
+                </div>
+              </div>
+              <div class="col-1-of-2">
+                <div class="input-group">
+                  <label>Company email address</label>
+                  <input matInput formControlName="CompanyEmail">
+                  <mat-error class="error" *ngIf="!rForm.controls['Email'].valid && rForm.controls['Email'].touched">
+                    Email is required</mat-error>
+                </div>
+                <div class="input-group">
+                  <label>Company phone</label>
+                  <input matInput formControlName="CompanyPhone">
+                  <mat-error class="error"
+                    *ngIf="!rForm.controls['CompanyPhone'].valid && rForm.controls['CompanyPhone'].touched">
+                    Company phone is required</mat-error>
+                </div>
+              </div>
+              <div class="col-1-of-2">
+                <div class="input-group">
+                  <label>Company Address</label>
+                  <input matInput formControlName="CompanyAddress">
+                  <mat-error class="error"
+                    *ngIf="!rForm.controls['CompanyAddress'].valid && rForm.controls['CompanyAddress'].touched">
+                    Company address is required</mat-error>
+                </div>
+                <div class="input-group">
+                  <label>Company Address</label>
+                  <input matInput formControlName="City">
+                  <mat-error class="error"
+                    *ngIf="!rForm.controls['City'].valid && rForm.controls['City'].touched">
+                    Company address is required</mat-error>
+                </div>
+              </div>
+              <div class="col-1-of-2">
+                <div class="input-group">
+                  <label>Province</label>
+                  <input matInput formControlName="Province">
+                  <mat-error class="error"
+                    *ngIf="!rForm.controls['Province'].valid && rForm.controls['Province'].touched">
+                    Province is required</mat-error>
+                </div>
+                <div class="input-group">
+                  <label>Company Postal Code</label>
+                  <input matInput formControlName="PostalCode">
+                  <mat-error class="error"
+                    *ngIf="!rForm.controls['PostalCode'].valid && rForm.controls['PostalCode'].touched">
+                    Postal Code is required</mat-error>
+                </div>
+              </div>
+            </div>
+          </mat-tab>
+        </mat-tab-group>
+        <div class="actions">
+          <button type="submit" [disabled]="!rForm.valid" class="btn cta">Update Profile</button>
+          <button type="button" class="btn secondary cta" (click)="navigateTo('employees')">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

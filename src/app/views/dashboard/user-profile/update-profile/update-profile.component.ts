@@ -96,6 +96,7 @@ export class UpdateProfileComponent implements OnInit {
 
   updateCompany(companyModel: UserProfileUpdateModel) {
     const modelUpdated = this.user.Company;
+    modelUpdated.CompanyId = companyModel.CompanyId;
     modelUpdated.CompanyName = companyModel.CompanyName;
     modelUpdated.CompanyEmail = companyModel.CompanyEmail;
     modelUpdated.CompanyPhone = companyModel.CompanyPhone;

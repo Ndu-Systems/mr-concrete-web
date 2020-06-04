@@ -48,7 +48,7 @@ export class ForgotPasswordComponent implements OnInit {
           };
           this.accountService.generateToken(emailGetRequestModel).subscribe(
             userWithToken => {
-              // TEST email
+
               const email: Email = {
                 Email: form.Email,
                 Subject: 'Reset password',
@@ -71,7 +71,6 @@ export class ForgotPasswordComponent implements OnInit {
             });
         }
       });
-
 
   }
   goHome() {

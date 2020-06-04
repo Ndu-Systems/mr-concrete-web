@@ -1,0 +1,52 @@
+<div class="main">
+  <app-banner [subheading]="subheading" [heading]="heading" [actionButton]="actionButton"></app-banner>
+  <div class="form">
+    <form [formGroup]="rForm" *ngIf="rForm" (ngSubmit)="onSubmit(rForm.value)">
+      <mat-tab-group class="tab-group">
+        <mat-tab t-tab label="General">
+          <div class="form-fields">
+            <div class="input-group">
+              <label>First name</label>
+              <input matInput formControlName="FirstName">
+              <mat-error *ngIf="!rForm.controls['FirstName'].valid && rForm.controls['FirstName'].touched">
+                first name(s) is required</mat-error>
+            </div>
+            <div class="input-group">
+              <label>Surname</label>
+              <input matInput formControlName="LastName">
+              <mat-error *ngIf="!rForm.controls['LastName'].valid && rForm.controls['LastName'].touched">
+                surname is required</mat-error>
+            </div>
+            <div class="input-group">
+              <label>Cellphone</label>
+              <input matInput formControlName="Cellphone" type="number">
+              <mat-error *ngIf="!rForm.controls['Cellphone'].valid && rForm.controls['Cellphone'].touched">
+                Cellphone is required</mat-error>
+            </div>
+            <div class="input-group">
+              <label>Email address</label>
+              <input matInput formControlName="Email">
+              <mat-error *ngIf="!rForm.controls['Email'].valid && rForm.controls['Email'].touched">
+                Email is required</mat-error>
+            </div>
+            <div class="input-group">
+              <label>Select employee role</label>
+              <select matNativeControl formControlName="TypeOfUser">
+                <option label="--select something --"></option>
+                <option *ngFor="let item of accessRoles" [value]="item.role">
+                  {{item.role}}
+                </option>
+              </select>
+              <mat-error *ngIf="!rForm.controls['TypeOfUser'].valid && rForm.controls['TypeOfUser'].touched">
+               Employee role is required</mat-error>
+            </div>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+      <div class="actions">
+        <button type="submit" [disabled]="!rForm.valid" class="btn cta">Add employee</button>
+        <button type="button" class="btn secondary cta">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>

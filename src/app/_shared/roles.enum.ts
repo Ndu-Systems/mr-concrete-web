@@ -4,7 +4,10 @@ export enum Roles {
   ADMIN = 'Admin',
   SUPPLIER = 'Supplier',
   ENGINEER = 'Engineer',
-  CUSTOMER = 'Customer'
+  CUSTOMER = 'Customer',
+  DRIVER = 'Driver',
+  ASSISTANT = 'Assistant',
+  GENERAL = 'General'
 }
 
 export const SYSTEM_ROLES: RoleEnumModel[] = [{

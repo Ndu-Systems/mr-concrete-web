@@ -1,10 +1,176 @@
+@import '../../../../assets/styles/general/colors';
+
 .main {
   .table {
     .header {
-       grid-template-columns: 20% 15% 15% 10% 20% auto;
+      grid-template-columns: 20% 15% 15% 10% 20% auto;
     }
+
     .row {
       grid-template-columns: 5% 15% 15% 15% 10% 20% auto;
+
+
     }
+  }
+}
+
+.badge {
+  background: $yellow_light;
+  padding: .2rem .5rem;
+  font-weight: 700;
+  border-radius: 25px;
+  font-size: .75rem;
+  color: $black;
+  margin-left: 1rem;
+}
+
+.table-mobile {
+  grid-template-columns: 50% auto;
+}
+
+
+.form {
+  padding: 1rem 2rem;
+  width: 100%;
+  margin: 0 auto;
+
+  h1 {
+    &.heading {
+      font-size: 1.125rem;
+    }
+
+    &.text {
+      font-size: 0.98rem;
+      font-weight: 500;
+      margin-bottom: 2rem;
+    }
+
+    &.info {
+      font-weight: 900;
+      font-size: 0.813rem;
+      color: $grey;
+      font-style: italic;
+    }
+  }
+
+  .form-fields {
+    padding: 0;
+    width: 30rem;
+    .col-1-of-2 {
+      grid-gap: 0;
+      margin-bottom: 0;
+    }
+
+    .input-group {
+      label {
+        font-weight: 500;
+        font-size: 0.9rem;
+        margin: .5rem 0;
+      }
+
+      input {
+        border: 1px solid #B2BEC3;
+        padding: 0.5rem 1rem;
+        margin: 0.4rem 0;
+        border-radius: 3px;
+        width: 100%;
+      }
+
+      select {
+        border: 1px solid #B2BEC3;
+        padding: 0.5rem 1rem;
+        margin: 0.4rem 0;
+        border-radius: 3px;
+        width: 100%;
+      }
+    }
+
+    .mat-error {
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+  }
+
+  .actions {
+    .btn {
+      border-radius: 25px;
+    }
+  }
+
+}
+
+
+
+@media only screen and (max-width: 600px) {
+
+  .form {
+    padding: 1rem;
+    width: 100%;
+    margin: 0 auto;
+
+    h1 {
+      &.heading {
+        font-size: 1.125rem;
+      }
+
+      &.text {
+        font-size: 0.98rem;
+        font-weight: 500;
+        margin-bottom: 2rem;
+      }
+
+      &.info {
+        font-weight: 900;
+        font-size: 0.813rem;
+        color: $grey;
+        font-style: italic;
+      }
+    }
+
+    .form-fields {
+      padding: 0;
+      width: 100%;
+
+      .col-1-of-2 {
+        grid-gap: 0;
+        margin-bottom: 0;
+      }
+
+      .input-group {
+        label {
+          font-weight: 500;
+          font-size: 0.9rem;
+          margin: .5rem 0;
+        }
+
+        input {
+          border: 1px solid #B2BEC3;
+          padding: 0.5rem 1rem;
+          margin: 0.4rem 0;
+          border-radius: 3px;
+          width: 100%;
+        }
+
+        select {
+          border: 1px solid #B2BEC3;
+          padding: 0.5rem 1rem;
+          margin: 0.4rem 0;
+          border-radius: 3px;
+          width: 100%;
+        }
+      }
+
+      .mat-error {
+        font-size: 0.82rem;
+        font-weight: 600;
+      }
+    }
+
+    .actions {
+      .btn {
+        border-radius: 25px;
+      }
+    }
+
   }
 }

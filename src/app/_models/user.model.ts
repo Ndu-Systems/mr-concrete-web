@@ -15,6 +15,7 @@ export class UserModel {
   ModifyDate: string;
   ModifyUserId: string;
   StatusId: string;
+  TypeOfUser?: string;
   CompanyId?: string;
   Token?: string;
   Roles: RoleModel;

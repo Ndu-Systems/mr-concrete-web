@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { UserModel, EmailGetRequestModel, UserQueryModel } from 'src/app/_models';
 import { HttpClient } from '@angular/common/http';
-import { CURRENT_USER } from 'MrConcrete/src/app/_shared/constants';
+import { CURRENT_USER, USER_VIEW } from 'MrConcrete/src/app/_shared/constants';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
 
@@ -20,13 +20,17 @@ export class UserService {
     private messageService: MessageService,
     private routTo: Router
   ) {
-    this._user = new BehaviorSubject<UserModel>(JSON.parse(localStorage.getItem(CURRENT_USER)));
+    this._user = new BehaviorSubject<UserModel>(JSON.parse(localStorage.getItem(USER_VIEW)));
     this.user = this._user.asObservable();
     this.url = environment.API_URL;
   }
 
-  public get CurrentUserValue(): UserModel {
+  public get CurrentUserViewValue(): UserModel {
     return this._user.value;
+  }
+  updateUserViewState(user: UserModel) {
+    this._user.next(user);
+    localStorage.setItem(USER_VIEW, JSON.stringify(user));
   }
   getAllUsers(queryModel: UserQueryModel): Observable<UserModel[]> {
     return this.http.post<UserModel[]>(`${this.url}/api/users/get-all-users.php`, queryModel);

@@ -27,7 +27,7 @@ import { UserDpComponent } from './user-profile/user-dp';
 import { ListProductsComponent, CreateProductComponent, UpdateProductComponent } from './products';
 import { ProductImagesComponent } from './products/product-images/product-images.component';
 import { FileUploadComponent } from './products/file-upload/file-upload.component';
-import { EmployeesComponent } from './employees';
+import { EmployeesComponent, AddEmployeeComponent, UpdateEmployeeComponent } from './employees';
 import { CartViewComponent } from './orders/cart-view/cart-view.component';
 import { CompaniesComponent } from './companies';
 import { FormatOrderproductPipeCustomer } from 'src/app/_pipes/format-dashboard-options.pipe-customer';
@@ -57,6 +57,8 @@ const routes: Routes = [
       { path: 'create-product', component: CreateProductComponent },
       { path: 'edit-product', component: UpdateProductComponent },
       { path: 'employees', component: EmployeesComponent },
+      { path: 'add-employee', component: AddEmployeeComponent },
+      { path: 'edit-employee', component: UpdateEmployeeComponent },
       { path: 'profile', component: UserProfileComponent},
       { path: 'update-profile', component: UpdateProfileComponent},
       {path: 'change-password', component: ChangePasswordComponent}
@@ -106,6 +108,8 @@ export const declarations = [
   ChangePasswordComponent,
   UpdateProfileComponent,
   ActionCardComponent,
+  AddEmployeeComponent,
+  UpdateEmployeeComponent,
   // Pipes
   MeasurenamePipe,
   FormatOrderproductPipeCustomer,

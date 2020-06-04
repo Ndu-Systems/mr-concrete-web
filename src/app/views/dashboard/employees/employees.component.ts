@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { UserQueryModel, UserModel } from 'src/app/_models';
 import { UserService, NotificationService } from 'src/app/_services';
 import { USER_TYPES } from '../shared';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-employees',
@@ -12,7 +13,7 @@ export class EmployeesComponent implements OnInit, OnDestroy {
   heading = 'Employees';
   subheading = 'List of employees on the system';
   actionButton: any = {
-    link: '/dashboard/employees',
+    link: '/dashboard/add-employee',
     label: 'Add employee'
   };
   employees: UserModel[] = [];
@@ -21,14 +22,16 @@ export class EmployeesComponent implements OnInit, OnDestroy {
   dummyDate = Date.now();
   constructor(
     private userService: UserService,
-    private messageService: NotificationService
+    private messageService: NotificationService,
+    private routTo: Router
+
   ) { }
 
   ngOnInit() {
     this.queryUserModel = {
       StatusId: '1',
       TypeOfUser: 'All'
-    }
+    };
 
     this.userService.getAllUsers(this.queryUserModel).subscribe(data => {
       if (data.length > 0) {
@@ -44,5 +47,8 @@ export class EmployeesComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() { }
-
+  onUpdateClick(item: UserModel) {
+    this.userService.updateUserViewState(item);
+    this.routTo.navigate(['/dashboard/edit-employee']);
+  }
 }
