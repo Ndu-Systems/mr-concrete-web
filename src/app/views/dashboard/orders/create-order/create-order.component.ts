@@ -10,6 +10,7 @@ import { ProductService } from 'src/app/_services/dashboard/product.service';
 import { Orderproduct } from 'src/app/_models/orderproduct .model';
 import { Order } from 'src/app/_models/order.model';
 import { OrderService } from 'src/app/_services/dashboard/order.service';
+import { ORDER_STATUS } from 'src/app/_shared';
 
 @Component({
   selector: 'app-create-order',
@@ -127,7 +128,7 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
       Total: this.total,
       CrateUserId: this.currentUser.UserId,
       ModifyUserId: this.currentUser.UserId,
-      StatusId: 1,
+      StatusId: ORDER_STATUS.active,
       Orderproducts: this.orderProducts
     };
     this.loading = true;

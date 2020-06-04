@@ -2,5 +2,7 @@
 export * from './constants';
 export * from './roles.enum';
 export * from './confirmation-page.model';
+export * from './statuses';
+
  // end:ng42.barrel
 

@@ -69,8 +69,11 @@
 
   .btn-grey {
     color: $black;
-    background: $grey;
+    background: $default-white;
     border-radius: 40px;
+    border: 2px solid $black;
+    font-weight: 700;
+    ;
   }
 }
 
