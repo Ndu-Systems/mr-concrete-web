@@ -1,6 +1,6 @@
 <div class="main">
   <app-banner [subheading]="subheading" [heading]="heading" [actionButton]="actionButton"></app-banner>
-  <div class="table" *ngIf="categories else noCategories;">
+  <div class="table" *ngIf="categories">
     <div class="header">
       <div class="item">description</div>
       <div class="item">status</div>
@@ -31,7 +31,7 @@
         </div>
         <div class="item">
           <button mat-icon-button [matMenuTriggerFor]="subMenu"
-            aria-label="Example icon button with a vertical three dot icon" (click)="more(item)">
+            aria-label="Example icon button with a vertical three dot icon">
             <mat-icon>more_vert</mat-icon>
           </button>
           <mat-menu #subMenu="matMenu" class="menu">
