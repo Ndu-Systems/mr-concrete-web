@@ -7,6 +7,7 @@ import { AccountService, CateroryService } from 'src/app/_services';
 import { UserModel } from 'src/app/_models';
 import { Property } from 'src/app/_models/property.model';
 import { UploadService } from 'src/app/_services/dashboard/upload.service';
+import { PRODUCT_STUTUS } from 'src/app/_shared';
 
 @Component({
   selector: 'app-create-product',
@@ -48,7 +49,7 @@ export class CreateProductComponent implements OnInit {
       CategoryId: [''],
       CreateUserId: [this.currentUser.UserId, Validators.required],
       ModifyUserId: [this.currentUser.UserId, Validators.required],
-      StatusId: [1, Validators.required],
+      StatusId: [PRODUCT_STUTUS.active, Validators.required],
       Image: new FormControl(null),
       Properties: this.fb.array([])
     });

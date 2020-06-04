@@ -1,2 +1,11 @@
-export const ACTIVE_ORDER = 1;
-export const ACTIVE_PRODUCT = 1;
+export const ORDER_STATUS = {
+  active: 1,
+  deleted: 2,
+  accepted: 3,
+};
+
+export const PRODUCT_STUTUS = {
+  active: 1,
+  deleted: 2,
+  accepted: 3,
+};
