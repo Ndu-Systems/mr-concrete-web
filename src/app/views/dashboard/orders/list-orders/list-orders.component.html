@@ -12,50 +12,53 @@
       <div class="item"> Delivery Date</div>
       <div class="item"> </div>
     </div>
-    <div class="row" *ngFor="let item of orders">
-      <div class="item">
-        <div class="image">
-          <img [src]="item.Images[0].Url" alt="" *ngIf="item.Images" />
-          <img src="assets/images/product-placeholder.png" *ngIf="!item.Images" alt="" />
-        </div>
-      </div>
-      <div class="item">
-        <p>
-          <b>
-            ODR-{{item.OrderNo}} <br>
-          </b>
-          <span>
-            {{item.CreateDate | date:'fullDate'}}
-          </span>
-        </p>
-      </div>
-      <div class="item">
-        <p class="description">
-          <span class="name"  *ngFor="let product of item.Orderroducts">
-            <b> <u>{{product.Quantity}} {{product.Units}}  </u></b> {{product.ProductName}}
-          </span>
-        </p>
-      </div>
-      <!-- <div class="item">
-        <p class="description">
-         {{item.Orderroducts | formatOrderproducts}}
-        </p>
-      </div> -->
 
-      <div class="item">
-        <b class="mt1">
-          {{item.Total | currency:'R'}}
-        </b>
-      </div>
-      <div class="item">
-        {{item.DeliveryDate | date:'fullDate'}} <br>
-        <b> {{item.DeliveryTime}}</b>
-      </div>
-      <div class="item">
-        <button class="fill-primary" mat-icon-button aria-label="Example icon button with a vertical three dot icon"
-          (click)="more(item)">
-          <mat-icon>more_vert</mat-icon>
-        </button>
+    <div class="table-content">
+      <div class="row" *ngFor="let item of orders">
+        <div class="item">
+          <div class="image">
+            <img [src]="item.Images[0].Url" alt="" *ngIf="item.Images" />
+            <img src="assets/images/product-placeholder.png" *ngIf="!item.Images" alt="" />
+          </div>
+        </div>
+        <div class="item">
+          <p>
+            <b>
+              ODR-{{item.OrderNo}} <br>
+            </b>
+            <span>
+              {{item.CreateDate | date:'fullDate'}}
+            </span>
+          </p>
+        </div>
+        <div class="item">
+          <p class="description">
+            <span class="name" *ngFor="let product of item.Orderroducts">
+              <b> <u>{{product.Quantity}} {{product.Units}} </u></b> {{product.ProductName}}
+            </span>
+          </p>
+        </div>
+        <!-- <div class="item">
+          <p class="description">
+           {{item.Orderroducts | formatOrderproducts}}
+          </p>
+        </div> -->
+
+        <div class="item">
+          <b class="mt1">
+            {{item.Total | currency:'R'}}
+          </b>
+        </div>
+        <div class="item">
+          {{item.DeliveryDate | date:'fullDate'}} <br>
+          <b> {{item.DeliveryTime}}</b>
+        </div>
+        <div class="item">
+          <button class="fill-primary" mat-icon-button aria-label="Example icon button with a vertical three dot icon"
+            (click)="more(item)">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -72,7 +75,7 @@
           <b>
             ODR-{{item.OrderNo}}
           </b>
-       
+
           <span class="price">
             {{item.CreateDate | date:'fullDate'}}
           </span>

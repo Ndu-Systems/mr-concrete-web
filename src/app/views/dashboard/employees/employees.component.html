@@ -1,3 +1,63 @@
-<p>
-  employees works!
-</p>
+<div class="main">
+  <app-banner [subheading]="subheading" [heading]="heading" [actionButton]="actionButton"></app-banner>
+  <div class="table" *ngIf="employees">
+    <div class="header">
+      <div class="item">FullName</div>
+      <div class="item">Contact number</div>
+      <div class="item">Email</div>
+      <div class="item">Role</div>
+      <div class="item">Start Date</div>
+      <div class="item">Actions</div>
+    </div>
+    <div class="table-content">
+      <div class="row" *ngFor="let item of employees">
+        <div class="item">
+          <div class="image">
+            <!-- <img [src]="item.Images[0].Url" alt="" *ngIf="item.Images" /> -->
+            <img src="assets/images/dashboard/placeholders/employee.png" *ngIf="!item.Images" alt="place holder" />
+          </div>
+        </div>
+        <div class="item">
+          <p>
+            <b>{{item.FirstName}} {{item.LastName}}</b>
+          </p>
+          <span>
+            {{item.CreateDate | date:'fullDate'}}
+          </span>
+        </div>
+        <div class="item">
+          <p>
+            {{item.Cellphone}}
+          </p>
+        </div>
+        <div class="item">
+          <p>
+            {{item.Email}}
+          </p>
+        </div>
+        <div class="item">
+          <p>
+            {{item.RoleId}}
+          </p>        </div>
+
+        <div class="item">
+          <p>
+            {{item.CreateDate}}
+          </p>
+        </div>
+        <div class="item">
+          <button mat-icon-button [matMenuTriggerFor]="subMenu"
+            aria-label="Example icon button with a vertical three dot icon" (click)="more(item)">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #subMenu="matMenu" class="menu">
+            <button mat-menu-item>
+              update
+            </button>
+          </mat-menu>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

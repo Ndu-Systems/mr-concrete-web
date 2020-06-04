@@ -1,0 +1,10 @@
+.main {
+  .table {
+    .header {
+       grid-template-columns: 20% 15% 15% 10% 20% auto;
+    }
+    .row {
+      grid-template-columns: 5% 15% 15% 15% 10% 20% auto;
+    }
+  }
+}

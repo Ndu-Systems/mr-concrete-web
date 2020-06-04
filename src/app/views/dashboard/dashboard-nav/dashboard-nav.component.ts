@@ -30,9 +30,12 @@ export class DashboardNavComponent implements OnInit {
     this.toggleNav.emit(true);
   }
   setRoles() {
-    if (this.user.Role.RoleName === Roles.ADMIN) { this.isAdmin = true; }
-    if (this.user.Role.RoleName === Roles.SUPPLIER) { this.isSupplier = true; }
-    if (this.user.Role.RoleName === Roles.CUSTOMER) { this.isCustomer = true; }
+    if (this.user.Roles.RoleName) {
+      if (this.user.Roles.RoleName === Roles.ADMIN) { this.isAdmin = true; }
+      if (this.user.Roles.RoleName === Roles.SUPPLIER) { this.isSupplier = true; }
+      if (this.user.Roles.RoleName === Roles.CUSTOMER) { this.isCustomer = true; }
+    }
+
   }
 
 }

@@ -12,7 +12,7 @@ import { UserModel } from 'src/app/_models';
   styleUrls: ['./list-products.component.scss']
 })
 export class ListProductsComponent implements OnInit {
-  heading = 'Porducts';
+  heading = 'Products';
   subheading = '';
   actionButton: any = {
     link: '/dashboard/create-product',

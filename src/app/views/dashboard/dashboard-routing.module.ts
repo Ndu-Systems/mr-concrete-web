@@ -12,7 +12,7 @@ import {
   SupplierListOrdersComponent
 } from './orders';
 import { SettingsComponent } from './settings';
-import { ActionsComponent, BannerComponent, StatsComponent, BannerTutorialComponent, SetUpProgressComponent } from './shared';
+import { ActionsComponent, BannerComponent, StatsComponent, BannerTutorialComponent, SetUpProgressComponent, ActionCardComponent } from './shared';
 import { PartnersComponent, CreateSupplierComponent } from './partners';
 import { MeasurementsComponent, CreateMeasurementComponent, EditMeasurementComponent } from './measurements';
 import { CategoriesComponent, CreateCategoryComponent, EditCategoryComponent } from './categories';
@@ -22,7 +22,7 @@ import { EditPartnerComponent } from './partners/edit-partner';
 import { PlaceholderComponent } from './shared/placeholder';
 import { UpdateOrderComponent } from './orders/update-order/update-order.component';
 import { DashboardSideNavComponent } from './dashboard-side-nav';
-import { UserProfileComponent, CreatePersonaComponent, ChangePasswordComponent } from './user-profile';
+import { UserProfileComponent, CreatePersonaComponent, ChangePasswordComponent, UpdateProfileComponent } from './user-profile';
 import { UserDpComponent } from './user-profile/user-dp';
 import { ListProductsComponent, CreateProductComponent, UpdateProductComponent } from './products';
 import { ProductImagesComponent } from './products/product-images/product-images.component';
@@ -58,6 +58,7 @@ const routes: Routes = [
       { path: 'edit-product', component: UpdateProductComponent },
       { path: 'employees', component: EmployeesComponent },
       { path: 'profile', component: UserProfileComponent},
+      { path: 'update-profile', component: UpdateProfileComponent},
       {path: 'change-password', component: ChangePasswordComponent}
     ]
   }
@@ -103,6 +104,8 @@ export const declarations = [
   SetUpProgressComponent,
   CompaniesComponent,
   ChangePasswordComponent,
+  UpdateProfileComponent,
+  ActionCardComponent,
   // Pipes
   MeasurenamePipe,
   FormatOrderproductPipeCustomer,

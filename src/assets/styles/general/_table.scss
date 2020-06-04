@@ -3,6 +3,11 @@
     display: none;
   }
 
+  .table-content {
+    height: 38rem;
+    overflow: scroll;
+  }
+
   .header,
   .row {
     display: grid;
@@ -12,7 +17,7 @@
     background: $default-white;
     padding: 1rem;
     grid-template-columns: 20% 25% 15% auto;
-
+    border-radius: 15px;
 
     .item {
       font-weight: 700;
@@ -24,6 +29,7 @@
     grid-template-columns: 5% 15% 25% 15% auto;
     background: $default-white;
     margin: .5rem;
+    border-radius: 15px;
 
     .item {
       font-weight: 400;

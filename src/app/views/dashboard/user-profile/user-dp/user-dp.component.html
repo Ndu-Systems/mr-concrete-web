@@ -3,13 +3,13 @@
     <img src="assets/images/home/avatar.svg" alt="avatar">
   </div>
   <button mat-button [matMenuTriggerFor]="subMenu" aria-label="Example icon-button with a menu">
-    <h1 class="main">hello, <span class="title">{{user.FirstName}} {{user.LastName}}</span> ></h1>
+    <h1 class="heading">hello, <span class="title">{{user.FirstName}} {{user.LastName}}</span> ></h1>
   </button>
   <mat-menu #subMenu="matMenu" class="menu">
-    <button mat-menu-item (click)="navigateTo('profile')">
+    <button mat-menu-item (click)="navigateTo('profile'); toggleClick()">
       go to profile
     </button>
-    <button mat-menu-item (click)="navigateTo('change-password')">
+    <button mat-menu-item (click)="navigateTo('change-password'); toggleClick()">
       change password
     </button>
     <button mat-menu-item (click)="signOut()">

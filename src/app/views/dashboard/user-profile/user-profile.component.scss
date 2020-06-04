@@ -1,8 +1,6 @@
 @import '../../../../assets/styles/general/colors';
 
 .main {
-
-
   h1 {
     font-weight: 900;
     font-size: 0.8rem;
@@ -23,11 +21,10 @@
     .profile {
       background: $default-white;
       border-radius: 25px;
-
+      height: 44rem;
       &.col-1-of-2 {
         grid-template-columns: 25% auto;
         padding: 1rem 2rem;
-        height: 44rem;
       }
 
       .general {
@@ -168,13 +165,17 @@
 
             &.text,
             &.value {
-              margin: 1.5rem 0;
+              margin: 1rem 0;
               color: $grey;
               font-size: 0.938rem;
               font-weight: 600;
             }
 
           }
+
+          --gutter: 20px;
+
+
 
           .details {
             width: 25rem;
@@ -184,17 +185,28 @@
               margin: 0;
               grid-gap: 0;
             }
+
             h1 {
               font-weight: 500;
+
               &.value {
                 color: $black;
                 font-weight: 700;
+
                 &.span {
                   color: $yellow;
                 }
               }
             }
           }
+
+          .addresses {
+            width: 60rem;
+            height: 20rem;
+            overflow-y: scroll;
+          }
+
+
 
         }
       }
@@ -204,7 +216,7 @@
 
 .form {
   padding: 1rem 2rem;
-  width: 34.5rem;
+  width: 100%;
   margin: 0 auto;
 
   h1 {
@@ -228,6 +240,7 @@
 
   .form-fields {
     padding: 0;
+    width: 30rem;
 
     .col-1-of-2 {
       grid-gap: 0;
@@ -263,4 +276,266 @@
       font-weight: 600;
     }
   }
+
+  .actions {
+    .btn {
+      border-radius: 25px;
+    }
+  }
+
+}
+
+
+@media only screen and (max-width: 600px) {
+  .main {
+    h1 {
+      font-weight: 900;
+      font-size: 0.8rem;
+      text-transform: capitalize;
+
+      .title {
+        font-weight: 400;
+      }
+    }
+
+    .mat-button {
+      margin-left: 1rem;
+    }
+
+    .container {
+      padding: 0.5rem;
+
+      .profile {
+        background: $default-white;
+        border-radius: 25px;
+        height: 100%;
+        &.col-1-of-2 {
+          grid-template-columns: 100%;
+          padding: 1rem .5rem;
+          grid-gap: 0;
+        }
+
+        .general {
+          .dp {
+            text-align: center;
+            border-radius: 1000px;
+            overflow: hidden;
+            height: 20rem;
+            width: 20rem;
+
+            img {
+              margin: 0 auto;
+              height: 100%;
+
+            }
+          }
+
+          .work {
+            display: none;
+          }
+        }
+
+        .detailed {
+          padding: 0 1rem;
+
+          h1 {
+            &.heading {
+              font-size: 1.875rem;
+              font-weight: 900;
+
+              .span {
+                display: block;
+                font-size: 1.25rem;
+                font-weight: 500;
+                color: $yellow;
+              }
+            }
+
+            &.subHeading {
+              font-size: 1rem;
+              text-transform: uppercase;
+              font-weight: 600;
+              color: $grey;
+            }
+
+            &.text {
+              margin: 1.5rem 0;
+              color: $grey;
+              font-size: 0.938rem;
+              font-weight: 600;
+            }
+          }
+
+          .content {
+            &.col-1-of-2 {
+              grid-template-columns: 100%;
+              grid-gap: 0;
+            }
+
+            .score {
+              &.col-1-of-2 {
+                grid-template-columns: 4% auto;
+              }
+
+              h1.value {
+                font-size: 1.5rem;
+                margin: 10px;
+              }
+            }
+          }
+
+
+        }
+
+        .tab-content {
+          padding: 1rem;
+
+          .tab-group {
+            // background: red;
+            width: 90%;
+            margin: 0;
+
+            h1 {
+              margin: 1rem 0;
+
+              &.heading {
+                font-size: 1.875rem;
+                font-weight: 900;
+
+                .span {
+                  display: block;
+                  font-size: 1.25rem;
+                  font-weight: 500;
+                  color: $yellow;
+                }
+              }
+
+              &.subHeading {
+                font-size: 0.75rem;
+                text-transform: uppercase;
+                font-weight: 400;
+                color: $grey;
+              }
+
+              &.text,
+              &.value {
+                margin: 1rem 0;
+                color: $grey;
+                font-size: 0.938rem;
+                font-weight: 600;
+              }
+
+            }
+
+            --gutter: 20px;
+
+
+
+            .details {
+              width: 25rem;
+
+              &.col-1-of-2 {
+                grid-template-columns: 20% auto;
+                margin: 0;
+                grid-gap: 0;
+              }
+
+              h1 {
+                font-weight: 500;
+
+                &.value {
+                  color: $black;
+                  font-weight: 700;
+
+                  &.span {
+                    color: $yellow;
+                  }
+                }
+              }
+            }
+
+            .addresses {
+              width: 60rem;
+              height: 20rem;
+              overflow-y: scroll;
+            }
+
+
+
+          }
+        }
+      }
+    }
+  }
+  .form {
+    padding: 1rem;
+    width: 100%;
+    margin: 0 auto;
+
+    h1 {
+      &.heading {
+        font-size: 1.125rem;
+      }
+
+      &.text {
+        font-size: 0.98rem;
+        font-weight: 500;
+        margin-bottom: 2rem;
+      }
+
+      &.info {
+        font-weight: 900;
+        font-size: 0.813rem;
+        color: $grey;
+        font-style: italic;
+      }
+    }
+
+    .form-fields {
+      padding: 0;
+      width: 100%;
+
+      .col-1-of-2 {
+        grid-gap: 0;
+        margin-bottom: 0;
+      }
+
+      .input-group {
+        label {
+          font-weight: 500;
+          font-size: 0.9rem;
+          margin: .5rem 0;
+        }
+
+        input {
+          border: 1px solid #B2BEC3;
+          padding: 0.5rem 1rem;
+          margin: 0.4rem 0;
+          border-radius: 3px;
+          width: 100%;
+        }
+
+        select {
+          border: 1px solid #B2BEC3;
+          padding: 0.5rem 1rem;
+          margin: 0.4rem 0;
+          border-radius: 3px;
+          width: 100%;
+        }
+      }
+
+      .mat-error {
+        font-size: 0.82rem;
+        font-weight: 600;
+      }
+    }
+
+    .actions {
+      .btn {
+        border-radius: 25px;
+      }
+    }
+
+  }
+
 }

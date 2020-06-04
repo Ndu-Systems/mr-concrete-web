@@ -27,7 +27,7 @@ export class DashboardHomeComponent implements OnInit {
   toStatusId: number;
   counter: CounterModel;
   settingCounter: SettingCounterModel;
-
+  class = 'primary';
   confirmationPageParams = ORDER_PLACEMENT_CONFIRMATION;
   msgs: Message[] = [];
   placeHolder: Placeholder = {

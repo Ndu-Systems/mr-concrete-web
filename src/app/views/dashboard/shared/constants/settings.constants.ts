@@ -16,15 +16,9 @@ export const PARTNERS_CONSTANTS: Actions[] = [
 
 export const INDUSTRY_ACTION_CONSTANTS: Actions[] = [
   {
-    name: 'Order measurements',
-    link: '/dashboard/measurements',
-    icon: 'assets/images/dashboard/settings/measure.svg'
-  },
-  {
     name: 'Industry categories',
     link: '/dashboard/categories',
     icon: 'assets/images/dashboard/settings/category.svg'
-  },
-
-]
+  }
+];
 
