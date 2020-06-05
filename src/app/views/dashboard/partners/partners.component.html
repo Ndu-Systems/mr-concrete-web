@@ -1,62 +1,6 @@
 <div class="main">
-  <p-messages [value]="msgs"></p-messages>
   <app-banner [subheading]="subheading" [heading]="heading" [actionButton]="actionButton"></app-banner>
-  <div class="container" *ngIf="suppliers else noSuppliers;">
-    <div class="heading col-1-of-4">
-      <h1>name</h1>
-      <h1>status</h1>
-      <h1>contact number</h1>
-      <h1>email address</h1>
-      <h1>address</h1>
-      <h1>actions</h1>
-    </div>
-    <div class="container-table">
-      <mat-card *ngFor="let item of suppliers">
-        <span class="table-card col-1-of-4">
-          <div class="header col-1-of-2">
-            <img src="assets/images/dashboard/settings/image.svg" alt="image vector">
-            <h1 class="header">
-              {{item.SupplierName}}
-              <span class="date">{{item.CreateDate | date:'mediumDate'}}</span>
-            </h1>
-          </div>
-          <div class="data">
-            <mat-chip-list class="chips">
-              <mat-chip class="chip success" *ngIf="item.StatusId == '1'">active</mat-chip>
-              <mat-chip class="chip cancelled" *ngIf="item.StatusId == '0'">Cancelled</mat-chip>
-            </mat-chip-list>
-          </div>
-          <div class="data">
-            <h1 class="text">
-              {{item.ContactNumber}}
-            </h1>
-          </div>
-          <div class="data">
-            <h1 class="text">
-              {{item.EmailAddress}}
-            </h1>
-          </div>
-          <div class="data">
-            <h1 class="text">
-              {{item.SupplierAddress}}, {{item.City}}, {{item.PostalCode}}
-            </h1>
-          </div>
-          <div class="data">
-            <button class="buttons primary" [disabled]="item.StatusId !== '1'" (click)="updatePartner(item)"
-              matTooltip="Edit this supplier." mat-button>
-              <mat-icon matDatepickerToggleIcon>edit</mat-icon>
-            </button>
-            <button class="buttons danger" [disabled]="item.StatusId !== '1'" (click)="archivePartner(item)"
-              matTooltip="Archive this supplier." mat-button>
-              <mat-icon matDatepickerToggleIcon>cancel</mat-icon>
-            </button>
-          </div>
-        </span>
-      </mat-card>
-    </div>
+  <div class="container">
+     <app-actions [actions]="partnerActions" [header]="partnerHeader"></app-actions>
   </div>
-  <ng-template #noSuppliers>
-    <app-placeholder [placeHolder]="placeHolder"></app-placeholder>
-  </ng-template>
-
 </div>

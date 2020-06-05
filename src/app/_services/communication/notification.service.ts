@@ -19,6 +19,14 @@ export class NotificationService {
       life: 7000
     });
   }
+ dangerMessage(summary: string, message: string) {
+    this.messageService.add({
+      severity: 'error',
+      summary,
+      detail: message,
+      life: 7000
+    });
+  }
 
   successMassage(summary: string, msg: string) {
     this.messageService.add({

@@ -3,6 +3,8 @@ import { UserQueryModel, UserModel } from 'src/app/_models';
 import { UserService, NotificationService } from 'src/app/_services';
 import { USER_TYPES } from '../shared';
 import { Router } from '@angular/router';
+import { takeUntil } from 'rxjs/operators';
+import { Subject } from 'MrConcrete/node_modules/rxjs';
 
 @Component({
   selector: 'app-employees',
@@ -16,6 +18,8 @@ export class EmployeesComponent implements OnInit, OnDestroy {
     link: '/dashboard/add-employee',
     label: 'Add employee'
   };
+  private onDestroy$ = new Subject<boolean>();
+
   employees: UserModel[] = [];
   queryUserModel: UserQueryModel;
   userTypes = USER_TYPES;
@@ -33,20 +37,36 @@ export class EmployeesComponent implements OnInit, OnDestroy {
       TypeOfUser: 'All'
     };
 
-    this.userService.getAllUsers(this.queryUserModel).subscribe(data => {
-      if (data.length > 0) {
-        const employeeList = data;
-        employeeList.forEach(item => {
-          if (item.RoleId === '4'
-            || item.RoleId === '6') {
-            this.employees.push(item);
-          }
-        });
-      }
-    });
+    this.userService.getAllUsers(this.queryUserModel)
+      .pipe(
+        takeUntil(this.onDestroy$)
+      )
+      .subscribe(data => {
+        if (data.length > 0) {
+          const employeeList = data;
+          employeeList.forEach(item => {
+            this.switchStaff(item);
+          });
+        }
+      });
   }
 
-  ngOnDestroy() { }
+
+  switchStaff(item: UserModel) {
+    switch (item.RoleId) {
+      case '4':
+      case '6':
+        this.employees.push(item);
+        break;
+      default:
+        break;
+    }
+  }
+  ngOnDestroy() {
+    this.onDestroy$.next(true);
+    this.onDestroy$.complete();
+  }
+
   onUpdateClick(item: UserModel) {
     this.userService.updateUserViewState(item);
     this.routTo.navigate(['/dashboard/edit-employee']);

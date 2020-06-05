@@ -1,9 +1,10 @@
 import { ConfirmationService, Message, MessageService } from 'primeng/api';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { Supplier, UserModel, Placeholder } from 'src/app/_models';
-import { SupplierService, AccountService } from 'src/app/_services';
-import { ActionButton } from '../shared/constants/actions';
+import { Supplier, UserModel, Placeholder, UserQueryModel } from 'src/app/_models';
+import { SupplierService, AccountService, UserService, NotificationService } from 'src/app/_services';
+import { ActionButton, Actions } from '../shared/constants/actions';
 import { Router } from '@angular/router';
+import { PARTNERS_CONSTANTS } from '../shared';
 
 @Component({
   selector: 'app-partners',
@@ -11,15 +12,22 @@ import { Router } from '@angular/router';
   styleUrls: ['./partners.component.scss']
 })
 export class PartnersComponent implements OnInit {
-  heading = 'Suppliers';
-  subheading = 'A list of suppliers in the system';
-  suppliers: Supplier[] = [];
+  heading = 'Partners';
+  subheading = 'Set up your various partner types';
+  partnerActions: Actions[];
   position: string;
+  queryUserModel: UserQueryModel;
+  suppliers: UserModel[] = [];
+  customers: UserModel[] = [];
+  customerCount: string;
+
   actionButton: ActionButton = {
     link: '/dashboard/add-partner',
     label: 'add supplier'
   };
+
   @Output() messages: EventEmitter<Message[]> = new EventEmitter<Message[]>();
+
   msgs: Message[] = [];
   currentUser: UserModel;
 
@@ -30,20 +38,47 @@ export class PartnersComponent implements OnInit {
     linkLabel: 'Add a supplier'
   };
   constructor(
-    private supplierService: SupplierService,
     private routeTo: Router,
     private confirmationService: ConfirmationService,
+    private userService: UserService,
     private accountService: AccountService,
-   ) { }
+    private messageService: NotificationService,
+
+  ) { }
 
   ngOnInit() {
-    this.supplierService.getSuppliers(1);
-    this.supplierService.suppliers.subscribe(data => this.suppliers = data);
+    this.partnerActions = PARTNERS_CONSTANTS;
     this.currentUser = this.accountService.CurrentUserValue;
+    this.queryUserModel = {
+      StatusId: '1',
+      TypeOfUser: 'All'
+    };
+    this.userService.getAllUsers(this.queryUserModel).subscribe(data => {
+      if (data.length > 0) {
+        const partnerList = data;
+        partnerList.forEach(item => {
+          this.switchPartners(item);
+        });
+        this.partnerActions[0].count = `${this.customers.length} total customer(s)`;
+        this.partnerActions[1].count = `${this.suppliers.length} total supplier(s)`;
+      }
+    });
+  }
+
+  switchPartners(item: UserModel) {
+    switch (item.RoleId) {
+      case '3':
+        this.suppliers.push(item);
+        break;
+      case '5':
+        this.customers.push(item);
+        break;
+      default:
+        break;
+    }
   }
 
   updatePartner(supplier: Supplier) {
-    this.supplierService.updateCurrentSupplier(supplier);
     this.routeTo.navigate(['/dashboard/update-partner']);
   }
 
@@ -55,7 +90,6 @@ export class PartnersComponent implements OnInit {
       accept: () => {
         supplier.StatusId = '2';
         supplier.ModifyUserId = this.currentUser.UserId;
-        this.supplierService.updateSupplier(supplier);
         this.msgs = [{ severity: 'warn', summary: 'Archived', detail: 'Supplier successfully archived.' }];
       },
       reject: () => {

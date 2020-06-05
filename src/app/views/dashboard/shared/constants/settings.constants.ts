@@ -2,15 +2,15 @@ import { Actions } from './actions';
 
 export const PARTNERS_CONSTANTS: Actions[] = [
   {
+    name: 'Your customers',
+    link: '/dashboard/partners',
+    icon: 'assets/images/dashboard/settings/clock.svg',
+  },
+  {
     name: 'Suppliers in the system',
     link: '/dashboard/partners',
     icon: 'assets/images/dashboard/settings/Truck.svg'
-  },
-  // {
-  //   name: 'customers',
-  //   link: '/dashboard/customers',
-  //   icon: 'assets/images/dashboard/settings/customer.svg'
-  // },
+  }
 ];
 
 
