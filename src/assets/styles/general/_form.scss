@@ -38,6 +38,13 @@
 
       }
 
+      select{
+        cursor: pointer;
+        option{
+          cursor: pointer;
+        }
+      }
+
 
       .label-input {
         font-weight: 700;

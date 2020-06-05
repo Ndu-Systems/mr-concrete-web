@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-create-supplier',
   templateUrl: './create-supplier.component.html',
-  styleUrls: ['./create-supplier.component.scss']
+  styleUrls: ['../partners.component.scss']
 })
 export class CreateSupplierComponent implements OnInit {
   heading = 'Settings';
@@ -43,15 +43,7 @@ export class CreateSupplierComponent implements OnInit {
       StatusId: [1]
     });
   }
-  onSubmit(supplier: Supplier) {
-    this.supplierService.addSupplier(supplier);
-    this.messageService.add({
-      severity: 'success',
-      summary: `Success!`,
-      detail: 'Supplier added successfully',
-      life: 1000
-    });
-    this.supplierService.getSuppliers(1);
-    this.routeTo.navigate(['/dashboard/partners']);
+  onSubmit(partner: UserModel) {
+    console.log('user to add ', partner);
   }
 }

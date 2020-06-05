@@ -3,7 +3,7 @@
 </h1>
 <div class="col-1-of-4 actions" *ngIf="actions">
   <span *ngFor="let item of actions">
-    <a [routerLink]="item.link">
+    <a [routerLink]="item.link" (click)="actionSelected(item?.id)">
       <mat-card>
         <img [src]="item.icon" class="icon" alt="action icon">
         <h1 class="name">{{item.name}}</h1>

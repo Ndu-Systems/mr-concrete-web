@@ -1,3 +1,4 @@
+import { SYSTEM_ROLES } from './../../../_shared/roles.enum';
 import { ConfirmationService, Message, MessageService } from 'primeng/api';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Supplier, UserModel, Placeholder, UserQueryModel } from 'src/app/_models';
@@ -20,7 +21,8 @@ export class PartnersComponent implements OnInit {
   suppliers: UserModel[] = [];
   customers: UserModel[] = [];
   customerCount: string;
-
+  roles = SYSTEM_ROLES;
+  selectedList: UserModel[];
   actionButton: ActionButton = {
     link: '/dashboard/add-partner',
     label: 'add supplier'
@@ -60,7 +62,9 @@ export class PartnersComponent implements OnInit {
           this.switchPartners(item);
         });
         this.partnerActions[0].count = `${this.customers.length} total customer(s)`;
+        this.partnerActions[0].id = '5';
         this.partnerActions[1].count = `${this.suppliers.length} total supplier(s)`;
+        this.partnerActions[1].id = '3';
       }
     });
   }
@@ -78,8 +82,15 @@ export class PartnersComponent implements OnInit {
     }
   }
 
+
+  onSelectAction(event) {
+    this.selectedList = [];
+    if (event === '3') { this.selectedList = this.suppliers; } else {
+      this.selectedList = this.customers;
+    }
+  }
   updatePartner(supplier: Supplier) {
-    this.routeTo.navigate(['/dashboard/update-partner']);
+
   }
 
   archivePartner(supplier: Supplier) {

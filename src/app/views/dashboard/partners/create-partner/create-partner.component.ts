@@ -1,35 +1,25 @@
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { FormBuilder, Validators, FormControl, FormGroup } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { Roles } from 'src/app/_shared';
-import { EmailService, NotificationService, AccountService, UserService } from 'src/app/_services';
+import { SYSTEM_ROLES } from 'src/app/_shared';
+import { AccountService, UserService, EmailService, NotificationService } from 'src/app/_services';
 import { Router } from '@angular/router';
-import { UserModel, SignUpModel, Email, EmailGetRequestModel } from 'src/app/_models';
+import { UserModel, EmailGetRequestModel, Email } from 'src/app/_models';
 
 @Component({
-  selector: 'app-add-employee',
-  templateUrl: './add-employee.component.html',
-  styleUrls: ['../employees.component.scss']
+  selector: 'app-create-partner',
+  templateUrl: './create-partner.component.html',
+  styleUrls: ['../partners.component.scss']
 })
-export class AddEmployeeComponent implements OnInit {
+export class CreatePartnerComponent implements OnInit {
+  userRoles = SYSTEM_ROLES;
   rForm: FormGroup;
   currentUser: UserModel;
-  heading = 'Add Employee';
-  subheading = 'Create a new system user for your organization';
+  heading = 'Add Partner';
+  subheading = 'Create a new partner user of any type.';
   actionButton: any = {
-    link: '/dashboard/employees',
-    label: 'View Employees'
+    link: '/dashboard/partners',
+    label: 'View Partners'
   };
-  accessRoles: any[] = [
-    {
-      role: Roles.ASSISTANT
-    },
-    {
-      role: Roles.DRIVER
-    },
-    {
-      role: Roles.GENERAL
-    }
-  ];
   constructor(
     private accountService: AccountService,
     private userService: UserService,
@@ -37,7 +27,6 @@ export class AddEmployeeComponent implements OnInit {
     private emailService: EmailService,
     private routeTo: Router,
     private messageService: NotificationService
-
   ) { }
 
   ngOnInit() {
@@ -61,15 +50,15 @@ export class AddEmployeeComponent implements OnInit {
       StatusId: [9]
     });
   }
-
-  onSubmit(model: UserModel) {
-    this.userService.addUser(model).subscribe(data => {
+  onSubmit(partner: UserModel) {
+    this.userService.addUser(partner).subscribe(data => {
       if (data.UserId) {
-        data.TypeOfUser = model.TypeOfUser;
+        data.TypeOfUser = partner.TypeOfUser;
         this.sendEmailActivation(data);
       }
     });
   }
+
 
   sendEmailActivation(data: UserModel) {
     const emailGetRequestModel: EmailGetRequestModel = {
@@ -85,28 +74,24 @@ export class AddEmployeeComponent implements OnInit {
       };
       this.sendEmail(emailData);
     });
-  }
 
+  }
   sendEmail(email: Email) {
     this.emailService.sendAccountActivationEmail(email).subscribe(data => {
       if (data > 0) {
-        this.messageService.successMassage('Success', 'Staff created Successfully');
-        this.goToEmployees();
+        this.messageService.successMassage('Success', 'Partner created Successfully');
+        this.goToPartners();
       } else {
         this.messageService.errorMessage('Oops', 'Something went wrong please try again later');
-        this.goToEmployees();
-
+        this.goToPartners();
       }
     });
   }
-  goToEmployees() {
-    setTimeout(() => {
-      this.routeTo.navigate(['/dashboard/employees']);
-    }, 1700);
-  }
 
-  goBack() {
-    this.routeTo.navigate(['/dashboard/employees']);
+  goToPartners() {
+    setTimeout(() => {
+      this.routeTo.navigate(['/dashboard/partners']);
+    }, 1700);
   }
 
 }

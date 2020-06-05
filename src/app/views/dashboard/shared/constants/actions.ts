@@ -3,6 +3,7 @@ export interface Actions {
   name: string;
   link: string;
   count?: string;
+  id?: string;
 }
 
 

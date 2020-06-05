@@ -10,30 +10,29 @@ export enum Roles {
   GENERAL = 'General'
 }
 
-export const SYSTEM_ROLES: RoleEnumModel[] = [{
-  Key: Roles.ADMIN,
-  Description: Roles.ADMIN,
-}, {
-  Key: Roles.SUPPLIER,
-  Description: Roles.SUPPLIER,
-}, {
-  Key: Roles.CUSTOMER,
-  Description: Roles.CUSTOMER,
-},]
 
 export enum PersonaTypes {
-  BUILDING_BUSINESS = 'I am building a business idea',
+
+  SYSTEM_CONTROLLER = 'I drive the system lifecycle and support',
   MOVING_PROCESS = 'I am taking my business online',
   CUSTOMER = 'I want to place orders',
   GUEST = 'I am only visiting',
 }
+export const SYSTEM_ROLES: RoleEnumModel[] = [{
+  Id: '1',
+  Key: Roles.ADMIN,
+  Description: PersonaTypes.SYSTEM_CONTROLLER,
+}, {
+  Id: '3',
+  Key: Roles.SUPPLIER,
+  Description: PersonaTypes.MOVING_PROCESS,
+}, {
+  Id: '5',
+  Key: Roles.CUSTOMER,
+  Description: PersonaTypes.CUSTOMER,
+} ];
 
 export const PERSONA_LIST: PersonaModel[] = [
-
-  {
-    Description: PersonaTypes.BUILDING_BUSINESS,
-    Key: 'Supplier'
-  },
   {
     Description: PersonaTypes.MOVING_PROCESS,
     Key: 'Supplier'
@@ -47,3 +46,5 @@ export const PERSONA_LIST: PersonaModel[] = [
     Key: 'Guest'
   }
 ];
+
+

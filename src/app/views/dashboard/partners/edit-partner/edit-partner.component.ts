@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-edit-partner',
   templateUrl: './edit-partner.component.html',
-  styleUrls: ['./edit-partner.component.scss']
+  styleUrls: ['../partners.component.scss']
 })
 export class EditPartnerComponent implements OnInit {
   heading = 'Suppliers';
@@ -29,7 +29,6 @@ export class EditPartnerComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-
     this.supplierService.supplier.subscribe(data => { this.supplier = data; this.initForm(); });
   }
   initForm() {
