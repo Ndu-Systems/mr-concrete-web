@@ -1,7 +1,8 @@
 <div class="main">
   <app-banner [subheading]="subheading" [heading]="heading" [actionButton]="actionButton"></app-banner>
   <div class="container">
-     <app-actions [actions]="partnerActions" (selectedAction)="onSelectAction($event)" [header]="partnerHeader"></app-actions>
-     <app-list-partners [selectedList]="selectedList"></app-list-partners>
-    </div>
+    <app-actions [actions]="partnerActions" (selectedAction)="onSelectAction($event)" [header]="partnerHeader">
+    </app-actions>
+    <app-list-partners [selectedList]="selectedList"></app-list-partners>
+  </div>
 </div>
