@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="166" height="161" viewBox="0 0 166 161">
+  <g id="emptycart" transform="translate(4997 12621)">
+    <g id="emptycart-2" data-name="emptycart">
+      <g id="emptycart-3" data-name="emptycart" transform="translate(12)">
+        <g id="cart" transform="translate(1758.132 -700)">
+          <path id="Path_969" data-name="Path 969" d="M-6694.742-11885.24h30.337l-8.578,17.68-21.288.168-6.434-23.391h-7.427" transform="translate(0 -0.001)" fill="rgba(251,197,49,0.5)" stroke="#fbc531" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+          <g id="Path_970" data-name="Path 970" transform="translate(-6693.85 -11864.591)" fill="rgba(251,197,49,0.5)">
+            <path d="M 3.845913648605347 6.691823482513428 C 2.276673555374146 6.691823482513428 1.000003695487976 5.415153503417969 1.000003695487976 3.845913648605347 C 1.000003695487976 2.276673555374146 2.276673555374146 1.000003695487976 3.845913648605347 1.000003695487976 C 5.415153503417969 1.000003695487976 6.691823482513428 2.276673555374146 6.691823482513428 3.845913648605347 C 6.691823482513428 5.415153503417969 5.415153503417969 6.691823482513428 3.845913648605347 6.691823482513428 Z" stroke="none"/>
+            <path d="M 3.845913648605347 2.000003814697266 C 2.828073501586914 2.000003814697266 2.000003814697266 2.828073501586914 2.000003814697266 3.845913648605347 C 2.000003814697266 4.863753318786621 2.828073501586914 5.691823959350586 3.845913648605347 5.691823959350586 C 4.863753318786621 5.691823959350586 5.691823959350586 4.863753318786621 5.691823959350586 3.845913648605347 C 5.691823959350586 2.828073501586914 4.863753318786621 2.000003814697266 3.845913648605347 2.000003814697266 M 3.845913648605347 3.814697265625e-06 C 5.969953536987305 3.814697265625e-06 7.691823482513428 1.721873760223389 7.691823482513428 3.845913648605347 C 7.691823482513428 5.969953536987305 5.969953536987305 7.691823482513428 3.845913648605347 7.691823482513428 C 1.721873760223389 7.691823482513428 3.814697265625e-06 5.969953536987305 3.814697265625e-06 3.845913648605347 C 3.814697265625e-06 1.721873760223389 1.721873760223389 3.814697265625e-06 3.845913648605347 3.814697265625e-06 Z" stroke="none" fill="#fbc531"/>
+          </g>
+          <g id="Ellipse_206" data-name="Ellipse 206" transform="translate(-6681 -11865)" fill="rgba(251,197,49,0.5)" stroke="#fbc531" stroke-width="2">
+            <ellipse cx="3.5" cy="4" rx="3.5" ry="4" stroke="none"/>
+            <ellipse cx="3.5" cy="4" rx="2.5" ry="3" fill="none"/>
+          </g>
+        </g>
+        <text id="Your_cart_is_empty" data-name="Your cart is empty" transform="translate(-4977 -12519)" fill="#2f3542" font-size="12" font-family="Montserrat-Bold, Montserrat" font-weight="700"><tspan x="0" y="0">Your cart is empty</tspan></text>
+      </g>
+      <g id="Ellipse_208" data-name="Ellipse 208" transform="translate(-4997 -12621)" fill="none" stroke="rgba(184,14,14,0.08)" stroke-width="1">
+        <circle cx="80.5" cy="80.5" r="80.5" stroke="none"/>
+        <circle cx="80.5" cy="80.5" r="80" fill="none"/>
+      </g>
+      <g id="Ellipse_209" data-name="Ellipse 209" transform="translate(-4992 -12621)" fill="none" stroke="rgba(251,197,49,0.5)" stroke-width="1">
+        <circle cx="80.5" cy="80.5" r="80.5" stroke="none"/>
+        <circle cx="80.5" cy="80.5" r="80" fill="none"/>
+      </g>
+    </g>
+    <g id="start">
+      <text id="Start_ordering" data-name="Start ordering" transform="translate(-4942 -12491)" fill="#2ed573" font-size="9" font-family="Montserrat-Bold, Montserrat" font-weight="700"><tspan x="0" y="0">Start ordering</tspan></text>
+      <g id="emptycart-4" data-name="emptycart" transform="translate(-4952 -12506)" fill="none" stroke="#2ed573" stroke-width="1">
+        <rect width="87" height="24" rx="12" stroke="none"/>
+        <rect x="0.5" y="0.5" width="86" height="23" rx="11.5" fill="none"/>
+      </g>
+    </g>
+  </g>
+</svg>

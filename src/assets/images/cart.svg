@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="207.286" height="156.784" viewBox="0 0 207.286 156.784">
+  <g id="cart" transform="translate(6715.132 11897.784)">
+    <path id="Path_969" data-name="Path 969" d="M-6648.944-11866.277h134.1l-37.917,78.146-94.1.74-28.441-103.394h-32.831" fill="none" stroke="#b2bec3" stroke-linecap="round" stroke-linejoin="round" stroke-width="14"/>
+    <g id="Path_970" data-name="Path 970" transform="translate(-6645 -11775)" fill="none">
+      <path d="M17,0A17,17,0,1,1,0,17,17,17,0,0,1,17,0Z" stroke="none"/>
+      <path d="M 17 14 C 15.34580039978027 14 14 15.34580039978027 14 17 C 14 18.65419960021973 15.34580039978027 20 17 20 C 18.65419960021973 20 20 18.65419960021973 20 17 C 20 15.34580039978027 18.65419960021973 14 17 14 M 17 0 C 26.38883590698242 0 34 7.611164093017578 34 17 C 34 26.38883590698242 26.38883590698242 34 17 34 C 7.611164093017578 34 0 26.38883590698242 0 17 C 0 7.611164093017578 7.611164093017578 0 17 0 Z" stroke="none" fill="#b2bec3"/>
+    </g>
+    <g id="Ellipse_206" data-name="Ellipse 206" transform="translate(-6589 -11775)" fill="none" stroke="#b2bec3" stroke-width="14">
+      <circle cx="17" cy="17" r="17" stroke="none"/>
+      <circle cx="17" cy="17" r="10" fill="none"/>
+    </g>
+  </g>
+</svg>

@@ -16,5 +16,6 @@ export interface Order {
     ModifyDate?: string;
     ModifyUserId: string;
     StatusId: number;
+    ShowCart: boolean;
     Orderproducts: Orderproduct[];
 }

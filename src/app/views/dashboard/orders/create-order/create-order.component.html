@@ -25,7 +25,7 @@
           <div class="item">
             <div class="image">
               <img [src]="item.Images[0].Url" alt="" *ngIf="item.Images" />
-              <img src="assets/images/product-placeholder.png" *ngIf="!item.Images" alt="" />
+              <img src="assets/images/product-placeholder.svg" *ngIf="!item.Images" alt="" />
             </div>
           </div>
           <div class="item">
@@ -67,7 +67,7 @@
           <div class="item">
             <div class="image">
               <img [src]="item.Images[0].Url" alt="" *ngIf="item.Images" />
-              <img src="assets/images/product-placeholder.png" *ngIf="!item.Images" alt="" />
+              <img src="assets/images/product-placeholder.svg" *ngIf="!item.Images" alt="" />
             </div>
           </div>
           <div class="item">
@@ -110,7 +110,7 @@
   <div class="overlay-modal" *ngIf="!cartView">
     <div class="image main-product-image">
       <img *ngIf="selectedProduct.Images" [src]="selectedProduct.Images[0].Url" alt="">
-      <img *ngIf="!selectedProduct.Images" src="assets/images/product-placeholder.png" alt="" />
+      <img *ngIf="!selectedProduct.Images" src="assets/images/product-placeholder.svg" alt="" />
     </div>
     <div class="details">
       <h1>{{selectedProduct.ProductName}}</h1>
@@ -159,62 +159,83 @@
   </div>
 
   <div class="overlay-modal" *ngIf="cartView">
-    <h1 class="success">
-      <span class="material-icons">
-        check_circle_outline
-      </span> {{shopHeadingStatus}}
-    </h1>
-    <div class="cart-items" *ngFor="let item of orderProducts">
-      <div class="item">
-        <img [src]="item.Images[0].Url" alt="" *ngIf="item.Images" />
-        <img src="assets/images/product-placeholder.png" *ngIf="!item.Images" alt="" />
+    <div *ngIf="order.Orderproducts.length" class="">
+      <h1 class="success">
+        <span class="material-icons">
+          check_circle_outline
+        </span> {{shopHeadingStatus}}
+      </h1>
+      <div class="cart-items" *ngFor="let item of order.Orderproducts; let i = index">
+        <div class="item">
+          <img (click)="removeItem(item, i)" class="remove-from-cart" src="assets/images/remove-from-cart.svg" alt="" />
+        </div>
+        <div class="item">
+          <div class="image">
+            <img [src]="item.Images[0].Url" alt="" *ngIf="item.Images" />
+            <img src="assets/images/product-placeholder.svg" *ngIf="!item.Images" alt="" />
+          </div>
+        </div>
+        <div class="item">
+          <p>
+            {{item.ProductName}}
+          </p>
+        </div>
+        <div class="item">
+          <p>
+            <b>
+              <u>
+                x {{item.Quantity}}
+              </u>
+            </b>
+          </p>
+        </div>
+        <div class="item">
+          <b>
+            {{item.Price*item.Quantity | currency:'R'}}
+          </b>
+        </div>
       </div>
-      <div class="item">
-        {{item.ProductName}}
-      </div>
-      <div class="item">
-        <b>
-          <u>
-            x {{item.Quantity}}
-          </u>
-        </b>
-      </div>
-      <div class="item">
-        <b>
-          {{item.Price*item.Quantity | currency:'R'}}
-        </b>
-      </div>
+
+      <span *ngIf="!showCheckout">
+        <h1 class="price">
+          Total
+          <span>
+            {{order.Total | currency:'R'}}
+          </span>
+        </h1>
+
+        <div class="col-2 mt2">
+          <div class="cart">
+            <button mat-icon-button class="btn btn-cart" aria-label="Example icon button with a vertical three dot icon"
+              (click)="continueOrdering()">
+              Continue ordering
+            </button>
+          </div>
+          <div class="cart">
+            <button mat-icon-button class="btn btn-grey" aria-label="Example icon button with a vertical three dot icon"
+              (click)="checkout()">
+              <mat-icon>shopping_basket</mat-icon> Check out
+            </button>
+          </div>
+        </div>
+
+      </span>
+    </div>
+    <div *ngIf="!order.Orderproducts.length" class="emptycart">
+      <img   (click)="continueOrdering()" src="assets/images/emptycart.svg" alt="">
     </div>
 
 
 
-    <span *ngIf="!showCheckout">
+
+
+    <span *ngIf="showCheckout">
       <h1 class="price">
         Total
         <span>
           {{total | currency:'R'}}
         </span>
       </h1>
-
-      <div class="col-2 mt2">
-        <div class="cart">
-          <button mat-icon-button class="btn btn-cart" aria-label="Example icon button with a vertical three dot icon"
-            (click)="continueOrdering()">
-            Continue ordering
-          </button>
-        </div>
-        <div class="cart">
-          <button mat-icon-button class="btn btn-grey" aria-label="Example icon button with a vertical three dot icon"
-            (click)="checkout()">
-            <mat-icon>shopping_basket</mat-icon> Check out
-          </button>
-        </div>
-      </div>
-
-    </span>
-
-    <span *ngIf="showCheckout">
-
       <div class="delivery">
         <div class="image">
           <img src="assets/images/delivery-date.svg">
@@ -296,3 +317,4 @@
     </div>
   </div>
 </div>
+

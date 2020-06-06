@@ -21,7 +21,7 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
 
   @Output() orderToCreateEmitter: EventEmitter<OrderView> = new EventEmitter<OrderView>();
   catergories$: Observable<Caterory[]>;
-  order: OrderView = initOrderView;
+  order: Order;
   currentUser: UserModel;
   products$: Observable<Product[]>;
   display = false;
@@ -47,6 +47,7 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
   orderCreated: boolean;
   createdOrder: Order;
   SpecialInstructions: string;
+  allProducts: Product[];
   constructor(
     private cateroryService: CateroryService,
     private accountService: AccountService,
@@ -61,19 +62,26 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
     this.catergories$ = this.cateroryService.categories;
     this.cateroryService.getCateries();
     this.products$ = this.productService.products;
-    this.productService.products.subscribe(p => {
-      // this.selectedProduct = p[0];
+    this.productService.products.subscribe(products => {
+      if (products) {
+        this.allProducts = products;
+      }
+    })
+    this.orderService.orderObservable.subscribe(order => {
+      if (order) {
+        this.order = order;
+        if (this.order.ShowCart) {
+          this.cartView = true;
+          this.selectedProduct = this.allProducts[0];
+        }
+      } else {
+        this.orderService.initOrderState();
+      }
     });
 
+
   }
 
-
-
-  selectCatergory(caterory: Caterory) {
-    this.order.CategoryId = caterory.CategoryId;
-    this.order.category = caterory;
-    console.log(this.order);
-  }
   addToCart(product: Product) {
     this.selectedProduct = product;
     this.cartView = false;
@@ -92,51 +100,57 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
       StatusId: 1,
       Images: product.Images
     };
-    this.orderProducts.push(orderProduct);
-    console.log(' this.orderProducts', this.orderProducts);
+    this.order.Orderproducts.push(orderProduct);
     this.cartView = true;
     this.shopHeadingStatus = 'Added to Cart';
     this.total += Number(product.Price) * this.qty;
     this.qty = 1;
+
+    this.order.Total += this.total;
+    this.orderService.setOrderState(this.order);
 
   }
 
   continueOrdering() {
     this.cartView = true;
     this.selectedProduct = null;
+    this.order.ShowCart = false;
+    this.orderService.setOrderState(this.order);
   }
   checkout() {
     this.showCheckout = true;
     this.shopHeadingStatus = 'Check Out';
   }
 
+  removeItem(item: Orderproduct, index: number) {
+    console.log(item);
+    this.order.Total -= (item.Quantity * item.Price);
+    this.order.Orderproducts.splice(index, 1);
+    this.orderService.setOrderState(this.order);
+  }
+
 
   placOrder() {
-    if (!this.orderProducts.length) {
+    if (!this.order.Orderproducts.length) {
       alert('Your cart is empty');
       return false;
     }
+    this.order.CustomerId = '';
+    this.order.SupplierId = this.currentUser.UserId;
+    this.order.ProjectNumber = '';
+    this.order.DeliveryDate = this.DeliveryDate || '';
+    this.order.DeliveryTime = this.DeliveryTime || '';
+    this.order.DeliveryAddress = this.DeliveryAddress || '';
+    this.order.SpecialInstructions = this.SpecialInstructions || '';
+    this.order.CrateUserId = this.currentUser.UserId;
 
-    const order: Order = {
-      CustomerId: this.currentUser.UserId,
-      SupplierId: this.currentUser.UserId,
-      ProjectNumber: 'na',
-      DeliveryDate: this.DeliveryDate || '',
-      DeliveryTime: this.DeliveryTime || '',
-      DeliveryAddress: this.DeliveryAddress || '',
-      SpecialInstructions: this.SpecialInstructions || '',
-      Total: this.total,
-      CrateUserId: this.currentUser.UserId,
-      ModifyUserId: this.currentUser.UserId,
-      StatusId: ORDER_STATUS.active,
-      Orderproducts: this.orderProducts
-    };
     this.loading = true;
-    this.orderService.addOrder(order).subscribe(data => {
+    this.orderService.addOrder(this.order).subscribe(data => {
       this.loading = false;
       this.orderCreated = true;
       this.selectedProduct = null;
       this.createdOrder = data;
+      this.orderService.initOrderState();
     });
   }
 
@@ -149,9 +163,7 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
     }
     this.qty += qty;
   }
-  onSubmit(form) {
 
-  }
   add() { }
   list() {
     this.router.navigate(['/dashboard/orders']);

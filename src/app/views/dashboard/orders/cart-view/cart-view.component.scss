@@ -1,0 +1,25 @@
+@import '../../../../../assets/styles/general/colors';
+
+.main {
+  position: fixed;
+  height: 5rem;
+  width: 5rem;
+  right: 17rem;
+  top: 14px;
+  z-index: 99999;
+
+  @media only screen and (max-width: 600px) {
+    right: 4rem;
+    top: -48px;
+  }
+
+  .btn {
+    background: $yellow;
+    color: $black;
+    font-weight: 700;
+
+    @media only screen and (max-width: 600px) {
+      font-size: .6rem;
+    }
+  }
+}

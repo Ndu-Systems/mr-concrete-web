@@ -40,7 +40,7 @@ export class ListOrdersComponent implements OnInit {
 
   ngOnInit() {
     this.currentUser = this.accountService.CurrentUserValue;
-    this.orders$ = this.orderService.orders;
+    this.orders$ = this.orderService.ordersObservable;
     this.orderService.getOrderByUserId(this.currentUser.UserId);
     localStorage.removeItem('confirmation');
   }
