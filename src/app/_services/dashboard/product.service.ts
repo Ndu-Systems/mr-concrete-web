@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Product } from 'src/app/_models/product.model';
 import { environment } from 'src/environments/environment';
-import { Observable, BehaviorSubject } from 'MrConcrete/node_modules/rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Property } from 'src/app/_models/property.model';
 

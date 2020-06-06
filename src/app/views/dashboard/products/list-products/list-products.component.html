@@ -24,13 +24,21 @@
               {{item.ProductName}}
             </b>
           </p>
-          <span class="active">
-            Active
-          </span>
-          <span class="number" *ngIf="item.ProductCode">
-            Code:<b> {{item.ProductCode}} </b>
+          <div class="tags">
+            <div class="tag">
+              <span class="active">
+                Active
+              </span>
+            </div>
 
-          </span>
+            <div class="tag">
+              <span class="number" *ngIf="item.ProductCode">
+                Code:<b> {{item.ProductCode}} </b>
+              </span>
+            </div>
+
+
+          </div>
         </div>
 
         <div class="item">
@@ -71,7 +79,7 @@
           </b>
 
           <span class="price" *ngIf="item.Units">
-            {{item.Price | currency:'R'}}  / {{item.Units}}
+            {{item.Price | currency:'R'}} / {{item.Units}}
           </span>
         </p>
       </div>

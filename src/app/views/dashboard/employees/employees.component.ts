@@ -4,7 +4,7 @@ import { UserService, NotificationService } from 'src/app/_services';
 import { USER_TYPES } from '../shared';
 import { Router } from '@angular/router';
 import { takeUntil } from 'rxjs/operators';
-import { Subject } from 'MrConcrete/node_modules/rxjs';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-employees',

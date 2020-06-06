@@ -1,4 +1,4 @@
-import { from } from 'MrConcrete/node_modules/rxjs';
+import { from } from 'rxjs';
 
 // start:ng42.barrel
 export * from './partners.component';

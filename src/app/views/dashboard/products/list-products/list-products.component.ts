@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/_services/dashboard/product.service';
 import { Router } from '@angular/router';
 import { AccountService } from 'src/app/_services';
-import { Observable } from 'MrConcrete/node_modules/rxjs';
+import { Observable } from 'rxjs';
 import { Product } from 'src/app/_models/product.model';
 import { UserModel } from 'src/app/_models';
 

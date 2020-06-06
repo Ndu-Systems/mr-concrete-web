@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CompanyModel, CompanyQueryModel } from 'src/app/_models';
-import { Observable, BehaviorSubject } from 'MrConcrete/node_modules/rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { LOCALE } from 'src/app/_shared';
 import { environment } from 'src/environments/environment';

@@ -3,9 +3,9 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { UserModel, EmailGetRequestModel, UserQueryModel } from 'src/app/_models';
 import { HttpClient } from '@angular/common/http';
-import { CURRENT_USER, USER_VIEW } from 'MrConcrete/src/app/_shared/constants';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
+import { USER_VIEW } from 'src/app/_shared';
 
 @Injectable({
   providedIn: 'root'
