@@ -46,4 +46,8 @@ export class CreateSupplierComponent implements OnInit {
   onSubmit(partner: UserModel) {
     console.log('user to add ', partner);
   }
+
+  goBack() {
+    this.routeTo.navigate(['/dashboard/partners']);
+  }
 }

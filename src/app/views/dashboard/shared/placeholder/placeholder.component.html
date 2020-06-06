@@ -1,9 +1,14 @@
-<div class="placeholder" *ngIf="placeHolder">
-   <img [src]="placeHolder.imageUrl" class="image" alt="empty cart">
-  <div>
-    <h1 class="message">
-      {{placeHolder.message}}
+<div class="placeholder">
+  <mat-card class="card" *ngIf="placeHolder">
+    <img *ngIf="placeHolder.imageUrl" [src]="placeHolder.imageUrl" alt="default placeholder">
+    <img *ngIf="!placeHolder.imageUrl" src="assets/images/dashboard/placeholders/default.svg" alt="default placeholder">
+    <h1 class="message" *ngIf="!placeHolder.message">
+      Oops ! nothing to find here
     </h1>
-    <a [routerLink]="placeHolder.link" class="cta">{{placeHolder.linkLabel}}</a>
-  </div>
+    <h1 class="message" *ngIf="placeHolder.message">
+     {{placeHolder.message}}
+    </h1>
+    <a routerLink="/dashboard" class="cta" *ngIf="!placeHolder.message">Go home</a>
+    <a [routerLink]="placeHolder.link" class="cta" *ngIf="placeHolder.link">{{placeHolder.linkLabel}}</a>
+  </mat-card>
 </div>

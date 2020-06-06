@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { AccountService } from 'src/app/_services';
 import { Observable } from 'rxjs';
 import { Product } from 'src/app/_models/product.model';
-import { UserModel } from 'src/app/_models';
+import { UserModel, Placeholder } from 'src/app/_models';
 
 @Component({
   selector: 'app-list-products',
@@ -18,6 +18,14 @@ export class ListProductsComponent implements OnInit {
     link: '/dashboard/create-product',
     label: 'Create Product'
   };
+
+  placeHolder: Placeholder = {
+    imageUrl: 'assets/images/dashboard/placeholders/products.svg',
+    message: 'No products found in our system.',
+    link: '/dashboard/create-product',
+    linkLabel: 'Add new product'
+  };
+
   products$: Observable<Product[]>;
   user: UserModel;
 

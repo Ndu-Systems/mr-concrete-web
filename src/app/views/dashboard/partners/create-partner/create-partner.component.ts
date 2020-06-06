@@ -93,5 +93,8 @@ export class CreatePartnerComponent implements OnInit {
       this.routeTo.navigate(['/dashboard/partners']);
     }, 1700);
   }
+  goBack() {
+    this.routeTo.navigate(['/dashboard/partners']);
+  }
 
 }

@@ -91,14 +91,6 @@
   </div>
 
   <ng-template #notFound>
-    <div class="not-found">
-      <!-- <img [src]="notFoundModel.Image" alt="no items found"> -->
-      <h1 class="message">
-        No product found
-        <span>
-          <a class="link-add" (click)="add()"> add new product.</a>
-        </span>
-      </h1>
-    </div>
+    <app-placeholder [placeHolder]="placeHolder"></app-placeholder>
   </ng-template>
 </div>

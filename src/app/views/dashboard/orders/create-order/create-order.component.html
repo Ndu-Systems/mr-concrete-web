@@ -21,45 +21,48 @@
           <div class="item"> Category</div>
           <div class="item"> </div>
         </div>
-        <div class="row" *ngFor="let item of products">
-          <div class="item">
-            <div class="image">
-              <img [src]="item.Images[0].Url" alt="" *ngIf="item.Images" />
-              <img src="assets/images/product-placeholder.svg" *ngIf="!item.Images" alt="" />
+        <div class="table-content">
+          <div class="row" *ngFor="let item of products">
+            <div class="item">
+              <div class="image">
+                <img [src]="item.Images[0].Url" alt="" *ngIf="item.Images" />
+                <img src="assets/images/product-placeholder.svg" *ngIf="!item.Images" alt="" />
+              </div>
+            </div>
+            <div class="item">
+              <p>
+                <b>
+                  {{item.ProductName}}
+                </b>
+                <span class="number" *ngIf="item.ProductCode">
+                  Code:<b> {{item.ProductCode}} </b>
+                </span>
+              </p>
+            </div>
+
+            <div class="item">
+              <b class="mt1">
+                {{item.Price | currency:'R'}}
+                <span *ngIf="item.Units">
+                  / {{item.Units}}
+                </span>
+              </b>
+            </div>
+            <div class="item" *ngIf="item.Category">
+              {{item.Category.CategoryName}}
+            </div>
+            <div class="item" *ngIf="!item.Category">
+              <span class="small-text">No Category</span>
+            </div>
+            <div class="item">
+              <button mat-icon-button class="btn" aria-label="Example icon button with a vertical three dot icon"
+                (click)="addToCart(item)">
+                <mat-icon>add_shopping_cart</mat-icon> View Product
+              </button>
             </div>
           </div>
-          <div class="item">
-            <p>
-              <b>
-                {{item.ProductName}}
-              </b>
-              <span class="number" *ngIf="item.ProductCode">
-                Code:<b> {{item.ProductCode}} </b>
-              </span>
-            </p>
-          </div>
-
-          <div class="item">
-            <b class="mt1">
-              {{item.Price | currency:'R'}}
-              <span *ngIf="item.Units">
-                / {{item.Units}}
-              </span>
-            </b>
-          </div>
-          <div class="item" *ngIf="item.Category">
-            {{item.Category.CategoryName}}
-          </div>
-          <div class="item" *ngIf="!item.Category">
-            <span class="small-text">No Category</span>
-          </div>
-          <div class="item">
-            <button mat-icon-button class="btn" aria-label="Example icon button with a vertical three dot icon"
-              (click)="addToCart(item)">
-              <mat-icon>add_shopping_cart</mat-icon> View Product
-            </button>
-          </div>
         </div>
+
       </div>
 
       <div class="table-mobile">
@@ -92,15 +95,7 @@
       </div>
 
       <ng-template #notFound>
-        <div class="not-found">
-          <!-- <img [src]="notFoundModel.Image" alt="no items found"> -->
-          <h1 class="message">
-            No product found
-            <span>
-              <a class="link-add" (click)="add()"> add new product.</a>
-            </span>
-          </h1>
-        </div>
+        <app-placeholder [placeHolder]="placeHolder"></app-placeholder>
       </ng-template>
     </div>
 

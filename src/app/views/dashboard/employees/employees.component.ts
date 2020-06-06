@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { UserQueryModel, UserModel } from 'src/app/_models';
+import { UserQueryModel, UserModel, Placeholder } from 'src/app/_models';
 import { UserService, NotificationService } from 'src/app/_services';
 import { USER_TYPES } from '../shared';
 import { Router } from '@angular/router';
@@ -18,6 +18,14 @@ export class EmployeesComponent implements OnInit, OnDestroy {
     link: '/dashboard/add-employee',
     label: 'Add employee'
   };
+
+  placeHolder: Placeholder = {
+    imageUrl: 'assets/images/dashboard/placeholders/staff.svg',
+    message: 'No employees found.',
+    link: '/dashboard/add-employee',
+    linkLabel: 'Add employee'
+  };
+
   private onDestroy$ = new Subject<boolean>();
 
   employees: UserModel[] = [];
@@ -28,7 +36,6 @@ export class EmployeesComponent implements OnInit, OnDestroy {
     private userService: UserService,
     private messageService: NotificationService,
     private routTo: Router
-
   ) { }
 
   ngOnInit() {

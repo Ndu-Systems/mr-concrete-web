@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy, EventEmitter, Output } from '@angular/core';
 import { CateroryService, AccountService } from 'src/app/_services';
 import { Observable } from 'rxjs';
-import { Caterory, UserModel } from 'src/app/_models';
+import { Caterory, UserModel, Placeholder } from 'src/app/_models';
 import { OrderView, initOrderView } from 'src/app/_models/orderview.model';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators, FormControl, FormArray } from '@angular/forms';
@@ -27,6 +27,12 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
   display = false;
   orderProducts: Orderproduct[] = [];
 
+  placeHolder: Placeholder = {
+    imageUrl: 'assets/images/dashboard/placeholders/products.svg',
+    message: 'No products found in our system.',
+    link: '/dashboard/create-product',
+    linkLabel: 'Add new product'
+  };
 
   heading = ' Create an order';
   subheading = 'Order List > create order';

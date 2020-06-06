@@ -1,6 +1,6 @@
 <div class="main">
   <app-banner [subheading]="subheading" [heading]="heading" [actionButton]="actionButton"></app-banner>
-  <div class="table" *ngIf="employees.length > 0">
+  <div class="table" *ngIf="employees.length > 0; else notFound">
     <div class="header">
       <div class="item">FullName</div>
       <div class="item">Contact number</div>
@@ -62,6 +62,9 @@
 
   </div>
 
+  <ng-template #notFound>
+    <app-placeholder [placeHolder]="placeHolder"></app-placeholder>
+  </ng-template>
 
 
   <!-- mobile section  -->

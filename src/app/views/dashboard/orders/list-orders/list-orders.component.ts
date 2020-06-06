@@ -24,6 +24,13 @@ export class ListOrdersComponent implements OnInit {
   supplierOrder: SupplierOrdersModel;
   supplier: Supplier;
 
+  placeHolder: Placeholder = {
+    imageUrl: 'assets/images/dashboard/placeholders/orders.svg',
+    message: 'No orders found in our system.',
+    link: '/dashboard/create-orders',
+    linkLabel: 'Create new order'
+  };
+
   actionButton: any = {
     link: '/dashboard/create-orders',
     label: 'Create Order'
