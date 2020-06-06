@@ -27,25 +27,54 @@ export class UpdateProfileComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.accountService.CurrentUserValue;
-    this.rForm = this.fb.group({
-      FirstName: [this.user.FirstName, Validators.required],
-      LastName: [this.user.LastName, Validators.required],
-      Email: [this.user.Email, Validators.required],
-      Cellphone: [this.user.Cellphone, Validators.required],
-      RoleId: [this.user.RoleId, Validators.required],
-      CompanyId: [this.user.CompanyId],
-      ModifyUserId: [this.user.UserId, Validators.required],
-      StatusId: [this.user.StatusId],
-      CompanyName: [this.user.Company.CompanyName, Validators.required],
-      CompanyPhone: [this.user.Company.CompanyPhone, Validators.required],
-      CompanyEmail: [this.user.Company.CompanyEmail, Validators.required],
-      CompanyType: [this.user.Company.CompanyType, Validators.required],
-      CompanyAddress: [this.user.Company.CompanyAddress],
-      City: [this.user.Company.City],
-      Province: [this.user.Company.Province],
-      PostalCode: [this.user.Company.PostalCode],
-      CompanyStatusId: [this.user.Company.StatusId]
-    });
+    console.log(this.user)
+    this.initializeModel();
+  }
+  initializeModel() {
+    if (this.user.Company !== null) {
+      this.rForm = this.fb.group({
+        FirstName: [this.user.FirstName, Validators.required],
+        LastName: [this.user.LastName, Validators.required],
+        Email: [this.user.Email, Validators.required],
+        Cellphone: [this.user.Cellphone, Validators.required],
+        RoleId: [this.user.RoleId, Validators.required],
+        CompanyId: [this.user.CompanyId],
+        ModifyUserId: [this.user.UserId, Validators.required],
+        StatusId: [this.user.StatusId],
+        CompanyName: [this.user.Company.CompanyName, Validators.required],
+        CompanyPhone: [this.user.Company.CompanyPhone, Validators.required],
+        CompanyEmail: [this.user.Company.CompanyEmail, Validators.required],
+        CompanyType: [this.user.Company.CompanyType, Validators.required],
+        CompanyAddress: [this.user.Company.CompanyAddress],
+        City: [this.user.Company.City],
+        Province: [this.user.Company.Province],
+        PostalCode: [this.user.Company.PostalCode],
+        CompanyStatusId: [this.user.Company.StatusId]
+      });
+    } else {
+
+      this.rForm = this.fb.group({
+        FirstName: [this.user.FirstName, Validators.required],
+        LastName: [this.user.LastName, Validators.required],
+        Email: [this.user.Email, Validators.required],
+        Cellphone: [this.user.Cellphone, Validators.required],
+        RoleId: [this.user.RoleId, Validators.required],
+        CompanyId: [null],
+        ModifyUserId: [this.user.UserId, Validators.required],
+        StatusId: [this.user.StatusId],
+        CompanyName: [null],
+        CompanyPhone:[null],
+        CompanyEmail: [null],
+        CompanyType: [null],
+        CompanyAddress:[null],
+        City: [null],
+        Province: [null],
+        PostalCode: [null],
+        CompanyStatusId:[null]
+      });
+
+    }
+
   }
 
   onSubmit(userModel: UserProfileUpdateModel) {
