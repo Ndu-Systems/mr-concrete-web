@@ -1,0 +1,27 @@
+   <div class="form">
+     <form *ngIf="rForm" class="form" [formGroup]="rForm" (ngSubmit)="onSubmit(rForm.value)">
+       <mat-tab-group class="tab-group">
+         <mat-tab t-tab label="Change password">
+           <div class="form-fields">
+             <div class="input-group">
+               <label>Select Address Type</label>
+               <section matNativeControl formControlName="AddressType">
+                 <option label="--select something --"></option>
+                 <option *ngFor="let item of addressTypes" value="{{item}}">
+                   {{item}}
+                 </option>
+               </section>
+               <mat-error class="error"
+                 *ngIf="!rForm.controls['AddressType'].valid && rForm.controls['AddressType'].touched">
+                 Address Type is required</mat-error>
+             </div>
+           </div>
+
+         </mat-tab>
+       </mat-tab-group>
+       <div class="actions">
+         <button type="submit" [disabled]="!rForm.valid" class="btn cta">Change Password</button>
+         <button type="button" class="btn secondary cta" (click)="goBack()">Cancel</button>
+       </div>
+     </form>
+   </div>

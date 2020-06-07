@@ -1,10 +1,10 @@
 export interface AddressModel {
-  AddressId: string;
-  UserId: string;
+  AddressId?: string;
+  UserId?: string;
   AddressType: string;
   AddressLine1: string;
   AddressLine2: string;
-  AddressLine3: string;
+  AddressLine3?: string;
   City: string;
   Province?: string;
   PostalCode?: string;

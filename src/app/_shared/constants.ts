@@ -84,6 +84,11 @@ export const PROVINCE_LIST: Region[] = [
 
 ];
 
+export const ADDRESS_TYPE = [
+  'Physical Address',
+  'Postal Address',
+  'Other',
+];
 
 // Local storage Model
 

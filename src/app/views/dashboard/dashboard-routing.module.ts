@@ -12,25 +12,62 @@ import {
   SupplierListOrdersComponent
 } from './orders';
 import { SettingsComponent } from './settings';
-import { ActionsComponent, BannerComponent, StatsComponent, BannerTutorialComponent, SetUpProgressComponent, ActionCardComponent } from './shared';
-import { PartnersComponent, CreateSupplierComponent, ListPartnersComponent, CreatePartnerComponent } from './partners';
-import { MeasurementsComponent, CreateMeasurementComponent, EditMeasurementComponent } from './measurements';
-import { CategoriesComponent, CreateCategoryComponent, EditCategoryComponent } from './categories';
+import {
+  ActionsComponent,
+  BannerComponent,
+  StatsComponent,
+  BannerTutorialComponent,
+  SetUpProgressComponent,
+  ActionCardComponent
+} from './shared';
+import {
+  PartnersComponent,
+  CreateSupplierComponent,
+  ListPartnersComponent,
+  CreatePartnerComponent
+} from './partners';
+import {
+  MeasurementsComponent,
+  CreateMeasurementComponent,
+  EditMeasurementComponent
+} from './measurements';
+import {
+  CategoriesComponent,
+  CreateCategoryComponent,
+  EditCategoryComponent
+} from './categories';
 import { MeasurenamePipe } from 'src/app/_pipes/measurename.pipe';
 import { OutcomeComponent } from './shared/outcome/outcome.component';
 import { EditPartnerComponent } from './partners/edit-partner';
 import { PlaceholderComponent } from './shared/placeholder';
 import { UpdateOrderComponent } from './orders/update-order/update-order.component';
 import { DashboardSideNavComponent } from './dashboard-side-nav';
-import { UserProfileComponent, CreatePersonaComponent, ChangePasswordComponent, UpdateProfileComponent } from './user-profile';
+import {
+  UserProfileComponent,
+  CreatePersonaComponent,
+  ChangePasswordComponent,
+  UpdateProfileComponent
+} from './user-profile';
 import { UserDpComponent } from './user-profile/user-dp';
-import { ListProductsComponent, CreateProductComponent, UpdateProductComponent } from './products';
+import {
+  ListProductsComponent,
+  CreateProductComponent,
+  UpdateProductComponent
+} from './products';
 import { ProductImagesComponent } from './products/product-images/product-images.component';
 import { FileUploadComponent } from './products/file-upload/file-upload.component';
-import { EmployeesComponent, AddEmployeeComponent, UpdateEmployeeComponent } from './employees';
+import {
+  EmployeesComponent,
+  AddEmployeeComponent,
+  UpdateEmployeeComponent
+} from './employees';
 import { CartViewComponent } from './orders/cart-view/cart-view.component';
 import { CompaniesComponent } from './companies';
 import { FormatOrderproductPipeCustomer } from 'src/app/_pipes/format-dashboard-options.pipe-customer';
+import {
+  AddressComponent,
+  AddAddressComponent
+} from './address';
 
 
 const routes: Routes = [
@@ -59,9 +96,9 @@ const routes: Routes = [
       { path: 'employees', component: EmployeesComponent },
       { path: 'add-employee', component: AddEmployeeComponent },
       { path: 'edit-employee', component: UpdateEmployeeComponent },
-      { path: 'profile', component: UserProfileComponent},
-      { path: 'update-profile', component: UpdateProfileComponent},
-      {path: 'change-password', component: ChangePasswordComponent}
+      { path: 'profile', component: UserProfileComponent },
+      { path: 'update-profile', component: UpdateProfileComponent },
+      { path: 'change-password', component: ChangePasswordComponent }
     ]
   }
 ];
@@ -112,6 +149,8 @@ export const declarations = [
   UpdateEmployeeComponent,
   ListPartnersComponent,
   CreatePartnerComponent,
+  AddressComponent,
+  AddAddressComponent,
   // Pipes
   MeasurenamePipe,
   FormatOrderproductPipeCustomer,
