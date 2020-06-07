@@ -27,6 +27,7 @@ export class ListPartnersComponent implements OnInit {
 
   }
   onUpdateClick(item: UserModel) {
+
     const navigation: NavigationModel = {
       heading: item.Roles.RoleName,
       subheading: `Update ${item.Roles.RoleName} details`,

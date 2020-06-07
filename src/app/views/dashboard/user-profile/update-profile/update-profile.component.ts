@@ -27,7 +27,6 @@ export class UpdateProfileComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.accountService.CurrentUserValue;
-    console.log(this.user)
     this.initializeModel();
   }
   initializeModel() {
@@ -63,14 +62,14 @@ export class UpdateProfileComponent implements OnInit {
         ModifyUserId: [this.user.UserId, Validators.required],
         StatusId: [this.user.StatusId],
         CompanyName: [null],
-        CompanyPhone:[null],
+        CompanyPhone: [null],
         CompanyEmail: [null],
         CompanyType: [null],
-        CompanyAddress:[null],
+        CompanyAddress: [null],
         City: [null],
         Province: [null],
         PostalCode: [null],
-        CompanyStatusId:[null]
+        CompanyStatusId: [null]
       });
 
     }

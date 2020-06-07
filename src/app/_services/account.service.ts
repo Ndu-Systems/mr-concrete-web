@@ -98,7 +98,7 @@ export class AccountService {
   signOut() {
     localStorage.removeItem(CURRENT_USER);
     this._user.next(null);
-    this.routTo.navigate(['/']);
+    this.routTo.navigate(['/login']);
   }
 
   // link generation here

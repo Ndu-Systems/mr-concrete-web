@@ -1,6 +1,7 @@
+import { NavigationModel } from './../../../../_models/navigation.model';
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { UserModel } from 'src/app/_models';
-import { AccountService } from 'src/app/_services';
+import { AccountService, ApiService } from 'src/app/_services';
 import { Route, Router } from '@angular/router';
 
 @Component({
@@ -13,6 +14,7 @@ export class UserDpComponent implements OnInit {
   user: UserModel;
   constructor(
     private accountService: AccountService,
+    private navigateService: ApiService,
     private routeTo: Router
   ) { }
 
@@ -23,10 +25,17 @@ export class UserDpComponent implements OnInit {
     this.accountService.signOut();
   }
   navigateTo(url: string) {
+    const navigation: NavigationModel = {
+      heading: 'Update',
+      subheading: `Update password`,
+      returnUrl: '/dashboard'
+    };
+    this.navigateService.updateNavState(navigation);
     this.routeTo.navigate(['/dashboard/' + url]);
   }
 
   toggleClick() {
     this.toggle.emit(true);
   }
+
 }

@@ -22,6 +22,7 @@
       background: $default-white;
       border-radius: 25px;
       height: 44rem;
+
       &.col-1-of-2 {
         grid-template-columns: 25% auto;
         padding: 1rem 2rem;
@@ -309,6 +310,7 @@
         background: $default-white;
         border-radius: 25px;
         height: 100%;
+
         &.col-1-of-2 {
           grid-template-columns: 100%;
           padding: 1rem .5rem;
@@ -467,6 +469,7 @@
       }
     }
   }
+
   .form {
     padding: 1rem;
     width: 100%;
@@ -528,6 +531,10 @@
         font-size: 0.82rem;
         font-weight: 600;
       }
+    }
+
+    .mat-icon {
+      cursor: pointer;
     }
 
     .actions {
