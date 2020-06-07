@@ -12,6 +12,7 @@ export class UserProfileComponent implements OnInit {
   heading = 'My Profile';
   subheading = 'This is your system profile information';
   rating = 3;
+  showModal: boolean;
   actionButton: any = {
     link: '/dashboard/update-profile',
     label: 'Update profile'

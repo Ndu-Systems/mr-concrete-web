@@ -14,3 +14,7 @@ export interface AddressModel {
   ModifyUserId?: string;
   StatusId?: string;
 }
+
+export interface AddressQueryModel {
+  UserId?: string;
+}

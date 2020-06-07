@@ -88,7 +88,7 @@
                 <h1 class="subHeading">
                   Address information
                 </h1>
-                <button *ngIf="actionButton" mat-flat-button color="primary">
+                <button *ngIf="actionButton" mat-flat-button color="primary" (click)="showModal=true">
                   add address
                 </button>
               </div>
@@ -110,7 +110,7 @@
                       <p><b>{{item?.AddressType}}</b></p>
                     </div>
                     <div class="item">
-                      <p>{{item?.AddressLine2}}, {{item?.AddressLine2}}</p>
+                      <p>{{item?.AddressLine1}}, {{item?.AddressLine2}} <br>{{item?.AddressLine3}} </p>
                     </div>
                     <div class="item">
                       <p>{{item?.City}}</p>
@@ -132,8 +132,8 @@
     </div>
   </div>
 </div>
-<div class="overlay">
+<div class="overlay" *ngIf="showModal">
   <div class="overlay-modal">
-    <app-add-address></app-add-address>
+    <app-add-address [userId]="user.UserId" (closeModal)="showModal=$event"></app-add-address>
   </div>
 </div>

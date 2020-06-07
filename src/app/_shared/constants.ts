@@ -99,6 +99,8 @@ export const LOCALE: any = {
 
 
 export const USER_VIEW = 'userView';
+export const ADDRESS_VIEW = 'addressView';
+export const ADDRESSLIST_VIEW = 'addressListView';
 
 export const STATUSES = {
   PENDING: 1,

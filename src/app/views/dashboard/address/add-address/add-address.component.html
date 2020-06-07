@@ -1,27 +1,70 @@
    <div class="form">
      <form *ngIf="rForm" class="form" [formGroup]="rForm" (ngSubmit)="onSubmit(rForm.value)">
-       <mat-tab-group class="tab-group">
-         <mat-tab t-tab label="Change password">
-           <div class="form-fields">
-             <div class="input-group">
-               <label>Select Address Type</label>
-               <section matNativeControl formControlName="AddressType">
-                 <option label="--select something --"></option>
-                 <option *ngFor="let item of addressTypes" value="{{item}}">
-                   {{item}}
-                 </option>
-               </section>
-               <mat-error class="error"
-                 *ngIf="!rForm.controls['AddressType'].valid && rForm.controls['AddressType'].touched">
-                 Address Type is required</mat-error>
-             </div>
+       <div class="form-fields">
+         <div class="input-group">
+           <label>What is the address type?</label>
+           <select matNativeControl formControlName="AddressType">
+             <option label="--select something --"></option>
+             <option *ngFor="let item of addressTypes" value="{{item}}">
+               {{item}}
+             </option>
+           </select>
+           <mat-error class="error"
+             *ngIf="!rForm.controls['AddressType'].valid && rForm.controls['AddressType'].touched">
+             Your purpose for system is required</mat-error>
+         </div>
+         <div class="input-group">
+           <label>Address line 1</label>
+           <input matInput formControlName="AddressLine1">
+           <mat-error class="error"
+             *ngIf="!rForm.controls['AddressLine1'].valid && rForm.controls['AddressLine1'].touched">
+             Address detail is required</mat-error>
+         </div>
+         <div class="col-1-of-2">
+           <div class="input-group">
+             <label>Address line 2</label>
+             <input matInput formControlName="AddressLine2">
            </div>
-
-         </mat-tab>
-       </mat-tab-group>
+           <div class="input-group">
+            <label>Address line 3</label>
+            <input matInput formControlName="AddressLine3">
+          </div>
+         </div>
+         <div class="col-1-of-2">
+          <div class="input-group">
+            <label>Select Province</label>
+            <select matNativeControl formControlName="Province" #selected (change)='onProvinceSelect(selected.value)'>
+              <option label="--select something --"></option>
+              <option *ngFor="let item of provinces" [value]="item.id">
+                {{item.name}}
+              </option>
+            </select>
+            <mat-error *ngIf="!rForm.controls['Province'].valid && rForm.controls['Province'].touched">
+              City is required</mat-error>
+          </div>
+          <div class="input-group">
+            <label>Select City/town</label>
+            <select matNativeControl required formControlName="City">
+              <option label="--select something --"></option>
+              <option *ngFor="let item of subRegions" value="{{item.name}}">
+                {{item.name}}
+              </option>
+            </select>
+            <mat-error *ngIf="!rForm.controls['City'].valid && rForm.controls['City'].touched">
+              City/town is required</mat-error>
+          </div>
+        </div>
+        <div class="input-group">
+          <label>Post Code</label>
+          <input matInput formControlName="PostalCode">
+          <mat-error class="error"
+            *ngIf="!rForm.controls['PostalCode'].valid && rForm.controls['PostalCode'].touched">
+            Postal Code is required</mat-error>
+        </div>
+       </div>
        <div class="actions">
-         <button type="submit" [disabled]="!rForm.valid" class="btn cta">Change Password</button>
-         <button type="button" class="btn secondary cta" (click)="goBack()">Cancel</button>
+         <button type="submit" [disabled]="!rForm.valid" class="btn cta">Add address</button>
+         <button type="button" class="btn secondary cta" (click)="close()">Cancel</button>
        </div>
      </form>
    </div>
