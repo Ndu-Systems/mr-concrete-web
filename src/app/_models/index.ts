@@ -19,5 +19,6 @@ export * from './setup.progress.model';
 export * from './address.model';
 export * from './image.model';
 export * from './message.model';
+export * from './navigation.model';
  // end:ng42.barrel
 

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { UserModel, UserQueryModel, Placeholder } from 'src/app/_models';
-import { UserService } from 'src/app/_services';
+import { UserModel, UserQueryModel, Placeholder, NavigationModel } from 'src/app/_models';
+import { UserService, ApiService } from 'src/app/_services';
 import { Router } from '@angular/router';
 
 @Component({
@@ -18,12 +18,22 @@ export class ListPartnersComponent implements OnInit {
     linkLabel: 'Create new partner'
   };
 
-  constructor(private userService: UserService, private routeTo: Router) { }
+  constructor(
+    private userService: UserService,
+    private routeTo: Router,
+    private navigateService: ApiService) { }
 
   ngOnInit() {
 
   }
   onUpdateClick(item: UserModel) {
+    const navigation: NavigationModel = {
+      heading: item.Roles.RoleName,
+      subheading: `Update ${item.Roles.RoleName} details`,
+      returnUrl: '/dashboard/partners'
+    };
+
+    this.navigateService.updateNavState(navigation);
     this.userService.updateUserViewState(item);
     this.routeTo.navigate(['/dashboard/update-partner']);
   }

@@ -1,7 +1,7 @@
 import { ConfirmationPageModel } from '.';
 
 export const CURRENT_USER = 'currentUser';
-
+export const CURRENT_NAV = 'currentNavigate';
 
 export const ORDER_PLACEMENT_CONFIRMATION: ConfirmationPageModel = {
   heading: 'Supplier orders',

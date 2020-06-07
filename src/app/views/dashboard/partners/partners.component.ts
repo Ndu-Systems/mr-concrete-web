@@ -25,7 +25,7 @@ export class PartnersComponent implements OnInit {
   selectedList: UserModel[];
   actionButton: ActionButton = {
     link: '/dashboard/add-partner',
-    label: 'add supplier'
+    label: 'add partner'
   };
 
   @Output() messages: EventEmitter<Message[]> = new EventEmitter<Message[]>();
