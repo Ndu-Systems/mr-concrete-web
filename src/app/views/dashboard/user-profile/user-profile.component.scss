@@ -117,6 +117,7 @@
         .content {
           &.col-1-of-2 {
             grid-template-columns: 45% auto;
+            height: 12rem;
           }
 
           .score {
@@ -286,6 +287,68 @@
 
 }
 
+.head-content {
+  padding: 1rem;
+  padding-bottom: 0;
+}
+
+.table {
+  &.address {
+    .header {
+      grid-template-columns: 20% 25% 15% 25% auto;
+    }
+
+    .table-content {
+      overflow: scroll;
+      height: 15rem;
+      background: #dcdde145;
+
+
+
+      .row {
+        grid-template-columns: 5% 15% 25% 15% 25% auto;
+
+        .item {
+          img {
+            width: 2rem;
+            height: 2rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+.mat-flat-button.mat-primary {
+  background-color: $yellow;
+
+  font-size: 1em;
+  font-weight: 700;
+  border-radius: 25rem;
+  height: 2.5rem;
+  width: 8rem;
+  margin: 0 auto;
+  margin-right: 0;
+  color: $black;
+
+  &.cta-btn {
+    background-color: $black;
+  }
+
+  &.transparent {
+    background: $default-white;
+    font-weight: 700;
+    color: $grey;
+    border: solid 1px $grey;
+  }
+
+  &[disabled] {
+    background-color: #DCDDE1;
+    color: #B2BEC3;
+  }
+}
 
 @media only screen and (max-width: 600px) {
   .main {

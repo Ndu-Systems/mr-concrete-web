@@ -84,33 +84,47 @@
               </div>
             </mat-tab>
             <mat-tab t-tab label="Address(s)">
-              <h1 class="subHeading">
-                Address information
-              </h1>
-              <div class="addresses tab-content">
-                <mat-tab-group *ngFor="let i of user.Address" class="tab-group">
-                  <mat-tab t-tab label="{{i?.AddressType}}">
-                    <span class="item">
-                      <div class="details col-1-of-2">
-                        <h1 class="text">Address:</h1>
-                        <h1 class="value">{{i?.AddressLine1}},{{i?.AddressLine2}} <br> {{i?.AddressLine3}}</h1>
-                      </div>
-                      <div class="details col-1-of-2">
-                        <h1 class="text">City:</h1>
-                        <h1 class="value">{{i?.City}}</h1>
-                      </div>
-                      <div class="details col-1-of-2">
-                        <h1 class="text">Province:</h1>
-                        <h1 class="value">{{i?.Province}}</h1>
-                      </div>
-                      <div class="details col-1-of-2">
-                        <h1 class="text">Post Code:</h1>
-                        <h1 class="value">{{i?.PostalCode}}</h1>
-                      </div>
-                    </span>
-                  </mat-tab>
-                </mat-tab-group>
+              <div class="head-content col-1-of-2">
+                <h1 class="subHeading">
+                  Address information
+                </h1>
+                <button *ngIf="actionButton" mat-flat-button color="primary">
+                  add address
+                </button>
               </div>
+
+              <div class="table address">
+                <div class="header">
+                  <div class="item">Address Type</div>
+                  <div class="item">Address</div>
+                  <div class="item">City</div>
+                  <div class="item">Province</div>
+                  <div class="item">PostalCode</div>
+                </div>
+                <div class="table-content">
+                  <div class="row" *ngFor="let item of user.Address">
+                    <div class="item">
+                      <img src="assets/images/dashboard/placeholders/address.png" alt="address">
+                    </div>
+                    <div class="item">
+                      <p><b>{{item?.AddressType}}</b></p>
+                    </div>
+                    <div class="item">
+                      <p>{{item?.AddressLine2}}, {{item?.AddressLine2}}</p>
+                    </div>
+                    <div class="item">
+                      <p>{{item?.City}}</p>
+                    </div>
+                    <div class="item">
+                      <p>{{item?.Province}}</p>
+                    </div>
+                    <div class="item">
+                      <p>{{item?.PostalCode}}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
             </mat-tab>
           </mat-tab-group>
         </div>
