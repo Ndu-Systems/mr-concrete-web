@@ -84,8 +84,7 @@
                 <div class="input-group">
                   <label>Company Address</label>
                   <input matInput formControlName="City">
-                  <mat-error class="error"
-                    *ngIf="!rForm.controls['City'].valid && rForm.controls['City'].touched">
+                  <mat-error class="error" *ngIf="!rForm.controls['City'].valid && rForm.controls['City'].touched">
                     Company address is required</mat-error>
                 </div>
               </div>
@@ -107,6 +106,49 @@
               </div>
             </div>
           </mat-tab>
+          <mat-tab t-tab label="Address(s)">
+            <div class="head-content col-1-of-2">
+              <h1 class="subHeading">
+                Address information
+              </h1>
+              <a *ngIf="actionButton" mat-flat-button color="primary" (click)="showModal=true">
+                add address
+              </a>
+            </div>
+
+            <div class="table address" *ngIf="userView.Address">
+              <div class="header">
+                <div class="item">Address Type</div>
+                <div class="item">Address</div>
+                <div class="item">City</div>
+                <div class="item">Province</div>
+                <div class="item">PostalCode</div>
+              </div>
+              <div class="table-content">
+                <div class="row" *ngFor="let item of userView.Address">
+                  <div class="item">
+                    <img src="assets/images/dashboard/placeholders/address.png" alt="address">
+                  </div>
+                  <div class="item">
+                    <p><b>{{item?.AddressType}}</b></p>
+                  </div>
+                  <div class="item">
+                    <p>{{item?.AddressLine1}}, {{item?.AddressLine2}} <br>{{item?.AddressLine3}} </p>
+                  </div>
+                  <div class="item">
+                    <p>{{item?.City}}</p>
+                  </div>
+                  <div class="item">
+                    <p>{{item?.Province}}</p>
+                  </div>
+                  <div class="item">
+                    <p>{{item?.PostalCode}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </mat-tab>
         </mat-tab-group>
         <div class="actions">
           <button type="submit" [disabled]="!rForm.valid" class="btn cta">Update Profile</button>
@@ -114,5 +156,10 @@
         </div>
       </form>
     </div>
+  </div>
+</div>
+ <div class="overlay" *ngIf="showModal && currentUser">
+  <div class="overlay-modal">
+    <app-add-address [userId]="currentUser.UserId" (cancelModel)="showModal = $event" (AddressModel)="onCloseModal($event)"></app-add-address>
   </div>
 </div>

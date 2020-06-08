@@ -1,6 +1,6 @@
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { UserModel, UserProfileUpdateModel, MessageModel } from 'src/app/_models';
+import { UserModel, UserProfileUpdateModel, MessageModel, AddressModel } from 'src/app/_models';
 import { AccountService, UserService, EmailService, NotificationService, CompanyService } from 'src/app/_services';
 import { Router } from '@angular/router';
 
@@ -15,6 +15,7 @@ export class UpdateEmployeeComponent implements OnInit {
   heading = 'Update Employee';
   subheading = 'Update employee information';
   userView: UserModel;
+  showModal: boolean;
   actionButton: any = {
     link: '/dashboard/employees',
     label: 'View Employees'
@@ -135,5 +136,23 @@ export class UpdateEmployeeComponent implements OnInit {
     modelUpdated.StatusId = companyModel.CompanyStatusId;
     this.companyService.updateCompany(modelUpdated).subscribe(data => { });
   }
+  onCloseModal(event: AddressModel) {
+    if (event) {
+      this.updateCurrentEmployeeAddress(event);
+    } else {
+      this.messageService.dangerMessage('Address error', 'Something went wrong, please try again.');
+    }
+    this.showModal = !this.showModal;
+  }
 
+  updateCurrentEmployeeAddress(model: AddressModel) {
+    this.messageService.successMassage('Successfully created', 'Address added successfully');
+    if (this.userView.Address === null
+      || this.userView.Address === undefined) {
+      this.userView.Address = [];
+    }
+
+    this.userView.Address.push(model);
+    this.userService.updateUserViewState(this.userView);
+  }
 }

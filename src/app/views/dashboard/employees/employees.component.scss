@@ -106,6 +106,49 @@
 
 
 
+
+.mat-flat-button.mat-primary {
+  background-color: $yellow;
+
+  font-size: 1em;
+  font-weight: 700;
+  border-radius: 25rem;
+  height: 2.5rem;
+  width: 8rem;
+  margin: 0 auto;
+  margin-right: 0;
+  color: $black;
+
+  &.cta-btn {
+    background-color: $black;
+  }
+
+  &.transparent {
+    background: $default-white;
+    font-weight: 700;
+    color: $grey;
+    border: solid 1px $grey;
+  }
+
+  &[disabled] {
+    background-color: #DCDDE1;
+    color: #B2BEC3;
+  }
+}
+
+
+.head-content  {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  box-sizing: border-box;
+  margin-bottom: 1rem;
+  grid-gap: 1rem;
+  width: 50rem;
+  padding: 2rem;
+  padding-bottom: 0;
+  .subHeading {font-size: 1rem;}
+}
+
 @media only screen and (max-width: 600px) {
 
   .form {

@@ -106,6 +106,10 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
       StatusId: 1,
       Images: product.Images
     };
+    if (this.order.Orderproducts === null
+      || this.order.Orderproducts === undefined ) {
+      this.order.Orderproducts = [];
+    }
     this.order.Orderproducts.push(orderProduct);
     this.cartView = true;
     this.shopHeadingStatus = 'Added to Cart';

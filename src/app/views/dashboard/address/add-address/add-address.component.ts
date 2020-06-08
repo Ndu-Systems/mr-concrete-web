@@ -11,13 +11,14 @@ import { UserModel, AddressModel } from 'src/app/_models';
 })
 export class AddAddressComponent implements OnInit {
   @Input() userId: string;
-  @Output() closeModal: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Output()AddressModel: EventEmitter<AddressModel> = new EventEmitter<AddressModel>();
+  @Output()cancelModel: EventEmitter<boolean> = new EventEmitter<boolean>();
   rForm: FormGroup;
   currentUser: UserModel;
   provinces = PROVINCE_LIST;
   addressTypes = ADDRESS_TYPE;
   subRegions: Region[] = [];
-  constructor(
+   constructor(
     private fb: FormBuilder,
     private accountService: AccountService,
     private addressService: AddressService,
@@ -54,25 +55,22 @@ export class AddAddressComponent implements OnInit {
     this.subRegions = this.subRegions.filter(x => x.parentId === parentId);
   }
 
-  onSubmit(model: AddressModel) {
-    this.addressService.addAddress(model).subscribe(data => {
+  onSubmit(AddressModel: AddressModel) {
+    this.addressService.addAddress(AddressModel).subscribe(data => {
       if (data.AddressId) {
-        this.messageService.successMassage('Successfully created', 'Address added successfully');
-        if (this.currentUser.Address == null) {
-          this.currentUser.Address = [];
-        }
-        this.currentUser.Address.push(data);
-        this.accountService.updateUserState(this.currentUser);
-        this.close();
+        this.close(data);
       } else {
         this.messageService.dangerMessage('Oops error', 'Something went wrong please try again later.');
-        this.close();
+        this.close(null);
       }
     });
   }
 
-  close() {
-    this.closeModal.emit(false);
+  close(addressModel: AddressModel) {
+    this.AddressModel.emit(addressModel);
   }
+  cancelOut() {
+    this.cancelModel.emit(false);
+   }
 
 }

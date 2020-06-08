@@ -134,6 +134,6 @@
 </div>
 <div class="overlay" *ngIf="showModal">
   <div class="overlay-modal">
-    <app-add-address [userId]="user.UserId" (closeModal)="showModal=$event"></app-add-address>
+    <app-add-address [userId]="user.UserId" (cancelModel)="showModal = $event" (AddressModel)="onCloseModal($event)"></app-add-address>
   </div>
 </div>

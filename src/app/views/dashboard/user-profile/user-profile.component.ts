@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AccountService } from 'src/app/_services';
-import { UserModel } from 'src/app/_models';
+import { AccountService, NotificationService } from 'src/app/_services';
+import { UserModel, AddressModel } from 'src/app/_models';
 
 @Component({
   selector: 'app-user-profile',
@@ -19,11 +19,33 @@ export class UserProfileComponent implements OnInit {
   };
 
   constructor(
-    private accountService: AccountService
+    private accountService: AccountService,
+    private messageService: NotificationService
+
+
   ) { }
 
   ngOnInit() {
     this.user = this.accountService.CurrentUserValue;
+  }
+
+  onCloseModal(event: AddressModel) {
+
+    if (event) {
+      this.updateCurrentUserAddress(event);
+    } else {
+      this.messageService.dangerMessage('Address error', 'Something went wrong, please try again.');
+    }
+    this.showModal = !this.showModal;
+  }
+
+  updateCurrentUserAddress(model: AddressModel) {
+    this.messageService.successMassage('Successfully created', 'Address added successfully');
+    if (this.user.Address == null) {
+      this.user.Address = [];
+    }
+    this.user.Address.push(model);
+    this.accountService.updateUserState(this.user);
   }
 
 }
