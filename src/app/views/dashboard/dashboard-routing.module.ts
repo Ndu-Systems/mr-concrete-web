@@ -66,7 +66,8 @@ import { CompaniesComponent } from './companies';
 import { FormatOrderproductPipeCustomer } from 'src/app/_pipes/format-dashboard-options.pipe-customer';
 import {
   AddressComponent,
-  AddAddressComponent
+  AddAddressComponent,
+  UpdateAddressComponent
 } from './address';
 
 
@@ -151,6 +152,7 @@ export const declarations = [
   CreatePartnerComponent,
   AddressComponent,
   AddAddressComponent,
+  UpdateAddressComponent,
   // Pipes
   MeasurenamePipe,
   FormatOrderproductPipeCustomer,

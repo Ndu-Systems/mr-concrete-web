@@ -8,7 +8,7 @@
 
     .row {
       grid-template-columns: 5% 15% 15% 15% 10% 20% auto;
-
+      cursor: pointer;
 
     }
   }
@@ -30,6 +30,7 @@
     box-shadow: 10px 0px 48px -9px rgba(113, 128, 147, 0.08);
     margin: 1rem 0.5rem;
     border-radius: 25px !important;
+    cursor: pointer;
   }
 }
 

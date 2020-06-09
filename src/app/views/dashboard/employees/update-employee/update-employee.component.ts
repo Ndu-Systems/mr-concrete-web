@@ -15,7 +15,9 @@ export class UpdateEmployeeComponent implements OnInit {
   heading = 'Update Employee';
   subheading = 'Update employee information';
   userView: UserModel;
+  addressToUpdate: AddressModel;
   showModal: boolean;
+  showUpdateModal: boolean;
   actionButton: any = {
     link: '/dashboard/employees',
     label: 'View Employees'
@@ -142,8 +144,12 @@ export class UpdateEmployeeComponent implements OnInit {
     } else {
       this.messageService.dangerMessage('Address error', 'Something went wrong, please try again.');
     }
-    this.showModal = !this.showModal;
+    if (this.showModal) {
+      this.showModal = !this.showModal;
+    }
   }
+
+
 
   updateCurrentEmployeeAddress(model: AddressModel) {
     this.messageService.successMassage('Successfully created', 'Address added successfully');
@@ -154,5 +160,9 @@ export class UpdateEmployeeComponent implements OnInit {
 
     this.userView.Address.push(model);
     this.userService.updateUserViewState(this.userView);
+  }
+
+  addressUpdate(item: AddressModel) {
+    this.addressToUpdate = item;
   }
 }

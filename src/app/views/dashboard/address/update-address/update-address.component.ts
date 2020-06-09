@@ -1,16 +1,16 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { AddressModel, UserModel } from 'src/app/_models';
+import { AddressService, AccountService, NotificationService } from 'src/app/_services';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { CompanyService, UserService, AccountService, AddressService, NotificationService } from 'src/app/_services';
 import { PROVINCE_LIST, ADDRESS_TYPE, Region } from 'src/app/_shared';
-import { UserModel, AddressModel } from 'src/app/_models';
 
 @Component({
-  selector: 'app-add-address',
-  templateUrl: './add-address.component.html',
+  selector: 'app-update-address',
+  templateUrl: './update-address.component.html',
   styleUrls: ['../address.component.scss']
 })
-export class AddAddressComponent implements OnInit {
-  @Input() userId: string;
+export class UpdateAddressComponent implements OnInit {
+  @Input() addressModel: AddressModel;
   @Output()AddressModel: EventEmitter<AddressModel> = new EventEmitter<AddressModel>();
   @Output()cancelModel: EventEmitter<boolean> = new EventEmitter<boolean>();
   rForm: FormGroup;
@@ -18,7 +18,8 @@ export class AddAddressComponent implements OnInit {
   provinces = PROVINCE_LIST;
   addressTypes = ADDRESS_TYPE;
   subRegions: Region[] = [];
-   constructor(
+
+  constructor(
     private fb: FormBuilder,
     private accountService: AccountService,
     private addressService: AddressService,
@@ -28,17 +29,17 @@ export class AddAddressComponent implements OnInit {
   ngOnInit() {
     this.currentUser = this.accountService.CurrentUserValue;
     this.rForm = this.fb.group({
-      UserId: [this.userId, Validators.required],
-      AddressType: [null, Validators.required],
-      AddressLine1: [null, Validators.required],
-      AddressLine2: [''],
-      AddressLine3: [''],
-      City: [null, Validators.required],
-      Province: [null, Validators.required],
-      PostalCode: [null, Validators.required],
+      UserId: [this.addressModel.UserId, Validators.required],
+      AddressType: [this.addressModel.AddressType, Validators.required],
+      AddressLine1: [this.addressModel.AddressLine1, Validators.required],
+      AddressLine2: [this.addressModel.AddressLine2],
+      AddressLine3: [this.addressModel.AddressLine3],
+      City: [this.addressModel.City, Validators.required],
+      Province: [this.addressModel.Province, Validators.required],
+      PostalCode: [this.addressModel.PostalCode, Validators.required],
       CrateUserId: [this.currentUser.UserId, Validators.required],
       ModifyUserId: [this.currentUser.UserId, Validators.required],
-      StatusId: [1]
+      StatusId: [this.addressModel.StatusId]
     });
   }
 
@@ -49,14 +50,13 @@ export class AddAddressComponent implements OnInit {
       });
     });
   }
-
   onProvinceSelect(parentId) {
     this.loadSubRegions();
     this.subRegions = this.subRegions.filter(x => x.parentId === parentId);
   }
 
   onSubmit(model: AddressModel) {
-    this.addressService.addAddress(model).subscribe(data => {
+    this.addressService.updateAddress(model).subscribe(data => {
       if (data.AddressId) {
         this.close(data);
       } else {
@@ -65,7 +65,6 @@ export class AddAddressComponent implements OnInit {
       }
     });
   }
-
   close(addressModel: AddressModel) {
     this.AddressModel.emit(addressModel);
   }
