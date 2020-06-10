@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Supplier, UserModel, NavigationModel, UserProfileUpdateModel } from 'src/app/_models';
+import { Supplier, UserModel, NavigationModel, UserProfileUpdateModel, AddressModel } from 'src/app/_models';
 import { SupplierService, AccountService, UserService, ApiService, NotificationService } from 'src/app/_services';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { MessageService, ConfirmationService, Message } from 'primeng/api';
@@ -18,6 +18,9 @@ export class EditPartnerComponent implements OnInit {
   currentUser: UserModel;
   userView: UserModel;
   nav: NavigationModel;
+  addressToUpdate: AddressModel;
+  showModal: boolean;
+  showUpdateModal: boolean;
   actionButton: any = {
     link: '/dashboard/partners',
     label: 'View partners'
@@ -78,7 +81,7 @@ export class EditPartnerComponent implements OnInit {
     this.updateUser(model);
     this.messageService.successMassage('Success', 'Partner updated Successfully');
     this.goBack();
-   }
+  }
   updateUser(userModel: UserProfileUpdateModel) {
     const modelUpdated = this.userView;
     modelUpdated.FirstName = userModel.FirstName;
@@ -94,6 +97,28 @@ export class EditPartnerComponent implements OnInit {
   }
 
   goBack() {
+
     this.routeTo.navigate([this.nav.returnUrl]);
+  }
+  updateCurrentAddress(model: AddressModel) {
+    if (model.AddressId) {
+      this.messageService.successMassage('Successfully created', 'Address updated successfully');
+    }
+  }
+  addressUpdate(item: AddressModel) {
+    this.addressToUpdate = item;
+    this.showUpdateModal = true;
+  }
+
+
+  onCloseModal(event: AddressModel) {
+    if (event) {
+      this.updateCurrentAddress(event);
+    } else {
+      this.messageService.dangerMessage('Address error', 'Something went wrong, please try again.');
+    }
+    if (this.showModal) {
+      this.showModal = !this.showModal;
+    }
   }
 }

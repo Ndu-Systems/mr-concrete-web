@@ -13,6 +13,8 @@ export class UserProfileComponent implements OnInit {
   subheading = 'This is your system profile information';
   rating = 3;
   showModal: boolean;
+  addressToUpdate: AddressModel;
+  showUpdateModal: boolean;
   actionButton: any = {
     link: '/dashboard/update-profile',
     label: 'Update profile'
@@ -46,6 +48,15 @@ export class UserProfileComponent implements OnInit {
     }
     this.user.Address.push(model);
     this.accountService.updateUserState(this.user);
+  }
+  updateCurrentAddress(model: AddressModel) {
+    if (model.AddressId) {
+      this.messageService.successMassage('Successfully created', 'Address added successfully');
+    }
+  }
+  addressUpdate(item: AddressModel) {
+    this.addressToUpdate = item;
+    this.showUpdateModal = true;
   }
 
 }

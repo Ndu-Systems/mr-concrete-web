@@ -48,7 +48,8 @@ export class AddressService {
   }
 
   updateAddress(model: AddressModel): Observable<AddressModel> {
-    return this.http.post<AddressModel>(`${this.url}/api/address/add-address.php`, model);
+    return this.http.post<AddressModel>(`${this.url}/api/address/update-address.php`, model);
+
   }
 
 }

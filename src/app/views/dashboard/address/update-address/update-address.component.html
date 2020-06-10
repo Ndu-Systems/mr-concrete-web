@@ -34,7 +34,7 @@
        <div class="input-group">
          <label>Select Province</label>
          <select matNativeControl formControlName="Province" #selected (change)='onProvinceSelect(selected.value)'>
-           <option label="--select something --"></option>
+           <option label="--select something --" ></option>
            <option *ngFor="let item of provinces" [value]="item.id">
              {{item.name}}
            </option>
@@ -44,7 +44,8 @@
        </div>
        <div class="input-group">
          <label>Select City/town</label>
-         <select matNativeControl required formControlName="City">
+         <input matInput formControlName="City" *ngIf="!showSelectCity">
+         <select matNativeControl required formControlName="City" *ngIf="showSelectCity">
            <option label="--select something --"></option>
            <option *ngFor="let item of subRegions" value="{{item.name}}">
              {{item.name}}

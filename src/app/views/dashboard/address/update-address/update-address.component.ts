@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { AddressModel, UserModel } from 'src/app/_models';
-import { AddressService, AccountService, NotificationService } from 'src/app/_services';
+import { AddressService, AccountService, NotificationService, UserService } from 'src/app/_services';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { PROVINCE_LIST, ADDRESS_TYPE, Region } from 'src/app/_shared';
 
@@ -11,25 +11,28 @@ import { PROVINCE_LIST, ADDRESS_TYPE, Region } from 'src/app/_shared';
 })
 export class UpdateAddressComponent implements OnInit {
   @Input() addressModel: AddressModel;
-  @Output()AddressModel: EventEmitter<AddressModel> = new EventEmitter<AddressModel>();
-  @Output()cancelModel: EventEmitter<boolean> = new EventEmitter<boolean>();
+  @Input() userViewModel: UserModel;
+  @Output() AddressModel: EventEmitter<AddressModel> = new EventEmitter<AddressModel>();
+  @Output() cancelModel: EventEmitter<boolean> = new EventEmitter<boolean>();
   rForm: FormGroup;
   currentUser: UserModel;
   provinces = PROVINCE_LIST;
   addressTypes = ADDRESS_TYPE;
   subRegions: Region[] = [];
-
+  showSelectCity: boolean;
   constructor(
     private fb: FormBuilder,
     private accountService: AccountService,
     private addressService: AddressService,
-    private messageService: NotificationService
+    private messageService: NotificationService,
+    private userService: UserService
   ) { }
 
   ngOnInit() {
     this.currentUser = this.accountService.CurrentUserValue;
     this.rForm = this.fb.group({
-      UserId: [this.addressModel.UserId, Validators.required],
+      UserId: [this.userViewModel.UserId, Validators.required],
+      AddressId: [this.addressModel.AddressId],
       AddressType: [this.addressModel.AddressType, Validators.required],
       AddressLine1: [this.addressModel.AddressLine1, Validators.required],
       AddressLine2: [this.addressModel.AddressLine2],
@@ -53,6 +56,7 @@ export class UpdateAddressComponent implements OnInit {
   onProvinceSelect(parentId) {
     this.loadSubRegions();
     this.subRegions = this.subRegions.filter(x => x.parentId === parentId);
+    this.showSelectCity = true;
   }
 
   onSubmit(model: AddressModel) {
@@ -65,11 +69,25 @@ export class UpdateAddressComponent implements OnInit {
       }
     });
   }
+
+
   close(addressModel: AddressModel) {
+    if (this.userViewModel.Address === null
+      || this.userViewModel.Address === undefined) {
+      this.userViewModel.Address = [];
+    }
+    this.userViewModel.Address.forEach((item, index) => {
+      if (item.AddressId === addressModel.AddressId) {
+        this.userViewModel.Address[index] = addressModel;
+        this.userService.updateUserViewState(this.userViewModel);
+      }
+    });
+
     this.AddressModel.emit(addressModel);
+    this.cancelOut();
   }
   cancelOut() {
     this.cancelModel.emit(false);
-   }
+  }
 
 }

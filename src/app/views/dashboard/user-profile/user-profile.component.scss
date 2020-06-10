@@ -307,7 +307,7 @@
 
       .row {
         grid-template-columns: 5% 15% 25% 15% 25% auto;
-
+        cursor: pointer;
         .item {
           img {
             width: 2rem;

@@ -138,6 +138,7 @@ export class UpdateEmployeeComponent implements OnInit {
     modelUpdated.StatusId = companyModel.CompanyStatusId;
     this.companyService.updateCompany(modelUpdated).subscribe(data => { });
   }
+
   onCloseModal(event: AddressModel) {
     if (event) {
       this.updateCurrentEmployeeAddress(event);
@@ -150,19 +151,12 @@ export class UpdateEmployeeComponent implements OnInit {
   }
 
 
-
   updateCurrentEmployeeAddress(model: AddressModel) {
     this.messageService.successMassage('Successfully created', 'Address added successfully');
-    if (this.userView.Address === null
-      || this.userView.Address === undefined) {
-      this.userView.Address = [];
-    }
-
-    this.userView.Address.push(model);
-    this.userService.updateUserViewState(this.userView);
   }
 
   addressUpdate(item: AddressModel) {
     this.addressToUpdate = item;
-  }
+    this.showUpdateModal = true;
+   }
 }

@@ -102,7 +102,7 @@
                   <div class="item">PostalCode</div>
                 </div>
                 <div class="table-content">
-                  <div class="row" *ngFor="let item of user.Address">
+                  <div class="row" *ngFor="let item of user.Address" (click)="addressUpdate(item)">
                     <div class="item">
                       <img src="assets/images/dashboard/placeholders/address.png" alt="address">
                     </div>
@@ -132,8 +132,16 @@
     </div>
   </div>
 </div>
+
 <div class="overlay" *ngIf="showModal">
   <div class="overlay-modal">
     <app-add-address [userId]="user.UserId" (cancelModel)="showModal = $event" (AddressModel)="onCloseModal($event)"></app-add-address>
   </div>
+</div>
+
+<!-- shows edit modal -->
+<div class="overlay" *ngIf="showUpdateModal && addressToUpdate">
+  <div class="overlay-modal">
+    <app-update-address [addressModel]="addressToUpdate" [userViewModel]="user" (cancelModel)="showUpdateModal = $event" (AddressModel)="onCloseModal($event)"></app-update-address>
+   </div>
 </div>

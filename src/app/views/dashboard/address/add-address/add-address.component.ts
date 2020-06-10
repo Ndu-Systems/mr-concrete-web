@@ -14,6 +14,7 @@ export class AddAddressComponent implements OnInit {
   @Output()AddressModel: EventEmitter<AddressModel> = new EventEmitter<AddressModel>();
   @Output()cancelModel: EventEmitter<boolean> = new EventEmitter<boolean>();
   rForm: FormGroup;
+  @Input() userViewModel: UserModel;
   currentUser: UserModel;
   provinces = PROVINCE_LIST;
   addressTypes = ADDRESS_TYPE;
@@ -22,7 +23,9 @@ export class AddAddressComponent implements OnInit {
     private fb: FormBuilder,
     private accountService: AccountService,
     private addressService: AddressService,
-    private messageService: NotificationService
+    private messageService: NotificationService,
+    private userService: UserService
+
   ) { }
 
   ngOnInit() {
@@ -67,6 +70,12 @@ export class AddAddressComponent implements OnInit {
   }
 
   close(addressModel: AddressModel) {
+    if (this.userViewModel.Address === null
+      || this.userViewModel.Address === undefined) {
+      this.userViewModel.Address = [];
+    }
+    this.userViewModel.Address.push(addressModel);
+    this.userService.updateUserViewState(this.userViewModel);
     this.AddressModel.emit(addressModel);
   }
   cancelOut() {

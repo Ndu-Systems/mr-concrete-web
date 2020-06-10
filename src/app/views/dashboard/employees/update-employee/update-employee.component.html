@@ -168,6 +168,6 @@
 <!-- shows edit modal -->
 <div class="overlay" *ngIf="showUpdateModal && addressToUpdate">
   <div class="overlay-modal">
-    <app-update-address [addressModel]="addressToUpdate" (cancelModel)="showUpdateModal = $event" (AddressModel)="onCloseModal($event)"></app-update-address>
+    <app-update-address [addressModel]="addressToUpdate" [userViewModel]="userView" (cancelModel)="showUpdateModal = $event" (AddressModel)="onCloseModal($event)"></app-update-address>
    </div>
 </div>

@@ -2,8 +2,15 @@
 
 .main {
   .table {
+    height: 50vh;
+
     .header {
       grid-template-columns: 20% 15% 15% 10% 20% auto;
+    }
+    .table-content {
+      background: #dcdde145;
+      overflow: scroll;
+      height: 25rem;
     }
 
     .row {
@@ -144,7 +151,7 @@
   box-sizing: border-box;
   margin-bottom: 1rem;
   grid-gap: 1rem;
-  width: 50rem;
+  width: 62rem;
   padding: 2rem;
   padding-bottom: 0;
   .subHeading {font-size: 1rem;}

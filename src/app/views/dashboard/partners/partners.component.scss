@@ -1,16 +1,23 @@
 @import '../../../../assets/styles/general/colors';
 
-.container {
-  padding: 1rem 2rem;
-}
+.main {
 
+}
 .table {
+  height: 50vh;
+
   .header {
-    grid-template-columns: 20% 15% 15% 10% 20% auto;
+    grid-template-columns: 20% 15% 15% 10% 20% 10% auto;
+  }
+  .table-content {
+    background: #dcdde145;
+    overflow: scroll;
+    height: 25rem;
   }
 
   .row {
-    grid-template-columns: 5% 15% 15% 15% 10% 20% auto;
+    grid-template-columns: 5% 15% 15% 15% 10% 20% 10% auto;
+    cursor: pointer;
 
   }
 }
@@ -31,14 +38,16 @@
     box-shadow: 10px 0px 48px -9px rgba(113, 128, 147, 0.08);
     margin: 1rem 0.5rem;
     border-radius: 25px !important;
+    cursor: pointer;
   }
 }
+
 
 .form {
   padding: 1rem 2rem;
   width: 100%;
   margin: 0 auto;
-  border-radius: 15px;
+
   h1 {
     &.heading {
       font-size: 1.125rem;
@@ -61,7 +70,6 @@
   .form-fields {
     padding: 0;
     width: 30rem;
-
     .col-1-of-2 {
       grid-gap: 0;
       margin-bottom: 0;
@@ -106,6 +114,49 @@
 }
 
 
+
+
+.mat-flat-button.mat-primary {
+  background-color: $yellow;
+
+  font-size: 1em;
+  font-weight: 700;
+  border-radius: 25rem;
+  height: 2.5rem;
+  width: 8rem;
+  margin: 0 auto;
+  margin-right: 0;
+  color: $black;
+
+  &.cta-btn {
+    background-color: $black;
+  }
+
+  &.transparent {
+    background: $default-white;
+    font-weight: 700;
+    color: $grey;
+    border: solid 1px $grey;
+  }
+
+  &[disabled] {
+    background-color: #DCDDE1;
+    color: #B2BEC3;
+  }
+}
+
+
+.head-content  {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  box-sizing: border-box;
+  margin-bottom: 1rem;
+  grid-gap: 1rem;
+  width: 62rem;
+  padding: 2rem;
+  padding-bottom: 0;
+  .subHeading {font-size: 1rem;}
+}
 
 @media only screen and (max-width: 600px) {
 
