@@ -7,10 +7,10 @@
       <div class="item">Email</div>
       <div class="item">Stationed At</div>
       <div class="item">Start Date</div>
-      <div class="item">Actions</div>
+
     </div>
     <div class="table-content">
-      <div class="row" *ngFor="let item of employees">
+      <div class="row" *ngFor="let item of employees"  (click)="onUpdateClick(item)">
         <div class="item">
           <div class="image">
             <!-- <img [src]="item.Images[0].Url" alt="" *ngIf="item.Images" /> -->
@@ -46,17 +46,7 @@
             {{item.CreateDate | date:'fullDate'}}
           </p>
         </div>
-        <div class="item">
-          <button mat-icon-button [matMenuTriggerFor]="subMenu"
-            aria-label="Example icon button with a vertical three dot icon">
-            <mat-icon>more_vert</mat-icon>
-          </button>
-          <mat-menu #subMenu="matMenu" class="menu">
-            <button mat-menu-item (click)="onUpdateClick(item)">
-              update
-            </button>
-          </mat-menu>
-        </div>
+
       </div>
     </div>
 
@@ -68,7 +58,7 @@
 
 
   <!-- mobile section  -->
-  <div class="table-mobile"  *ngIf="employees.length > 0">
+  <div class="table-mobile" *ngIf="employees.length > 0">
     <div class="row" *ngFor="let item of employees">
       <div class="item">
         <div class="image">

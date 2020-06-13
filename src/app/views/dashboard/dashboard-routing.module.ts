@@ -59,7 +59,8 @@ import { FileUploadComponent } from './products/file-upload/file-upload.componen
 import {
   EmployeesComponent,
   AddEmployeeComponent,
-  UpdateEmployeeComponent
+  UpdateEmployeeComponent,
+  ViewEmployeeComponent
 } from './employees';
 import { CartViewComponent } from './orders/cart-view/cart-view.component';
 import { CompaniesComponent } from './companies';
@@ -96,6 +97,7 @@ const routes: Routes = [
       { path: 'edit-product', component: UpdateProductComponent },
       { path: 'employees', component: EmployeesComponent },
       { path: 'add-employee', component: AddEmployeeComponent },
+      { path: 'view-employee', component: ViewEmployeeComponent },
       { path: 'edit-employee', component: UpdateEmployeeComponent },
       { path: 'profile', component: UserProfileComponent },
       { path: 'update-profile', component: UpdateProfileComponent },
@@ -153,6 +155,7 @@ export const declarations = [
   AddressComponent,
   AddAddressComponent,
   UpdateAddressComponent,
+  ViewEmployeeComponent,
   // Pipes
   MeasurenamePipe,
   FormatOrderproductPipeCustomer,

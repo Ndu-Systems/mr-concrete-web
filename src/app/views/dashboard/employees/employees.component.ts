@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { UserQueryModel, UserModel, Placeholder } from 'src/app/_models';
-import { UserService, NotificationService } from 'src/app/_services';
+import { UserQueryModel, UserModel, Placeholder, NavigationModel } from 'src/app/_models';
+import { UserService, NotificationService, ApiService } from 'src/app/_services';
 import { USER_TYPES } from '../shared';
 import { Router } from '@angular/router';
 import { takeUntil } from 'rxjs/operators';
@@ -35,6 +35,7 @@ export class EmployeesComponent implements OnInit, OnDestroy {
   constructor(
     private userService: UserService,
     private messageService: NotificationService,
+    private apiService: ApiService,
     private routTo: Router
   ) { }
 
@@ -76,6 +77,12 @@ export class EmployeesComponent implements OnInit, OnDestroy {
 
   onUpdateClick(item: UserModel) {
     this.userService.updateUserViewState(item);
-    this.routTo.navigate(['/dashboard/edit-employee']);
+    const nav: NavigationModel = {
+      heading: 'View employee',
+      subheading: 'See employee details here',
+      returnUrl: '/dashboard/employees'
+    };
+    this.apiService.updateNavState(nav);
+    this.routTo.navigate(['/dashboard/view-employee']);
   }
 }
