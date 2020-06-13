@@ -1,6 +1,6 @@
 .main {
   width: 100%;
-  overflow-x: scroll;
+  min-height: 20rem;
 
   &::-webkit-scrollbar {
     display: none; // Safari and Chrome
@@ -85,8 +85,7 @@
   text-align: center;
 
   img{
-    width: 5rem;
-    height: 5rem;
+    width: 15rem;
   }
 }
 
