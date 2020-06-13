@@ -107,17 +107,16 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
       Images: product.Images
     };
     if (this.order.Orderproducts === null
-      || this.order.Orderproducts === undefined ) {
+      || this.order.Orderproducts === undefined) {
       this.order.Orderproducts = [];
     }
     this.order.Orderproducts.push(orderProduct);
     this.cartView = true;
     this.shopHeadingStatus = 'Added to Cart';
-    this.total += Number(product.Price) * this.qty;
-    this.qty = 1;
 
-    this.order.Total += this.total;
+    this.order.Total += Number(product.Price) * Number(this.qty);
     this.orderService.setOrderState(this.order);
+    this.qty = 1;
 
   }
 
@@ -134,8 +133,12 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
 
   removeItem(item: Orderproduct, index: number) {
     console.log(item);
-    this.order.Total -= (item.Quantity * item.Price);
+    debugger
+    this.order.Total -= (Number(item.Quantity) * Number(item.Price));
     this.order.Orderproducts.splice(index, 1);
+    if (this.order.Orderproducts.length === 0) {
+      this.order.Total = 0;
+    }
     this.orderService.setOrderState(this.order);
   }
 
