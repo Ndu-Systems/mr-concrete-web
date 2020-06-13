@@ -48,7 +48,11 @@
 }
 
 .mat-icon-button {
-  width: 12rem;
+  width: 10rem;
+}
+
+.btn-med {
+  width: 6rem;
 }
 
 .mat-accent {
@@ -91,6 +95,7 @@
       height: 2rem;
       overflow: hidden;
       text-align: center;
+
       img {
         width: 100%;
       }
@@ -217,12 +222,14 @@
 
 }
 
-.emptycart{
+.emptycart {
   text-align: center;
   padding: 4rem;
-  img{
+
+  img {
     width: 50%;
     cursor: pointer;
+
     @media only screen and (max-width: 600px) {
       width: 90%;
     }
