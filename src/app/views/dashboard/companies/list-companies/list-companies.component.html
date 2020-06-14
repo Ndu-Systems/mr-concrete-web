@@ -7,7 +7,7 @@
      <div class="item">Based in</div>
    </div>
    <div class="table-content">
-    <div class="row" *ngFor="let item of companies">
+    <div class="row" *ngFor="let item of companies" (click)="onCardClick(item)">
       <div class="item">
         <div class="image">
           <!-- <img [src]="item.Images[0].Url" alt="" *ngIf="item.Images" /> -->

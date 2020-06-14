@@ -23,9 +23,10 @@ export class PartnersComponent implements OnInit {
   customerCount: string;
   roles = SYSTEM_ROLES;
   selectedList: UserModel[];
+  isSelected:boolean;
   actionButton: ActionButton = {
     link: '/dashboard/add-partner',
-    label: 'add partner'
+    label: '+ partner'
   };
 
   @Output() messages: EventEmitter<Message[]> = new EventEmitter<Message[]>();
@@ -87,6 +88,8 @@ export class PartnersComponent implements OnInit {
     if (event === '3') { this.selectedList = this.suppliers; } else {
       this.selectedList = this.customers;
     }
+    this.isSelected = true;
+
   }
   updatePartner(supplier: Supplier) {
 

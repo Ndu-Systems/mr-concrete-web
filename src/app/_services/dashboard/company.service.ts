@@ -24,6 +24,10 @@ export class CompanyService {
   }
 
   // Observables local storage updates
+
+  public get CurrentCompanyValue(): CompanyModel {
+    return this._company.value;
+  }
   // companies
   updateCompaniesState(data: CompanyModel[]) {
     this._companies.next(data);

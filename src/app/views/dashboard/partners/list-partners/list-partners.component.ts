@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class ListPartnersComponent implements OnInit {
   @Input() selectedList: UserModel[] = [];
+  @Input() isSelected: boolean;
   nav: NavigationModel;
   placeHolder: Placeholder = {
     imageUrl: 'assets/images/dashboard/placeholders/partner.svg',

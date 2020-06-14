@@ -45,5 +45,5 @@
    </div>
 
    <ng-template #notFound>
-     <app-placeholder [placeHolder]="placeHolder"></app-placeholder>
+     <app-placeholder [placeHolder]="placeHolder" *ngIf="isSelected"></app-placeholder>
    </ng-template>

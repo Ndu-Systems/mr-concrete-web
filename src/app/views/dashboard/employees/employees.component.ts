@@ -34,7 +34,6 @@ export class EmployeesComponent implements OnInit, OnDestroy {
   dummyDate = Date.now();
   constructor(
     private userService: UserService,
-    private messageService: NotificationService,
     private apiService: ApiService,
     private routTo: Router
   ) { }

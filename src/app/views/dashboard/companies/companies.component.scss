@@ -4,7 +4,7 @@
   height: 60vh;
 
   .header {
-    grid-template-columns: 20% 15% 15% 20% auto;
+    grid-template-columns: 20% 15% 20% 20% auto;
   }
 
   .table-content {
@@ -14,9 +14,8 @@
   }
 
   .row {
-    grid-template-columns: 5% 15% 15% 15% 20% auto;
+    grid-template-columns: 5% 15% 15% 20% 20% auto;
     cursor: pointer;
-
   }
 }
 
@@ -52,13 +51,14 @@
         }
 
         .general {
-          .dp {
+          padding: 2rem;
+         .dp {
             text-align: center;
             border-radius: 1000px;
             overflow: hidden;
             height: 15rem;
             width: 15rem;
-
+            margin: 0 auto;
             img {
               margin: 0 auto;
               height: 100%;
@@ -238,6 +238,12 @@
 
               .table-content {
                 height: 15rem;
+              }
+              .header {
+                grid-template-columns: 25% 15% 15% 20% auto;
+              }
+              .row {
+                grid-template-columns: 10% 15% 15% 15% 20% auto;
               }
             }
 
