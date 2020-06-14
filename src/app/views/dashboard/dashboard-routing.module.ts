@@ -64,7 +64,7 @@ import {
   ViewEmployeeComponent
 } from './employees';
 import { CartViewComponent } from './orders/cart-view/cart-view.component';
-import { CompaniesComponent } from './companies';
+import { CompaniesComponent, ListCompaniesComponent, EditCompanyComponent, AddCompanyComponent, ViewCompanyComponent } from './companies';
 import { FormatOrderproductPipeCustomer } from 'src/app/_pipes/format-dashboard-options.pipe-customer';
 import {
   AddressComponent,
@@ -104,7 +104,11 @@ const routes: Routes = [
       { path: 'edit-employee', component: UpdateEmployeeComponent },
       { path: 'profile', component: UserProfileComponent },
       { path: 'update-profile', component: UpdateProfileComponent },
-      { path: 'change-password', component: ChangePasswordComponent }
+      { path: 'change-password', component: ChangePasswordComponent },
+      { path: 'companies', component: CompaniesComponent },
+      { path: 'view-company', component: ViewCompanyComponent },
+      { path: 'add-company', component: AddCompanyComponent },
+      { path: 'edit-company', component: EditCompanyComponent },
     ]
   }
 ];
@@ -161,6 +165,10 @@ export const declarations = [
   ViewEmployeeComponent,
   CartDetailedComponent,
   ViewPartnerComponent,
+  ListCompaniesComponent,
+  EditCompanyComponent,
+  AddCompanyComponent,
+  ViewCompanyComponent,
   // Pipes
   MeasurenamePipe,
   FormatOrderproductPipeCustomer,

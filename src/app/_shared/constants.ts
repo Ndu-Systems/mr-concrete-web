@@ -92,12 +92,10 @@ export const ADDRESS_TYPE = [
 
 // Local storage Model
 
-export const LOCALE: any = {
-  COMPANIES_LCLSTR: 'Companies',
-  COMPANY_LCLSTR: 'Company',
-};
 
 
+export const COMPANY_VIEW = 'Company';
+export const COMPANIES_VIEW = 'Companies';
 export const USER_VIEW = 'userView';
 export const ADDRESS_VIEW = 'addressView';
 export const ADDRESSLIST_VIEW = 'addressListView';

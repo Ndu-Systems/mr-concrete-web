@@ -1,0 +1,37 @@
+ <div class="table" *ngIf="companies?.length> 0; else notFound">
+   <div class="header">
+     <div class="item">Company name</div>
+     <div class="item">Contact number</div>
+     <div class="item">Company Email</div>
+     <div class="item">Company Type</div>
+     <div class="item">Based in</div>
+   </div>
+   <div class="table-content">
+    <div class="row" *ngFor="let item of companies">
+      <div class="item">
+        <div class="image">
+          <!-- <img [src]="item.Images[0].Url" alt="" *ngIf="item.Images" /> -->
+          <img src="assets/images/dashboard/placeholders/employee.png" *ngIf="!item.Images" alt="place holder" />
+        </div>
+      </div>
+      <div class="item">
+        <p><b>{{item.CompanyName}}</b></p>
+      </div>
+      <div class="item">
+        <p>{{item.CompanyPhone}}</p>
+      </div>
+      <div class="item">
+        <p>{{item.CompanyEmail}}</p>
+      </div>
+      <div class="item">
+        <p class="badge">{{item.CompanyType}}</p>
+      </div>
+      <div class="item">
+        <p>{{item.City}}</p>
+      </div>
+    </div>
+   </div>
+ </div>
+ <ng-template #notFound>
+  <app-placeholder [placeHolder]="placeHolder"></app-placeholder>
+</ng-template>

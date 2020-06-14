@@ -16,7 +16,7 @@ export class EmployeesComponent implements OnInit, OnDestroy {
   subheading = 'List of employees on the system';
   actionButton: any = {
     link: '/dashboard/add-employee',
-    label: 'Add employee'
+    label: '+ employee'
   };
 
   placeHolder: Placeholder = {

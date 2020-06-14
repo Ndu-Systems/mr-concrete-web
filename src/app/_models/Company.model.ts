@@ -3,7 +3,7 @@ export class CompanyModel {
   CompanyName: string;
   CompanyPhone: string;
   CompanyEmail: string;
-  ParentId: string;
+  ParentId?: string;
   CompanyType: string;
   Province?: string;
   CompanyAddress: string;
@@ -19,7 +19,7 @@ export class CompanyModel {
 }
 
 export interface CompanyQueryModel {
-  CompanyId: string;
+  CompanyId?: string;
   UserId?: string;
   IsDeleted: boolean;
   StatusId: string;

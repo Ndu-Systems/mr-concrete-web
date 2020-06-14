@@ -1,4 +1,4 @@
-   <div class="table" *ngIf="selectedList?.length > 0; notFound">
+   <div class="table" *ngIf="selectedList?.length > 0; else notFound">
      <div class="header">
        <div class="item">FullName</div>
        <div class="item">Contact number</div>

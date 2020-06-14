@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { CompanyModel, CompanyQueryModel } from 'src/app/_models';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { LOCALE } from 'src/app/_shared';
 import { environment } from 'src/environments/environment';
+import { COMPANIES_VIEW, COMPANY_VIEW } from 'src/app/_shared';
 
 @Injectable({
   providedIn: 'root'
@@ -13,13 +13,12 @@ export class CompanyService {
   public companies: Observable<CompanyModel[]>;
   private _company: BehaviorSubject<CompanyModel>;
   private company: Observable<CompanyModel>;
-  locale = LOCALE;
   url: string;
 
   constructor(private http: HttpClient) {
-    this._companies = new BehaviorSubject<CompanyModel[]>(JSON.parse(localStorage.getItem(this.locale.COMPANIES_LCLSTR)) || []);
+    this._companies = new BehaviorSubject<CompanyModel[]>(JSON.parse(localStorage.getItem(COMPANIES_VIEW)) || []);
     this.companies = this._companies.asObservable();
-    this._company = new BehaviorSubject<CompanyModel>(JSON.parse(localStorage.getItem(this.locale.COMPANY_LCLSTR)) || null);
+    this._company = new BehaviorSubject<CompanyModel>(JSON.parse(localStorage.getItem(COMPANY_VIEW)) || null);
     this.company = this._company.asObservable();
     this.url = environment.API_URL;
   }
@@ -28,13 +27,13 @@ export class CompanyService {
   // companies
   updateCompaniesState(data: CompanyModel[]) {
     this._companies.next(data);
-    localStorage.setItem(this.locale.COMPANIES_LCLSTR, JSON.stringify(data));
+    localStorage.setItem(COMPANIES_VIEW, JSON.stringify(data));
   }
 
   // company
   updateCompanyState(data: CompanyModel) {
     this._company.next(data);
-    localStorage.setItem(this.locale.COMPANY_LCLSTR, JSON.stringify(data));
+    localStorage.setItem(COMPANY_VIEW, JSON.stringify(data));
   }
 
   // add company
@@ -49,14 +48,11 @@ export class CompanyService {
   }
 
   // get all companies
-  getAllCompanies(data: CompanyQueryModel) {
-    return this.http.post<CompanyModel[]>(`${this.url}/api/companies/get-all.php`, JSON.stringify(data)).subscribe(response => {
-      const companies: CompanyModel[] = response;
-      this.updateCompaniesState(companies);
-    });
+  getAllCompanies(data: CompanyQueryModel): Observable<CompanyModel> {
+    return this.http.post<CompanyModel>(`${this.url}/api/companies/get-all.php`, JSON.stringify(data));
   }
 
- // get company by id
+  // get company by id
   getById(data: CompanyQueryModel) {
     return this.http.post<CompanyModel>(`${this.url}/api/companies/get-by-id.php`, JSON.stringify(data)).subscribe(response => {
       const company: CompanyModel = response;
