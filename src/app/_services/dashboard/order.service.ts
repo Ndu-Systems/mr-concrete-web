@@ -24,7 +24,7 @@ export class OrderService {
     this.ordersBehaviorSubject = new BehaviorSubject<Order[]>(JSON.parse(localStorage.getItem('orders')) || []);
     this.ordersObservable = this.ordersBehaviorSubject.asObservable();
 
-    this.orderBehaviorSubject = new BehaviorSubject<Order>(JSON.parse(localStorage.getItem('order')) || []);
+    this.orderBehaviorSubject = new BehaviorSubject<Order>(JSON.parse(localStorage.getItem('order')) || null);
     this.orderObservable = this.orderBehaviorSubject.asObservable();
     this.url = environment.API_URL;
   }
