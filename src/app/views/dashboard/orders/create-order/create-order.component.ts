@@ -10,7 +10,6 @@ import { ProductService } from 'src/app/_services/dashboard/product.service';
 import { Orderproduct } from 'src/app/_models/orderproduct .model';
 import { Order } from 'src/app/_models/order.model';
 import { OrderService } from 'src/app/_services/dashboard/order.service';
-import { ORDER_STATUS } from 'src/app/_shared';
 
 @Component({
   selector: 'app-create-order',
@@ -68,6 +67,7 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
     this.catergories$ = this.cateroryService.categories;
     this.cateroryService.getCateries();
     this.products$ = this.productService.products;
+    this.productService.getProductsByUserId(this.currentUser.UserId);
     this.productService.products.subscribe(products => {
       if (products) {
         this.allProducts = products;

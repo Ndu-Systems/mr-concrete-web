@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="350" height="350" viewBox="0 0 350 350">
   <g id="increase-cart-item" transform="translate(-32 -788)">
-    <circle id="Ellipse_205" data-name="Ellipse 205" cx="175" cy="175" r="175" transform="translate(32 788)" fill="#2ed573"/>
-    <line id="Line_134" data-name="Line 134" x2="188" y2="1" transform="translate(113.5 962.5)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="24"/>
-    <line id="Line_135" data-name="Line 135" x2="188" y2="1" transform="translate(208 869) rotate(90)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="24"/>
+    <circle id="Ellipse_205" data-name="Ellipse 205" cx="175" cy="175" r="175" transform="translate(32 788)" fill="#fbc531"/>
+    <path id="Path_969" data-name="Path 969" d="M0,0,188,1" transform="translate(113.5 962.5)" fill="none" stroke="#2f3542" stroke-linecap="round" stroke-width="24"/>
+    <path id="Path_970" data-name="Path 970" d="M0,0,188,1" transform="translate(208 869) rotate(90)" fill="none" stroke="#2f3542" stroke-linecap="round" stroke-width="24"/>
   </g>
 </svg>
