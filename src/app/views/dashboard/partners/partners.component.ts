@@ -82,7 +82,6 @@ export class PartnersComponent implements OnInit {
     }
   }
 
-
   onSelectAction(event) {
     this.selectedList = [];
     if (event === '3') { this.selectedList = this.suppliers; } else {

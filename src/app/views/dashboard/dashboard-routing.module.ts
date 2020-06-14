@@ -24,7 +24,8 @@ import {
   PartnersComponent,
   CreateSupplierComponent,
   ListPartnersComponent,
-  CreatePartnerComponent
+  CreatePartnerComponent,
+  ViewPartnerComponent
 } from './partners';
 import {
   MeasurementsComponent,
@@ -84,6 +85,7 @@ const routes: Routes = [
       { path: 'settings', component: SettingsComponent },
       { path: 'partners', component: PartnersComponent },
       { path: 'add-partner', component: CreatePartnerComponent },
+      { path: 'view-partner', component: ViewPartnerComponent },
       { path: 'update-partner', component: EditPartnerComponent },
       { path: 'measurements', component: MeasurementsComponent },
       { path: 'add-measurement', component: CreateMeasurementComponent },
@@ -158,6 +160,7 @@ export const declarations = [
   UpdateAddressComponent,
   ViewEmployeeComponent,
   CartDetailedComponent,
+  ViewPartnerComponent,
   // Pipes
   MeasurenamePipe,
   FormatOrderproductPipeCustomer,

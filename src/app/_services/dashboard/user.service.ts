@@ -48,6 +48,8 @@ export class UserService {
     return this.http.post<UserModel>(`${this.url}/api/users/update-user.php`, model);
   }
 
-
+  clearCurrentUser() {
+    this._user.next(null);
+  }
 
 }

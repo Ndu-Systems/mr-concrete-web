@@ -1,3 +1,136 @@
-<p>
-  view-partner works!
-</p>
+<div class="main userProfile">
+  <app-banner [heading]="nav?.heading" [subheading]="nav?.subheading" [actionButton]="actionButton"></app-banner>
+  <div class="container" *ngIf="userView">
+    <div class="profile col-1-of-2">
+      <div class="general">
+        <div class="dp">
+          <!-- <img [src]="item.Images[0].Url" alt="" *ngIf="item.Images" /> -->
+          <img src="assets/images/home/avatar.svg" alt="avatar">
+        </div>
+        <div class="work"  *ngIf="userView.Company">
+          <h1 class="heading">work</h1>
+          <hr class="line">
+          <div class="content col-1-of-1">
+            <span>
+              <h1>
+                {{userView.Company.CompanyName}}
+                <span class="badge">{{userView?.Roles.RoleName}}</span>
+              </h1>
+              <h1 class="address">
+                {{userView.Company.CompanyAddress}} {{userView.Company.City}}, {{userView.Company.Province}}
+              </h1>
+            </span>
+            <span *ngIf="userView.Company?.SubBranches">
+              <span *ngFor="let item of userView.Company?.SubBranches">
+                <h1>
+                  {{item.CompanyName}}
+                  <span class="badge">{{userView?.Roles.RoleName}}</span>
+                </h1>
+                <h1 class="address">
+                  {{userView.Company.CompanyAddress}} {{userView.Company.City}}, {{userView.Company.Province}}
+                </h1>
+              </span>
+            </span>
+          </div>
+        </div>
+        <div class="work">
+          <h1 class="heading">Role(s)/Access</h1>
+          <hr class="line">
+          <div class="">
+            <h1 class="address">
+              {{userView?.Roles.RoleName}}, <br>{{userView?.Roles.CreateDate  | date:'fullDate'}}
+            </h1>
+          </div>
+        </div>
+      </div>
+      <div class="detailed">
+        <div class="content col-1-of-2">
+          <div class="">
+            <h1 class="heading">
+              {{userView?.FirstName}} {{userView?.LastName}}
+              <span class="span">
+                {{userView?.Roles.RoleName}}
+              </span>
+            </h1>
+            <h1 class="text">
+              {{userView?.Email}}
+            </h1>
+            <h1 class="text">
+              {{userView?.Cellphone}}
+            </h1>
+            <h1 class="text">
+               Code 10, 25 December 2018
+            </h1>
+          </div>
+          <div class="" *ngIf="userView.Address">
+            <h1 class="text">
+              {{userView.Address[0].AddressLine1}}, <br>{{userView.Address[0].AddressLine2}}
+              {{userView.Address[0].AddressLine3}} <br>
+              {{userView.Address[0].City}},{{userView.Address[0].Province}} <br>
+              {{userView.Address[0].PostalCode}}
+            </h1>
+          </div>
+        </div>
+        <div class="tab-content">
+          <mat-tab-group class="tab-group">
+
+            <mat-tab t-tab label="  Address information">
+              <div class="head-content">
+                <button *ngIf="actionButton" mat-flat-button color="primary" (click)="showModal=true">
+                  add address
+                </button>
+              </div>
+
+              <div class="table address" *ngIf="userView.Address">
+                <div class="header">
+                  <div class="item">Address Type</div>
+                  <div class="item">Address</div>
+                  <div class="item">City</div>
+                  <div class="item">Province</div>
+                  <div class="item">PostalCode</div>
+                </div>
+                <div class="table-content">
+                  <div class="row" *ngFor="let item of userView.Address" (click)="addressUpdate(item)">
+                    <div class="item">
+                      <img src="assets/images/dashboard/placeholders/address.png" alt="address">
+                    </div>
+                    <div class="item">
+                      <p><b>{{item?.AddressType}}</b></p>
+                    </div>
+                    <div class="item">
+                      <p>{{item?.AddressLine1}}, {{item?.AddressLine2}} <br>{{item?.AddressLine3}} </p>
+                    </div>
+                    <div class="item">
+                      <p>{{item?.City}}</p>
+                    </div>
+                    <div class="item">
+                      <p>{{item?.Province}}</p>
+                    </div>
+                    <div class="item">
+                      <p>{{item?.PostalCode}}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </mat-tab>
+          </mat-tab-group>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<!-- shows add modal -->
+<div class="overlay" *ngIf="showModal && userView">
+  <div class="overlay-modal">
+    <app-add-address [userViewModel]="userView" [userId]="userView.UserId" (cancelModel)="showModal = $event" (AddressModel)="onCloseModal($event)"></app-add-address>
+  </div>
+</div>
+
+<!-- shows edit modal -->
+<div class="overlay" *ngIf="showUpdateModal && addressToUpdate">
+  <div class="overlay-modal">
+    <app-update-address [addressModel]="addressToUpdate" [userViewModel]="userView" (cancelModel)="showUpdateModal = $event" (AddressModel)="onCloseModal($event)"></app-update-address>
+   </div>
+</div>

@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class ListPartnersComponent implements OnInit {
   @Input() selectedList: UserModel[] = [];
-
+  nav: NavigationModel;
   placeHolder: Placeholder = {
     imageUrl: 'assets/images/dashboard/placeholders/partner.svg',
     message: 'No partners found in our system.',
@@ -24,18 +24,18 @@ export class ListPartnersComponent implements OnInit {
     private navigateService: ApiService) { }
 
   ngOnInit() {
-
+    this.userService.clearCurrentUser();
   }
   onUpdateClick(item: UserModel) {
 
     const navigation: NavigationModel = {
       heading: item.Roles.RoleName,
-      subheading: `Update ${item.Roles.RoleName} details`,
+      subheading: `View ${item.Roles.RoleName}s`,
       returnUrl: '/dashboard/partners'
     };
 
     this.navigateService.updateNavState(navigation);
     this.userService.updateUserViewState(item);
-    this.routeTo.navigate(['/dashboard/update-partner']);
+    this.routeTo.navigate(['/dashboard/view-partner']);
   }
 }

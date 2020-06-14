@@ -57,6 +57,8 @@ export class EmployeesComponent implements OnInit, OnDestroy {
           });
         }
       });
+
+    this.userService.clearCurrentUser();
   }
 
 
