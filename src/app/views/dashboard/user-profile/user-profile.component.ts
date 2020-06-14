@@ -40,14 +40,31 @@ export class UserProfileComponent implements OnInit {
     }
     this.showModal = !this.showModal;
   }
-
+  onUpdateCloseModal(event: AddressModel) {
+    this.onUpdateCloseModel(event);
+  }
+  onUpdateCloseModel(event: AddressModel) {
+    if (event) {
+      if (event) {
+        this.updateCurrentUserAddress(event);
+      } else {
+        this.messageService.dangerMessage('Address error', 'Something went wrong, please try again.');
+      }
+    }
+    this.showUpdateModal = !this.showUpdateModal;
+  }
   updateCurrentUserAddress(model: AddressModel) {
     this.messageService.successMassage('Successfully created', 'Address added successfully');
     if (this.user.Address == null) {
       this.user.Address = [];
     }
-    this.user.Address.push(model);
-    this.accountService.updateUserState(this.user);
+
+    this.user.Address.forEach((item, index) => {
+      if (item.AddressId === model.AddressId) {
+        this.user.Address[index] = model;
+        this.accountService.updateUserState(this.user);
+      }
+    });
   }
   updateCurrentAddress(model: AddressModel) {
     if (model.AddressId) {
