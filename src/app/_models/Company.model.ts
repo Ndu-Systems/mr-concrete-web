@@ -24,3 +24,9 @@ export interface CompanyQueryModel {
   IsDeleted: boolean;
   StatusId: string;
 }
+
+export interface CompanyTypeModel {
+  Type: string;
+  DisplayName?: string;
+  Description?: string;
+}

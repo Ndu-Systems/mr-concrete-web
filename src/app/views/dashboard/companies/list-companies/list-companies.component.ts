@@ -9,10 +9,10 @@ import { CompanyModel, Placeholder } from 'src/app/_models';
 export class ListCompaniesComponent implements OnInit {
   @Input() companies: CompanyModel[];
   placeHolder: Placeholder = {
-    imageUrl: 'assets/images/dashboard/placeholders/staff.svg',
-    message: 'No employees found.',
-    link: '/dashboard/add-employee',
-    linkLabel: 'Add employee'
+    imageUrl: 'assets/images/dashboard/placeholders/default.svg',
+    message: 'No companies found.',
+    link: '/dashboard/add-company',
+    linkLabel: 'Add company'
   };
   constructor() { }
 

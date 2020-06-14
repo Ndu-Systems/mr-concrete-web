@@ -1,3 +1,84 @@
-<p>
-  add-company works!
-</p>
+<div class="main">
+  <app-banner [subheading]="subheading" [heading]="heading" [actionButton]="actionButton"></app-banner>
+  <div class="form">
+    <form [formGroup]="rForm" *ngIf="rForm" (ngSubmit)="onSubmit(rForm.value)">
+      <mat-tab-group class="tab-group">
+        <mat-tab t-tab label="General">
+          <div class="form-fields">
+            <div class="input-group">
+              <label>Select company type</label>
+              <select matNativeControl formControlName="CompanyType">
+                <option label="--select something --"></option>
+                <option *ngFor="let item of companyTypes" value="{{item.Type}}">
+                  {{item.DisplayName}}
+                </option>
+              </select>
+              <mat-error *ngIf="!rForm.controls['CompanyType'].valid && rForm.controls['CompanyType'].touched">
+                Company Type is required</mat-error>
+            </div>
+            <div class="input-group">
+              <label>Company name</label>
+              <input matInput formControlName="CompanyName">
+              <mat-error class="error"
+                *ngIf="!rForm.controls['CompanyName'].valid && rForm.controls['CompanyName'].touched">
+                Company name is required</mat-error>
+            </div>
+            <div class="col-1-of-2">
+              <div class="input-group">
+                <label>Company Email</label>
+                <input matInput formControlName="CompanyEmail">
+                <mat-error class="error"
+                  *ngIf="!rForm.controls['CompanyEmail'].valid && rForm.controls['CompanyEmail'].touched">
+                  Company Email is required</mat-error>
+              </div>
+              <div class="input-group">
+                <label>Company phone</label>
+                <input matInput formControlName="CompanyPhone" type="number">
+                <mat-error class="error"
+                  *ngIf="!rForm.controls['CompanyPhone'].valid && rForm.controls['CompanyPhone'].touched">
+                  Company Phone is required</mat-error>
+              </div>
+            </div>
+
+            <div class="input-group">
+              <label>Company Address</label>
+              <input matInput formControlName="CompanyAddress">
+              <mat-error class="error"
+                *ngIf="!rForm.controls['CompanyAddress'].valid && rForm.controls['CompanyAddress'].touched">
+                Company Address is required</mat-error>
+            </div>
+            <div class="col-1-of-2">
+              <div class="input-group">
+                <label>Select Province</label>
+                <select matNativeControl formControlName="Province" #selected
+                  (change)='onProvinceSelect(selected.value)'>
+                  <option label="--select something --"></option>
+                  <option *ngFor="let item of provinces" [value]="item.id">
+                    {{item.name}}
+                  </option>
+                </select>
+                <mat-error *ngIf="!rForm.controls['Province'].valid && rForm.controls['Province'].touched">
+                  City is required</mat-error>
+              </div>
+              <div class="input-group">
+                <label>Select City/town</label>
+                <select matNativeControl required formControlName="City">
+                  <option label="--select something --"></option>
+                  <option *ngFor="let item of subRegions" value="{{item.name}}">
+                    {{item.name}}
+                  </option>
+                </select>
+                <mat-error *ngIf="!rForm.controls['City'].valid && rForm.controls['City'].touched">
+                  City/town is required</mat-error>
+              </div>
+            </div>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+      <div class="actions">
+        <button type="submit" [disabled]="!rForm.valid" class="btn cta">Add company</button>
+        <button type="button" class="btn secondary cta" (click)="routTo()">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,4 +1,5 @@
 import { ConfirmationPageModel } from '.';
+import { CompanyTypeModel } from '../_models';
 
 export const CURRENT_USER = 'currentUser';
 export const CURRENT_NAV = 'currentNavigate';
@@ -110,3 +111,28 @@ export const STATUSES = {
   DECLINEDBYCUSTOMER: 7,
   DECLINEDBYSUPPLIER: 8
 };
+
+
+export const COMPANY_TYPES_LIST: CompanyTypeModel[] = [
+  {
+    Type: 'HeadQuarters',
+    DisplayName: 'Head Quarters',
+    Description: 'Head Quarters of the group',
+  },
+  {
+    Type: 'Branch',
+    DisplayName: 'Branch Office',
+    Description: 'A division/branch of the group',
+  },
+  {
+    Type: 'Sub-Branch',
+    DisplayName: 'Sub Branch',
+    Description: 'A division of the main branch',
+  },
+  {
+    Type: 'Workspace',
+    DisplayName: 'Workspace area',
+    Description: 'A shared environment with other companies',
+  },
+
+]

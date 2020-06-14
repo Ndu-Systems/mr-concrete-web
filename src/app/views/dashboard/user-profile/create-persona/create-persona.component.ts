@@ -54,8 +54,7 @@ export class CreatePersonaComponent implements OnInit {
       CompanyType: ['HeadQuarter']
     });
 
-    this.loadSubRegions();
-  }
+   }
 
   loadSubRegions() {
     this.provinces.forEach(item => {
@@ -76,11 +75,10 @@ export class CreatePersonaComponent implements OnInit {
     console.log(provinceName);
     this.companyService.addCompany(model).subscribe(data => {
       if (data.CompanyId) {
-        this.messageService.successMassage('Company created successfully', 'No action required');
+        this.messageService.successMassage('Company profile created successfully', 'No action required');
         this.user.CompanyId = data.CompanyId;
         this.user.Company = data;
         this.userService.updateUser(this.user).subscribe(response => {
-
           this.accountService.updateUserState(this.user);
 
         });

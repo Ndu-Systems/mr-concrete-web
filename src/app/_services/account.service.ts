@@ -98,6 +98,7 @@ export class AccountService {
   signOut() {
     localStorage.removeItem(CURRENT_USER);
     this._user.next(null);
+    localStorage.clear();
     this.routTo.navigate(['/login']);
   }
 
