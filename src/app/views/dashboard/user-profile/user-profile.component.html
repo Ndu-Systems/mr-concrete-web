@@ -7,7 +7,12 @@
           <img src="assets/images/home/avatar.svg" alt="avatar">
         </div>
         <div class="work">
-          <h1 class="heading">Work</h1>
+          <span class="col-1-of-2">
+            <h1 class="heading">Work</h1>
+            <button *ngIf="actionButton" mat-flat-button color="primary" (click)="showModal=true">
+              + work
+            </button>
+          </span>
           <hr class="line">
           <div class="content col-1-of-1">
             <span *ngIf="user.Company">
@@ -66,7 +71,7 @@
         </div>
         <div class="tab-content">
           <mat-tab-group class="tab-group">
-            <mat-tab t-tab label="About">
+            <mat-tab t-tab label="General info">
               <h1 class="subHeading">
                 Contact information
               </h1>
@@ -89,7 +94,7 @@
                   Address information
                 </h1>
                 <button *ngIf="actionButton" mat-flat-button color="primary" (click)="showModal=true">
-                  add address
+                  + address
                 </button>
               </div>
 
@@ -135,13 +140,15 @@
 
 <div class="overlay" *ngIf="showModal">
   <div class="overlay-modal">
-    <app-add-address [userId]="user.UserId" (cancelModel)="showModal = $event" (AddressModel)="onCloseModal($event)"></app-add-address>
+    <app-add-address [userViewModel]="user" [userId]="user.UserId" (cancelModel)="showModal = $event" (AddressModel)="onCloseModal($event)">
+    </app-add-address>
   </div>
 </div>
 
 <!-- shows edit modal -->
 <div class="overlay" *ngIf="showUpdateModal && addressToUpdate">
   <div class="overlay-modal">
-    <app-update-address [addressModel]="addressToUpdate" [userViewModel]="user" (cancelModel)="showUpdateModal = $event" (AddressModel)="onUpdateCloseModal($event)"></app-update-address>
-   </div>
+    <app-update-address [addressModel]="addressToUpdate" [userViewModel]="user" (cancelModel)="showUpdateModal = $event"
+      (AddressModel)="onUpdateCloseModal($event)"></app-update-address>
+  </div>
 </div>
