@@ -72,10 +72,11 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
       if (products) {
         this.allProducts = products;
       }
-    })
+    });
     this.orderService.orderObservable.subscribe(order => {
       if (order) {
         this.order = order;
+        this.total = this.order.Total;
         if (this.order.ShowCart) {
           this.cartView = true;
           this.selectedProduct = this.allProducts[0];
