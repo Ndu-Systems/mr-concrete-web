@@ -55,8 +55,8 @@
               <span class="small-text">No Category</span>
             </div>
             <div class="item">
-              <button mat-icon-button class="btn btn-med" aria-label="Example icon button with a vertical three dot icon"
-                (click)="addToCart(item)">
+              <button mat-icon-button class="btn btn-med"
+                aria-label="Example icon button with a vertical three dot icon" (click)="addToCart(item)">
                 <mat-icon>add</mat-icon> Select
               </button>
             </div>
@@ -160,36 +160,9 @@
           check_circle_outline
         </span> {{shopHeadingStatus}}
       </h1>
-      <div class="cart-items" *ngFor="let item of order.Orderproducts; let i = index">
-        <div class="item">
-          <img (click)="removeItem(item, i)" class="remove-from-cart" src="assets/images/remove-from-cart.svg" alt="" />
-        </div>
-        <div class="item">
-          <div class="image">
-            <img [src]="item.Images[0].Url" alt="" *ngIf="item.Images" />
-            <img src="assets/images/product-placeholder.svg" *ngIf="!item.Images" alt="" />
-          </div>
-        </div>
-        <div class="item">
-          <p>
-            {{item.ProductName}}
-          </p>
-        </div>
-        <div class="item">
-          <p>
-            <b>
-              <u>
-                x {{item.Quantity}}
-              </u>
-            </b>
-          </p>
-        </div>
-        <div class="item">
-          <b>
-            {{item.Price*item.Quantity | currency:'R'}}
-          </b>
-        </div>
-      </div>
+   
+
+      <app-cart-detailed></app-cart-detailed>
 
       <span *ngIf="!showCheckout">
         <h1 class="price">
@@ -217,7 +190,7 @@
       </span>
     </div>
     <div *ngIf="!order.Orderproducts.length" class="emptycart">
-      <img   (click)="continueOrdering()" src="assets/images/emptycart.svg" alt="">
+      <img (click)="continueOrdering()" src="assets/images/emptycart.svg" alt="">
     </div>
 
 
@@ -236,6 +209,16 @@
           <img src="assets/images/delivery-date.svg">
         </div>
 
+        <div class="input-group">
+          <label>Customer</label>
+          <input style="width: 96%;" matInput type="search" [(ngModel)]="Customer" placeholder="Customer name">
+        </div>
+
+        <div class="input-group">
+          <label>Delivery Address</label>
+          <input style="width: 96%;" matInput type="search" [(ngModel)]="DeliveryAddress"
+            placeholder="Customer address">
+        </div>
 
 
         <div class="col-2">
@@ -249,11 +232,7 @@
           </div>
 
         </div>
-        <div class="input-group">
-          <label>Delivery Location</label>
-          <input style="width: 96%;" matInput type="search" [(ngModel)]="DeliveryAddress"
-            placeholder="Search your address">
-        </div>
+
         <div class="input-group">
           <label>Special Instructions</label>
           <textarea [(ngModel)]="SpecialInstructions"></textarea>
@@ -312,4 +291,3 @@
     </div>
   </div>
 </div>
-

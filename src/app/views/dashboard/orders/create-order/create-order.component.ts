@@ -132,15 +132,6 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
     this.shopHeadingStatus = 'Check Out';
   }
 
-  removeItem(item: Orderproduct, index: number) {
-    console.log(item);
-    this.order.Total -= (Number(item.Quantity) * Number(item.Price));
-    this.order.Orderproducts.splice(index, 1);
-    if (this.order.Orderproducts.length === 0) {
-      this.order.Total = 0;
-    }
-    this.orderService.setOrderState(this.order);
-  }
 
 
   placOrder() {

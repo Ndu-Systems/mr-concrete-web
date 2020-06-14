@@ -1,0 +1,33 @@
+<div class="main" *ngIf="order$  | async as order">
+  <div class="cart-items" *ngFor="let item of order.Orderproducts; let i = index">
+
+    <div class="item dp">
+      <div class="image">
+        <img [src]="item.Images[0].Url" alt="" *ngIf="item.Images" />
+        <img src="assets/images/product-placeholder.svg" *ngIf="!item.Images" alt="" />
+      </div>
+    </div>
+    <div class="item qty">
+      <p> x {{item.Quantity}}</p>
+    </div>
+    <div class="item details">
+      <p>
+        {{item.ProductName}}
+      </p>
+      <p class="price">
+        {{item.Price*item.Quantity | currency:'R'}}
+
+      </p>
+    </div>
+
+    <div class="item actions">
+      <div class="action remove">
+        <img (click)="removeItem(item, i)" class="remove-from-cart" src="assets/images/remove-from-cart.svg" alt="" />
+      </div>
+      <div class="action adjust">
+        <img (click)="adjustItem(item, i, -1)" class="remove-from-cart" src="assets/images/reduce-cart-item.svg" alt="" />
+        <img (click)="adjustItem(item, i, 1)" class="remove-from-cart" src="assets/images/increase-cart-item.svg" alt="" />
+      </div>
+    </div>
+  </div>
+</div>

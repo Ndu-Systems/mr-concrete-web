@@ -70,6 +70,7 @@ import {
   AddAddressComponent,
   UpdateAddressComponent
 } from './address';
+import { CartDetailedComponent } from './orders/cart-detailed/cart-detailed.component';
 
 
 const routes: Routes = [
@@ -156,6 +157,7 @@ export const declarations = [
   AddAddressComponent,
   UpdateAddressComponent,
   ViewEmployeeComponent,
+  CartDetailedComponent,
   // Pipes
   MeasurenamePipe,
   FormatOrderproductPipeCustomer,

@@ -1,0 +1,51 @@
+.main {
+  .cart-items {
+    display: grid;
+    grid-template-columns: 15% 10% 40% auto;
+  }
+
+  .item {
+    .image {
+      width: 2rem;
+      height: 2rem;
+      overflow: hidden;
+      text-align: center;
+      margin: .5rem auto;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    p {
+      margin: .2rem;
+      font-size: .7rem;
+      font-weight: 700;
+    }
+
+    .action {
+      display: grid;
+      text-align: right;
+      grid-template-columns: repeat(2, 50%);
+
+      img {
+        width: 1.2rem;
+        margin: .5rem;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .qty {
+    p {
+      margin: .8rem auto;
+      text-align: center;
+    }
+  }
+
+  .actions {
+    display: grid;
+    text-align: right;
+    grid-template-columns: repeat(2, 50%);
+  }
+}

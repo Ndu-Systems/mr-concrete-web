@@ -80,4 +80,13 @@ export class OrderService {
     localStorage.setItem('order', null);
 
   }
+
+  calculateTotal(order: Order) {
+    let total = 0;
+    order.Orderproducts.forEach(item => {
+      total += Number(item.Quantity) * Number(item.Price);
+    });
+    order.Total = total;
+    return order;
+  }
 }
