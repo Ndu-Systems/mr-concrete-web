@@ -78,10 +78,9 @@ export const PROVINCE_LIST: Region[] = [
       {
         id: 'CPT',
         name: 'Cape Town',
-
       }
     ]
-  },
+  }
 
 ];
 

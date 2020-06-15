@@ -32,7 +32,7 @@ export class ListPartnersComponent implements OnInit {
     const navigation: NavigationModel = {
       heading: item.Roles.RoleName,
       subheading: `View ${item.Roles.RoleName}s`,
-      returnUrl: '/dashboard/partners'
+
     };
 
     this.navigateService.updateNavState(navigation);

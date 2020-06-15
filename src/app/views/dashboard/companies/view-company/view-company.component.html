@@ -48,7 +48,7 @@
                   + company
                 </button>
               </div>
-              <div class="table address" *ngIf="companyView.SubBranches">
+               <div class="table address" *ngIf="companyView.SubBranches">
                 <div class="header">
                   <div class="item">Company name</div>
                   <div class="item">PhoneNumber</div>
@@ -56,6 +56,7 @@
                   <div class="item">Company Type</div>
                   <div class="item">Based in</div>
                 </div>
+                <hr class="line">
                 <div class="row" *ngFor="let item of companyView.SubBranches">
                   <div class="item">
                     <div class="image">

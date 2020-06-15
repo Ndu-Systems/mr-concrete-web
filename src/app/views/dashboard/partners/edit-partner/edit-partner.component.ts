@@ -79,8 +79,7 @@ export class EditPartnerComponent implements OnInit {
 
   onSubmit(model: UserProfileUpdateModel) {
     this.updateUser(model);
-    this.messageService.successMassage('Success', 'Partner updated Successfully');
-    this.goBack();
+    this.routeTo.navigate(['/dashboard/view-partner']);
   }
   updateUser(userModel: UserProfileUpdateModel) {
     const modelUpdated = this.userView;
@@ -93,6 +92,7 @@ export class EditPartnerComponent implements OnInit {
     modelUpdated.ModifyUserId = userModel.ModifyUserId;
     this.userService.updateUser(modelUpdated).subscribe(data => {
       if (data.UserId) { }
+      this.messageService.successMassage('Success', 'Partner updated Successfully');
     });
   }
 

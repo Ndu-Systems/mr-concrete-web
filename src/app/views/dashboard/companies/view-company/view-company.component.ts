@@ -22,9 +22,7 @@ export class ViewCompanyComponent implements OnInit {
   };
   constructor(
     private accountService: AccountService,
-    private fb: FormBuilder,
     private companyService: CompanyService,
-    private routeTo: Router,
     private apiService: ApiService
 
   ) { }
