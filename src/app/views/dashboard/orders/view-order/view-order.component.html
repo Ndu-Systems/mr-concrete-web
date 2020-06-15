@@ -1,101 +1,75 @@
-<div class="main">
+<div class="main order">
   <app-banner [subheading]="subheading" [heading]="heading" [actionButton]="actionButton"></app-banner>
   <div class="contianer" *ngIf="order$  | async as order" class="container-table">
     <!-- <pre>
       {{order | json}}
     </pre> -->
-    <div class="main-content">
-      <div class="left">
-        <div class="matrix col-1-of-2">
-          <span>
-            <h1 class="separator">Order information</h1>
-            <div class="basic-info table-1">
-              <mat-card class="card">
-                <span class="table-card col-1-of-1">
-                  <div class="data">
-                    <h1 class="text">
-                      ORD-{{order.OrderNo}}
-                      <span class="span">
-                        order #
-                      </span>
-                    </h1>
-                  </div>
-                </span>
-              </mat-card>
-              <mat-card class="card">
-                <span class="table-card col-1-of-1">
-                  <div class="data">
-                    <h1 class="text">
-                      {{order.Customer?.FirstName}}
-                      {{order.Customer?.LastName}}
-                      <span class="span">
-                        Customer
-                      </span>
-                    </h1>
-                  </div>
-                </span>
-              </mat-card>
-              <mat-card class="card">
-                <span class="table-card col-1-of-1">
-                  <div class="data">
-                    <h1 class="text">
-                      {{order.Address?.AddressLine1}} <br>
-                      {{order.Address?.AddressLine2}}<br>
-                      {{order.Address?.AddressLine3}}<br>
-                      {{order.Address?.Province}}<br>
-                      {{order.Address?.City}}<br>
-                      {{order.Address?.PostalCode}}
-                      <span class="span">
-                        Delivery Address
-                      </span>
-                    </h1>
-                  </div>
-                </span>
-              </mat-card>
+    <div class="order-details">
+      <h1 class="heading">ORD-{{order.OrderNo}}
+        <span class="span">
+          New Order
+        </span>
+      </h1>
+      <div class="items">
+        <mat-tab-group class="tab-group">
+          <mat-tab t-tab label="General info">
+            <div class="item">
+              <h1>
+                Customer
+              </h1>
+              <h1 class="value">
+                {{order.Customer?.FirstName}}
+                {{order.Customer?.LastName}}
+              </h1>
             </div>
-          </span>
 
+            <div class="item">
+              <h1>
+                Delivery Address
 
-          <div class="">
-            <h1 class="separator">Special information</h1>
-            <div class="basic-info table-1">
-              <mat-card class="card">
-                <span class="table-card col-1-of-1">
-                  <div class="data">
-                    <h1 class="text">
-                      {{order.Supplier?.FirstName}}
-                      {{order.Supplier?.LastName}}
-                      <span class="span">
-                        Supplier
-                      </span>
-                    </h1>
-                  </div>
-                </span>
-              </mat-card>
-
-              <mat-card class="card">
-                <span class="table-card col-1-of-1">
-
-
-
-                  <div class="data">
-                    <h1 class="text">
-                      {{order.SpecialInstructions}}
-                      <span class="span">
-                        special instructions
-                      </span>
-                    </h1>
-                  </div>
-
-
-                </span>
-              </mat-card>
+              </h1>
+              <h1 class="value">
+                {{order.Address?.AddressLine1}} <br>
+                {{order.Address?.AddressLine2}}<br>
+                {{order.Address?.AddressLine3}}<br>
+                {{order.Address?.Province}}<br>
+                {{order.Address?.City}}<br>
+                {{order.Address?.PostalCode}}
+              </h1>
             </div>
-          </div>
-        </div>
+          </mat-tab>
+          <mat-tab t-tab label="Special Instructions"  *ngIf="order.SpecialInstructions">
+
+
+            <!-- <div class="item">
+              <h1>
+                Supplier
+
+              </h1>
+              <h1 class="value">
+                {{order.Supplier?.FirstName}}
+                {{order.Supplier?.LastName}}
+              </h1>
+            </div> -->
+
+
+            <div class="item" *ngIf="order.SpecialInstructions">
+              <h1>
+                special instructions
+              </h1>
+              <h1 class="value">
+                {{order.SpecialInstructions}}
+              </h1>
+            </div>
+          </mat-tab>
+        </mat-tab-group>
+
+
+
       </div>
+
       <span>
-        <h1 class="separator">Products</h1>
+        <h1 class="heading">Products</h1>
       </span>
       <div>
         <div class="products" *ngIf="order.Orderroducts">
@@ -172,9 +146,7 @@
               </div>
             </div>
           </div>
-          <h3 class="total">
-            Total: {{order.Total | currency:'R'}}
-          </h3>
+      
 
           <ng-template #notFound>
             <app-placeholder [placeHolder]="placeHolder"></app-placeholder>
@@ -203,6 +175,9 @@
           <!-- <button mat-button class="info">Print Order</button> -->
         </mat-card-actions>
       </div>
+      <h3 class="total">
+        Total: {{order.Total | currency:'R'}}
+      </h3>
     </div>
 
   </div>
