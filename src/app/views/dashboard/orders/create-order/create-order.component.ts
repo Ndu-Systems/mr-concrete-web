@@ -185,7 +185,10 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
   list() {
     this.router.navigate(['/dashboard/orders']);
   }
-  viewOrder() { this.router.navigate(['/dashboard/orders']); }
+  viewOrder() {
+    this.orderService.setViewOrderState(this.createdOrder);
+    this.router.navigate(['dashboard/view-order']);
+  }
   customerChanged(customerId) {
     const customer = this.customers.find(c => c.UserId === customerId);
     if (customer) {
