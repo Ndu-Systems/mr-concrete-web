@@ -1,7 +1,9 @@
 .main {
+  margin: 1rem;
+
   .cart-items {
     display: grid;
-    grid-template-columns: 15% 10% 40% auto;
+    grid-template-columns: 15% 30% 40% auto;
   }
 
   .item {
@@ -25,7 +27,7 @@
 
     .action {
       display: grid;
-      text-align: right;
+      text-align: left;
       grid-template-columns: repeat(2, 50%);
 
       img {
@@ -45,7 +47,6 @@
 
   .actions {
     display: grid;
-    text-align: right;
     grid-template-columns: repeat(2, 50%);
   }
 }
