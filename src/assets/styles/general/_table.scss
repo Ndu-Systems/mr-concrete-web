@@ -38,6 +38,19 @@
       height: 5rem;
       font-size: .8rem;
 
+      &.cta {
+        width: 50%;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 50% auto;
+        .icon {
+          img {
+            height: 3rem;
+            margin: .5rem 0;
+          }
+        }
+      }
+
       .image {
         width: 4rem;
         height: 4rem;

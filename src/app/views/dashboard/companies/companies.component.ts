@@ -58,7 +58,7 @@ export class CompaniesComponent implements OnInit, OnDestroy {
           }
 
           // process sub branches
-          if (data.SubBranches.length > 0) {
+          if (data.SubBranches) {
             data.SubBranches.forEach(sub => {
               this.companies.push(sub);
             });

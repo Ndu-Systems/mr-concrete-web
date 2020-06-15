@@ -10,7 +10,7 @@
 
     </div>
     <div class="table-content">
-      <div class="row" *ngFor="let item of employees"  (click)="onUpdateClick(item)">
+      <div class="row" *ngFor="let item of employees">
         <div class="item">
           <div class="image">
             <!-- <img [src]="item.Images[0].Url" alt="" *ngIf="item.Images" /> -->
@@ -46,7 +46,14 @@
             {{item.CreateDate | date:'fullDate'}}
           </p>
         </div>
-
+        <div class="item cta">
+          <div class="icon" (click)="onUpdateClick(item)">
+            <img src="assets/images/dashboard/action-card/view.svg" alt="feed" class="hl-on">
+           </div>
+          <div class="icon">
+            <img src="assets/images/dashboard/action-card/delete.svg" (click)="deleteItem(item)" alt="feed" class="hl-on">
+           </div>
+        </div>
       </div>
     </div>
 
@@ -103,4 +110,20 @@
       </div>
     </div>
   </div>
+</div>
+<div class="overlay" *ngIf="showConfirmDeleteModal">
+  <div class="overlay-modal">
+    <mat-card class="confirm">
+      <img src="assets/images/dashboard/action-card/delete.svg" alt="delete" class="">
+      <div class="dialog">
+        <h1 class="heading">Are you sure?
+          <span>This record will not be visible on the system.</span>
+        </h1>
+      </div>
+      <div class="cta col-1-of-2">
+        <button type="submit"  class="btn grey" (click)="performDelete()">Yes, delete</button>
+        <button type="submit"   class="btn cta" (click)="showConfirmDeleteModal = !showConfirmDeleteModal">Cancel</button>
+      </div>
+    </mat-card>
+   </div>
 </div>

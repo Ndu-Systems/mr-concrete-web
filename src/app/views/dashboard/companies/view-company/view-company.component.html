@@ -42,7 +42,7 @@
         </div>
         <div class="tab-content">
           <mat-tab-group class="tab-group">
-            <mat-tab t-tab label="Sub branches" *ngIf="companyView.CompanyType === 'HeadQuarters'">
+            <mat-tab t-tab label="Sub branches" *ngIf="companyView.CompanyType === 'HeadQuarters' && companyView.SubBranches">
               <div class="head-content">
                 <button *ngIf="actionButton" mat-flat-button color="primary" (click)="showModal=true">
                   + branch
@@ -80,6 +80,51 @@
                     </div>
                     <div class="item">
                       <p>{{item.City}}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </mat-tab>
+            <mat-tab t-tab label="Company Employees" *ngIf="employees">
+              <div class="table">
+                <div class="header">
+                  <div class="item">FullName</div>
+                  <div class="item">Contact number</div>
+                  <div class="item">Email</div>
+                   <div class="item">Start Date</div>
+                </div>
+                <hr class="line">
+                <div class="table-content">
+                  <div class="row" *ngFor="let item of employees">
+                    <div class="item">
+                      <div class="image">
+                        <!-- <img [src]="item.Images[0].Url" alt="" *ngIf="item.Images" /> -->
+                        <img src="assets/images/dashboard/placeholders/picture.svg" *ngIf="!item.Images"
+                          alt="place holder" />
+                      </div>
+                    </div>
+                    <div class="item">
+                      <p>
+                        <b>{{item.FirstName}} {{item.LastName}}</b>
+                      </p>
+                      <span class="badge">
+                        {{item?.Roles?.RoleName}}
+                      </span>
+                    </div>
+                    <div class="item">
+                      <p>
+                        {{item.Cellphone}}
+                      </p>
+                    </div>
+                    <div class="item">
+                      <p>
+                        {{item.Email}}
+                      </p>
+                    </div>
+                    <div class="item">
+                      <p>
+                        {{item.CreateDate | date:'fullDate'}}
+                      </p>
                     </div>
                   </div>
                 </div>
