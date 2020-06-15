@@ -17,6 +17,9 @@ export class OrderService {
   private orderBehaviorSubject: BehaviorSubject<Order>;
   public orderObservable: Observable<Order>;
 
+  private viewOrderBehaviorSubject: BehaviorSubject<Order>;
+  public viewOrdeObservable: Observable<Order>;
+
 
   constructor(
     private http: HttpClient
@@ -26,6 +29,9 @@ export class OrderService {
 
     this.orderBehaviorSubject = new BehaviorSubject<Order>(JSON.parse(localStorage.getItem('order')) || null);
     this.orderObservable = this.orderBehaviorSubject.asObservable();
+
+    this.viewOrderBehaviorSubject = new BehaviorSubject<Order>(JSON.parse(localStorage.getItem('vieworder')) || null);
+    this.viewOrdeObservable = this.viewOrderBehaviorSubject.asObservable();
     this.url = environment.API_URL;
   }
 
@@ -52,6 +58,12 @@ export class OrderService {
     if (order) {
       this.orderBehaviorSubject.next(order);
       localStorage.setItem('order', JSON.stringify(order));
+    }
+  }
+  setViewOrderState(order: Order) {
+    if (order) {
+      this.viewOrderBehaviorSubject.next(order);
+      localStorage.setItem('vieworder', JSON.stringify(order));
     }
   }
   initOrderState() {

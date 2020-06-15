@@ -53,7 +53,7 @@ export class ListOrdersComponent implements OnInit {
   }
 
   more(order: Order) {
-    this.orderService.setOrderState(order);
+    this.orderService.setViewOrderState(order);
     this.router.navigate(['dashboard/view-order']);
   }
   add() { }

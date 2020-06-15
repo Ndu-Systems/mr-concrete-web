@@ -48,6 +48,6 @@ export class ViewOrderComponent implements OnInit {
 
   ngOnInit() {
     this.currentUser = this.accountService.CurrentUserValue;
-    this.order$ = this.orderService.orderObservable;
+    this.order$ = this.orderService.viewOrdeObservable;
   }
 }
