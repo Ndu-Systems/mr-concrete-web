@@ -8,7 +8,7 @@
       </div>
     </div>
     <div class="item qty">
-      <p> x {{item.Quantity}}</p>
+      <p> {{item.Quantity}}  x {{item.Price | currency:'R'}} / {{item.Units}}</p>
     </div>
     <div class="item details">
       <p>
@@ -25,8 +25,10 @@
         <img (click)="removeItem(item, i)" class="remove-from-cart" src="assets/images/remove-from-cart.svg" alt="" />
       </div>
       <div class="action adjust">
-        <img (click)="adjustItem(item, i, -1)" class="remove-from-cart" src="assets/images/reduce-cart-item.svg" alt="" />
-        <img (click)="adjustItem(item, i, 1)" class="remove-from-cart" src="assets/images/increase-cart-item.svg" alt="" />
+        <img (click)="adjustItem(item, i, -1)" class="remove-from-cart" src="assets/images/reduce-cart-item.svg"
+          alt="" />
+        <img (click)="adjustItem(item, i, 1)" class="remove-from-cart" src="assets/images/increase-cart-item.svg"
+          alt="" />
       </div>
     </div>
   </div>

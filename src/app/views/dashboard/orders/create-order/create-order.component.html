@@ -160,7 +160,7 @@
           check_circle_outline
         </span> {{shopHeadingStatus}}
       </h1>
-   
+
 
       <app-cart-detailed></app-cart-detailed>
 
@@ -205,19 +205,26 @@
         </span>
       </h1>
       <div class="delivery">
-        <div class="image">
+        <!-- <div class="image">
           <img src="assets/images/delivery-date.svg">
-        </div>
+        </div> -->
+        <hr>
+        <div class="col-2">
+          <div class="input-group">
+            <label>Customer</label>
+            <select [(ngModel)]="CustomerId"  (change)="customerChanged($event.target.value)">
+              <option value="Guest">Guest</option>
+              <option [value]="item.UserId" *ngFor="let item of customers" value="Guest">{{item.FirstName}} {{item.LastName}}</option>
+            </select>
+          </div>
 
-        <div class="input-group">
-          <label>Customer</label>
-          <input style="width: 96%;" matInput type="search" [(ngModel)]="Customer" placeholder="Customer name">
-        </div>
-
-        <div class="input-group">
-          <label>Delivery Address</label>
-          <input style="width: 96%;" matInput type="search" [(ngModel)]="DeliveryAddress"
-            placeholder="Customer address">
+          <div class="input-group">
+            <label>Delivery Address</label>
+            <select [(ngModel)]="AddressId">
+              <option value="Guest">Guest</option>
+              <option [value]="item.AddressId" *ngFor="let item of addressess" value="Guest">{{item.City}}, {{item.AddressLine1}}</option>
+            </select>
+          </div>
         </div>
 
 

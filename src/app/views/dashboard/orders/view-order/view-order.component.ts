@@ -6,6 +6,8 @@ import { AccountService, MeasurementService } from 'src/app/_services';
 import { UserModel, Measurement } from 'src/app/_models';
 import { Router } from '@angular/router';
 import { ConfirmationPageModel } from 'src/app/_shared';
+import { OrderService } from 'src/app/_services/dashboard/order.service';
+import { Order } from 'src/app/_models/order.model';
 
 @Component({
   selector: 'app-view-order',
@@ -33,67 +35,19 @@ export class ViewOrderComponent implements OnInit {
     imgUrl: 'assets/images/dashboard/successfully.svg'
 
   };
-  order$: Observable<OrderView>;
+  order$: Observable<Order>;
   order: OrderView;
   currentUser: UserModel;
   measurements;
-  constructor(private concreteorderService: ConcreteorderService,
-              private accountService: AccountService,
-              private measurementService: MeasurementService,
-              private router: Router
+  constructor(
+    private orderService: OrderService,
+    private accountService: AccountService,
+    private measurementService: MeasurementService,
+    private router: Router
   ) { }
 
   ngOnInit() {
     this.currentUser = this.accountService.CurrentUserValue;
-    this.order$ = this.concreteorderService.order;
-    this.measurementService.measurements.subscribe(data => {
-      this.measurements = data;
-    });
-    this.measurementService.getMeasurements();
-    this.concreteorderService.order.subscribe(data => {
-      this.order = data;
-    });
-    console.log(this.measurements);
-  }
-
-  createNewOrder() {
-    this.concreteorderService.createOrder(this.order).subscribe(response => {
-      this.concreteorderService.resetOrder();
-      this.confirmationPageParams.heading = 'Create new order';
-      this.confirmationPageParams.subheading = 'New order created';
-      this.confirmationPageParams.text = 'Thank you for your new order, the relevant stakeholders have been notified.';
-      localStorage.setItem('confirmation', JSON.stringify(this.confirmationPageParams));
-      this.router.navigate(['dashboard/outcome']);
-    });
-  }
-
-  updateOder() {
-    this.concreteorderService.updateOrder(this.order).subscribe(response => {
-      this.concreteorderService.setStateForCurrentOrder(response);
-      localStorage.setItem('confirmation', JSON.stringify(this.confirmationPageParams));
-      this.router.navigate(['dashboard/outcome']);
-    });
-  }
-  edit() {
-    this.order.isBusyWith = true;
-    this.concreteorderService.setStateForCurrentOrder(this.order);
-    this.router.navigate(['dashboard/update-order']);
-
-  }
-  action() {
-    if (this.order.OrderId.length > 5) {
-      this.updateOder();
-      return true;
-    }
-    this.createNewOrder();
-  }
-
-  updateOrderStatus(item: OrderView, statusId: number) {
-    item.StatusId = statusId;
-    this.concreteorderService.updateOrder(item).subscribe(response => {
-      this.concreteorderService.setStateForCurrentOrder(response);
-      localStorage.setItem('confirmation', JSON.stringify(this.confirmationPageParams));
-      this.router.navigate(['dashboard/outcome']);
-    });
+    this.order$ = this.orderService.orderObservable;
   }
 }

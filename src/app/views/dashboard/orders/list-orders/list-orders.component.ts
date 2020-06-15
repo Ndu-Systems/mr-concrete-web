@@ -51,10 +51,10 @@ export class ListOrdersComponent implements OnInit {
     this.orderService.getOrderByUserId(this.currentUser.UserId);
     localStorage.removeItem('confirmation');
   }
-  view(item) {
-    // this.concreteorderService.setStateForCurrentOrder(item);
+
+  more(order: Order) {
+    this.orderService.setOrderState(order);
     this.router.navigate(['dashboard/view-order']);
   }
-  more(item) { }
   add() { }
 }

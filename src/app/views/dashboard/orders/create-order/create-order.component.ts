@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy, EventEmitter, Output } from '@angular/core';
-import { CateroryService, AccountService } from 'src/app/_services';
+import { CateroryService, AccountService, UserService } from 'src/app/_services';
 import { Observable } from 'rxjs';
-import { Caterory, UserModel, Placeholder } from 'src/app/_models';
+import { Caterory, UserModel, Placeholder, AddressModel } from 'src/app/_models';
 import { OrderView, initOrderView } from 'src/app/_models/orderview.model';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators, FormControl, FormArray } from '@angular/forms';
@@ -41,7 +41,7 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
   };
   selectedProduct: Product;
   cartView: boolean;
-  shopHeadingStatus: string;
+  shopHeadingStatus = 'Cart';
   qty = 1;
   total = 0;
   showCheckout: boolean;
@@ -53,12 +53,18 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
   createdOrder: Order;
   SpecialInstructions: string;
   allProducts: Product[];
+  CustomerId = 'Guest';
+  queryUserModel: { StatusId: string; TypeOfUser: string; };
+  customers: UserModel[];
+  addressess: AddressModel[];
+  AddressId: string;
   constructor(
     private cateroryService: CateroryService,
     private accountService: AccountService,
     private productService: ProductService,
     private orderService: OrderService,
     private router: Router,
+    private userService: UserService,
   ) {
   }
 
@@ -85,8 +91,15 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
         this.orderService.initOrderState();
       }
     });
-
-
+    this.queryUserModel = {
+      StatusId: '1',
+      TypeOfUser: 'All'
+    };
+    this.userService.getAllUsers(this.queryUserModel).subscribe(data => {
+      if (data.length > 0) {
+        this.customers = data;
+      }
+    });
   }
 
   addToCart(product: Product) {
@@ -139,12 +152,12 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
       alert('Your cart is empty');
       return false;
     }
-    this.order.CustomerId = '';
+    this.order.CustomerId = this.CustomerId || '';
     this.order.SupplierId = this.currentUser.UserId;
     this.order.ProjectNumber = '';
-    this.order.DeliveryDate = this.DeliveryDate || '';
+    this.order.DeliveryDate = this.DeliveryDate;
     this.order.DeliveryTime = this.DeliveryTime || '';
-    this.order.DeliveryAddress = this.DeliveryAddress || '';
+    this.order.DeliveryAddress = this.AddressId || '';
     this.order.SpecialInstructions = this.SpecialInstructions || '';
     this.order.CrateUserId = this.currentUser.UserId;
 
@@ -173,4 +186,10 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
     this.router.navigate(['/dashboard/orders']);
   }
   viewOrder() { this.router.navigate(['/dashboard/orders']); }
+  customerChanged(customerId) {
+    const customer = this.customers.find(c => c.UserId === customerId);
+    if (customer) {
+      this.addressess = customer.Address;
+    }
+  }
 }
