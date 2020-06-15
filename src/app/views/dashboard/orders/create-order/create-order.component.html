@@ -222,7 +222,7 @@
             <label>Delivery Address</label>
             <select [(ngModel)]="AddressId">
               <option value="Guest">Guest</option>
-              <option [value]="item.UserId" *ngFor="let item of addressess" value="Guest">{{item.City}}, {{item.AddressLine1}}</option>
+              <option [value]="item.AddressId" *ngFor="let item of addressess" value="Guest">{{item.City}}, {{item.AddressLine1}}</option>
             </select>
           </div>
         </div>

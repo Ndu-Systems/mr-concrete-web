@@ -1,6 +1,9 @@
 <div class="main">
   <app-banner [subheading]="subheading" [heading]="heading" [actionButton]="actionButton"></app-banner>
-  <div class="contianer" *ngIf="order" class="container-table">
+  <div class="contianer" *ngIf="order$  | async as order" class="container-table">
+    <!-- <pre>
+      {{order | json}}
+    </pre> -->
     <div class="main-content">
       <div class="left">
         <div class="matrix col-1-of-2">
@@ -11,7 +14,7 @@
                 <span class="table-card col-1-of-1">
                   <div class="data">
                     <h1 class="text">
-                      {{order.OrderNumber}}
+                      ORD-{{order.OrderNo}}
                       <span class="span">
                         order #
                       </span>
@@ -23,9 +26,10 @@
                 <span class="table-card col-1-of-1">
                   <div class="data">
                     <h1 class="text">
-                      {{order.ProjectCode}}
+                      {{order.Customer?.FirstName}}
+                      {{order.Customer?.LastName}}
                       <span class="span">
-                        Project name/number
+                        Customer
                       </span>
                     </h1>
                   </div>
@@ -35,9 +39,14 @@
                 <span class="table-card col-1-of-1">
                   <div class="data">
                     <h1 class="text">
-                      {{order.category?.CategoryName}}
+                      {{order.Address?.AddressLine1}} <br>
+                      {{order.Address?.AddressLine2}}<br>
+                      {{order.Address?.AddressLine3}}<br>
+                      {{order.Address?.Province}}<br>
+                      {{order.Address?.City}}<br>
+                      {{order.Address?.PostalCode}}
                       <span class="span">
-                        order category
+                        Delivery Address
                       </span>
                     </h1>
                   </div>
@@ -54,7 +63,8 @@
                 <span class="table-card col-1-of-1">
                   <div class="data">
                     <h1 class="text">
-                      {{order.supplier?.SupplierName}}
+                      {{order.Supplier?.FirstName}}
+                      {{order.Supplier?.LastName}}
                       <span class="span">
                         Supplier
                       </span>
@@ -62,23 +72,7 @@
                   </div>
                 </span>
               </mat-card>
-              <mat-card class="card">
-                <span class="table-card col-1-of-1">
 
-
-
-                  <div class="data">
-                    <h1 class="text">
-                      {{order.Directions}}
-                      <span class="span">
-                        how to get there
-                      </span>
-                    </h1>
-                  </div>
-
-
-                </span>
-              </mat-card>
               <mat-card class="card">
                 <span class="table-card col-1-of-1">
 
@@ -101,25 +95,90 @@
         </div>
       </div>
       <span>
-        <h1 class="separator">Metrics</h1>
-        <span *ngIf="order.measurements.length > 0 && measurements.length > 0">
-          <div class="measurements table-3">
-            <mat-card class="card" *ngFor="let item of order.measurements">
-              <span class="table-card col-1-of-1">
-                <div class="data">
-                  <h1 class="text">
-                    {{item?.Value}}
-                    <span class="span">
-                      {{item?.MeasurementId | measurename : measurements }}
-                    </span>
-                  </h1>
-                </div>
-              </span>
-            </mat-card>
-          </div>
-        </span>
+        <h1 class="separator">Products</h1>
       </span>
-      <div></div>
+      <div>
+        <div class="products" *ngIf="order.Orderroducts">
+          <div class="table">
+            <div class="header">
+              <div class="item">Product Name</div>
+              <div class="item"> Price</div>
+              <div class="item"> Qty</div>
+              <div class="item"> Total</div>
+            </div>
+            <div class="table-content">
+              <div class="row" *ngFor="let item of order.Orderroducts">
+                <div class="item">
+                  <div class="image">
+                    <img [src]="item.Images[0].Url" alt="" *ngIf="item.Images" />
+                    <img src="assets/images/product-placeholder.svg" *ngIf="!item.Images" alt="" />
+                  </div>
+                </div>
+                <div class="item">
+                  <p>
+                    <b>
+                      {{item.ProductName}}
+                    </b>
+                    <span class="number" *ngIf="item.ProductCode">
+                      Code:<b> {{item.ProductCode}} </b>
+                    </span>
+                  </p>
+                </div>
+
+                <div class="item">
+                  <b class="mt1">
+                    {{item.Price | currency:'R'}}
+                    <span *ngIf="item.Units">
+                      / {{item.Units}}
+                    </span>
+                  </b>
+                </div>
+                <div class="item">
+                  {{item.Quantity}}
+                </div>
+                <div class="item">
+                  {{item.Price*item.Quantity | currency:'R'}}
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="table-mobile">
+            <div class="row" *ngFor="let item of products">
+              <div class="item">
+                <div class="image">
+                  <img [src]="item.Images[0].Url" alt="" *ngIf="item.Images" />
+                  <img src="assets/images/product-placeholder.svg" *ngIf="!item.Images" alt="" />
+                </div>
+              </div>
+              <div class="item">
+                <p>
+                  <b>
+                    {{item.ProductName}}
+                  </b>
+
+                  <span class="price" *ngIf="item.Units">
+                    {{item.Price | currency:'R'}} / {{item.Units}}
+                  </span>
+                </p>
+              </div>
+
+              <div class="item">
+                <button mat-icon-button class="btn" aria-label="Example icon button with a vertical three dot icon"
+                  (click)="addToCart(item)">
+                  <mat-icon>add</mat-icon>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <ng-template #notFound>
+            <app-placeholder [placeHolder]="placeHolder"></app-placeholder>
+          </ng-template>
+        </div>
+
+      </div>
       <div class="actions" *ngIf="currentUser.RoleId !=='3'">
         <h1 class="separator"></h1>
         <button mat-button class="primary" (click)="action()">Looks good, save</button>
@@ -138,7 +197,7 @@
             by
             customer.</button>
           <button mat-button class="success" *ngIf="order.StatusId === 5">Order Complete.</button>
-          <button mat-button class="danger">Cancel order.</button>
+          <!-- <button mat-button class="info">Print Order</button> -->
         </mat-card-actions>
       </div>
     </div>
