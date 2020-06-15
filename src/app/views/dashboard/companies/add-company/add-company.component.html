@@ -53,7 +53,7 @@
                 <select matNativeControl formControlName="Province" #selected
                   (change)='onProvinceSelect(selected.value)'>
                   <option label="--select something --"></option>
-                  <option *ngFor="let item of provinces" [value]="item.id">
+                  <option *ngFor="let item of provinces" [value]="item.name">
                     {{item.name}}
                   </option>
                 </select>
@@ -71,6 +71,13 @@
                 <mat-error *ngIf="!rForm.controls['City'].valid && rForm.controls['City'].touched">
                   City/town is required</mat-error>
               </div>
+            </div>
+            <div class="input-group">
+              <label>Postal Code</label>
+              <input matInput formControlName="PostalCode">
+              <mat-error class="error"
+                *ngIf="!rForm.controls['PostalCode'].valid && rForm.controls['PostalCode'].touched">
+                Postal Code is required</mat-error>
             </div>
           </div>
         </mat-tab>

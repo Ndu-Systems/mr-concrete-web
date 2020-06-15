@@ -20,8 +20,8 @@ export class ViewPartnerComponent implements OnInit {
   showModal: boolean;
   showUpdateModal: boolean;
   actionButton: any = {
-    link: '',
-    label: 'View employees'
+    link: '/dashboard/update-partner',
+    label: 'edit partner'
   };
   constructor(
     private accountService: AccountService,
@@ -38,7 +38,6 @@ export class ViewPartnerComponent implements OnInit {
     this.currentUser = this.accountService.CurrentUserValue;
     this.userView = this.userService.CurrentUserViewValue;
     this.nav = this.apiService.CurrentNav;
-    this.actionButton.link = this.nav.returnUrl;
     this.initializeModel();
   }
 
