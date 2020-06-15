@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { NavigationModel, UserModel, CompanyModel } from 'src/app/_models';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { CompanyService, AccountService, ApiService } from 'src/app/_services';
 import { Router } from '@angular/router';
+import { COMPANY_TYPES_LIST, PROVINCE_LIST, Region } from 'src/app/_shared';
 
 @Component({
   selector: 'app-view-company',
@@ -10,12 +11,14 @@ import { Router } from '@angular/router';
   styleUrls: ['../companies.component.scss']
 })
 export class ViewCompanyComponent implements OnInit {
-  rForm: FormGroup;
   currentUser: UserModel;
   companyView: CompanyModel;
   nav: NavigationModel;
   showModal: boolean;
   showUpdateModal: boolean;
+  companyTypes = COMPANY_TYPES_LIST;
+  provinces = PROVINCE_LIST;
+  subRegions: Region[] = [];
   actionButton: any = {
     link: '/dashboard/edit-company',
     label: 'Edit company'
@@ -32,6 +35,7 @@ export class ViewCompanyComponent implements OnInit {
     this.currentUser = this.accountService.CurrentUserValue;
     this.companyView = this.companyService.CurrentCompanyValue;
   }
+
 
 
 }

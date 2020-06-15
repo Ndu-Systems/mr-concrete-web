@@ -42,13 +42,13 @@
         </div>
         <div class="tab-content">
           <mat-tab-group class="tab-group">
-            <mat-tab t-tab label="Sub branches">
+            <mat-tab t-tab label="Sub branches" *ngIf="companyView.CompanyType === 'HeadQuarters'">
               <div class="head-content">
                 <button *ngIf="actionButton" mat-flat-button color="primary" (click)="showModal=true">
-                  + company
+                  + branch
                 </button>
               </div>
-               <div class="table address" *ngIf="companyView.SubBranches">
+              <div class="table address" *ngIf="companyView.SubBranches">
                 <div class="header">
                   <div class="item">Company name</div>
                   <div class="item">PhoneNumber</div>
@@ -87,5 +87,11 @@
         </div>
       </div>
     </div>
+  </div>
+</div>
+<!-- shows add modal -->
+<div class="overlay" *ngIf="showModal">
+  <div class="overlay-modal">
+    <app-add-company-shared (closeModal)="showModal = $event;"></app-add-company-shared>
   </div>
 </div>

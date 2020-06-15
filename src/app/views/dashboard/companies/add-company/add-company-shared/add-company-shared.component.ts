@@ -1,43 +1,44 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
-import { UserModel, CompanyModel } from 'src/app/_models';
-import { COMPANY_TYPES_LIST, PROVINCE_LIST, Region } from 'src/app/_shared';
-import { CompanyService, AccountService, EmailService, NotificationService } from 'src/app/_services';
-import { Router } from '@angular/router';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Validators, FormControl, FormBuilder, FormGroup } from '@angular/forms';
+import { CompanyService, AccountService, ApiService, NotificationService } from 'src/app/_services';
+import { Region, PROVINCE_LIST, COMPANY_TYPES_LIST } from 'src/app/_shared';
+import { NavigationModel, CompanyModel, UserModel, CompanyQueryModel } from 'src/app/_models';
 
 @Component({
-  selector: 'app-add-company',
-  templateUrl: './add-company.component.html',
-  styleUrls: ['../companies.component.scss']
+  selector: 'app-add-company-shared',
+  templateUrl: './add-company-shared.component.html',
+  styleUrls: ['../../companies.component.scss']
 })
-export class AddCompanyComponent implements OnInit {
-  @Input() userId: string;
+export class AddCompanySharedComponent implements OnInit {
+  @Output() closeModal: EventEmitter<boolean> = new EventEmitter();
 
   rForm: FormGroup;
   currentUser: UserModel;
-  heading = 'Add a Company';
-  subheading = 'Create a new company for your organization';
-  actionButton: any = {
-    link: '/dashboard/companies',
-    label: 'View Companies'
-  };
-
+  companyView: CompanyModel;
+  nav: NavigationModel;
+  showModal: boolean;
+  showUpdateModal: boolean;
   companyTypes = COMPANY_TYPES_LIST;
   provinces = PROVINCE_LIST;
   subRegions: Region[] = [];
-
-
+  actionButton: any = {
+    link: '/dashboard/edit-company',
+    label: 'Edit company'
+  };
   constructor(
     private accountService: AccountService,
     private companyService: CompanyService,
     private fb: FormBuilder,
-    private emailService: EmailService,
-    private routeTo: Router,
+    private apiService: ApiService,
     private messageService: NotificationService
+
+
   ) { }
 
   ngOnInit() {
+    this.nav = this.apiService.CurrentNav;
     this.currentUser = this.accountService.CurrentUserValue;
+    this.companyView = this.companyService.CurrentCompanyValue;
     this.rForm = this.fb.group({
       CompanyEmail: new FormControl(
         null,
@@ -58,7 +59,6 @@ export class AddCompanyComponent implements OnInit {
       StatusId: [1]
     });
   }
-
   loadSubRegions() {
     this.provinces.forEach(item => {
       item.subRegions.forEach(sub => {
@@ -75,12 +75,26 @@ export class AddCompanyComponent implements OnInit {
     this.companyService.addCompany(model).subscribe(data => {
       if (data.CompanyId) {
         this.messageService.successMassage('Company created successfully', 'No action required');
-        this.currentUser.CompanyId = data.CompanyId;
-        if (this.currentUser.Company === null || this.currentUser.Company === undefined) {
-          this.currentUser.Company = data;
+
+        const qry: CompanyQueryModel = {
+          CompanyId: this.currentUser.CompanyId,
+          StatusId: '1',
+          IsDeleted: false
+        };
+        this.companyService.getById(qry);
+        const existingCompany = this.companyService.CurrentCompanyValue;
+        if (!existingCompany.SubBranches) {
+          existingCompany.SubBranches = [];
         }
-        this.accountService.updateUserState(this.currentUser);
-       }
+        existingCompany.SubBranches.push(data);
+        this.companyService.updateCompanyState(existingCompany);
+        this.closeModal.emit(false);
+      }
     });
   }
+
+  cancel() {
+    this.closeModal.emit(false);
+  }
+
 }
