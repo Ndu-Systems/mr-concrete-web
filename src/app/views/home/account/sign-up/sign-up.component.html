@@ -1,6 +1,27 @@
 <div class="account-container">
   <form class="form" [formGroup]="rForm">
-    <h1 class="form-heading">Register a new customer account.</h1>
+    <span class="" *ngIf="!selectedType">
+      <h1 class="form-heading">Before we continue
+        <span>
+          Give us, purpose for using this system
+        </span>
+      </h1>
+      <div class="select-cards" >
+        <mat-card class="select-card-item" *ngIf="supplierType" (click)="onUserTypeClick(supplierType)">
+          <div class="content">
+            <img src="assets/images/home/supply.svg" alt="supplier image">
+            <h1 class="label">{{supplierType.description}}</h1>
+          </div>
+        </mat-card>
+        <mat-card class="select-card-item" *ngIf="customerType" (click)="onUserTypeClick(customerType)">
+          <div class="content">
+            <img src="assets/images/home/buy.svg" alt="customer image">
+            <h1 class="label">{{customerType.description}}</h1>
+          </div>
+        </mat-card>
+      </div>
+    </span>
+    <h1 class="form-heading">Register your free account.</h1>
     <span class="col-1-of-2">
       <mat-form-field appearance="outline">
         <input matInput placeholder="Name" formControlName="FirstName" MatFormFieldControl type="text" required>
@@ -16,7 +37,8 @@
     <mat-form-field appearance="outline">
       <input matInput placeholder="Cellphone number" formControlName="Cellphone" MatFormFieldControl type="number"
         required>
-      <mat-error *ngIf="!rForm.controls['Cellphone'].valid && rForm.controls['Cellphone'].touched">a valid Cellphone is
+      <mat-error *ngIf="!rForm.controls['Cellphone'].valid && rForm.controls['Cellphone'].touched">a valid Cellphone
+        is
         required</mat-error>
     </mat-form-field>
     <mat-form-field appearance="outline">
@@ -51,5 +73,6 @@
     <mat-error *ngIf="error">
       {{error}}
     </mat-error>
+
   </form>
 </div>

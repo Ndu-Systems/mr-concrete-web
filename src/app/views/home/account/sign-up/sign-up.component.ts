@@ -16,16 +16,18 @@ export class SignUpComponent implements OnInit {
   hidePassword = true;
   error: string;
   isSupplier: boolean;
-  accessRoles: any[] = [
+  customerType =
     {
-      description: 'I am an engineer',
-      role: Roles.ENGINEER
-    },
-    {
-      description: 'I am a supplier',
-      role: Roles.SUPPLIER
-    }
-  ];
+      description: 'Customer',
+      role: Roles.CUSTOMER
+    };
+
+  supplierType = {
+    description: 'Supplier',
+    role: Roles.SUPPLIER
+  };
+
+  selectedType: string;
   constructor(
     private fb: FormBuilder,
     private accountService: AccountService,
@@ -48,19 +50,18 @@ export class SignUpComponent implements OnInit {
       Cellphone: [null, Validators.required],
       FirstName: [null, Validators.required],
       LastName: [null, Validators.required],
-      TypeOfUser: ['Customer'],
+      TypeOfUser: [null],
       CreateUserId: ['sys'],
       ModifyUserId: ['sys'],
     });
   }
   onUserTypeClick(typeOfUser) {
-    if (typeOfUser === Roles.SUPPLIER) {
-      this.isSupplier = !this.isSupplier;
-    } else { this.isSupplier = false; }
+    this.rForm.value.TypeOfUser = typeOfUser.role;
+    this.selectedType = typeOfUser.role;
   }
 
   onSubmit(model: SignUpModel) {
-
+    model.TypeOfUser = this.selectedType;
     this.accountService.signUp(model)
       .pipe(first())
       .subscribe(data => {
