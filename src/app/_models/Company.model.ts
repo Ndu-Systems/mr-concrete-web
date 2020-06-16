@@ -1,3 +1,5 @@
+import { Product } from './product.model';
+
 export class CompanyModel {
   CompanyId: string;
   CompanyName: string;
@@ -16,6 +18,7 @@ export class CompanyModel {
   IsDeleted: boolean;
   StatusId: string;
   SubBranches?: CompanyModel[];
+  Products?: Product[];
 }
 
 export interface CompanyQueryModel {

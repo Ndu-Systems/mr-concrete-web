@@ -11,7 +11,7 @@
             Dashboard
           </div>
         </a></li>
-      <li>
+      <li *ngIf="!isCustomer">
         <a routerLink="/dashboard/products" routerLinkActive="active-link">
           <div class="nav-item">
             <img src="assets/images/dashboard/nav/products.svg" alt="feed" class="hl-on">

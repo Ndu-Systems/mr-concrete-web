@@ -44,7 +44,7 @@ export class ProductService {
   }
 
 
-  getProductsByUserId(userId) {
+  getProductsByCompanyId(userId) {
     return this.http.get<any>(`${this.url}/api/product/get-products-for-supplier.php?UserId=${userId}`).subscribe(resp => {
       const products: Product[] = resp;
       this.updateState(products);

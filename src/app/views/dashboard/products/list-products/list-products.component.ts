@@ -38,7 +38,7 @@ export class ListProductsComponent implements OnInit {
   ngOnInit() {
     this.user = this.accountService.CurrentUserValue;
     this.products$ = this.productService.products;
-    this.productService.getProductsByUserId(this.user.UserId);
+    this.productService.getProductsByCompanyId(this.user.CompanyId);
 
 
   }

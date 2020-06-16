@@ -38,7 +38,7 @@ export class CreateProductComponent implements OnInit {
     this.currentUser = this.accountService.CurrentUserValue;
     this.rForm = this.fb.group({
       ProductId: [null],
-      UserId: [this.currentUser.UserId, Validators.required],
+      CompanyId: [this.currentUser.CompanyId, Validators.required],
       ProductName: [null, Validators.required],
       ShortDescription: [''],
       Description: [''],

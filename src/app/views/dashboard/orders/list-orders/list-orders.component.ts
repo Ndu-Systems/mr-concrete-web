@@ -50,6 +50,12 @@ export class ListOrdersComponent implements OnInit {
     this.orders$ = this.orderService.ordersObservable;
     this.orderService.getOrderByUserId(this.currentUser.UserId);
     localStorage.removeItem('confirmation');
+    if (this.currentUser.Roles.RoleName === 'Customer') {
+      this.actionButton = {
+        link: '/dashboard/create-customer-order',
+        label: 'Create Order'
+      };
+    }
   }
 
   more(order: Order) {

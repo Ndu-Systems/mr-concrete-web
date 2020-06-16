@@ -1,0 +1,35 @@
+<div class="suppliers" *ngIf="companies$  | async as companies">
+  <span *ngIf="showAllItems">
+    <h1 class="heading">
+      Select a supplier
+    </h1>
+    <div class="items">
+      <div class="item" *ngFor="let item of companies">
+        <div class="span" (click)="select(item)">
+          <div class="image">
+            <img [src]="item.Images[0].Url" alt="" *ngIf="item.Images" />
+            <img src="assets/images/supplier-placeholder.svg" *ngIf="!item.Images" alt="" />
+          </div>
+          <div class="name">
+            <p>
+              {{item.CompanyName}}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </span>
+
+  <span *ngIf="showSelectedItem && selectCompany">
+    <div class="cover">
+      <img src="assets/images/supplier-placeholder.svg" />
+      <h1 class="name">
+        {{selectCompany.CompanyName}}
+        <span (click)="changeCompany()">
+          Change company
+        </span>
+      </h1>
+    </div>
+  </span>
+
+</div>

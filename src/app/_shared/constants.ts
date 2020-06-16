@@ -100,6 +100,8 @@ export const COMPANIES_VIEW = 'Companies';
 export const USER_VIEW = 'userView';
 export const ADDRESS_VIEW = 'addressView';
 export const ADDRESSLIST_VIEW = 'addressListView';
+export const DETAILED_COMPANIES = 'detailedCompanies';
+export const DETAILED_COMPANY = 'detailedCompany';
 
 export const STATUSES = {
   PENDING: 1,
