@@ -153,7 +153,7 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
       return false;
     }
     this.order.CustomerId = this.CustomerId || '';
-    this.order.SupplierId = this.currentUser.UserId;
+    this.order.SupplierId = this.currentUser.CompanyId || '';
     this.order.ProjectNumber = '';
     this.order.DeliveryDate = this.DeliveryDate;
     this.order.DeliveryTime = this.DeliveryTime || '';
