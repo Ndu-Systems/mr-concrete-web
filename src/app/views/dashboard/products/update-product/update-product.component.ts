@@ -54,7 +54,7 @@ export class UpdateProductComponent implements OnInit {
       if (this.product) {
         this.rForm = this.fb.group({
           ProductId: [this.product.ProductId],
-          UserId: [this.currentUser.UserId, Validators.required],
+          CompanyId: [this.currentUser.CompanyId, Validators.required],
           ProductName: [this.product.ProductName, Validators.required],
           ShortDescription: [this.product.ShortDescription],
           Description: [this.product.Description],
