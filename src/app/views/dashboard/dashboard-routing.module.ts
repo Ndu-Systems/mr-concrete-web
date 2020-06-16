@@ -18,7 +18,8 @@ import {
   StatsComponent,
   BannerTutorialComponent,
   SetUpProgressComponent,
-  ActionCardComponent
+  ActionCardComponent,
+  ConfirmDialogComponent
 } from './shared';
 import {
   PartnersComponent,
@@ -64,7 +65,14 @@ import {
   ViewEmployeeComponent
 } from './employees';
 import { CartViewComponent } from './orders/cart-view/cart-view.component';
-import { CompaniesComponent, ListCompaniesComponent, EditCompanyComponent, AddCompanyComponent, ViewCompanyComponent, AddCompanySharedComponent } from './companies';
+import {
+  CompaniesComponent,
+  ListCompaniesComponent,
+  EditCompanyComponent,
+  AddCompanyComponent,
+  ViewCompanyComponent,
+  AddCompanySharedComponent
+} from './companies';
 import { FormatOrderproductPipeCustomer } from 'src/app/_pipes/format-dashboard-options.pipe-customer';
 import {
   AddressComponent,
@@ -170,6 +178,7 @@ export const declarations = [
   AddCompanyComponent,
   ViewCompanyComponent,
   AddCompanySharedComponent,
+  ConfirmDialogComponent,
   // Pipes
   MeasurenamePipe,
   FormatOrderproductPipeCustomer,

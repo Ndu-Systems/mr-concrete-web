@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { UserQueryModel, UserModel, Placeholder, NavigationModel } from 'src/app/_models';
+import { UserQueryModel, UserModel, Placeholder, NavigationModel, ConfirmModel } from 'src/app/_models';
 import { UserService, NotificationService, ApiService } from 'src/app/_services';
 import { USER_TYPES } from '../shared';
 import { Router } from '@angular/router';
@@ -25,6 +25,13 @@ export class EmployeesComponent implements OnInit, OnDestroy {
     message: 'No employees found.',
     link: '/dashboard/add-employee',
     linkLabel: 'Add employee'
+  };
+
+  confirmModel: ConfirmModel = {
+    Heading: 'Are you sure?',
+    Description: 'This record will not be visible on the system.',
+    ButtonLabel: 'Yes, delete',
+    Image: 'assets/images/dashboard/action-card/delete.svg'
   };
 
   private onDestroy$ = new Subject<boolean>();
@@ -95,7 +102,7 @@ export class EmployeesComponent implements OnInit, OnDestroy {
   deleteItem(item) {
     this.itemToDelete = item;
     this.showConfirmDeleteModal = !this.showConfirmDeleteModal;
-   }
+  }
   performDelete() {
     this.itemToDelete.StatusId = '2'; // inactive status
     this.userService.updateUser(this.itemToDelete).subscribe(data => {

@@ -5,5 +5,6 @@ export * from './stats';
 export * from './set-up-progress';
 export * from './action-card';
 export * from './constants';
-// end:ng42.barrel
+export * from './confirm-dialog';
+ // end:ng42.barrel
 

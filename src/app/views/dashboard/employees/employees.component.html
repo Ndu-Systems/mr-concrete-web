@@ -111,19 +111,4 @@
     </div>
   </div>
 </div>
-<div class="overlay" *ngIf="showConfirmDeleteModal">
-  <div class="overlay-modal">
-    <mat-card class="confirm">
-      <img src="assets/images/dashboard/action-card/delete.svg" alt="delete" class="">
-      <div class="dialog">
-        <h1 class="heading">Are you sure?
-          <span>This record will not be visible on the system.</span>
-        </h1>
-      </div>
-      <div class="cta col-1-of-2">
-        <button type="submit"  class="btn grey" (click)="performDelete()">Yes, delete</button>
-        <button type="submit"   class="btn cta" (click)="showConfirmDeleteModal = !showConfirmDeleteModal">Cancel</button>
-      </div>
-    </mat-card>
-   </div>
-</div>
+<app-confirm-dialog [showConfirmDeleteModal]="showConfirmDeleteModal" [confirm]="confirmModel" (ConfirmAction)="performDelete()" (CancelAction)="showConfirmDeleteModal = !showConfirmDeleteModal"></app-confirm-dialog>
