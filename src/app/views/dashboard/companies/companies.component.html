@@ -1,5 +1,8 @@
 <div class="main">
   <app-banner [subheading]="subheading" [heading]="heading" [actionButton]="actionButton"></app-banner>
-  <app-list-companies [companies]="companies">
+  <app-list-companies
+  [companies]="companies"
+  (deletionCompleted)="onDeletion($event)"
+  (currentUser)="currentUser">
   </app-list-companies>
 </div>

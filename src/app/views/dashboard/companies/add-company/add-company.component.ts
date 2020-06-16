@@ -80,7 +80,10 @@ export class AddCompanyComponent implements OnInit {
           this.currentUser.Company = data;
         }
         this.accountService.updateUserState(this.currentUser);
-       }
+        this.routTo();
+      }
     });
   }
+
+  routTo() { this.routeTo.navigate([this.actionButton.link]); }
 }

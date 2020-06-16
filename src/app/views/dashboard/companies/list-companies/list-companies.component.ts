@@ -1,7 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { CompanyModel, Placeholder, NavigationModel } from 'src/app/_models';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { CompanyModel, Placeholder, NavigationModel, ConfirmModel, UserModel } from 'src/app/_models';
 import { Router } from '@angular/router';
-import { ApiService, NotificationService, UserService, CompanyService } from 'src/app/_services';
+import { ApiService, NotificationService, UserService, CompanyService, AccountService } from 'src/app/_services';
 
 @Component({
   selector: 'app-list-companies',
@@ -10,20 +10,38 @@ import { ApiService, NotificationService, UserService, CompanyService } from 'sr
 })
 export class ListCompaniesComponent implements OnInit {
   @Input() companies: CompanyModel[];
+  @Input() currentUser: UserModel;
+
+  @Output() deletionCompleted: EventEmitter<CompanyModel> = new EventEmitter();
+
+  itemToDelete: CompanyModel;
+
   placeHolder: Placeholder = {
     imageUrl: 'assets/images/dashboard/placeholders/default.svg',
     message: 'No companies found.',
     link: '/dashboard/add-company',
     linkLabel: 'Add company'
   };
+  confirmModel: ConfirmModel = {
+    Heading: 'Are you sure?',
+    Description: 'This record will not be visible on the system.',
+    ButtonLabel: 'Yes, delete',
+    Image: 'assets/images/dashboard/action-card/delete.svg'
+  };
+
+  showConfirmDeleteModal: boolean;
+
   constructor(
     private userService: UserService,
     private apiService: ApiService,
+    private accountService: AccountService,
     private companyService: CompanyService,
+    private messageService: NotificationService,
     private routTo: Router
   ) { }
 
   ngOnInit() {
+
   }
   onCardClick(item: CompanyModel) {
     this.companyService.updateCompanyState(item);
@@ -35,4 +53,20 @@ export class ListCompaniesComponent implements OnInit {
     this.apiService.updateNavState(nav);
     this.routTo.navigate(['/dashboard/view-company']);
   }
+
+  deleteItem(item) {
+    this.itemToDelete = item;
+    this.showConfirmDeleteModal = !this.showConfirmDeleteModal;
+  }
+
+  performDelete() {
+    this.itemToDelete.IsDeleted = true;
+    this.itemToDelete.StatusId = '2'; // inactive status
+    this.companyService.updateCompany(this.itemToDelete).subscribe(data => {
+      this.messageService.dangerMessage('Record deleted', 'Record has been deleted');
+      this.deletionCompleted.emit(this.itemToDelete);
+      this.showConfirmDeleteModal = !this.showConfirmDeleteModal;
+    });
+  }
+
 }

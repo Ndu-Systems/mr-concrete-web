@@ -7,7 +7,7 @@
      <div class="item">Based in</div>
    </div>
    <div class="table-content">
-    <div class="row" *ngFor="let item of companies" (click)="onCardClick(item)">
+    <div class="row" *ngFor="let item of companies">
       <div class="item">
         <div class="image">
           <!-- <img [src]="item.Images[0].Url" alt="" *ngIf="item.Images" /> -->
@@ -29,9 +29,19 @@
       <div class="item">
         <p>{{item.City}}</p>
       </div>
+      <div class="item cta">
+        <div class="icon" (click)="onCardClick(item)">
+          <img src="assets/images/dashboard/action-card/view.svg" alt="feed" class="hl-on">
+         </div>
+        <div class="icon">
+          <img src="assets/images/dashboard/action-card/delete.svg" (click)="deleteItem(item)" alt="feed" class="hl-on">
+         </div>
+      </div>
     </div>
    </div>
  </div>
  <ng-template #notFound>
   <app-placeholder [placeHolder]="placeHolder"></app-placeholder>
 </ng-template>
+
+<app-confirm-dialog [showConfirmDeleteModal]="showConfirmDeleteModal" [confirm]="confirmModel" (ConfirmAction)="performDelete()" (CancelAction)="showConfirmDeleteModal = !showConfirmDeleteModal"></app-confirm-dialog>

@@ -4,7 +4,7 @@
   height: 60vh;
 
   .header {
-    grid-template-columns: 20% 15% 20% 20% auto;
+    grid-template-columns: 20% 15% 15% 10% 20% auto;
   }
 
   .table-content {
@@ -14,9 +14,8 @@
   }
 
   .row {
-    grid-template-columns: 5% 15% 15% 20% 20% auto;
-    cursor: pointer;
-  }
+    grid-template-columns: 5% 15% 15% 15% 10% 20% auto;
+   }
 }
 
 .main {

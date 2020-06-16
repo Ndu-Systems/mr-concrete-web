@@ -36,9 +36,7 @@ export class CompaniesComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.currentUser = this.accountService.CurrentUserValue;
-
     this.getCompanies();
-
   }
 
   getCompanies() {
@@ -56,7 +54,6 @@ export class CompaniesComponent implements OnInit, OnDestroy {
           } else {
             this.companies.push(data);
           }
-
           // process sub branches
           if (data.SubBranches) {
             data.SubBranches.forEach(sub => {
@@ -65,11 +62,15 @@ export class CompaniesComponent implements OnInit, OnDestroy {
           }
 
         });
-
         this.companyService.updateCompaniesState(this.companies);
       }
 
     });
+  }
+
+  onDeletion(event: CompanyModel) {
+    this.companies = this.companies.filter(c => c !== event);
+    this.companyService.updateCompaniesState(this.companies);
   }
 
 }
