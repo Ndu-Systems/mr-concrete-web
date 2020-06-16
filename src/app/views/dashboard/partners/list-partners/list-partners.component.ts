@@ -1,6 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { UserModel, UserQueryModel, Placeholder, NavigationModel } from 'src/app/_models';
-import { UserService, ApiService } from 'src/app/_services';
+import { UserService, ApiService, NotificationService } from 'src/app/_services';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,6 +12,9 @@ export class ListPartnersComponent implements OnInit {
   @Input() selectedList: UserModel[] = [];
   @Input() isSelected: boolean;
   nav: NavigationModel;
+  @Output() deletionCompleted: EventEmitter<UserModel> = new EventEmitter();
+
+  itemToDelete: UserModel;
   placeHolder: Placeholder = {
     imageUrl: 'assets/images/dashboard/placeholders/partner.svg',
     message: 'No partners found in our system.',
@@ -19,9 +22,13 @@ export class ListPartnersComponent implements OnInit {
     linkLabel: 'Create new partner'
   };
 
+  showConfirmDeleteModal: boolean;
+
   constructor(
     private userService: UserService,
     private routeTo: Router,
+    private messageService: NotificationService,
+
     private navigateService: ApiService) { }
 
   ngOnInit() {
@@ -38,5 +45,19 @@ export class ListPartnersComponent implements OnInit {
     this.navigateService.updateNavState(navigation);
     this.userService.updateUserViewState(item);
     this.routeTo.navigate(['/dashboard/view-partner']);
+  }
+
+  deleteItem(item) {
+    this.itemToDelete = item;
+    this.showConfirmDeleteModal = !this.showConfirmDeleteModal;
+  }
+
+  performDelete() {
+    this.itemToDelete.StatusId = '2';
+    this.userService.updateUser(this.itemToDelete).subscribe(data => {
+      this.messageService.dangerMessage('Record deleted', 'Record has been deleted');
+      this.deletionCompleted.emit(data);
+      this.showConfirmDeleteModal = !this.showConfirmDeleteModal;
+    });
   }
 }

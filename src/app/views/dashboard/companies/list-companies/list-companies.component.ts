@@ -32,9 +32,7 @@ export class ListCompaniesComponent implements OnInit {
   showConfirmDeleteModal: boolean;
 
   constructor(
-    private userService: UserService,
     private apiService: ApiService,
-    private accountService: AccountService,
     private companyService: CompanyService,
     private messageService: NotificationService,
     private routTo: Router

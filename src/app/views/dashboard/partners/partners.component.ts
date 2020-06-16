@@ -23,7 +23,7 @@ export class PartnersComponent implements OnInit {
   customerCount: string;
   roles = SYSTEM_ROLES;
   selectedList: UserModel[];
-  isSelected:boolean;
+  isSelected: boolean;
   actionButton: ActionButton = {
     link: '/dashboard/add-partner',
     label: '+ partner'
@@ -52,6 +52,10 @@ export class PartnersComponent implements OnInit {
   ngOnInit() {
     this.partnerActions = PARTNERS_CONSTANTS;
     this.currentUser = this.accountService.CurrentUserValue;
+    this.getAllPartners();
+  }
+
+  getAllPartners() {
     this.queryUserModel = {
       StatusId: '1',
       TypeOfUser: 'All'
@@ -88,29 +92,13 @@ export class PartnersComponent implements OnInit {
     if (event === '3') { this.selectedList = this.suppliers; } else {
       this.selectedList = this.customers;
     }
+    this.userService.updateUsersViewState(this.selectedList);
     this.isSelected = true;
 
   }
-  updatePartner(supplier: Supplier) {
 
+  onDeletion(event: UserModel) {
+    this.getAllPartners();
   }
-
-  archivePartner(supplier: Supplier) {
-    this.confirmationService.confirm({
-      message: 'Are you sure that you want to proceed?',
-      header: 'Confirmation Action',
-      icon: 'pi pi-exclamation-triangle',
-      accept: () => {
-        supplier.StatusId = '2';
-        supplier.ModifyUserId = this.currentUser.UserId;
-        this.msgs = [{ severity: 'warn', summary: 'Archived', detail: 'Supplier successfully archived.' }];
-      },
-      reject: () => {
-        this.msgs = [{ severity: 'info', summary: 'Rejected', detail: 'Have rejected the archive action' }];
-      }
-    });
-  }
-
-
 
 }

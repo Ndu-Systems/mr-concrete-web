@@ -5,14 +5,16 @@ import { UserModel, EmailGetRequestModel, UserQueryModel } from 'src/app/_models
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
-import { USER_VIEW } from 'src/app/_shared';
+import { USER_VIEW, USERLIST_VIEW } from 'src/app/_shared';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
   private _user: BehaviorSubject<UserModel>;
+  private _users: BehaviorSubject<UserModel[]>;
   private user: Observable<UserModel>;
+  private users: Observable<UserModel[]>;
   url: string;
 
   constructor(
@@ -21,13 +23,20 @@ export class UserService {
     private routTo: Router
   ) {
     this._user = new BehaviorSubject<UserModel>(JSON.parse(localStorage.getItem(USER_VIEW)));
+    this._users = new BehaviorSubject<UserModel[]>(JSON.parse(localStorage.getItem(USERLIST_VIEW)));
     this.user = this._user.asObservable();
+    this.users = this._users.asObservable();
     this.url = environment.API_URL;
   }
 
   public get CurrentUserViewValue(): UserModel {
     return this._user.value;
   }
+updateUsersViewState(users: UserModel[]) {
+  this._users.next(users);
+  localStorage.setItem(USERLIST_VIEW, JSON.stringify(users));
+}
+
   updateUserViewState(user: UserModel) {
     this._user.next(user);
     localStorage.setItem(USER_VIEW, JSON.stringify(user));
