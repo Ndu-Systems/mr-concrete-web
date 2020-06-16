@@ -1,24 +1,22 @@
-import { Component, OnInit, OnDestroy, EventEmitter, Output } from '@angular/core';
-import { CateroryService, AccountService, UserService } from 'src/app/_services';
+import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Caterory, UserModel, Placeholder, AddressModel } from 'src/app/_models';
-import { OrderView, initOrderView } from 'src/app/_models/orderview.model';
-import { Router } from '@angular/router';
-import { FormGroup, FormBuilder, Validators, FormControl, FormArray } from '@angular/forms';
-import { Product } from 'src/app/_models/product.model';
-import { ProductService } from 'src/app/_services/dashboard/product.service';
-import { Orderproduct } from 'src/app/_models/orderproduct .model';
+import { Caterory, UserModel, AddressModel, Placeholder, CompanyModel } from 'src/app/_models';
 import { Order } from 'src/app/_models/order.model';
+import { Product } from 'src/app/_models/product.model';
+import { Orderproduct } from 'src/app/_models/orderproduct .model';
+import { CateroryService, AccountService, UserService, CompanyService } from 'src/app/_services';
+import { ProductService } from 'src/app/_services/dashboard/product.service';
 import { OrderService } from 'src/app/_services/dashboard/order.service';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-create-order',
-  templateUrl: './create-order.component.html',
-  styleUrls: ['./create-order.component.scss']
+  selector: 'app-create-customer-order',
+  templateUrl: './create-customer-order.component.html',
+  styleUrls: ['./create-customer-order.component.scss']
 })
-export class CreateOrderComponent implements OnInit, OnDestroy {
+export class CreateCustomerOrderComponent implements OnInit {
 
-  @Output() orderToCreateEmitter: EventEmitter<OrderView> = new EventEmitter<OrderView>();
+
   catergories$: Observable<Caterory[]>;
   order: Order;
   currentUser: UserModel;
@@ -58,6 +56,8 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
   customers: UserModel[];
   addressess: AddressModel[];
   AddressId: string;
+  supplier: CompanyModel;
+  companyId: string;
   constructor(
     private cateroryService: CateroryService,
     private accountService: AccountService,
@@ -65,15 +65,16 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
     private orderService: OrderService,
     private router: Router,
     private userService: UserService,
+    private companyService: CompanyService
   ) {
   }
 
   ngOnInit() {
     this.currentUser = this.accountService.CurrentUserValue;
+    this.addressess = this.currentUser.Address;
     this.catergories$ = this.cateroryService.categories;
     this.cateroryService.getCateries();
     this.products$ = this.productService.products;
-    this.productService.getProductsByCompanyId(this.currentUser.CompanyId);
     this.productService.products.subscribe(products => {
       if (products) {
         this.allProducts = products;
@@ -98,6 +99,12 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
     this.userService.getAllUsers(this.queryUserModel).subscribe(data => {
       if (data.length > 0) {
         this.customers = data;
+      }
+    });
+
+    this.companyService.detailedCompanyObservable.subscribe(company => {
+      if (company && company.CompanyId) {
+        this.companyId = company.CompanyId;
       }
     });
   }
@@ -152,8 +159,8 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
       alert('Your cart is empty');
       return false;
     }
-    this.order.CustomerId = this.CustomerId || '';
-    this.order.SupplierId = this.currentUser.CompanyId || '';
+    this.order.CustomerId = this.currentUser.UserId || '';
+    this.order.SupplierId = this.companyId;
     this.order.ProjectNumber = '';
     this.order.DeliveryDate = this.DeliveryDate;
     this.order.DeliveryTime = this.DeliveryTime || '';
@@ -195,4 +202,5 @@ export class CreateOrderComponent implements OnInit, OnDestroy {
       this.addressess = customer.Address;
     }
   }
+
 }

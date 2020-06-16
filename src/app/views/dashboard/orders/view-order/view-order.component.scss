@@ -56,11 +56,16 @@
       }
 
       &.value {
-        font-size: 0.85rem;
-        font-weight: 600;
+        font-size: 0.95rem;
+        font-weight: 500;
         color: $grey;
         width: 60%;
       }
+    }
+    .items{
+      display: grid;
+      grid-template-columns: repeat(2, 50%);
+      padding: 2rem;
     }
   }
 }
@@ -68,3 +73,4 @@
 .table .table-content {
   height: auto;
 }
+

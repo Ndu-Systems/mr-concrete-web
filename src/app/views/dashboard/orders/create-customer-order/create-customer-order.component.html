@@ -1,0 +1,301 @@
+<div class="main">
+  <app-banner [subheading]="subheading" [heading]="heading" [actionButton]="actionButton"></app-banner>
+  <div class="select-supplier">
+    <app-select-supplier></app-select-supplier>
+  </div>
+  <div class="create-product-form form">
+
+
+    <div class="products" *ngIf="products$  | async as products">
+      <span *ngIf="products.length > 0; else notFound">
+        <div class="label">Filter products by <b>catergories</b></div>
+
+        <div class="catergories-tab" *ngIf="catergories$ | async as catergories">
+
+          <div class="catergory catergory-active">
+            All
+          </div>
+          <div *ngFor="let catergory of catergories" class="list-catergories">
+            <div class="catergory">
+              {{catergory.CategoryName}}
+            </div>
+          </div>
+        </div>
+        <div class="table">
+          <div class="header">
+            <div class="item">Product Name</div>
+            <div class="item"> Price</div>
+            <div class="item"> Category</div>
+            <div class="item"> </div>
+          </div>
+          <div class="table-content">
+            <div class="row" *ngFor="let item of products">
+              <div class="item">
+                <div class="image">
+                  <img [src]="item.Images[0].Url" alt="" *ngIf="item.Images" />
+                  <img src="assets/images/product-placeholder.svg" *ngIf="!item.Images" alt="" />
+                </div>
+              </div>
+              <div class="item">
+                <p>
+                  <b>
+                    {{item.ProductName}}
+                  </b>
+                  <span class="number" *ngIf="item.ProductCode">
+                    Code:<b> {{item.ProductCode}} </b>
+                  </span>
+                </p>
+              </div>
+
+              <div class="item">
+                <b class="mt1">
+                  {{item.Price | currency:'R'}}
+                  <span *ngIf="item.Units">
+                    / {{item.Units}}
+                  </span>
+                </b>
+              </div>
+              <div class="item" *ngIf="item.Category">
+                {{item.Category.CategoryName}}
+              </div>
+              <div class="item" *ngIf="!item.Category">
+                <span class="small-text">No Category</span>
+              </div>
+              <div class="item">
+                <button mat-icon-button class="btn btn-med"
+                  aria-label="Example icon button with a vertical three dot icon" (click)="addToCart(item)">
+                  <mat-icon>add</mat-icon> Select
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="table-mobile">
+          <div class="row" *ngFor="let item of products">
+            <div class="item">
+              <div class="image">
+                <img [src]="item.Images[0].Url" alt="" *ngIf="item.Images" />
+                <img src="assets/images/product-placeholder.svg" *ngIf="!item.Images" alt="" />
+              </div>
+            </div>
+            <div class="item">
+              <p>
+                <b>
+                  {{item.ProductName}}
+                </b>
+
+                <span class="price" *ngIf="item.Units">
+                  {{item.Price | currency:'R'}} / {{item.Units}}
+                </span>
+              </p>
+            </div>
+
+            <div class="item">
+              <button mat-icon-button class="btn" aria-label="Example icon button with a vertical three dot icon"
+                (click)="addToCart(item)">
+                <mat-icon>add</mat-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+      </span>
+
+
+      <ng-template #notFound>
+        <!-- <app-placeholder [placeHolder]="placeHolder"></app-placeholder> -->
+      </ng-template>
+    </div>
+
+  </div>
+</div>
+<div class="overlay" *ngIf="selectedProduct">
+  <div class="overlay-modal" *ngIf="!cartView">
+    <div class="image main-product-image">
+      <img *ngIf="selectedProduct.Images" [src]="selectedProduct.Images[0].Url" alt="">
+      <img *ngIf="!selectedProduct.Images" src="assets/images/product-placeholder.svg" alt="" />
+    </div>
+    <div class="details">
+      <h1>{{selectedProduct.ProductName}}</h1>
+      <h1 class="price">
+        {{selectedProduct.Price | currency:'R'}} /{{selectedProduct.Units}}
+      </h1>
+
+      <div class="options">
+        <div class="btn-qty">
+          <div class="action">
+            <button mat-mini-fab aria-label="Example icon button with a plus one icon" (click)="addQty(-1)">
+              <mat-icon>remove</mat-icon>
+            </button>
+          </div>
+          <div>
+            <input type="number" [(ngModel)]="qty">
+          </div>
+          <div class="action">
+            <button mat-mini-fab aria-label="Example icon button with a plus one icon" (click)="addQty(1)">
+              <mat-icon>add</mat-icon>
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+
+
+      <div class="col-2 mt2">
+        <div class="cart">
+          <button mat-icon-button class="btn btn-cart" aria-label="Example icon button with a vertical three dot icon"
+            (click)="confirmItemToCart(selectedProduct)">
+            <mat-icon>add_shopping_cart</mat-icon> Add to cart
+          </button>
+        </div>
+        <div class="cart">
+          <button mat-icon-button class="btn btn-grey" aria-label="Example icon button with a vertical three dot icon"
+            (click)="continueOrdering()">
+            Continue ordering
+          </button>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+  <div class="overlay-modal" *ngIf="cartView">
+    <div *ngIf="order.Orderproducts.length" class="">
+      <h1 class="success">
+        <span class="material-icons">
+          check_circle_outline
+        </span> {{shopHeadingStatus}}
+      </h1>
+
+
+      <app-cart-detailed></app-cart-detailed>
+
+      <span *ngIf="!showCheckout">
+        <h1 class="price">
+          Total
+          <span>
+            {{order.Total | currency:'R'}}
+          </span>
+        </h1>
+
+        <div class="col-2 mt2">
+          <div class="cart">
+            <button mat-icon-button class="btn btn-cart" aria-label="Example icon button with a vertical three dot icon"
+              (click)="continueOrdering()">
+              Continue ordering
+            </button>
+          </div>
+          <div class="cart">
+            <button mat-icon-button class="btn btn-grey" aria-label="Example icon button with a vertical three dot icon"
+              (click)="checkout()">
+              <mat-icon>shopping_basket</mat-icon> Check out
+            </button>
+          </div>
+        </div>
+
+      </span>
+    </div>
+    <div *ngIf="!order.Orderproducts.length" class="emptycart">
+      <img (click)="continueOrdering()" src="assets/images/emptycart.svg" alt="">
+    </div>
+
+
+
+
+
+    <span *ngIf="showCheckout">
+      <h1 class="price">
+        Total
+        <span>
+          {{total | currency:'R'}}
+        </span>
+      </h1>
+      <div class="delivery">
+        <!-- <div class="image">
+          <img src="assets/images/delivery-date.svg">
+        </div> -->
+        <hr>
+
+        <div class="input-group">
+          <label>Delivery Address</label>
+          <select style="width: 96%;" [(ngModel)]="AddressId">
+            <option value="Guest">Guest</option>
+            <option [value]="item.AddressId" *ngFor="let item of addressess" value="Guest">{{item.City}},
+              {{item.AddressLine1}}</option>
+          </select>
+        </div>
+
+
+        <div class="col-2">
+          <div class="input-group">
+            <label>Delivery date</label>
+            <input type="date" matInput [(ngModel)]="DeliveryDate" class="shoter-input" placeholder="750.99">
+          </div>
+          <div class="input-group">
+            <label>Delivery time</label>
+            <input matInput type="time" [(ngModel)]="DeliveryTime" placeholder="each or kg">
+          </div>
+
+        </div>
+
+        <div class="input-group">
+          <label>Special Instructions</label>
+          <textarea [(ngModel)]="SpecialInstructions"></textarea>
+        </div>
+      </div>
+      <div class="col-2 mt2">
+
+        <div class="cart">
+          <button mat-icon-button class="btn btn-cart" aria-label="Example icon button with a vertical three dot icon"
+            (click)="placOrder()">
+
+            <span *ngIf="!loading"> Place Order | {{total | currency:'R'}} </span>
+            <span *ngIf="loading">
+              <i class="pi pi-spin pi-spinner" style="font-size: 1.2rem; color: #535C68"></i> Creating Order...
+            </span>
+          </button>
+        </div>
+
+        <div class="cart">
+          <button mat-icon-button class="btn btn-grey" aria-label="Example icon button with a vertical three dot icon"
+            (click)="continueOrdering()">
+            <mat-icon>add_shopping_cart</mat-icon> Continue ordering
+          </button>
+        </div>
+      </div>
+
+    </span>
+
+  </div>
+
+
+</div>
+
+<div class="overlay" *ngIf="orderCreated">
+  <div class="overlay-modal">
+    <h1 class="success">
+      <span class="material-icons">
+        check_circle_outline
+      </span> Done
+    </h1>
+
+    <p>
+      <b> ORD-{{createdOrder.OrderNo}}</b> <br> was created successfully
+    </p>
+    <div class="cart">
+      <button mat-icon-button class="btn btn-cart" aria-label="Example icon button with a vertical three dot icon"
+        (click)="viewOrder()">
+        View this Order
+      </button>
+    </div>
+    <div class="cart">
+      <button mat-icon-button class="btn btn-grey" aria-label="Example icon button with a vertical three dot icon"
+        (click)="list()">
+        <mat-icon>list</mat-icon> All Orders
+      </button>
+    </div>
+  </div>
+</div>
