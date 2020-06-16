@@ -48,13 +48,16 @@ export class ListOrdersComponent implements OnInit {
   ngOnInit() {
     this.currentUser = this.accountService.CurrentUserValue;
     this.orders$ = this.orderService.ordersObservable;
-    this.orderService.getOrderByUserId(this.currentUser.UserId);
+
     localStorage.removeItem('confirmation');
     if (this.currentUser.Roles.RoleName === 'Customer') {
       this.actionButton = {
         link: '/dashboard/create-customer-order',
         label: 'Create Order'
       };
+      this.orderService.getCustomerByUserId(this.currentUser.UserId);
+    } else {
+      this.orderService.getOrderByUserId(this.currentUser.UserId);
     }
   }
 

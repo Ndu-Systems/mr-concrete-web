@@ -10,35 +10,49 @@
           New Order
         </span>
       </h1>
-      <div class="items">
+      <div>
         <mat-tab-group class="tab-group">
           <mat-tab t-tab label="General info">
-            <div class="item">
-              <h1>
-                Customer
-              </h1>
-              <h1 class="value">
-                {{order.Customer?.FirstName}}
-                {{order.Customer?.LastName}}
-              </h1>
-            </div>
+            <div class="items">
+            
 
-            <div class="item">
-              <h1>
-                Delivery Address
+              <div class="item" *ngIf="order.Customer">
+                <h1>
+                  Customer
+                </h1>
+                <h1 class="value">
+                  {{order.Customer?.FirstName}}
+                  {{order.Customer?.LastName}}
+                </h1>
+              </div>
+              
+              <div class="item" *ngIf="order.Supplier">
+                <h1>
+                  Supplier
+                </h1>
+                <h1 class="value">
+                  {{order.Supplier?.CompanyName}}
+                </h1>
+              </div>
 
-              </h1>
-              <h1 class="value">
-                {{order.Address?.AddressLine1}} <br>
-                {{order.Address?.AddressLine2}}<br>
-                {{order.Address?.AddressLine3}}<br>
-                {{order.Address?.Province}}<br>
-                {{order.Address?.City}}<br>
-                {{order.Address?.PostalCode}}
-              </h1>
+              <div class="item" *ngIf="order.Address">
+                <h1>
+                  Delivery Address
+
+                </h1>
+                <h1 class="value">
+                  {{order.Address?.AddressLine1}} <br>
+                  {{order.Address?.AddressLine2}}<br>
+                  {{order.Address?.AddressLine3}}<br>
+                  {{order.Address?.Province}}<br>
+                  {{order.Address?.City}}<br>
+                  {{order.Address?.PostalCode}}
+                </h1>
+              </div>
+
             </div>
           </mat-tab>
-          <mat-tab t-tab label="Special Instructions"  *ngIf="order.SpecialInstructions">
+          <mat-tab t-tab label="Special Instructions" *ngIf="order.SpecialInstructions">
 
 
             <!-- <div class="item">
@@ -90,9 +104,7 @@
                 </div>
                 <div class="item">
                   <p>
-                    <b>
                       {{item.ProductName}}
-                    </b>
                     <span class="number" *ngIf="item.ProductCode">
                       Code:<b> {{item.ProductCode}} </b>
                     </span>
@@ -100,12 +112,12 @@
                 </div>
 
                 <div class="item">
-                  <b class="mt1">
+                  <span class="mt1">
                     {{item.Price | currency:'R'}}
                     <span *ngIf="item.Units">
                       / {{item.Units}}
                     </span>
-                  </b>
+                  </span>
                 </div>
                 <div class="item">
                   {{item.Quantity}}
@@ -146,7 +158,7 @@
               </div>
             </div>
           </div>
-      
+
 
           <ng-template #notFound>
             <app-placeholder [placeHolder]="placeHolder"></app-placeholder>

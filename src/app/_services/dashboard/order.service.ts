@@ -48,6 +48,13 @@ export class OrderService {
       }
     });
   }
+  getCustomerByUserId(customerId: string) {
+    return this.http.get<any>(`${this.url}/api/order/get-order-by-customer-id.php?CustomerId=${customerId}`).subscribe(data => {
+      if (data) {
+        this.updateState(data);
+      }
+    });
+  }
 
   updateState(data: Order[]) {
     this.ordersBehaviorSubject.next(data);
