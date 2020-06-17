@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/_services/dashboard/product.service';
 import { Router } from '@angular/router';
-import { AccountService } from 'src/app/_services';
+import { AccountService, ApiService } from 'src/app/_services';
 import { Observable } from 'rxjs';
 import { Product } from 'src/app/_models/product.model';
-import { UserModel, Placeholder } from 'src/app/_models';
+import { UserModel, Placeholder, NavigationModel } from 'src/app/_models';
 
 @Component({
   selector: 'app-list-products',
   templateUrl: './list-products.component.html',
-  styleUrls: ['./list-products.component.scss']
+  styleUrls: ['../products.scss']
 })
 export class ListProductsComponent implements OnInit {
   heading = 'Products';
@@ -32,8 +32,8 @@ export class ListProductsComponent implements OnInit {
   constructor(
     private productService: ProductService,
     private router: Router,
-    private accountService: AccountService,
-  ) { }
+    private accountService: AccountService
+   ) { }
 
   ngOnInit() {
     this.user = this.accountService.CurrentUserValue;

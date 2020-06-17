@@ -109,7 +109,7 @@
       </mat-tab-group>
       <div class="actions">
         <button type="submit" [disabled]="!rForm.valid" class="btn cta">Create product</button>
-        <button type="button" class="btn secondary cta">Cancel</button>
+        <button type="button" class="btn secondary cta"(click)="cancel()">Cancel</button>
       </div>
     </form>
   </div>

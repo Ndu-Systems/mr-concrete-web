@@ -6,6 +6,7 @@
   <div class="table" *ngIf="products.length > 0; else notFound">
     <div class="header">
       <div class="item">Product Name</div>
+      <div class="item"> Product Code</div>
       <div class="item"> Price</div>
       <div class="item"> Category</div>
       <div class="item"></div>
@@ -30,17 +31,15 @@
                 Active
               </span>
             </div>
-
-            <div class="tag">
-              <span class="number" *ngIf="item.ProductCode">
-                Code:<b> {{item.ProductCode}} </b>
-              </span>
-            </div>
-
-
           </div>
         </div>
-
+        <div class="item">
+          <div class="tag">
+            <span class="number" *ngIf="item.ProductCode">
+              Code:<b> {{item.ProductCode}} </b>
+            </span>
+          </div>
+        </div>
         <div class="item">
           <b class="mt1">
             {{item.Price | currency:'R'}}
@@ -50,7 +49,9 @@
           </b>
         </div>
         <div class="item" *ngIf="item.Category">
-          {{item.Category.CategoryName}}
+          <p>
+            {{item.Category.CategoryName}}
+          </p>
         </div>
         <div class="item" *ngIf="!item.Category">
           <span class="small-text">No Category</span>

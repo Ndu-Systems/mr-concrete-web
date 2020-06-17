@@ -90,16 +90,15 @@ export class CreateProductComponent implements OnInit {
   onSubmit(product: Product) {
     product.Images = this.images;
     this.productService.addProduct(product).subscribe(response => {
-      // this.messageService.add({
-      //   severity: 'success',
-      //   summary: 'Success!',
-      //   detail: 'product created '
-      // });
-      console.log(response);
       this.uploadService.updateUrlsToUploadState([]);
       this.routeTo.navigate([`/dashboard/products`]);
     });
 
+  }
+
+  cancel() {
+    this.routeTo.navigate([`/dashboard/products`]);
+    this.uploadService.updateUrlsToUploadState([]);
   }
 
 }
