@@ -14,7 +14,7 @@
         <mat-tab-group class="tab-group">
           <mat-tab t-tab label="General info">
             <div class="items">
-            
+
 
               <div class="item" *ngIf="order.Customer">
                 <h1>
@@ -25,7 +25,7 @@
                   {{order.Customer?.LastName}}
                 </h1>
               </div>
-              
+
               <div class="item" *ngIf="order.Supplier">
                 <h1>
                   Supplier
@@ -160,9 +160,9 @@
           </div>
 
 
-          <ng-template #notFound>
+          <!-- <ng-template #notFound>
             <app-placeholder [placeHolder]="placeHolder"></app-placeholder>
-          </ng-template>
+          </ng-template> -->
         </div>
 
       </div>

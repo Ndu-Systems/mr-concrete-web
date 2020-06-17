@@ -1,3 +1,4 @@
+import { ConfirmModel } from './../../../../_models/confirm.model';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { UserModel, UserQueryModel, Placeholder, NavigationModel } from 'src/app/_models';
 import { UserService, ApiService, NotificationService } from 'src/app/_services';
@@ -20,6 +21,13 @@ export class ListPartnersComponent implements OnInit {
     message: 'No partners found in our system.',
     link: '/dashboard/add-partner',
     linkLabel: 'Create new partner'
+  };
+
+  confirmModel: ConfirmModel = {
+    Heading: 'Are you sure?',
+    Description: 'This record will not be visible on the system.',
+    ButtonLabel: 'Yes, delete',
+    Image: 'assets/images/dashboard/action-card/delete.svg'
   };
 
   showConfirmDeleteModal: boolean;
