@@ -1,109 +1,171 @@
-<div class="container">
-  <div class="search">
-    <h1 class="heading">Get all your building material
-      online & delivered to you on site.</h1>
-    <div class="dialog">
-      <form [formGroup]="rForm" class="col-1-of-2">
-        <mat-form-field class="form-group" appearance="outline">
-          <mat-label>Search</mat-label>
-          <input matInput placeholder="Enter your product name here" formControlName="SearchText" required>
-        </mat-form-field>
-        <button mat-flat-button color="primary" (click)="onSubmit(rForm.value)" [disabled]="!rForm.valid">
-          Search
+<div class="home-container">
+  <div class="container">
+
+    <div class="wrap">
+      <div class="search">
+        <button type="submit" class="searchButton">
+          <img src="assets/images/home/search.svg" alt="search_icon" class="search">
         </button>
-      </form>
-    </div>
-  </div>
-
-  <div class="select-cards col-1-of-2">
-    <mat-card class="card">
-      <img mat-card-image src="assets/images/home/architecture.svg" alt="photo of builders">
-      <mat-card-content>
-        <h1 class="card-title">
-          Buy or order online
-        </h1>
-      </mat-card-content>
-      <mat-card-actions class="cta">
-        <a routerLink="/sign-up">
-          Create a builder account
-        </a>
-      </mat-card-actions>
-    </mat-card>
-    <mat-card class="card">
-      <img mat-card-image src="assets/images/home/vehicles.svg" alt="photo of construction tools">
-      <mat-card-content>
-        <h1 class="card-title">
-          Become a supplier
-        </h1>
-      </mat-card-content>
-      <mat-card-actions class="cta">
-        <a routerLink="/sign-up">
-          Create a supplier account
-        </a>
-      </mat-card-actions>
-    </mat-card>
-  </div>
-
-  <div class="locations">
-    <div class="col-1-of-1">
-      <h1 class="title">
-        Available in
-      </h1>
-      <div class="regions col-1-of-4">
-        <h1 class="value" *ngFor="let item of [1,1,1,1,1,1]">Durban</h1>
+        <input type="text" class="searchTerm" placeholder="What are you looking for?">
       </div>
     </div>
-  </div>
-  <div class="categories">
-    <div class="col-1-of-1">
-      <h1 class="title">
-       Top categories
-      </h1>
-      <div class="col-1-of-4">
-        <mat-card class="card" *ngFor="let item of [1,1,1,1,1,1]">
-          <img mat-card-image src="assets/images/home/vehicles.svg" alt="photo of construction tools">
-          <mat-card-content>
-            <h1 class="card-title">
-              Cement
+
+    <div class="top-selling">
+      <img src="assets/images/home/top-selling.svg" alt="">
+    </div>
+
+    <div class="hero">
+      <div class="col-1-of-2">
+        <h1 class="big-text">
+          Get all your building material online & delivered to you on site <span class="fs">.</span>
+        </h1>
+      </div>
+    </div>
+
+    <div class="choose col-1-of-2">
+      <mat-card class="buyer">
+        <img src="assets/images/home/bricks.svg" alt="builder-img">
+        <div class="card-context">
+          <h1>Register as a Buyer
+            <span class="description">
+              View products & place orders online.
+            </span>
+          </h1>
+          <a routerLink="/register" mat-flat-button color="primary" class="cta-btn">Start Now</a>
+        </div>
+      </mat-card>
+      <mat-card>
+        <img src="assets/images/home/supplies.svg" alt="supplier-img">
+        <div class="card-context">
+          <h1>Register as a supplier
+            <span class="description">
+              Create orders and generate invoice everywhere. </span>
+          </h1>
+          <a routerLink="/register" mat-flat-button color="primary" class="cta-btn">Start Now</a>
+        </div>
+      </mat-card>
+    </div>
+
+    <div class="quick-links col-1-of-2">
+      <div class="hero">
+        <h1 class="big-text">
+          Top selling products<span class="fs">.</span>
+        </h1>
+      </div>
+      <div class="links col-1-of-2">
+        <a routerLink="">
+          <mat-card class="dark">
+            <img src="assets/images/home/home-white.svg" alt="home-img">
+          </mat-card>
+        </a>
+        <a routerLink="">
+          <mat-card class="yellow">
+            <img src="assets/images/home/shop.svg" alt="shop-img">
+          </mat-card>
+        </a>
+        <a routerLink="">
+          <mat-card class="dark">
+            <img src="assets/images/home/discount.svg" alt="discount-img">
+          </mat-card>
+        </a>
+        <a routerLink="">
+          <mat-card class="light">
+            <img src="assets/images/home/question.svg" alt="question-img">
+          </mat-card>
+        </a>
+      </div>
+    </div>
+    <div class="top-products col-1-of-2">
+      <div class="products col-1-of-2">
+        <mat-card>
+          <div class="cart">
+            <img src="assets/images/home/market.svg" alt="shopping cart">
+          </div>
+          <img matCardImage src="assets/images/home/p-1.png" alt="question-img">
+          <div class="details col-1-of-2">
+            <h1>
+              Sand
+              <span class="span">
+                by: Supplier A
+              </span>
             </h1>
-          </mat-card-content>
+            <h1>
+              R50000.00<span class="metric">/day</span>
+            </h1>
+          </div>
+        </mat-card>
+        <mat-card>
+          <div class="cart">
+            <img src="assets/images/home/market.svg" alt="shopping cart">
+          </div>
+          <img matCardImage src="assets/images/home/p-1.png" alt="question-img">
+          <div class="details col-1-of-2">
+            <h1>
+              Sand
+              <span class="span">
+                by: Supplier A
+              </span>
+            </h1>
+            <h1>
+              R50000.00<span class="metric">/day</span>
+            </h1>
+          </div>
+        </mat-card>
+        <mat-card>
+          <div class="cart">
+            <img src="assets/images/home/market.svg" alt="shopping cart">
+          </div>
+          <img matCardImage src="assets/images/home/p-1.png" alt="question-img">
+          <div class="details col-1-of-2">
+            <h1>
+              Sand
+              <span class="span">
+                by: Supplier A
+              </span>
+            </h1>
+            <h1>
+              R50000.00<span class="metric">/day</span>
+            </h1>
+          </div>
+        </mat-card>
+        <mat-card>
+          <div class="cart">
+            <img src="assets/images/home/market.svg" alt="shopping cart">
+          </div>
+          <img matCardImage src="assets/images/home/p-1.png" alt="question-img">
+          <div class="details col-1-of-2">
+            <h1>
+              Sand
+              <span class="span">
+                by: Supplier A
+              </span>
+            </h1>
+            <h1>
+              R50000.00<span class="metric">/day</span>
+            </h1>
+          </div>
+        </mat-card>
+      </div>
+      <div class="top-product">
+        <mat-card>
+          <div class="cart">
+            <img src="assets/images/home/market.svg" alt="shopping cart">
+          </div>
+          <img matCardImage src="assets/images/home/p-1.png" alt="question-img">
+          <div class="details col-1-of-2">
+            <h1>
+              Sand
+              <span class="span">
+                by: Supplier A
+              </span>
+            </h1>
+            <h1>
+              R50000.00<span class="metric">/day</span>
+            </h1>
+          </div>
         </mat-card>
       </div>
     </div>
-  </div>
 
-  <div class="order-steps">
-    <div class="col-1-of-1">
-      <h1 class="title">
-        Online orders
-       </h1>
-    </div>
-    <div class="col-1-of-4">
-      <div class="step">
-        <img src="assets/images/home/step1.svg" alt="step 1">
-        <h1 class="text">
-          Place an order online as a customers.
-        </h1>
-      </div>
-      <div class="step">
-        <img src="assets/images/home/step2.svg" alt="step 2">
-        <h1 class="text">
-          The supplier will approve the order & update the order status
-        </h1>
-      </div>
-      <div class="step">
-        <img src="assets/images/home/step3.svg" alt="step 3">
-        <h1 class="text">
-          Once the order has been completed the customer will confirm order.
-        </h1>
-      </div>
-      <div class="step">
-        <img src="assets/images/home/step4.svg" alt="step 4">
-        <h1 class="text">
-          Leave a review online in order to improve our community.
-        </h1>
-      </div>
-    </div>
   </div>
-
 </div>

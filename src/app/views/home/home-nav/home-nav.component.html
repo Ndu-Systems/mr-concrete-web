@@ -1,41 +1,29 @@
 <mat-toolbar class="desktop">
 
   <mat-toolbar-row>
-    <a routerLink=""><img src="assets/images/home/icon.svg" alt="header icon" class="header-icon"></a>
+    <a routerLink=""><img src="assets/images/logo.svg" alt="header icon" class="header-icon"></a>
     <ul>
       <li><a routerLink="">Home</a></li>
+      <li><a routerLink="">Browse</a></li>
+      <li><a routerLink="">FAQ</a></li>
+      <li><a routerLink="">Pricing</a></li>
     </ul>
   </mat-toolbar-row>
 
   <mat-toolbar-row>
     <ul>
-
+      <li><a routerLink="/register" mat-flat-button color="primary" class="cta-btn">register for free</a></li>
+      <li><a routerLink="/login">login</a></li>
     </ul>
   </mat-toolbar-row>
   <mat-toolbar-row>
     <ul>
-      <!-- <li>
-        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-          <img src="assets/images/home/user.svg" alt="user icon">
-        </button>
-        <mat-menu #menu="matMenu">
-          <a routerLink="/login">
-            <button mat-menu-item>
-              <img src="assets/images/home/login.svg" alt="login icon">
-              <span>login</span>
-            </button>
-          </a>
-          <a routerLink="/register">
-            <button mat-menu-item>
-              <img src="assets/images/home/add-person.svg" alt="login icon">
-              <span>Register for free</span>
-            </button>
-          </a>
-        </mat-menu>
-      </li> -->
-     <li><a routerLink="/login">login</a></li>
-     <li><a routerLink="/register" mat-flat-button  color="primary" class="cta-btn">register for free</a></li>
-
+      <li>
+        <a routerLink="">
+          <span class="count">15</span>
+          <img src="assets/images/home/market.svg" alt="shopping cart">
+        </a> | <b>R2000000.00</b>
+      </li>
     </ul>
   </mat-toolbar-row>
 

@@ -1,385 +1,208 @@
 @import '../../../../assets/styles/general/colors';
 
-.container {
+.top-selling {
+  position: absolute;
+  right: 4rem;
+  top: 15rem;
 
-  .search {
-    text-align: center;
-    padding: 4rem;
-    background: url('../../../../assets/images/home/home-bg.svg');
-    background-repeat: no-repeat;
-    background-size: cover;
+  img {
+    height: 745px;
+  }
+}
 
-    h1 {
-      font-weight: 700;
-      margin: 0 auto;
+.hero {
+  border-left: 0.625rem solid $yellow;
+  margin: 2rem 0;
+  padding: 0 1rem;
 
-      &.heading {
-        color: $white;
-        width: 50rem;
-      }
-    }
+  .big-text {
+    font-size: 4.063rem;
+    font-weight: 900;
+    margin: 0;
 
-    .dialog {
-      padding: 1rem 0;
-
-      form {
-        margin: 4rem;
-        background: $white;
-        padding: 1rem;
-        padding-bottom: 0;
-
-        &.col-1-of-2 {
-          grid-template-columns: 80% auto;
-        }
-
-        .form-group {}
-      }
-    }
-
-    .mat-flat-button.mat-primary {
-      background-color: $black;
-      padding: 0.5em 2em;
-      font-size: 1em;
-      font-weight: 500;
-      border-radius: 0;
-      height: 3.99rem;
-
-      &[disabled] {
-        background-color: #DCDDE1;
-        color: #B2BEC3;
-      }
+    .fs {
+      color: $yellow;
     }
   }
+}
 
-  .select-cards {
-    padding: 2rem;
+.choose {
+  width: 50rem;
+  margin-top: 12rem;
 
-    .card {
-      width: 25vw;
-      margin: 0 auto;
-      border-radius: 1rem;
+  &.col-1-of-2 {}
 
+  .mat-card {
+    background: $black;
+    padding: 0;
+    padding-right: .75rem;
+    border-radius: 1.563rem;
+    width: 25rem;
+    display: grid;
+    grid-template-columns: 55% auto;
+
+    .card-context {
       h1 {
-        font-size: 16px;
+        color: $yellow;
+        font-size: 1.563rem;
+        text-align: right;
+
+        .description {
+          font-weight: 400;
+          font-size: 0.85rem;
+          display: block;
+          margin-top: .5rem;
+        }
       }
 
-      .mat-card-image:first-child {
-        margin-top: -16px;
-        border-top-left-radius: inherit;
-        border-top-right-radius: inherit;
+      a.cta-btn {
+        color: $black;
+        background-color: $yellow;
+        border-radius: 3.125rem;
+        height: 2.5rem;
+        padding: 0 2rem;
+        font-weight: 700;
+        float: right;
       }
+    }
 
-      .cta {
-        a {
-          font-size: 15px;
+    &.buyer {
+      background: $yellow;
+
+      .card-context {
+        h1 {
+          color: $black;
+        }
+
+        a.cta-btn {
           color: $yellow;
-          font-weight: 700;
+          background-color: $black;
         }
-      }
-
-    }
-  }
-
-  .locations {
-    border-top: solid 1px $grey;
-
-    h1 {
-      font-size: 1.875rem;
-    }
-
-    .regions {
-      .value {
-        font-size: 1.125rem;
-        font-weight: 500;
-      }
-    }
-  }
-
-  .categories {
-    border-top: solid 1px $grey;
-
-    .card {
-      width: 15rem;
-
-      .card-title {
-        font-size: 1.125rem;
-        font-weight: 700;
-      }
-    }
-  }
-
-  .order-steps {
-    border-top: solid 1px $grey;
-
-    .step {
-      text-align: center;
-      width: 10rem;
-
-      .text {
-        font-size: 0.75rem;
-        font-weight: 700;
       }
     }
   }
 }
 
+.quick-links {
+  margin-top: 6rem;
 
-@media only screen and (max-width: 600px) {
+  .links {
+    width: 243px;
+    margin: 0 auto;
+    text-align: center;
 
-  .container {
-    .search {
-      padding: 4rem 1rem;
-      background: url('../../../../assets/images/home/home-bg-mobile.svg');
-      background-repeat: no-repeat;
+    .mat-card {
+      border-radius: 1.563rem;
+      width: 6.938rem;
+      height: 6.938rem;
+      padding-top: 2.5rem;
+    }
 
-      h1 {
-        font-weight: 700;
-        margin: 0 auto;
+    .dark {
+      background: $black;
+    }
 
-        &.heading {
-          color: $white;
-          width: 100%;
-          font-size: 1.25rem;
-        }
+    .light {
+      background: #F4F7FC;
+    }
+
+    .yellow {
+      background: $yellow;
+    }
+  }
+}
+
+.top-products {
+  margin-top: 5rem;
+
+  .products {
+    .mat-card {
+      border-radius: 0.938rem;
+      padding: 0rem;
+
+      .cart {
+        cursor: pointer;
+        background: $yellow;
+        width: 3rem;
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        z-index: 2;
+        padding: .5rem;
+        border-radius: 10px;
       }
 
+      .details {
 
-      .dialog {
-        padding: 1rem 0;
+        h1 {
+          font-size: 1.25rem;
+          font-weight: 900;
 
-        form {
-          margin: 4rem 0;
-          background: $white;
-          padding: 1rem;
-
-
-          &.col-1-of-2 {
-            grid-template-columns: 100%;
-            margin: 0;
-            grid-gap: 0;
+          .span {
+            font-weight: 400;
+            color: $grey;
+            font-size: .938rem;
+            display: block;
+            margin-top: 1rem;
           }
 
-
-        }
-      }
-
-      .mat-flat-button.mat-primary {
-        background-color: $black;
-        padding: 0.5em 2em;
-        font-size: 0.563rem;
-        font-weight: 500;
-        border-radius: 0;
-        height: 2.99rem;
-
-        &[disabled] {
-          background-color: #DCDDE1;
-          color: #B2BEC3;
+          .metric {
+            font-size: .938rem;
+            font-weight: 500;
+            display: block;
+          }
         }
       }
     }
+  }
 
-    .select-cards {
-      padding: 2rem 0.5rem;
-
-      .card {
-        width: 100%;
-      }
-    }
-
-
-    .locations {
-      border-top: solid 1px $grey;
-
-      h1 {
-        font-size: 1.875rem;
-      }
-
-      .regions {
-        &.col-1-of-4 {
-          grid-template-columns: repeat(2, 50%);
-        }
-
-        .value {
-          font-size: 1rem;
-          font-weight: 700;
-        }
+  .top-product {
+    .mat-card {
+      border-radius: 0.938rem;
+      padding: 0 1rem;
+      height: 40.5rem;
+      width: 582px;
+      .cart {
+        cursor: pointer;
+        background: $yellow;
+        width: 3rem;
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        z-index: 2;
+        padding: .5rem;
+        border-radius: 10px;
       }
 
+      .details {
 
-    }
+        h1 {
+          font-size: 1.25rem;
+          font-weight: 900;
 
+          .span {
+            font-weight: 400;
+            color: $grey;
+            font-size: .938rem;
+            display: block;
+            margin-top: 1rem;
+          }
 
-    .categories {
-      border-top: solid 1px $grey;
-
-      .col-1-of-4 {
-        grid-template-columns: repeat(2, 50%);
-        width: 95%;
-      }
-
-      .card {
-        width: 100%;
-        margin: 0 auto;
-
-        .card-title {
-          font-size: 1.125rem;
-          font-weight: 700;
+          .metric {
+            font-size: .938rem;
+            font-weight: 500;
+            display: block;
+          }
         }
       }
     }
-
-
-    .order-steps {
-      border-top: solid 1px $grey;
-
-      .col-1-of-4 {
-        grid-template-columns: repeat(2, 50%);
-        width: 95%;
-      }
-
-      .step {
-        text-align: center;
-        width: 10rem;
-
-        .text {
-          font-size: 0.75rem;
-          font-weight: 700;
-        }
-      }
-    }
-
-
   }
 }
+
+@media only screen and (max-width: 600px) {}
+
 // ipad pro
-@media only screen and (max-width: 1024px) {
-  .container {
-    .search {
-      padding: 4rem 1rem;
-      background: url('../../../../assets/images/home/home-bg.svg');
-      background-repeat: no-repeat;
-
-      h1 {
-        font-weight: 700;
-        margin: 0 auto;
-
-        &.heading {
-          color: $white;
-          width: 100%;
-          font-size: 1.25rem;
-        }
-      }
+@media only screen and (max-width: 1024px) {}
 
 
-      .dialog {
-        padding: 1rem 0;
-
-        form {
-          margin: 4rem 0;
-          background: $white;
-          padding: 1rem;
-
-
-          &.col-1-of-2 {
-            grid-template-columns: 100%;
-            margin: 0;
-            grid-gap: 0;
-          }
-
-
-        }
-      }
-
-      .mat-flat-button.mat-primary {
-        background-color: $black;
-        padding: 0.5em 2em;
-        font-size: 0.563rem;
-        font-weight: 500;
-        border-radius: 0;
-        height: 2.99rem;
-
-        &[disabled] {
-          background-color: #DCDDE1;
-          color: #B2BEC3;
-        }
-      }
-    }
-
-    .select-cards {
-      padding: 2rem 0.5rem;
-
-      .card {
-        width: 100%;
-      }
-    }
-
-
-    .locations {
-      border-top: solid 1px $grey;
-
-      h1 {
-        font-size: 1.875rem;
-      }
-
-      .regions {
-        &.col-1-of-4 {
-          grid-template-columns: repeat(2, 50%);
-        }
-
-        .value {
-          font-size: 1rem;
-          font-weight: 700;
-        }
-      }
-
-
-    }
-
-
-    .categories {
-      border-top: solid 1px $grey;
-
-      .col-1-of-4 {
-        grid-template-columns: repeat(2, 50%);
-        width: 95%;
-      }
-
-      .card {
-        width: 100%;
-        margin: 0 auto;
-
-        .card-title {
-          font-size: 1.125rem;
-          font-weight: 700;
-        }
-      }
-    }
-
-
-    .order-steps {
-      border-top: solid 1px $grey;
-
-      .col-1-of-4 {
-        grid-template-columns: repeat(2, 50%);
-        width: 95%;
-      }
-
-      .step {
-        text-align: center;
-        width: 10rem;
-
-        .text {
-          font-size: 0.75rem;
-          font-weight: 700;
-        }
-      }
-    }
-
-
-  }
-}
-
-
-@media only screen and (min-width: 768) {
-
-}
+@media only screen and (min-width: 768) {}

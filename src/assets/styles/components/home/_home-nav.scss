@@ -1,7 +1,7 @@
-
+@import '../../general/colors';
 .mat-toolbar {
   // background: transparent !important;
-  color: rgba(0, 0, 0, 0.87);
+  color: $black;
   position: fixed;
   z-index: 1000;
 }
