@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ContactUsModel } from 'src/app/_models';
 
 @Component({
   selector: 'app-index',
@@ -14,10 +15,13 @@ export class IndexComponent implements OnInit {
 
   ngOnInit() {
     this.rForm = this.fb.group({
-      SearchText: [null, Validators.required]
+      FullName: [null, Validators.required],
+      Email: [null],
+      PhoneNumber: [null, Validators.required],
+      Message: [null, Validators.required],
     });
   }
-  onSubmit(SearchText) {
-
+  onSubmit(model: ContactUsModel) {
+    console.log('contact us form', model);
   }
 }

@@ -228,6 +228,44 @@
           Want more info contact us<span class="fs">.</span>
         </h1>
       </div>
+      <form class="form" [formGroup]="rForm">
+        <mat-form-field appearance="outline">
+          <mat-label>Full name</mat-label>
+          <input matInput placeholder="Enter full name" formControlName="FullName" MatFormFieldControl type="text"
+            required>
+          <mat-error *ngIf="!rForm.controls['FullName'].valid && rForm.controls['FullName'].touched">a name is required
+          </mat-error>
+        </mat-form-field>
+        <div class="col-1-of-2">
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="Enter Email" formControlName="Email" MatFormFieldControl type="email">
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Phone number</mat-label>
+            <input matInput placeholder="Enter Phone Number (+27)" formControlName="PhoneNumber" MatFormFieldControl type="text"
+              required>
+            <mat-error *ngIf="!rForm.controls['PhoneNumber'].valid && rForm.controls['PhoneNumber'].touched">a Phone number is
+              required
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <mat-form-field appearance="outline">
+          <mat-label>Message</mat-label>
+          <textarea matInput MatFormFieldControl placeholder="Enter message"  formControlName="Message" required></textarea>
+          <mat-error *ngIf="!rForm.controls['Message'].valid && rForm.controls['Message'].touched">a message is required
+          </mat-error>
+        </mat-form-field>
+        <div class="col-1-of-2">
+          <button mat-flat-button color="primary" (click)="onSubmit(rForm.value)" [disabled]="!rForm.valid">
+            submit
+          </button>
+          <a  mat-flat-button color="primary" class="transparent" routerLink="">clear form</a>
+        </div>
+        <div class="error" *ngIf="error">
+          <h1>{{error}}</h1>
+        </div>
+      </form>
     </div>
 
   </div>

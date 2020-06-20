@@ -21,5 +21,6 @@ export * from './image.model';
 export * from './message.model';
 export * from './navigation.model';
 export * from './confirm.model';
+export * from './contact-us.model';
  // end:ng42.barrel
 

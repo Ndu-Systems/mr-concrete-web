@@ -279,6 +279,7 @@
 
 .contact-us {
   margin-top: 5rem;
+
   .hero {
     border: none;
     border-top: 0.625rem solid $yellow;
@@ -286,7 +287,54 @@
     margin: 0 auto;
     text-align: center;
   }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    background: $default-white;
+    padding: 1rem 2rem;
+    width: 43.33rem;
+    margin: 2rem auto;
+
+    .col-1-of-2 {
+      width: 98%;
+
+      &.cta {
+        margin-top: 4rem;
+
+        h1 {
+          font-size: 0.875rem;
+        }
+      }
+    }
+
+    .mat-flat-button.mat-primary {
+      background-color: $yellow;
+      padding: 0rem 2rem;
+      font-size: 1em;
+      font-weight: 700;
+      border-radius: 25rem;
+      height: 2.5rem;
+
+      &.cta-btn {
+        background-color: $black;
+      }
+
+      &.transparent {
+        background: $default-white;
+        font-weight: 700;
+        color: $grey;
+        border: solid 1px $grey;
+      }
+
+      &[disabled] {
+        background-color: #DCDDE1;
+        color: #B2BEC3;
+      }
+    }
+  }
 }
+
 
 @media only screen and (max-width: 600px) {}
 
