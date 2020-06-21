@@ -258,9 +258,9 @@
         </mat-form-field>
         <div class="col-1-of-2">
           <button mat-flat-button color="primary" (click)="onSubmit(rForm.value)" [disabled]="!rForm.valid">
-            submit
+            Log in
           </button>
-          <a  mat-flat-button color="primary" class="transparent" routerLink="">clear form</a>
+          <a  mat-flat-button color="primary" class="transparent" routerLink="">clear</a>
         </div>
         <div class="error" *ngIf="error">
           <h1>{{error}}</h1>

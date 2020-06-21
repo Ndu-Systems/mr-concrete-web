@@ -6,8 +6,23 @@
   top: 15rem;
 
   img {
-    height: 745px;
+    height: 46.563rem;
   }
+
+  // iphone X
+  @media only screen and (max-width: 600px) {
+    top: 20rem;
+
+    img {
+      height: 25rem;
+    }
+  }
+
+  // ipad pro
+  @media only screen and (max-width: 1024px) {}
+
+  // ipad
+  @media only screen and (min-width: 768px) {}
 }
 
 .hero {
@@ -24,6 +39,23 @@
       color: $yellow;
     }
   }
+
+  // iphone X
+  @media only screen and (max-width: 600px) {
+    margin: 0;
+    border: none;
+
+    .big-text {
+      font-size: 2rem;
+      text-align: center;
+    }
+  }
+
+  // ipad pro
+  @media only screen and (max-width: 1024px) {}
+
+  // ipad
+  @media only screen and (min-width: 768px) {}
 }
 
 .choose {
@@ -81,13 +113,43 @@
       }
     }
   }
+
+  // iphone X
+  @media only screen and (max-width: 600px) {
+    margin-top: 30rem;
+
+    .mat-card {
+      width: 20rem;
+      height: 9.875rem;
+
+      .card-context {
+        h1 {
+          font-size: 1.25rem;
+
+          .description {
+            font-size: 0.75rem;
+          }
+        }
+      }
+
+      img {
+        width: 11rem;
+      }
+    }
+  }
+
+  // ipad pro
+  @media only screen and (max-width: 1024px) {}
+
+  // ipad
+  @media only screen and (min-width: 768px) {}
 }
 
 .quick-links {
   margin-top: 6rem;
 
   .links {
-    width: 243px;
+    width: 15.188rem;
     margin: 0 auto;
     text-align: center;
 
@@ -110,6 +172,36 @@
       background: $yellow;
     }
   }
+
+
+  // iphone X
+  @media only screen and (max-width: 600px) {
+    .links {
+      margin: 0 auto;
+
+      &.col-1-of-2 {
+        grid-template-columns: repeat(4, 25%);
+
+      }
+
+      .mat-card {
+        width: 4.25rem;
+        height: 4.25rem;
+        padding: 1.375rem;
+
+        img {
+          width: 21.05px;
+        }
+      }
+    }
+
+  }
+
+  // ipad pro
+  @media only screen and (max-width: 1024px) {}
+
+  // ipad
+  @media only screen and (min-width: 768px) {}
 }
 
 .top-products {
@@ -161,7 +253,7 @@
       border-radius: 0.938rem;
       padding: 0 1rem;
       height: 40.5rem;
-      width: 582px;
+      width: 36.375rem;
 
       .cart {
         cursor: pointer;
@@ -198,6 +290,22 @@
       }
     }
   }
+
+  // iphone X
+  @media only screen and (max-width: 600px) {
+    .top-product {
+      .mat-card {
+        height: 100%;
+        width: 100%;
+      }
+    }
+  }
+
+  // ipad pro
+  @media only screen and (max-width: 1024px) {}
+
+  // ipad
+  @media only screen and (min-width: 768px) {}
 }
 
 .suppliers {
@@ -275,6 +383,15 @@
     }
   }
 
+  // iphone X
+  @media only screen and (max-width: 600px) {}
+
+  // ipad pro
+  @media only screen and (max-width: 1024px) {}
+
+  // ipad
+  @media only screen and (min-width: 768px) {}
+
 }
 
 .contact-us {
@@ -283,7 +400,7 @@
   .hero {
     border: none;
     border-top: 0.625rem solid $yellow;
-    width: 626px;
+    width: 39.125rem;
     margin: 0 auto;
     text-align: center;
   }
@@ -333,13 +450,32 @@
       }
     }
   }
+
+  // iphone X
+  @media only screen and (max-width: 600px) {
+    .form, .hero {
+      width: 100%;
+    }
+  }
+
+  // ipad pro
+  @media only screen and (max-width: 1024px) {}
+
+  // ipad
+  @media only screen and (min-width: 768px) {}
 }
 
-
-@media only screen and (max-width: 600px) {}
+// iphone X
+@media only screen and (max-width: 600px) {
+  .home-container {
+    .container {
+      padding: 1rem 0;
+    }
+  }
+}
 
 // ipad pro
 @media only screen and (max-width: 1024px) {}
 
-
-@media only screen and (min-width: 768) {}
+// ipad
+@media only screen and (min-width: 768px) {}

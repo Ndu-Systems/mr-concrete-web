@@ -181,6 +181,7 @@ h1.home-app-name {
       background: $white;
       width: 100%;
       padding: 2rem 0;
+
       a {
 
         font-weight: 600;
@@ -197,16 +198,47 @@ h1.home-app-name {
   }
 
   .home-container {
-    padding: 0 1rem;
+    padding: 1rem;
     background: $white;
-    margin: 9rem auto;
+    margin: 2rem auto;
   }
 
   .mobile {
     display: block;
-    background: $white !important;
-    padding: 2rem 0;
+    padding: 1rem 0;
+
+    a {
+      .count {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: $default-white;
+        border-radius: 2rem;
+        height: 1.7rem;
+        width: 1.563rem;
+        font-size: 0.77rem;
+        font-weight: 800;
+        text-align: center;
+        z-index: 10;
+        color: $black;
+      }
+
+      img {
+        margin-right: 1rem;
+        height: 1.4rem;
+        height: 57px;
+
+        &.total {
+          position: absolute;
+          right: 1rem;
+          top: 1rem;
+          width: 24.6px;
+        }
+      }
+    }
   }
 
-  .mat-drawer-inner-container {background-color: green;}
+  .mat-drawer-inner-container {
+    background-color: green;
+  }
 }
