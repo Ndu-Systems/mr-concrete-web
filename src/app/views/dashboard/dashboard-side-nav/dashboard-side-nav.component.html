@@ -11,7 +11,7 @@
             Dashboard
           </div>
         </a></li>
-      <li *ngIf="!isCustomer">
+      <li *ngIf="isAdmin || isSupplier">
         <a routerLink="/dashboard/products" routerLinkActive="active-link">
           <div class="nav-item">
             <img src="assets/images/dashboard/nav/products.svg" alt="feed" class="hl-on">
@@ -29,7 +29,7 @@
           </div>
         </a>
       </li>
-      <li>
+      <li *ngIf="isAdmin || isSupplier">
         <a routerLink="/dashboard/employees" routerLinkActive="active-link">
           <div class="nav-item">
             <img src="assets/images/dashboard/nav/staff.svg" alt="feed" class="hl-on">
@@ -38,7 +38,7 @@
           </div>
         </a>
       </li>
-      <li>
+      <li *ngIf="isAdmin || isSupplier">
         <a routerLink="/dashboard/companies" routerLinkActive="active-link">
           <div class="nav-item">
             <img src="assets/images/dashboard/nav/company.svg" alt="feed" class="hl-on">
@@ -47,7 +47,7 @@
           </div>
         </a>
       </li>
-      <li>
+      <li *ngIf="isAdmin || isSupplier">
         <a routerLink="/dashboard/partners" routerLinkActive="active-link">
           <div class="nav-item">
             <img src="assets/images/dashboard/nav/team.svg" alt="feed" class="hl-on">
@@ -57,9 +57,9 @@
         </a>
       </li>
     </ul>
-    <ul style="">
+    <ul>
       <hr class="line">
-      <li>
+      <li *ngIf="isAdmin || isSupplier">
         <a routerLink="/dashboard/settings" routerLinkActive="active-link">
           <div class="nav-item">
             <img src="assets/images/dashboard/nav/settings.svg" alt="feed" class="hl-on">
