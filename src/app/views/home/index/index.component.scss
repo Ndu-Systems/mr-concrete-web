@@ -44,6 +44,7 @@
   @media only screen and (max-width: 600px) {
     margin: 0;
     border: none;
+    padding: 0;
 
     .big-text {
       font-size: 2rem;
@@ -117,6 +118,7 @@
   // iphone X
   @media only screen and (max-width: 600px) {
     margin-top: 30rem;
+    width: 100%;
 
     .mat-card {
       width: 20rem;
@@ -453,7 +455,9 @@
 
   // iphone X
   @media only screen and (max-width: 600px) {
-    .form, .hero {
+
+    .form,
+    .hero {
       width: 100%;
     }
   }
