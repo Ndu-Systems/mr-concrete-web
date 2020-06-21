@@ -24,7 +24,7 @@
                </h1>
              </div>
            </a>
-           <a mat-list-item routerLink="/dashboard/products" (click)="snav.toggle()">
+           <a mat-list-item routerLink="/dashboard/products" (click)="snav.toggle()"  *ngIf="isAdmin || isSupplier">
             <div class="nav-item">
               <img src="assets/images/dashboard/nav/products.svg" alt="products" class="hl-on">&nbsp;
               <h1>
@@ -40,7 +40,7 @@
                </h1>
              </div>
            </a>
-           <a mat-list-item routerLink="/dashboard/employees" (click)="snav.toggle()">
+           <a mat-list-item routerLink="/dashboard/employees" (click)="snav.toggle()"  *ngIf="isAdmin || isSupplier">
              <div class="nav-item">
                <img src="assets/images/dashboard/nav/staff.svg" alt="staff" class="hl-on">&nbsp;
                <h1>
@@ -48,24 +48,24 @@
                </h1>
              </div>
            </a>
+           <a mat-list-item routerLink="/dashboard/companies" (click)="snav.toggle()"  *ngIf="isAdmin || isSupplier">
+             <div class="nav-item">
+               <img src="assets/images/dashboard/nav/company.svg" alt="company" class="hl-on">&nbsp;
+               <h1>
+                Companies
+               </h1>
+             </div>
+           </a>
+           <a mat-list-item routerLink="/dashboard/partners" (click)="snav.toggle()"  *ngIf="isAdmin || isSupplier">
+             <div class="nav-item">
+               <img src="assets/images/dashboard/nav/team.svg" alt="staff" class="hl-on">&nbsp;
+               <h1>
+                Partners
+               </h1>
+             </div>
+           </a>
          </div>
-         <div class="account">
-           <!-- <ul>
-             <li>
-               <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-                 <img src="assets/images/home/user.svg" alt="user icon">
-               </button>
-               <mat-menu #menu="matMenu">
-                 <a routerLink="" (click)="signOut()">
-                   <button mat-menu-item>
-                     <img src="assets/images/home/login.svg" alt="login icon">
-                     <span>logout</span>
-                   </button>
-                 </a>
-               </mat-menu>
-             </li>
-           </ul> -->
-         </div>
+
 
        </mat-sidenav>
        <mat-sidenav-content class="contents">
