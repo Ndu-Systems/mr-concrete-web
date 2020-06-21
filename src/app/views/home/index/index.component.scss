@@ -73,9 +73,10 @@
 
   // iphone X
   @media only screen and (max-width: 600px) {
-    top: 20rem;
-
-    img {}
+    margin-top: 3rem;
+    right: 1rem;
+    left: 0;
+    .mat-card { width: 100%;}
   }
 
   // ipad pro
@@ -181,7 +182,7 @@
 
   // iphone X
   @media only screen and (max-width: 600px) {
-    margin-top: 30rem;
+    margin-top: 42rem;
     width: 100%;
 
     .mat-card {
@@ -242,6 +243,7 @@
 
   // iphone X
   @media only screen and (max-width: 600px) {
+    margin-top: 5rem;
     .links {
       margin: 0 auto;
 

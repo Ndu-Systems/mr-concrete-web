@@ -12,7 +12,7 @@ export class IndexComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
   ) { }
-
+  error;
   ngOnInit() {
     this.rForm = this.fb.group({
       FullName: [null, Validators.required],
