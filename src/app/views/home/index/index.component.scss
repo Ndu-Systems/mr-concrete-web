@@ -6,16 +6,76 @@
   top: 15rem;
 
   img {
-    height: 46.563rem;
+    height: 100%;
+  }
+
+  .mat-card {
+    border-radius: 0.938rem;
+    padding: 0 1rem;
+    width: 36.375rem;
+    background: $black;
+    color: $white;
+
+    .mat-card-header {
+      padding: 1rem 0;
+
+      .mat-card-title {
+        font-weight: 800;
+        font-size: 2.188rem;
+        width: 70%;
+      }
+
+      .mat-card-subtitle {
+        color: $white;
+      }
+    }
+
+    .mat-card-content {
+      padding: 0 1rem;
+
+      .col-1-of-2 {
+        grid-template-columns: 60% auto;
+      }
+
+      .price {
+        font-weight: 900;
+        font-size: 2.813rem;
+
+        .span {
+          font-size: 1rem;
+          font-weight: 400;
+        }
+      }
+
+      a.cta-btn {
+        color: $black;
+        background-color: $yellow;
+        border-radius: 3.125rem;
+        height: 2.5rem;
+        padding: 0 2rem;
+        font-weight: 700;
+        margin: 3rem 1rem;
+      }
+    }
+
+    .cart {
+      cursor: pointer;
+      background: $yellow;
+      width: 3rem;
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      z-index: 2;
+      padding: .5rem;
+      border-radius: 10px;
+    }
   }
 
   // iphone X
   @media only screen and (max-width: 600px) {
     top: 20rem;
 
-    img {
-      height: 25rem;
-    }
+    img {}
   }
 
   // ipad pro
