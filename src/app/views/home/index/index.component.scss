@@ -12,7 +12,7 @@
   .mat-card {
     border-radius: 0.938rem;
     padding: 0 1rem;
-    width: 36.375rem;
+    width: 30rem;
     background: $black;
     color: $white;
 
@@ -120,17 +120,21 @@
 }
 
 .choose {
-  width: 50rem;
-  margin-top: 12rem;
+  width: 60%;
+  margin-top: 8.5rem;
 
   &.col-1-of-2 {}
+
+  img {
+    width: 100%;
+  }
 
   .mat-card {
     background: $black;
     padding: 0;
     padding-right: .75rem;
     border-radius: 1.563rem;
-    width: 25rem;
+    width: 100%;
     display: grid;
     grid-template-columns: 55% auto;
 
@@ -208,7 +212,7 @@
 }
 
 .quick-links {
-  margin-top: 6rem;
+  margin-top: 10rem;
 
   .links {
     width: 15.188rem;
