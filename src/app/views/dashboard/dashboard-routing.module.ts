@@ -82,6 +82,7 @@ import {
 import { CartDetailedComponent } from './orders/cart-detailed/cart-detailed.component';
 import { CreateCustomerOrderComponent } from './orders/create-customer-order/create-customer-order.component';
 import { SelectSupplierComponent } from './orders/create-customer-order/select-supplier/select-supplier.component';
+import { DeliveriesComponent, AddDeliveryComponent, EditDeliveryComponent, ListDeliveriesComponent } from './deliveries';
 
 
 const routes: Routes = [
@@ -120,6 +121,7 @@ const routes: Routes = [
       { path: 'add-company', component: AddCompanyComponent },
       { path: 'edit-company', component: EditCompanyComponent },
       { path: 'create-customer-order', component: CreateCustomerOrderComponent },
+      { path: 'deliveries', component: DeliveriesComponent },
     ]
   }
 ];
@@ -184,6 +186,10 @@ export const declarations = [
   ConfirmDialogComponent,
   CreateCustomerOrderComponent,
   SelectSupplierComponent,
+  DeliveriesComponent,
+  AddDeliveryComponent,
+  EditDeliveryComponent,
+  ListDeliveriesComponent,
   // Pipes
   MeasurenamePipe,
   FormatOrderproductPipeCustomer,

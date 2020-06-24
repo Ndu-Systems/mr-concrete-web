@@ -29,6 +29,15 @@
           </div>
         </a>
       </li>
+      <li>
+        <a routerLink="/dashboard/deliveries" routerLinkActive="active-link">
+          <div class="nav-item">
+            <img src="assets/images/dashboard/nav/delivery-truck.svg" alt="feed" class="hl-on">
+            <img src="assets/images/dashboard/nav/delivery-truck-disabled.svg" alt="feed" class="hl-off">&nbsp;
+            Deliveries
+          </div>
+        </a>
+      </li>
       <li *ngIf="isAdmin || isSupplier">
         <a routerLink="/dashboard/employees" routerLinkActive="active-link">
           <div class="nav-item">

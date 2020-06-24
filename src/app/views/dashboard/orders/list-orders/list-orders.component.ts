@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { OrderView } from 'src/app/_models/orderview.model';
 import { UserModel, SupplierOrdersModel, Placeholder, Supplier } from 'src/app/_models';
-import { AccountService, SupplierService } from 'src/app/_services';
+import { AccountService } from 'src/app/_services';
 import { Router } from '@angular/router';
 import { ConfirmationPageModel } from 'src/app/_shared';
 import { OrderService } from 'src/app/_services/dashboard/order.service';
@@ -40,7 +40,6 @@ export class ListOrdersComponent implements OnInit {
   constructor(
     private accountService: AccountService,
     private router: Router,
-    private supplierService: SupplierService,
     private orderService: OrderService,
 
   ) { }

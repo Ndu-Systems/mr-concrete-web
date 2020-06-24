@@ -1,7 +1,7 @@
 import { Supplier } from './../../../_models/supplier.model';
 import { Component, OnInit } from '@angular/core';
 import { ConcreteorderService, CounterService } from 'src/app/_services/dashboard';
-import { AccountService, SupplierService } from 'src/app/_services';
+import { AccountService } from 'src/app/_services';
 import { UserModel, Placeholder, CounterModel, SettingCounterModel } from 'src/app/_models';
 import { OrderView } from 'src/app/_models/orderview.model';
 import { ORDER_PLACEMENT_CONFIRMATION } from 'src/app/_shared';
