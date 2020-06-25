@@ -1,7 +1,8 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import { UserModel, NavigationModel } from 'src/app/_models';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { DeliveryService, NotificationService, AccountService } from 'src/app/_services';
+import { Order } from 'src/app/_models/order.model';
 
 @Component({
   selector: 'app-add-delivery',
@@ -10,6 +11,7 @@ import { DeliveryService, NotificationService, AccountService } from 'src/app/_s
 })
 export class AddDeliveryComponent implements OnInit {
   @Output() closeModal: EventEmitter<boolean> = new EventEmitter();
+  @Input() order: Order;
   rForm: FormGroup;
   currentUser: UserModel;
   drivers: UserModel[] = [];
@@ -24,13 +26,12 @@ export class AddDeliveryComponent implements OnInit {
   ngOnInit() {
     this.currentUser = this.accountService.CurrentUserValue;
     this.rForm = this.fb.group({
-      OrderId: [this.currentUser.UserId, Validators.required],
+      OrderId: [this.order.OrderId, Validators.required],
       UserId: [this.currentUser.UserId, Validators.required],
       DriverId: [null],
       CreateUserId: [this.currentUser.UserId, Validators.required],
       DeliveryStartDateTime: [this.currentUser.UserId, Validators.required],
       DeliveryEndDateTime: [this.currentUser.UserId, Validators.required],
-      ModifyUserId: [this.currentUser.UserId, Validators.required],
       IsDeleted: [false],
       StatusId: [1]
     });
