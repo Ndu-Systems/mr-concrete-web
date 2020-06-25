@@ -46,12 +46,20 @@ export class DeliveryService {
 
   getCompanyDeliveries(query: DeliveryQueryModel | any) {
     return this.http.post<DeliveryModel[]>(`${this.url}/api/orderdelivery/get-by-companyid.php`, query).subscribe(resp => {
-      const suppliers: DeliveryModel[] = resp;
-      localStorage.setItem('suppliers', JSON.stringify(suppliers));
-      this.updateDeliveriesState(suppliers);
+      const orderDeliveries: DeliveryModel[] = resp;
+      this.updateDeliveriesState(orderDeliveries);
     }, error => {
       this.messageService.dangerMessage('Something went wrong', 'please try again later...');
-     });
+    });
+  }
+
+  getUserDeliveries(query: DeliveryQueryModel) {
+    return this.http.post<DeliveryModel[]>(`${this.url}/api/orderdelivery/get-by-userid.php`, query).subscribe(resp => {
+      const orderDeliveries: DeliveryModel[] = resp;
+      this.updateDeliveriesState(orderDeliveries);
+    }, error => {
+      this.messageService.dangerMessage('Something went wrong', 'please try again later...');
+    });
   }
 
 }

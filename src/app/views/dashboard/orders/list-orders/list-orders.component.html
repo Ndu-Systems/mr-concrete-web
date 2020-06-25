@@ -54,10 +54,13 @@
           <b> {{item.DeliveryTime}}</b>
         </div>
         <div class="item">
-          <button class="fill-primary" mat-icon-button aria-label="Example icon button with a vertical three dot icon"
+          <!-- <button class="fill-primary" mat-icon-button aria-label="Example icon button with a vertical three dot icon"
             (click)="more(item)">
             <mat-icon>more_vert</mat-icon>
-          </button>
+          </button> -->
+          <div class="icon" (click)="more(item)">
+            <img src="assets/images/dashboard/action-card/view.svg" alt="feed" class="hl-on">
+           </div>
         </div>
       </div>
     </div>

@@ -12,14 +12,9 @@ import { Router } from '@angular/router';
 export class ListDeliveriesComponent implements OnInit {
   @Input() deliveries: DeliveryModel[];
   @Input() currentUser: UserModel;
+  @Input() placeHolder: Placeholder;
   @Output() deletionCompleted: EventEmitter<DeliveryModel> = new EventEmitter();
 
-  placeHolder: Placeholder = {
-    imageUrl: 'assets/images/dashboard/placeholders/default.svg',
-    message: 'No deliveries yet found.',
-    link: '/dashboard/create-orders',
-    linkLabel: 'Create an order'
-  };
   confirmModel: ConfirmModel = {
     Heading: 'Are you sure?',
     Description: 'This record will not be visible on the system.',

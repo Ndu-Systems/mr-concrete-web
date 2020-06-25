@@ -14,8 +14,6 @@
         <mat-tab-group class="tab-group">
           <mat-tab t-tab label="General info">
             <div class="items">
-
-
               <div class="item" *ngIf="order.Customer">
                 <h1>
                   Customer
@@ -25,7 +23,6 @@
                   {{order.Customer?.LastName}}
                 </h1>
               </div>
-
               <div class="item" *ngIf="order.Supplier">
                 <h1>
                   Supplier
@@ -38,7 +35,6 @@
               <div class="item" *ngIf="order.Address">
                 <h1>
                   Delivery Address
-
                 </h1>
                 <h1 class="value">
                   {{order.Address?.AddressLine1}} <br>
@@ -54,19 +50,6 @@
           </mat-tab>
           <mat-tab t-tab label="Special Instructions" *ngIf="order.SpecialInstructions">
 
-
-            <!-- <div class="item">
-              <h1>
-                Supplier
-
-              </h1>
-              <h1 class="value">
-                {{order.Supplier?.FirstName}}
-                {{order.Supplier?.LastName}}
-              </h1>
-            </div> -->
-
-
             <div class="item" *ngIf="order.SpecialInstructions">
               <h1>
                 special instructions
@@ -76,17 +59,23 @@
               </h1>
             </div>
           </mat-tab>
+          <mat-tab t-tab label="Delivery information" *ngIf="true">
+            <button *ngIf="actionButton" mat-flat-button color="primary" (click)="showModal=!showModal">
+              + delivery
+            </button>
+            <app-list-deliveries
+            [deliveries]="deliveries"
+            [currentUser]="currentUser"
+            [placeHolder]="placeHolder">
+            </app-list-deliveries>
+          </mat-tab>
         </mat-tab-group>
-
-
-
       </div>
-
-      <span>
-        <h1 class="heading">Products</h1>
-      </span>
       <div>
         <div class="products" *ngIf="order.Orderroducts">
+          <span>
+            <h1 class="heading">Products</h1>
+          </span>
           <div class="table">
             <div class="header">
               <div class="item">Product Name</div>
@@ -104,7 +93,7 @@
                 </div>
                 <div class="item">
                   <p>
-                      {{item.ProductName}}
+                    {{item.ProductName}}
                     <span class="number" *ngIf="item.ProductCode">
                       Code:<b> {{item.ProductCode}} </b>
                     </span>
@@ -174,4 +163,9 @@
 
   </div>
 
+</div>
+
+<div class="overlay" *ngIf="showModal">
+  <div class="overlay-modal">
+  </div>
 </div>

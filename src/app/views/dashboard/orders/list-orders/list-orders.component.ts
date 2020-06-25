@@ -56,7 +56,7 @@ export class ListOrdersComponent implements OnInit {
       };
       this.orderService.getCustomerByUserId(this.currentUser.UserId);
     } else {
-      this.orderService.getOrderByUserId(this.currentUser.UserId);
+      this.orderService.getOrderByUserId(this.currentUser.CompanyId);
     }
   }
 

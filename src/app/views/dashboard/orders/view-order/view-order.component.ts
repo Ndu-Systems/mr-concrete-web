@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { OrderView } from 'src/app/_models/orderview.model';
 import { ConcreteorderService } from 'src/app/_services/dashboard';
 import { AccountService, MeasurementService } from 'src/app/_services';
-import { UserModel, Measurement } from 'src/app/_models';
+import { UserModel, Measurement, DeliveryModel, Placeholder } from 'src/app/_models';
 import { Router } from '@angular/router';
 import { ConfirmationPageModel } from 'src/app/_shared';
 import { OrderService } from 'src/app/_services/dashboard/order.service';
@@ -21,6 +21,13 @@ export class ViewOrderComponent implements OnInit {
     link: '/dashboard/orders',
     label: 'Return to orders'
   };
+  placeHolder: Placeholder = {
+    imageUrl: 'assets/images/dashboard/placeholders/default.svg',
+    message: 'No deliveries found.'
+  };
+  showModal: boolean;
+  deliveries: DeliveryModel[] = [];
+
   confirmationPageParams: ConfirmationPageModel = {
     heading: 'Supplier orders',
     subheading: 'Order status updated',
@@ -33,7 +40,6 @@ export class ViewOrderComponent implements OnInit {
     actionLabel: 'Return to orders',
     type: 'Order',
     imgUrl: 'assets/images/dashboard/successfully.svg'
-
   };
   order$: Observable<Order>;
   order: OrderView;

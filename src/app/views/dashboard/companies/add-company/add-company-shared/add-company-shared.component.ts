@@ -31,8 +31,6 @@ export class AddCompanySharedComponent implements OnInit {
     private fb: FormBuilder,
     private apiService: ApiService,
     private messageService: NotificationService
-
-
   ) { }
 
   ngOnInit() {

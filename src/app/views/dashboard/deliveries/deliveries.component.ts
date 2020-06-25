@@ -2,7 +2,7 @@ import { takeUntil } from 'rxjs/operators';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subject } from 'rxjs';
 import { DeliveryService, AccountService } from 'src/app/_services';
-import { UserModel, DeliveryModel, DeliveryQueryModel } from 'src/app/_models';
+import { UserModel, DeliveryModel, DeliveryQueryModel, Placeholder } from 'src/app/_models';
 import { ADMIN_ROLE, SUPPLIER_ROLE } from '../shared';
 
 @Component({
@@ -17,6 +17,12 @@ export class DeliveriesComponent implements OnInit, OnDestroy {
   deliveries: DeliveryModel[] = [];
   currentUser: UserModel;
 
+  placeHolder: Placeholder = {
+    imageUrl: 'assets/images/dashboard/placeholders/default.svg',
+    message: 'No deliveries found.',
+    link: '/dashboard/create-orders',
+    linkLabel: 'Create an order'
+  };
 
   constructor(
     private deliveryService: DeliveryService,
