@@ -40,15 +40,28 @@
 
       &.cta {
         width: 50%;
-        margin: 0 auto;
+        // margin: 0 auto;
         display: grid;
         grid-template-columns: 50% auto;
+
         .icon {
           cursor: pointer;
+
           img {
             height: 3rem;
             margin: .5rem 0;
           }
+        }
+      }
+      .description {
+        font-weight: 600;
+        color: $grey;
+        max-height: 2.6rem;
+        overflow: hidden;
+        .name{
+          display: block;
+          margin: .3rem;
+
         }
       }
 
@@ -109,6 +122,47 @@
       button {
         background: $yellow;
         color: $black;
+      }
+    }
+  }
+
+  &.default {
+    .header {
+      background: none;
+      grid-template-columns: 20% 15% 25% 20% auto;
+
+      .item {
+        font-size: 1rem;
+        text-transform: capitalize;
+        color: $grey;
+        font-weight: 600;
+      }
+    }
+
+    .row {
+      grid-template-columns: 5% 15% 15% 25% 20% auto;
+      border-radius: 5px;
+
+      .item {
+        p {
+          b {
+            display: block;
+            font-weight: 800;
+            color: $black;
+          }
+
+          font-weight: 500;
+          color: $grey;
+
+          &.badge {
+            border: solid 1px $grey;
+            padding: .5rem;
+            text-align: center;
+            border-radius: 2rem;
+            background: $lighter-grey;
+            width: 90%;
+          }
+        }
       }
     }
   }

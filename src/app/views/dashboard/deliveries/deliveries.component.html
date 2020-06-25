@@ -1,3 +1,8 @@
-<p>
-  deliveries works!
-</p>
+<div class="main">
+  <app-banner [subheading]="subheading" [heading]="heading"></app-banner>
+<app-list-deliveries
+[deliveries]="deliveries"
+[currentUser]="currentUser">
+
+</app-list-deliveries>
+</div>

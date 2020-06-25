@@ -66,3 +66,10 @@ export interface Customer {
   ModifyUserId: string;
   StatusId: string;
 }
+
+export interface DeliveryQueryModel {
+  CompanyId?: string;
+  UserId?: string;
+  IsDeleted?: boolean;
+  StatusId: string;
+}

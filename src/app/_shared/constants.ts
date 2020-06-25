@@ -97,6 +97,8 @@ export const ADDRESS_TYPE = [
 
 export const COMPANY_VIEW = 'Company';
 export const COMPANIES_VIEW = 'Companies';
+export const DELIVERIES_VIEW = 'Deliveries';
+export const DELIVERY_VIEW = 'Delivery';
 export const USER_VIEW = 'userView';
 export const USERLIST_VIEW = 'userListView';
 export const ADDRESS_VIEW = 'addressView';

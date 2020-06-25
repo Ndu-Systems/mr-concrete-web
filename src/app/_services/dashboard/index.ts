@@ -6,5 +6,6 @@ export * from './counter.service';
 export * from './user.service';
 export * from './company.service';
 export * from './address.service';
+export * from './delivery.service';
 // end:ng42.barrel
 
