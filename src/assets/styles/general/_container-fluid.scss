@@ -1,0 +1,67 @@
+.container-fluid {
+  background: $default-white;
+  margin: .5rem;
+  padding: 1rem;
+  border-radius: 10px;
+
+  h1.heading {
+    font-size: 1.25rem;
+    font-weight: 700;
+
+    .span {
+      color: $grey;
+      font-weight: 400;
+      font-size: 0.81rem;
+    }
+  }
+
+  .table {
+    .header {
+      grid-template-columns: 20% 25% 20% 15% auto;
+      border-bottom: solid 1px $grey;
+      border-radius: 0;
+
+      h1.ht {
+        font-size: 1rem;
+        color: $grey;
+        font-weight: 600;
+        text-transform: capitalize;
+      }
+    }
+
+    .table-row {
+      display: grid;
+      grid-template-columns: 5% 15% 25% 20% 15% auto;
+      border-bottom: solid 1px $lighter-grey;
+      padding: .5rem 0;
+
+      .image {
+        img {
+          height: 2.5rem;
+        }
+      }
+
+      p {
+        font-weight: 400;
+        font-size: 0.813rem;
+        padding: 0;
+      }
+
+      .cta {
+        width: 50%;
+        display: grid;
+        grid-template-columns: 50% auto;
+
+        .icon {
+          cursor: pointer;
+
+          img {
+            height: 2.5rem;
+            margin: .5rem 0;
+          }
+        }
+      }
+
+    }
+  }
+}

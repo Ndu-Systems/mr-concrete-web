@@ -2,7 +2,7 @@ import { DashboardComponent } from './dashboard.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from 'src/app/_guards';
-import { DashboardHomeComponent, RecentOrdersComponent } from './dashboard-home';
+import { DashboardHomeComponent, RecentOrdersComponent, DriverDashboardHomeComponent } from './dashboard-home';
 import { DashboardNavComponent } from './dashboard-nav';
 import {
   OrdersComponent,
@@ -190,6 +190,7 @@ export const declarations = [
   AddDeliveryComponent,
   EditDeliveryComponent,
   ListDeliveriesComponent,
+  DriverDashboardHomeComponent,
   // Pipes
   MeasurenamePipe,
   FormatOrderproductPipeCustomer,

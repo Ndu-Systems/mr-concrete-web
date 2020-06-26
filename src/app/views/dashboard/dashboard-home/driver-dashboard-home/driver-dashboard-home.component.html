@@ -1,0 +1,88 @@
+<app-banner [subheading]="subheading" [heading]="heading" [actionButton]="actionButton"></app-banner>
+<div class="col-1-of-2">
+  <div class="container-fluid">
+    <h1 class="heading">
+      Today
+      <span class="span">
+        {{today | date: 'fullDate'}}
+      </span>
+    </h1>
+    <div class="table">
+      <div class="header">
+        <h1 class="ht">customer</h1>
+        <h1 class="ht">Order</h1>
+        <h1 class="ht">Delivery Address</h1>
+        <h1 class="ht">Delivery Date</h1>
+        <h1 class="ht"></h1>
+      </div>
+      <div *ngFor="let item of [1,1,1]">
+        <div class="table-row">
+          <div class="image">
+            <!-- <img [src]="item.Images[0].Url" alt="" *ngIf="item.Images" /> -->
+            <img src="assets/images/home/avatar.svg" alt="place holder" />
+          </div>
+          <p><b>Customer Name</b></p>
+          <p> <b>ORD-20200109-3</b></p>
+          <p>11, Ikhaya street corner
+            Durban, 3001</p>
+          <p>Jan 13, 2020</p>
+          <div class="cta">
+            <div class="icon" (click)="onCardClick(item)">
+              <img src="assets/images/dashboard/action-card/view.svg" alt="feed" class="hl-on">
+            </div>
+            <!-- <div class="icon">
+              <img src="assets/images/dashboard/action-card/delete.svg" (click)="deleteItem(item)" alt="feed" class="hl-on">
+             </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <h1 class="heading">
+      Calendar
+    </h1>
+    <p-calendar [(ngModel)]="today" [inline]="true" [showWeek]="true"></p-calendar>
+  </div>
+  <div class="container-fluid">
+    <h1 class="heading">
+      Coming soon
+    </h1>
+    <div class="table">
+      <div class="header">
+        <h1 class="ht">customer</h1>
+        <h1 class="ht">Order</h1>
+        <h1 class="ht">Delivery Address</h1>
+        <h1 class="ht">Delivery Date</h1>
+        <h1 class="ht"></h1>
+      </div>
+      <div *ngFor="let item of [1,1,1]">
+        <div class="table-row">
+          <div class="image">
+            <!-- <img [src]="item.Images[0].Url" alt="" *ngIf="item.Images" /> -->
+            <img src="assets/images/home/avatar.svg" alt="place holder" />
+          </div>
+          <p><b>Customer Name</b></p>
+          <p> <b>ORD-20200109-3</b></p>
+          <p>11, Ikhaya street corner
+            Durban, 3001</p>
+          <p>Jan 13, 2020</p>
+          <div class="cta">
+            <div class="icon" (click)="onCardClick(item)">
+              <img src="assets/images/dashboard/action-card/view.svg" alt="feed" class="hl-on">
+            </div>
+            <!-- <div class="icon">
+              <img src="assets/images/dashboard/action-card/delete.svg" (click)="deleteItem(item)" alt="feed" class="hl-on">
+             </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid">
+    <h1 class="heading">
+      Notifications
+    </h1>
+
+  </div>
+</div>

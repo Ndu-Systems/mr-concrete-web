@@ -5,20 +5,24 @@ import {ToastModule} from 'primeng/toast';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {MessagesModule} from 'primeng/messages';
 import {MessageModule} from 'primeng/message';
+import {CalendarModule} from 'primeng/calendar';
+
 @NgModule({
   imports: [
     DialogModule,
     ToastModule,
     ConfirmDialogModule,
     MessageModule,
-    RatingModule
+    RatingModule,
+    CalendarModule
   ],
   exports: [
     DialogModule,
     ToastModule,
     ConfirmDialogModule,
     MessagesModule,
-    RatingModule
+    RatingModule,
+    CalendarModule
   ]
 })
 export class PrimengModule {

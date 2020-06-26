@@ -1,7 +1,9 @@
 @import '../../../../assets/styles/general/colors';
 
 .main {
+
   margin: 6rem 7rem;
+
   .container {
     padding: 0 2rem;
 
@@ -17,6 +19,7 @@
       .notification-body {
         width: 60%;
         margin: 0 auto;
+
         &.col-1-of-2 {
           grid-template-columns: 75% auto;
         }
@@ -26,6 +29,7 @@
         font-size: 1rem;
         font-weight: 500;
       }
+
       .mat-flat-button.mat-primary {
         width: 11.875rem;
       }
@@ -41,6 +45,7 @@
     height: 2.5rem;
     margin: 0;
     color: $black;
+
     &.cta-btn {
       background-color: $black;
     }
@@ -63,8 +68,10 @@
       grid-gap: 0;
     }
   }
+
   @media only screen and (max-width: 600px) {
     margin: 5rem auto;
+
     .container {
       padding: 0 1rem;
 
@@ -80,6 +87,7 @@
         .notification-body {
           width: 100%;
           margin: 0 auto;
+
           &.col-1-of-2 {
             grid-template-columns: 100%;
           }
@@ -89,11 +97,13 @@
           font-size: .75rem;
           font-weight: 500;
         }
+
         .mat-flat-button.mat-primary {
           width: 100%;
         }
       }
     }
+
     .action-cards {
       &.col-1-of-2 {
         grid-gap: 1rem;
@@ -101,4 +111,8 @@
     }
   }
 
+}
+
+.col-1-of-2 {
+   grid-template-columns: 65% auto;
 }

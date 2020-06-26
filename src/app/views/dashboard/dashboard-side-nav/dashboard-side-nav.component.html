@@ -20,7 +20,7 @@
           </div>
         </a>
       </li>
-      <li>
+      <li *ngIf="isAdmin || isSupplier">
         <a routerLink="/dashboard/orders" routerLinkActive="active-link">
           <div class="nav-item">
             <img src="assets/images/dashboard/nav/order.svg" alt="feed" class="hl-on">
