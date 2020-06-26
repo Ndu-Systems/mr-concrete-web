@@ -3,7 +3,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subject } from 'rxjs';
 import { DeliveryService, AccountService } from 'src/app/_services';
 import { UserModel, DeliveryModel, DeliveryQueryModel, Placeholder } from 'src/app/_models';
-import { ADMIN_ROLE, SUPPLIER_ROLE } from '../shared';
+import { ADMIN_ROLE, SUPPLIER_ROLE, DRIVER_ROLE } from '../shared';
 
 @Component({
   selector: 'app-deliveries',
@@ -45,6 +45,14 @@ export class DeliveriesComponent implements OnInit, OnDestroy {
     ) {
       const query: DeliveryQueryModel = { CompanyId: this.currentUser.CompanyId, IsDeleted: false, StatusId: '1' };
       this.deliveryService.getCompanyDeliveries(query);
+      this.deliveryService.deliveries.pipe(takeUntil(this.onDestroy$)).subscribe(data => {
+        if (data) {
+          this.deliveries = data;
+        }
+      });
+    } else if (this.currentUser.Roles.RoleName === DRIVER_ROLE.typeOfUser) {
+      const query: DeliveryQueryModel = { UserId: this.currentUser.UserId, IsDeleted: false, StatusId: '1' };
+      this.deliveryService.getDriverDeliveries(query);
       this.deliveryService.deliveries.pipe(takeUntil(this.onDestroy$)).subscribe(data => {
         if (data) {
           this.deliveries = data;

@@ -62,6 +62,16 @@ export class DeliveryService {
     });
   }
 
+  getDriverDeliveries(query: DeliveryQueryModel) {
+    return this.http.post<DeliveryModel[]>(`${this.url}/api/orderdelivery/get-by-driverid.php`, query).subscribe(resp => {
+      const orderDeliveries: DeliveryModel[] = resp;
+      this.updateDeliveriesState(orderDeliveries);
+    }, error => {
+      this.messageService.dangerMessage('Something went wrong', 'please try again later...');
+    });
+  }
+
+
   AddDelivery(model: DeliveryModel) {
     this.http.post<DeliveryModel>(`${this.url}/api/orderdelivery/add-order-delivery.php`, model).subscribe(data => {
       let deliveries: DeliveryModel[] = JSON.parse(localStorage.getItem(DELIVERIES_VIEW));

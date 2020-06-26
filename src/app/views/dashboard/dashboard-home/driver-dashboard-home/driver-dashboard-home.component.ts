@@ -12,7 +12,8 @@ export class DriverDashboardHomeComponent implements OnInit {
     link: '/dashboard/deliveries',
     label: 'View all deliveries'
   };
-  today = Date.now();
+  today = Date.UTC;
+  date: Date;
   constructor() { }
 
   ngOnInit() {
