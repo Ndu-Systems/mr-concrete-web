@@ -1,0 +1,36 @@
+<div class="form" *ngIf="rForm">
+  <form [formGroup]="rForm" (ngSubmit)="onSubmit(rForm.value)">
+    <mat-tab-group class="tab-group">
+      <mat-tab t-tab label="General">
+        <div class="form-fields">
+          <span *ngIf="order">Order details here.</span>
+          <div class="input-group">
+            <label>Select Driver</label>
+            <select matNativeControl formControlName="DriverId">
+              <option label="--select something --"></option>
+              <option *ngFor="let item of drivers" value="{{item.UserId}}">
+                {{item.FirstName}} {{item.LastName}}
+              </option>
+            </select>
+            <mat-error *ngIf="!rForm.controls['DriverId'].valid && rForm.controls['DriverId'].touched">
+              Driver is required</mat-error>
+          </div>
+          <div class="col-1-of-2">
+            <div class="input-group">
+              <label>Delivery date</label>
+              <input type="date" matInput formControlName="DeliveryStartDateTime" class="shoter-input" placeholder="750.99">
+            </div>
+            <div class="input-group">
+              <label>Delivery time</label>
+              <input matInput type="time" formControlName="DeliveryTime" placeholder="each or kg">
+            </div>
+          </div>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+    <div class="actions">
+      <button type="submit" [disabled]="!rForm.valid" class="btn cta">Create Delivery</button>
+      <button type="button" class="btn secondary cta" (click)="cancel()">Cancel</button>
+    </div>
+  </form>
+</div>

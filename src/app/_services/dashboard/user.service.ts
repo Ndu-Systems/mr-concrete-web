@@ -29,13 +29,17 @@ export class UserService {
     this.url = environment.API_URL;
   }
 
+  // public methods
   public get CurrentUserViewValue(): UserModel {
     return this._user.value;
   }
-updateUsersViewState(users: UserModel[]) {
-  this._users.next(users);
-  localStorage.setItem(USERLIST_VIEW, JSON.stringify(users));
-}
+
+
+
+  updateUsersViewState(users: UserModel[]) {
+    this._users.next(users);
+    localStorage.setItem(USERLIST_VIEW, JSON.stringify(users));
+  }
 
   updateUserViewState(user: UserModel) {
     this._user.next(user);
@@ -56,6 +60,8 @@ updateUsersViewState(users: UserModel[]) {
   updateUser(model: UserModel): Observable<UserModel> {
     return this.http.post<UserModel>(`${this.url}/api/users/update-user.php`, model);
   }
+
+
 
   clearCurrentUser() {
     this._user.next(null);

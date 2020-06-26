@@ -63,10 +63,7 @@
             <button *ngIf="actionButton" mat-flat-button color="primary" (click)="showModal=!showModal">
               + delivery
             </button>
-            <app-list-deliveries
-            [deliveries]="deliveries"
-            [currentUser]="currentUser"
-            [placeHolder]="placeHolder">
+            <app-list-deliveries [deliveries]="deliveries" [currentUser]="currentUser" [placeHolder]="placeHolder">
             </app-list-deliveries>
           </mat-tab>
         </mat-tab-group>
@@ -148,10 +145,6 @@
             </div>
           </div>
 
-
-          <!-- <ng-template #notFound>
-            <app-placeholder [placeHolder]="placeHolder"></app-placeholder>
-          </ng-template> -->
         </div>
 
       </div>
@@ -167,5 +160,6 @@
 
 <div class="overlay" *ngIf="showModal">
   <div class="overlay-modal">
+    <app-add-delivery (closeModal)="showModal=$event" [order]="order"></app-add-delivery>
   </div>
 </div>

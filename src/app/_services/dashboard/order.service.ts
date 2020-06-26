@@ -35,7 +35,9 @@ export class OrderService {
     this.url = environment.API_URL;
   }
 
-
+  public getCurrentOrder(): Order {
+    return this.viewOrderBehaviorSubject.value;
+  }
 
   addOrder(data: Order): Observable<Order> {
     return this.http.post<any>(`${this.url}/api/order/add-order.php`, data);
