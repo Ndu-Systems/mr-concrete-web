@@ -62,4 +62,33 @@ export class DeliveryService {
     });
   }
 
+  AddDelivery(model: DeliveryModel) {
+    this.http.post<DeliveryModel>(`${this.url}/api/orderdelivery/add-order-delivery.php`, model).subscribe(data => {
+      let deliveries: DeliveryModel[] = JSON.parse(localStorage.getItem(DELIVERIES_VIEW));
+      if (deliveries === undefined) {
+        deliveries = [];
+      }
+      deliveries.push(data);
+      this.updateDeliveriesState(deliveries);
+    });
+  }
+
+  updateDelivery(model: DeliveryModel) {
+    this.http.put<DeliveryModel>(`${this.url}/api/orderdelivery/update-order-delivery.php`, model).subscribe(data => {
+      let deliveries: DeliveryModel[] = JSON.parse(localStorage.getItem(DELIVERIES_VIEW));
+      if (deliveries === undefined) {
+        deliveries = [];
+        deliveries.push(data);
+      } else {
+        deliveries.forEach((item, index) => {
+          if (item.Id === data.Id) {
+            deliveries[index] = data;
+          }
+        });
+      }
+      this.updateDeliveriesState(deliveries);
+    });
+  }
+
+
 }

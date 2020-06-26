@@ -71,6 +71,7 @@ export class SupplierService {
   removeCurrentCategory() {
     localStorage.removeItem('supplier');
   }
+
   addSupplier(data: Supplier) {
     return this.http.post<any>(`${this.url}/api/supplier/add-supplier.php`, data).subscribe(resp => {
       const Supplier: Supplier = resp;
