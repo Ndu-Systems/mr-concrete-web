@@ -1,3 +1,14 @@
 .col-1-of-2 {
   grid-gap: 0;
 }
+
+.table.default {
+  .header {
+    grid-template-columns: 20% 15% 10% 15% 20% auto;
+  }
+  .row {
+    grid-template-columns: 5% 15% 15% 10% 15% 20% auto;
+
+  }
+
+}

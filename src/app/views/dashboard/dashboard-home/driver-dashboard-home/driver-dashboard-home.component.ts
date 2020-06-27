@@ -6,14 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['../dashboard-home.component.scss']
 })
 export class DriverDashboardHomeComponent implements OnInit {
-  heading = 'Order deliveries';
+  heading = 'Your order deliveries';
   subheading = 'A list of deliveries assigned to you';
   actionButton: any = {
     link: '/dashboard/deliveries',
     label: 'View all deliveries'
   };
-  today = Date.UTC;
-  date: Date;
+  today: Date;
   constructor() { }
 
   ngOnInit() {
