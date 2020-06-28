@@ -1,0 +1,237 @@
+<div class="main">
+  <app-banner [heading]="nav?.heading" [subheading]="nav?.subheading" [actionButton]="actionButton"></app-banner>
+  <div class="container-fluid" *ngIf="delivery">
+    <div class="details col-1-of-2">
+      <div class="general">
+        <div class="dp">
+          <img src="assets/images/home/avatar.svg" alt="avatar">
+        </div>
+        <h1 class="head">Customer name</h1>
+        <h1 class="text">Customer@mail.com</h1>
+        <h1 class="text">27 74 133 12355</h1>
+        <h1 class="info">
+          Joined
+          <span class="text">
+            20/07/2020
+          </span>
+        </h1>
+        <h1 class="info">
+          Orders in system
+          <span class="text">
+            11
+          </span>
+        </h1>
+        <h1 class="info">
+          Profession
+          <span class="text">
+            Foreman
+          </span>
+        </h1>
+      </div>
+      <div class="general">
+        <div class="col-1-of-3">
+          <h1 class="info">
+            Order number
+            <span class="text">
+              ORD-5
+            </span>
+          </h1>
+          <h1 class="info">
+            Delivery Date
+            <span class="text">
+              27 June 2020 - 02:24
+            </span>
+          </h1>
+          <h1 class="info">
+            City
+            <span class="text">
+              Durban
+            </span>
+          </h1>
+        </div>
+        <div class="tab-content">
+          <mat-tab-group class="tab-group">
+            <mat-tab t-tab label="Delivery information">
+              <h1 class="info">
+                Delivery Status
+                <span class="badge">
+                  In progress
+                </span>
+              </h1>
+              <h1 class="info">
+                Order number
+                <span class="text">
+                  ORD-5
+                </span>
+              </h1>
+              <h1 class="info">
+                Assigned driver
+                <span class="text">
+                  Driver name
+                </span>
+              </h1>
+              <h1 class="info">
+                Delivery Date
+                <span class="text">
+                  27 June 2020
+                </span>
+              </h1>
+              <h1 class="info">
+                Delivery Time
+                <span class="text">
+                  10:00AM
+                </span>
+              </h1>
+            </mat-tab>
+            <mat-tab t-tab label="Order information">
+              <div class="col-1-of-2">
+                <h1 class="info">
+                  Order number
+                  <span class="text">
+                    ORD-5
+                  </span>
+                </h1>
+                <h1 class="info">
+                  Order date
+                  <span class="text">
+                    27 June 2020
+                  </span>
+                </h1>
+                <h1 class="info">
+                  Amount
+                  <span class="text">
+                    R85,000,000.00
+                  </span>
+                </h1>
+                <h1 class="info">
+                  Order item(s)
+                  <span class="text">
+                    2
+                  </span>
+                </h1>
+              </div>
+              <h1 class="info">
+                Special instructions
+                <span class="text description">
+                  Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                  industry's standard dummy text ever since the 1500s,
+                </span>
+              </h1>
+              <div class="table-content">
+                <h1 class="heading">
+                  Order product(s)
+                </h1>
+                <div class="table">
+                  <div class="header">
+                    <h1 class="ht">Product Name</h1>
+                    <h1 class="ht">Product Code</h1>
+                    <h1 class="ht">Price</h1>
+                    <h1 class="ht">Qty</h1>
+                    <h1 class="ht">Category</h1>
+                  </div>
+                  <div class="" *ngFor="let item of [1,1,1]">
+                    <div class="table-row">
+                      <div class="image">
+                        <!-- <img [src]="item.Images[0].Url" alt="" *ngIf="item.Images" /> -->
+                        <img src="assets/images/product-placeholder.svg" *ngIf="!item.Images" alt="" />
+                      </div>
+                      <h1 class="info">
+                        Delivery Status
+                        <span class="badge active">
+                          Active
+                        </span>
+                      </h1>
+                      <h1 class="info">
+                        <span class="badge grey">
+                          In progress
+                        </span>
+                      </h1>
+                      <h1 class="info">
+                        R40,000,000,00 / day
+                      </h1>
+                      <h1 class="info">
+                        2
+                      </h1>
+                      <h1 class="info">
+                        Heavy duty
+                      </h1>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </mat-tab>
+            <mat-tab t-tab label="Workflow information">
+              <span class="workflow">
+                <h1 class="info">
+                  What is a workflow?
+                  <span class="text description">
+                    These are order delivery process on the system that get updated by the different stakeholders in
+                    this
+                    workflow.
+                  </span>
+                </h1>
+                <h1 class="info">
+                  Delivery status
+                  <span class="badge grey">
+                    Delivery assigned pending
+                  </span>
+                </h1>
+                <div class="delivery-status">
+                  <h1 class="info">
+                    Next delivery status
+                    <span class="text">
+                      Update your next delivery status here.
+                    </span>
+                  </h1>
+                  <div class="panel-form">
+                    <h1 class="info">
+                      <span class="text">
+                        Accept this order delivery or kindly decline.
+                      </span>
+                    </h1>
+                    <div class="col-1-of-2">
+                      <button mat-flat-button color="" class="primary">
+                        Accept assignment
+                      </button>
+                      <button mat-flat-button color="" class="danger">
+                        Decline assignment
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="table-content">
+                  <h1 class="heading">
+                    Workflow details
+                  </h1>
+                  <div class="table">
+                    <div class="" *ngFor="let item of [1,1,1]">
+                      <div class="table-row">
+                        <div class="image">
+                          <img src="assets/images/yellow-bullet.svg" alt="bullet" />
+                        </div>
+                        <h1 class="info">
+                          <span class="text">
+                            Order delivery created
+                          </span>
+                        </h1>
+                        <h1 class="info">
+                          2020-06-03
+                          <span class="text">
+                            02:24
+                          </span>
+                        </h1>
+                        <h1 class="info">
+                          actioned by name
+                        </h1>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </span>
+            </mat-tab>
+          </mat-tab-group>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

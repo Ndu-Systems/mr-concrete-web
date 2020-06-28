@@ -1,15 +1,16 @@
-import { DeliveryModel, UserModel, DeliveryQueryModel } from 'src/app/_models';
+import { DeliveryModel, UserModel, DeliveryQueryModel, NavigationModel } from 'src/app/_models';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { DeliveryService, AccountService } from 'src/app/_services';
+import { DeliveryService, AccountService, ApiService } from 'src/app/_services';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-driver-dashboard-home',
   templateUrl: './driver-dashboard-home.component.html',
   styleUrls: ['../dashboard-home.component.scss']
 })
-export class DriverDashboardHomeComponent implements OnInit, OnDestroy  {
+export class DriverDashboardHomeComponent implements OnInit, OnDestroy {
   heading = 'Your order deliveries';
   subheading = 'A list of deliveries assigned to you';
   actionButton: any = {
@@ -21,7 +22,11 @@ export class DriverDashboardHomeComponent implements OnInit, OnDestroy  {
   deliveries: DeliveryModel[] = [];
   currentUser: UserModel;
 
-  constructor(private deliveryService: DeliveryService,     private accountService: AccountService) { }
+  constructor(
+    private deliveryService: DeliveryService,
+    private accountService: AccountService,
+    private routeTo: Router,
+    private apiService: ApiService) { }
 
   ngOnInit() {
     this.currentUser = this.accountService.CurrentUserValue;
@@ -41,5 +46,15 @@ export class DriverDashboardHomeComponent implements OnInit, OnDestroy  {
         this.deliveries = data;
       }
     });
+  }
+
+  orderDetails(model: DeliveryModel) {
+    this.deliveryService.updateDeliveryState(model);
+    const nav: NavigationModel = {
+      heading: 'Delivery details',
+      subheading: 'Delivery information for updating & workflow process.'
+    };
+    this.apiService.updateNavState(nav);
+    this.routeTo.navigate(['/dashboard/delivery-details']);
   }
 }

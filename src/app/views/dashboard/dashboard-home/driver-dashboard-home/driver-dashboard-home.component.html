@@ -21,13 +21,21 @@
             <!-- <img [src]="item.Images[0].Url" alt="" *ngIf="item.Images" /> -->
             <img src="assets/images/home/avatar.svg" alt="place holder" />
           </div>
-          <p><b>Customer Name</b></p>
-          <p> <b>ORD-20200109-3</b></p>
-          <p>11, Ikhaya street corner
-            Durban, 3001</p>
+          <p>
+            <b>{{item?.Order?.Customer.FirstName}} {{item?.Order?.Customer.LastName}}</b>
+            {{item?.Order?.Customer.CreateDate | date:'dd'}}.
+            {{item?.Order?.Customer.CreateDate | date:'MM'}}.{{item?.Order?.Customer.CreateDate | date:'yy'}}
+          </p>
+          <p> <b>ORD-{{item?.Order?.OrderNo}}</b></p>
+          <p *ngIf="item?.Order.Address">
+            {{item?.Order?.Address?.AddressLine1}}, {{item?.Order?.Address?.AddressLine2}},
+            {{item?.Order?.Address?.AddressLine3}}<br>
+            {{item?.Order?.Address?.City}}, {{item?.Order?.Address?.Province}}, {{item?.Order?.Address?.PostalCode}}
+          </p>
+          <p *ngIf="!item?.Order.Address">No delivery address captured</p>
           <p>Jan 13, 2020</p>
           <div class="cta">
-            <div class="icon" (click)="onCardClick(item)">
+            <div class="icon" (click)="orderDetails(item)">
               <img src="assets/images/dashboard/action-card/view.svg" alt="feed" class="hl-on">
             </div>
             <!-- <div class="icon">

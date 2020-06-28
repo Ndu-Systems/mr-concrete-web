@@ -64,4 +64,143 @@
 
     }
   }
+
+  .details {
+    &.col-1-of-2 {
+      grid-template-columns: 30% auto;
+    }
+
+    .general {
+      padding: 1rem;
+
+      .dp {
+        img {
+          height: 11.5rem;
+        }
+      }
+
+      h1 {
+        font-size: 2.2rem;
+        text-transform: capitalize;
+        margin: 1rem 0;
+
+        &.head {
+          font-weight: 900;
+        }
+
+        &.text {
+          font-size: 1rem;
+          color: $grey;
+          margin: 1rem 0;
+        }
+
+        &.info {
+          font-size: 1rem;
+          margin: 1rem 0;
+
+          .text {
+            font-size: .8rem;
+            color: $grey;
+            display: block;
+            margin-top: .5rem;
+
+            &.description {
+              width: 42rem;
+              font-weight: 400;
+            }
+          }
+
+          .badge {
+            font-size: .8rem;
+            margin-top: .5rem;
+            padding: 0.333rem;
+            border-radius: 25px;
+            width: 8.625rem;
+            height: 1.625rem;
+            display: block;
+            background-color: #fbc53136;
+            border: 1px solid #FBC531;
+            text-align: center;
+            color: $grey;
+
+            &.active {
+              background-color: #2ed57333;
+              border: 1px solid $success;
+              color: $success;
+            }
+
+            &.grey {
+              background-color: $lighter-grey;
+              border: 1px solid $grey;
+            }
+          }
+        }
+      }
+
+      .table-content {
+        margin-top: 2rem;
+
+        h1.heading {
+          font-size: 1rem;
+        }
+
+        .table {
+          text-align: -webkit-center;
+        }
+      }
+    }
+
+    .workflow {
+      h1 {
+        &.info {
+
+          .text {
+            &.description {
+              width: 27rem;
+              font-weight: 400;
+              text-transform: initial;
+            }
+          }
+
+          .badge {
+            &.grey {
+              width: 12.188rem;
+            }
+          }
+        }
+      }
+
+      .panel-form {
+        padding: 1rem;
+        width: 30rem;
+        border: 1px solid $grey;
+        border-radius: 0.625rem;
+
+        h1.info {
+          margin: 1rem 0;
+
+          .text {
+            font-weight: 400;
+          }
+        }
+
+        .col-1-of-2 {
+          grid-gap: .5rem;
+        }
+
+      }
+      .table-content {
+        .table {
+          .table-row {
+            .image {
+              margin: 1rem 0;
+              img {
+                height: 1.313rem;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }

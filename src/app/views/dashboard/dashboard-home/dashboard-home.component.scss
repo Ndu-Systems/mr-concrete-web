@@ -124,6 +124,9 @@
     }
     .table-row {
       grid-template-columns: 5% 15% 15% 30% 20% auto;
+      p {
+        b { display: block;}
+      }
     }
   }
 }

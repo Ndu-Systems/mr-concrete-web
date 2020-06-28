@@ -1,0 +1,14 @@
+.mat-flat-button {
+  &.primary {
+    background: $yellow;
+    color: $black;
+    border-radius: 2rem;
+    font-weight: 900;
+  }
+  &.danger {
+    background: $danger;
+    color: $black;
+    border-radius: 2rem;
+    font-weight: 900;
+  }
+}
