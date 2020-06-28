@@ -114,5 +114,16 @@
 }
 
 .col-1-of-2 {
-   grid-template-columns: 65% auto;
+  grid-template-columns: 65% auto;
+}
+
+.container-fluid {
+  .table {
+    .header {
+      grid-template-columns: 20% 15% 30% 20% auto;
+    }
+    .table-row {
+      grid-template-columns: 5% 15% 15% 30% 20% auto;
+    }
+  }
 }

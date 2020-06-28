@@ -3,8 +3,9 @@
     <h1 class="item">Customer</h1>
     <h1 class="item">Status</h1>
     <h1 class="item">Order #</h1>
-    <h1 class="item">Assigned Driver</h1>
+    <h1 class="item">Driver</h1>
     <h1 class="item">Delivery Address</h1>
+    <h1 class="item">Delivery Date:Time</h1>
     <h1 class="item">Actions</h1>
   </div>
   <div class="table-content">
@@ -47,6 +48,11 @@
           {{item?.Order?.Address?.City}}, {{item?.Order?.Address?.Province}}, {{item?.Order?.Address?.PostalCode}}
         </p>
         <p *ngIf="!item?.Order.Address">No delivery address captured</p>
+      </div>
+      <div class="item">
+        <p>
+          <b>{{item.DeliveryDate}}</b>{{item.DeliveryTime}}
+        </p>
       </div>
       <div class="item cta">
         <div class="icon" (click)="onCardClick(item)">
