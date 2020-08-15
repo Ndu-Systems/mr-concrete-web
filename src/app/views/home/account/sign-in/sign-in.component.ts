@@ -63,7 +63,6 @@ export class SignInComponent implements OnInit {
 
   activateUser() {
     const tokenModel: TokenModel = { Token: this.token };
-    console.log(tokenModel);
     if (tokenModel.Token) {
       this.accountService.activateUser(tokenModel).subscribe(data => {
         if (data > 0) {

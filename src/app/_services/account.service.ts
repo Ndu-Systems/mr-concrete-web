@@ -88,12 +88,10 @@ export class AccountService {
 
   changePassword(data: ChangePasswordModel) {
     return this.http.post<UserModel>(`${this.url}/api/accounts/change-password.php`, data);
-
   }
 
   generateToken(data: EmailGetRequestModel) {
     return this.http.post<UserModel>(`${this.url}/api/accounts/generate-token.php`, data);
-
   }
   signOut() {
     localStorage.removeItem(CURRENT_USER);
