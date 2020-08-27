@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { CompanyModel } from 'src/app/_models';
 
 @Component({
   selector: 'app-action-card',
@@ -7,9 +8,11 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ActionCardComponent implements OnInit {
   @Input() class: string;
+  @Input() companyModel: CompanyModel;
   constructor() { }
 
   ngOnInit() {
+    console.log(this.companyModel);
   }
 
 }

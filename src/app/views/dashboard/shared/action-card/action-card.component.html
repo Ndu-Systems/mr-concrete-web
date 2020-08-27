@@ -1,4 +1,4 @@
-<mat-card [ngClass]="class">
+<mat-card [ngClass]="class" *ngIf="companyModel">
   <div class="col-1-of-1">
     <span>
       <h1 class="header">
@@ -10,9 +10,9 @@
   <div class="card-body">
     <div class="col-1-of-2">
       <h1 class="heading">
-        Cash build material suppliers
+        {{companyModel.CompanyName}}
         <span class="text">
-          Umbilo 178, Durban Kwa-Zulu Natal
+          {{companyModel.CompanyAddress}}&nbsp;,{{companyModel.City}}<br/>{{companyModel.Province}}<br/>{{companyModel.PostalCode}}
         </span>
       </h1>
       <div class="col-1-of-1">

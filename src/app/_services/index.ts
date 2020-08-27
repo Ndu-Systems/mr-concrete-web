@@ -7,5 +7,6 @@ export * from './dashboard/supplier.service';
 export * from './dashboard/measurement.service';
 export * from './communication';
 export * from './dashboard';
+export * from './navigation';
 // end:ng42.barrel
 

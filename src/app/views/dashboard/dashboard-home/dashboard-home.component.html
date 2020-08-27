@@ -1,7 +1,8 @@
 <!-- admin dashboard -->
-<div class="main" *ngIf="user.RoleId === '3'">
+<div class="main"
+     *ngIf="user.RoleId === '3'">
   <div class="container">
-    <div class="notification">
+    <!-- <div class="notification">
       <div class="notification-body col-1-of-2">
         <h1>
           Your Free Trial Expires In <b>30</b> Days. Get <b>50%</b> For Three Months
@@ -10,9 +11,9 @@
           select a package
         </button>
       </div>
-    </div>
-    <app-banner-tutorial>
-    </app-banner-tutorial>
+    </div> -->
+    <!-- <app-banner-tutorial>
+    </app-banner-tutorial> -->
     <br />
     <app-create-persona>
     </app-create-persona>
@@ -20,12 +21,13 @@
     </app-set-up-progress>
     <br />
     <div class="action-cards col-1-of-2">
-      <app-action-card></app-action-card>
-      <app-action-card [class]="class"></app-action-card>
+      <app-action-card [class]="class"
+                       [companyModel]="user.Company"></app-action-card>
     </div>
   </div>
 </div>
 
-<div class="main" *ngIf="user.RoleId === '6'">
-<app-driver-dashboard-home></app-driver-dashboard-home>
+<div class="main"
+     *ngIf="user.RoleId === '6'">
+  <app-driver-dashboard-home></app-driver-dashboard-home>
 </div>
