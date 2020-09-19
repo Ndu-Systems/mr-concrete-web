@@ -5,8 +5,8 @@
   height: 100vh;
   color: $black;
   padding: 7rem 1rem;
-  background:$default-white;
-  box-shadow: 0px -2px 37px -10px #b3b3b347;
+  background: $black !important;
+  box-shadow: 0px -2px 37px -10px $yellow;
 
   .items {
     position: absolute;
@@ -36,9 +36,11 @@
         text-align: center;
         display: grid;
         grid-template-columns: 0% auto;
+
         img {
           &.hl-on {
             display: none;
+
           }
 
           &.hl-off {
@@ -55,8 +57,8 @@
 
         .nav-item {
           padding: 0.5rem 1rem;
-          background: #ecb9005c;
           border-radius: 0.313rem;
+          background: linear-gradient(to left, $yellow 75%, $black 25%) !important;
 
           img {
             &.hl-on {

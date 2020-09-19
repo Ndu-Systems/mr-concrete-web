@@ -1,78 +1,235 @@
-<div class="account-container">
-  <form class="form" [formGroup]="rForm">
-    <span class="" *ngIf="!selectedType">
-      <h1 class="form-heading">Before we continue
-        <span>
-          Give us, purpose for using this system
-        </span>
-      </h1>
-      <div class="select-cards" >
-        <mat-card class="select-card-item" *ngIf="supplierType" (click)="onUserTypeClick(supplierType)">
-          <div class="content">
-            <img src="assets/images/home/supply.svg" alt="supplier image">
-            <h1 class="label">{{supplierType.description}}</h1>
-          </div>
-        </mat-card>
-        <mat-card class="select-card-item" *ngIf="customerType" (click)="onUserTypeClick(customerType)">
-          <div class="content">
-            <img src="assets/images/home/buy.svg" alt="customer image">
-            <h1 class="label">{{customerType.description}}</h1>
-          </div>
-        </mat-card>
-      </div>
-    </span>
-    <h1 class="form-heading">Register your free account.</h1>
-    <span class="col-1-of-2">
+<div class="container">
+  <app-home-heading [heading]="heading"
+                    [paragraph]="paragraph"></app-home-heading>
+  <div class="account options">
+    <form class="form">
+
+    </form>
+  </div>
+  <span class="">
+
+    <!-- <form class="form"
+          [formGroup]="rForm">
+      <span class=""
+            *ngIf="!selectedType">
+        <div class="select-cards">
+          <mat-card class="select-card-item"
+                    *ngIf="supplierType"
+                    (click)="onUserTypeClick(supplierType)">
+            <div class="content">
+              <img src="assets/images/home/supply.svg"
+                   alt="supplier image">
+              <h1 class="label">{{supplierType.description}}</h1>
+            </div>
+          </mat-card>
+          <mat-card class="select-card-item"
+                    *ngIf="customerType"
+                    (click)="onUserTypeClick(customerType)">
+            <div class="content">
+              <img src="assets/images/home/buy.svg"
+                   alt="customer image">
+              <h1 class="label">{{customerType.description}}</h1>
+            </div>
+          </mat-card>
+        </div>
+      </span>
+      <h1 class="form-heading">Register your free account.</h1>
+      <span class="col-1-of-2">
+        <mat-form-field appearance="outline">
+          <input matInput
+                 placeholder="Name"
+                 formControlName="FirstName"
+                 MatFormFieldControl
+                 type="text"
+                 required>
+          <mat-error *ngIf="!rForm.controls['FirstName'].valid && rForm.controls['FirstName'].touched">first name(s) is
+            required</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <input matInput
+                 placeholder="Surname"
+                 formControlName="LastName"
+                 MatFormFieldControl
+                 type="text"
+                 required>
+          <mat-error *ngIf="!rForm.controls['LastName'].valid && rForm.controls['LastName'].touched">surname is required
+          </mat-error>
+        </mat-form-field>
+      </span>
       <mat-form-field appearance="outline">
-        <input matInput placeholder="Name" formControlName="FirstName" MatFormFieldControl type="text" required>
-        <mat-error *ngIf="!rForm.controls['FirstName'].valid && rForm.controls['FirstName'].touched">first name(s) is
+        <input matInput
+               placeholder="Cellphone number"
+               formControlName="Cellphone"
+               MatFormFieldControl
+               type="number"
+               required>
+        <mat-error *ngIf="!rForm.controls['Cellphone'].valid && rForm.controls['Cellphone'].touched">a valid Cellphone
+          is
           required</mat-error>
       </mat-form-field>
       <mat-form-field appearance="outline">
-        <input matInput placeholder="Surname" formControlName="LastName" MatFormFieldControl type="text" required>
-        <mat-error *ngIf="!rForm.controls['LastName'].valid && rForm.controls['LastName'].touched">surname is required
-        </mat-error>
+        <input matInput
+               placeholder="Email"
+               formControlName="Email"
+               MatFormFieldControl
+               type="email"
+               required>
+        <mat-error *ngIf="!rForm.controls['Email'].valid && rForm.controls['Email'].touched">a valid email address is
+          required</mat-error>
       </mat-form-field>
-    </span>
-    <mat-form-field appearance="outline">
-      <input matInput placeholder="Cellphone number" formControlName="Cellphone" MatFormFieldControl type="number"
-        required>
-      <mat-error *ngIf="!rForm.controls['Cellphone'].valid && rForm.controls['Cellphone'].touched">a valid Cellphone
-        is
-        required</mat-error>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-      <input matInput placeholder="Email" formControlName="Email" MatFormFieldControl type="email" required>
-      <mat-error *ngIf="!rForm.controls['Email'].valid && rForm.controls['Email'].touched">a valid email address is
-        required</mat-error>
-    </mat-form-field>
 
-    <mat-form-field appearance="outline">
-      <input matInput placeholder="Password" formControlName="Password" MatFormFieldControl
-        [type]="hidePassword ? 'password' : 'text'" required>
-      <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" [attr.aria-label]="'Hide password'">
-        <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
-      </button>
-      <mat-error *ngIf="!rForm.controls['Password'].valid && rForm.controls['Password'].touched">your password is
-        required</mat-error>
-    </mat-form-field>
+      <mat-form-field appearance="outline">
+        <input matInput
+               placeholder="Password"
+               formControlName="Password"
+               MatFormFieldControl
+               [type]="hidePassword ? 'password' : 'text'"
+               required>
+        <button mat-icon-button
+                matSuffix
+                (click)="hidePassword = !hidePassword"
+                [attr.aria-label]="'Hide password'">
+          <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        <mat-error *ngIf="!rForm.controls['Password'].valid && rForm.controls['Password'].touched">your password is
+          required</mat-error>
+      </mat-form-field>
 
-    <div class="col-1-of-2">
-      <button mat-flat-button color="primary" (click)="onSubmit(rForm.value)" [disabled]="!rForm.valid">
-        Register for free
-      </button>
-      <a mat-flat-button color="primary" class="transparent" routerLink="/">cancel</a>
+      <div class="col-1-of-2">
+        <button mat-flat-button
+                color="primary"
+                (click)="onSubmit(rForm.value)"
+                [disabled]="!rForm.valid">
+          Register for free
+        </button>
+        <a mat-flat-button
+           color="primary"
+           class="transparent"
+           routerLink="/">cancel</a>
+      </div>
+
+      <div class="col-1-of-2 cta">
+        <h1>
+          I have an account
+        </h1>
+        <a mat-flat-button
+           color="primary"
+           class="cta-btn"
+           routerLink="/login">Log in now</a>
+      </div>
+      <mat-error *ngIf="error">
+        {{error}}
+      </mat-error>
+
+    </form> -->
+    <div class="account col-1-of-2">
+      <form class="form"
+            [formGroup]="rForm">
+        <div class="col-1-of-1">
+          <mat-form-field appearance="outline">
+            <mat-select required
+                        [(ngModel)]="TypeOfUser"
+                        [ngModelOptions]="{standalone: true}">
+              <mat-option>-- None --</mat-option>
+              <mat-option *ngFor="let item of accountTypes"
+                          (click)="onUserTypeClick()"
+                          [value]="item.role">{{item.description}}</mat-option>
+            </mat-select>
+            <mat-label>
+              <mat-icon>security</mat-icon> <b> Select your </b> <i> account type</i>
+            </mat-label>
+          </mat-form-field>
+        </div>
+        <p *ngIf="TypeOfUser">Register as a {{TypeOfUser}}</p>
+        <div class="col-1-of-1"
+             *ngIf="showForm">
+          <mat-form-field appearance="outline"
+                          *ngIf="!isSupplier">
+            <input matInput
+                   placeholder="Name"
+                   formControlName="FirstName"
+                   MatFormFieldControl
+                   type="text"
+                   required>
+            <mat-error *ngIf="!rForm.controls['FirstName'].valid && rForm.controls['FirstName'].touched">first name(s)
+              is
+              required</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline"
+                          *ngIf="!isSupplier">
+            <input matInput
+                   placeholder="Surname"
+                   formControlName="LastName"
+                   MatFormFieldControl
+                   type="text"
+                   required>
+            <mat-error *ngIf="!rForm.controls['LastName'].valid && rForm.controls['LastName'].touched">surname is
+              required
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline"
+                          *ngIf="isSupplier">
+            <input matInput
+                   placeholder="Company name"
+                   formControlName="CompanyName"
+                   MatFormFieldControl
+                   type="text"
+                   required>
+          </mat-form-field>
+          <mat-form-field appearance="outline"
+                          *ngIf="isSupplier">
+            <input matInput
+                   placeholder="Representative name"
+                   formControlName="CompanyRepresentative"
+                   MatFormFieldControl
+                   type="text"
+                   required>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <input matInput
+                   placeholder="Email"
+                   formControlName="Email"
+                   MatFormFieldControl
+                   type="email"
+                   required>
+            <mat-error *ngIf="!rForm.controls['Email'].valid && rForm.controls['Email'].touched">a valid email address
+              is
+              required</mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <input matInput
+                   placeholder="Password"
+                   formControlName="Password"
+                   MatFormFieldControl
+                   [type]="hidePassword ? 'password' : 'text'"
+                   required>
+            <button mat-icon-button
+                    matSuffix
+                    (click)="hidePassword = !hidePassword"
+                    [attr.aria-label]="'Hide password'">
+              <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <mat-error *ngIf="!rForm.controls['Password'].valid && rForm.controls['Password'].touched">your password is
+              required</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col-1-of-1">
+          <button mat-flat-button
+                  color="primary"
+                  (click)="onSubmit(rForm.value)"
+                  [disabled]="!rForm.valid">
+            complete {{TypeOfUser}} registration
+          </button>
+          <button mat-flat-button
+                  color="primary"
+                  class="transparent"
+                  (click)="forgotPassword()">
+            forgot password?</button>
+        </div>
+      </form>
+      <img src="assets/images/home/sign-in-image.svg"
+           alt="sign in image">
     </div>
-
-    <div class="col-1-of-2 cta">
-      <h1>
-        I have an account
-      </h1>
-      <a mat-flat-button color="primary" class="cta-btn" routerLink="/login">Log in now</a>
-    </div>
-    <mat-error *ngIf="error">
-      {{error}}
-    </mat-error>
-
-  </form>
+  </span>
 </div>

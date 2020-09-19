@@ -5,16 +5,5 @@
        <li *ngIf="isAdmin || isCustomer"><a routerLink="/dashboard/orders">Orders</a></li>
     </ul>
   </mat-toolbar-row>
-  <!-- <mat-toolbar-row>
-    <ul>
-      <li>
-        <h1 class="time col-1-of-2">
-          <span class="timespan">{{today | date: 'shortTime'}}</span>
-          <span class="date">{{today | date: 'mediumDate'}}</span>
-        </h1>
-      </li>
-    </ul>
-  </mat-toolbar-row> -->
-
 </mat-toolbar>
 <app-cart-view></app-cart-view>

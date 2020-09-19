@@ -16,18 +16,28 @@ export class SignUpComponent implements OnInit {
   hidePassword = true;
   error: string;
   isSupplier: boolean;
-  customerType =
+  accountTypes = [
     {
-      description: 'Customer',
+      description: 'I am a supplier',
+      role: Roles.SUPPLIER
+    },
+    {
+      description: 'I am a customer',
       role: Roles.CUSTOMER
-    };
-
-  supplierType = {
-    description: 'Supplier',
-    role: Roles.SUPPLIER
-  };
-
+    }
+  ];
+  TypeOfUser: any;
   selectedType: string;
+  heading = 'Before We Continue.';
+  paragraph = 'Give us, purpose for using this system.';
+
+  showForm: boolean;
+  userType: string;
+  options: FormGroup;
+  hideRequiredControl = new FormControl(false);
+  floatLabelControl = new FormControl('auto');
+
+
   constructor(
     private fb: FormBuilder,
     private accountService: AccountService,
@@ -43,21 +53,32 @@ export class SignUpComponent implements OnInit {
         null,
         Validators.compose([
           Validators.required,
-          Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
+          Validators.email
         ])
       ),
       Password: [null, Validators.required],
-      Cellphone: [null, Validators.required],
+      Cellphone: [null],
       FirstName: [null, Validators.required],
       LastName: [null, Validators.required],
+      CompanyName: [null],
+      CompanyRepresentative: [null],
       TypeOfUser: [null],
       CreateUserId: ['sys'],
       ModifyUserId: ['sys'],
     });
   }
-  onUserTypeClick(typeOfUser) {
-    this.rForm.value.TypeOfUser = typeOfUser.role;
-    this.selectedType = typeOfUser.role;
+  onUserTypeClick() {
+    const selectedType = this.TypeOfUser;
+    this.showForm = true;
+    if (selectedType === Roles.SUPPLIER) {
+      this.isSupplier = true;
+    } else {
+      this.isSupplier = false;
+    }
+  }
+
+  onChangeEvent(ev) {
+    console.log(ev.target.value); // should print option1
   }
 
   onSubmit(model: SignUpModel) {
@@ -92,5 +113,6 @@ export class SignUpComponent implements OnInit {
       this.routeTo.navigate(['/']);
     }, 1700);
   }
+
 
 }
