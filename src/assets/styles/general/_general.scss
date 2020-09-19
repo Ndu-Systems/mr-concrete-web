@@ -5,6 +5,10 @@
 @import './table';
 @import './container-fluid';
 @import './button';
+@import './pills';
+@import './home-heading';
+@import './info-card';
+
 .container {
   padding: 0;
 }
@@ -82,4 +86,11 @@ a {
 
 .mt2 {
   margin: 2rem;
+}
+
+h1.h2 {
+  font-size: 30px;
+  font-weight: 900;
+  width: 250px;
+  text-transform: capitalize;
 }

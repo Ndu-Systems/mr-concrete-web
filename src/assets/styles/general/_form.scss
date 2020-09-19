@@ -1,176 +1,33 @@
 .form {
   background: $default-white;
-  padding: 1rem 2rem;
+  padding: 1rem;
+
+
+  button.mat-flat-button {
+    background: #FBC531;
+    color: #1E272E;
+    border-radius: 0rem;
+    font-size: 1rem;
+    font-weight: 900;
+    padding: 0rem 2rem;
+    text-transform: uppercase;
+
+    &.mat-primary[disabled] {
+      background-color: #DCDDE1 !important;
+      color: #B2BEC3 !important;
+    }
+
+    &.transparent {
+      background: $default-white !important;
+      border: solid 1px $grey;
+      color: $grey !important;
+      font-weight: 600 !important;
+    }
+  }
 
   @media only screen and (max-width: 600px) {
     padding: 0;
+    padding: 1rem;
   }
 
-
-  .form-fields {
-    padding: 2rem 0;
-
-    .input-group {
-      padding: .3rem 1rem;
-
-      label,
-      input {
-        display: block;
-      }
-
-      label {
-        font-weight: 700;
-        font-size: .8rem;
-      }
-
-      input,
-      select,
-      textarea {
-        border: 1px solid $grey;
-        padding: .5rem 1rem;
-        margin: .4rem 0;
-        border-radius: 3px;
-        width: 100%;
-
-        @media only screen and (max-width: 600px) {
-          width: 100%;
-        }
-
-      }
-
-      select{
-        cursor: pointer;
-        option{
-          cursor: pointer;
-        }
-      }
-
-
-      .label-input {
-        font-weight: 700;
-        font-size: .8rem;
-      }
-    }
-
-    .col-2 {
-      display: grid;
-      width: 31.5%;
-      grid-template-columns: repeat(2, 50%);
-
-      @media only screen and (max-width: 600px) {
-        width: 100%;
-      }
-
-      .input-group {
-        padding: .3rem 1rem;
-
-        input,
-        select {
-          width: 100%;
-        }
-
-        .shoter-input {
-          width: 95%;
-        }
-      }
-
-    }
-
-    .col-3 {
-      display: grid;
-      width: 40%;
-      grid-template-columns: 35% 35% auto;
-      @media only screen and (max-width: 600px) {
-        width: 100%;
-      }
-
-
-      .input-group {
-        padding: .3rem 1rem;
-
-        input {
-          width: 100%;
-        }
-
-        .btn {
-          margin-top: .2rem;
-        }
-      }
-
-    }
-
-    .mat-error {
-      font-size: 0.82rem;
-      font-weight: 600;
-    }
-  }
-
-  .actions {
-    padding: .1rem 1rem;
-  }
-
-  .btn {
-    background: $yellow;
-    color: $black;
-    padding: .5rem 1rem;
-    font-weight: 700;
-    border: none;
-    border-radius: 2rem;
-    cursor: pointer;
-
-    &:disabled {
-      opacity: .3;
-      cursor: no-drop;
-    }
-  }
-
-  .secondary {
-    background: $lighter-grey;
-    color: $strong-grey;
-    margin-left: 1rem;
-  }
-
-  .danger {
-    background: $danger;
-  }
-
-  .success {
-    background: $success;
-  }
-
-  .cta {
-    border-radius: 3px;
-    padding: .6rem 1rem;
-  }
-
-}
-
-.btn-qty {
-  display: grid;
-  grid-template-columns: repeat(3, 33.333%);
-  width: 12rem;
-  padding: 0rem;
-  font-size: 1.5rem;
-
-  @media only screen and (max-width: 600px) {
-    margin: 0 auto;
-  }
-
-  .action {
-    text-align: center;
-  }
-
-  input {
-    width: 100%;
-    margin: 0;
-    height: 2.5rem;
-    border: none;
-    font-weight: 700;
-    text-align: center;
-    font-size: 1.5rem;
-  }
-}
-
-.qty-label {
-  padding: 1rem 2rem;
 }

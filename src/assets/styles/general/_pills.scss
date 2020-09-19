@@ -1,0 +1,23 @@
+.pills {
+  padding: .5rem;
+  display: flex;
+  flex-direction: row;
+  overflow-x: scroll;
+  margin-top: 1rem;
+
+  .pill {
+    background: $lighter-grey;
+    padding: .45rem;
+    border-radius: 1.563rem;
+    min-width: 9.25rem;
+    min-height: 2.625rem;
+    text-align: center;
+    cursor: pointer;
+    h1 {
+      font-weight: 800;
+      font-size: 0.938rem;
+      color: $grey;
+      text-transform: capitalize;
+    }
+  }
+}

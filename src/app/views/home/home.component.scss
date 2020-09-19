@@ -85,7 +85,7 @@ h1.home-app-name {
         padding: 0.5rem 2rem;
         font-size: 1em;
         font-weight: 700;
-         border-radius: 0.313rem;
+        border-radius: 0.313rem;
 
         &.transparent {
           background: $default-white;
@@ -159,7 +159,7 @@ h1.home-app-name {
         padding: 0rem 2rem;
         font-size: 1rem;
         font-weight: 700;
-         border-radius: 0.313rem;
+        border-radius: 0.313rem;
         height: 2.5rem;
 
         &.transparent {
@@ -216,7 +216,7 @@ h1.home-app-name {
         border-radius: 2rem;
         height: 1.7rem;
         width: 1.563rem;
-        font-size: 0.77rem;
+        font-size: 0.7rem;
         font-weight: 800;
         text-align: center;
         z-index: 10;
@@ -226,7 +226,7 @@ h1.home-app-name {
       img {
         margin-right: 1rem;
         height: 1.4rem;
-        height: 57px;
+        height: 2.5rem;
 
         &.total {
           position: absolute;
@@ -238,7 +238,5 @@ h1.home-app-name {
     }
   }
 
-  .mat-drawer-inner-container {
-    background-color: green;
-  }
+  .mat-drawer-inner-container {}
 }

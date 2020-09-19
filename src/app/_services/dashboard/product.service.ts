@@ -50,9 +50,11 @@ export class ProductService {
       this.updateState(products);
     });
   }
+
   updateProduct(data: Product) {
     return this.http.post<any>(`${this.url}/api/product/update-product.php`, data);
   }
+
   updateProperty(data: Property) {
     return this.http.post<any>(`${this.url}/api/productproperty/update-productproperty.php`, data).subscribe(data => {
       console.log('Property Updated', data);

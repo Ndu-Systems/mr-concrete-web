@@ -1,0 +1,84 @@
+<div class="container">
+  <app-home-heading [heading]="heading"></app-home-heading>
+  <div class="contact-us">
+    <form class="form"
+          [formGroup]="rForm">
+      <div class="col-1-of-2">
+        <mat-form-field appearance="outline">
+          <mat-label>FirstName</mat-label>
+          <input matInput
+                 placeholder="Enter Name"
+                 formControlName="FirstName"
+                 MatFormFieldControl
+                 type="text"
+                 required>
+          <mat-error *ngIf="!rForm.controls['FirstName'].valid && rForm.controls['FirstName'].touched">a name is
+            required
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Surname</mat-label>
+          <input matInput
+                 placeholder="Enter Surname"
+                 formControlName="Surname"
+                 MatFormFieldControl
+                 type="text"
+                 required>
+          <mat-error *ngIf="!rForm.controls['Surname'].valid && rForm.controls['Surname'].touched">a name is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-1-of-2">
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput
+                 placeholder="Enter Email"
+                 formControlName="Email"
+                 MatFormFieldControl
+                 type="email">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Phone number</mat-label>
+          <input matInput
+                 placeholder="Enter Phone Number (+27)"
+                 formControlName="PhoneNumber"
+                 MatFormFieldControl
+                 type="text"
+                 required>
+          <mat-error *ngIf="!rForm.controls['PhoneNumber'].valid && rForm.controls['PhoneNumber'].touched">a Phone
+            number is
+            required
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-1-of-1">
+        <mat-form-field appearance="outline">
+          <mat-label>Message</mat-label>
+          <textarea matInput
+                    MatFormFieldControl
+                    placeholder="Enter message"
+                    formControlName="Message"
+                    required></textarea>
+          <mat-error *ngIf="!rForm.controls['Message'].valid && rForm.controls['Message'].touched">a message is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-1-of-2">
+        <button mat-flat-button
+                color="primary"
+                (click)="onSubmit(rForm.value)"
+                [disabled]="!rForm.valid">
+          Submit
+        </button>
+        <button mat-flat-button
+                color="primary"
+                class="transparent"
+                (click)="clearForm()">clear</button>
+      </div>
+      <div class="error"
+           *ngIf="errors">
+        <h1>{{errors}}</h1>
+      </div>
+    </form>
+  </div>
+</div>

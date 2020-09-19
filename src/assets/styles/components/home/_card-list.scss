@@ -1,0 +1,26 @@
+.card-list {
+  background: linear-gradient(to bottom, $default-white 70%, $yellow 30%);
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: 33.33% 33.33% 33.33%;
+  .mat-card {
+    max-width: 25rem;
+    img {
+      width: 100%;
+    }
+    &.product {
+      button {
+         width: 100%;
+         cursor: pointer;
+       }
+    }
+  }
+
+  @media only screen and (max-width: 600px) {
+    grid-template-columns: 100%;
+    .mat-card {
+      width: 100%;
+    }
+  }
+
+}

@@ -1,27 +1,27 @@
 <mat-toolbar class="desktop">
-
   <mat-toolbar-row>
     <a routerLink=""><img src="assets/images/logo.svg" alt="header icon" class="header-icon"></a>
     <ul>
       <li><a routerLink="">Home</a></li>
+      <li><a routerLink="/contact-us">contact us</a></li>
     </ul>
   </mat-toolbar-row>
-
-  <mat-toolbar-row>
+  <mat-toolbar-row class="account">
     <ul>
       <li><a routerLink="/register" mat-flat-button color="primary" class="cta-btn">register for free</a></li>
       <li><a routerLink="/login">login</a></li>
     </ul>
   </mat-toolbar-row>
-  <mat-toolbar-row>
+  <mat-toolbar-row class="cart">
     <ul>
       <li>
         <a routerLink="">
           <span class="count">15</span>
-          <img src="assets/images/home/market.svg" alt="shopping cart">
-        </a> | <b>R2000000.00</b>
+          <img src="assets/images/home/shopping-bag.svg" alt="shopping cart">
+        </a> | <b>{{2000000 | currency:'R'}}</b>
       </li>
     </ul>
   </mat-toolbar-row>
-
 </mat-toolbar>
+
+

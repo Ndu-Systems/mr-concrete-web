@@ -23,5 +23,7 @@ export * from './navigation.model';
 export * from './confirm.model';
 export * from './contact-us.model';
 export * from './delivery.model';
+export * from './pill.model';
+export * from './product.model';
  // end:ng42.barrel
 

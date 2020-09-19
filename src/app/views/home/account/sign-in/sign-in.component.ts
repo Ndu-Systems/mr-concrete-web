@@ -33,6 +33,9 @@ export class SignInComponent implements OnInit {
       role: Roles.SUPPLIER
     }
   ];
+
+  heading = 'Login To Your Account';
+
   constructor(
     private fb: FormBuilder,
     private accountService: AccountService,
@@ -60,7 +63,9 @@ export class SignInComponent implements OnInit {
     this.activateUser();
     this.returnUrl = this.route.snapshot.queryParams.returnUrl || 'dashboard';
   }
-
+  clearForm() {
+    this.rForm.reset();
+  }
   activateUser() {
     const tokenModel: TokenModel = { Token: this.token };
     if (tokenModel.Token) {
@@ -84,6 +89,10 @@ export class SignInComponent implements OnInit {
       }, error => {
         this.error = 'ERROR: System error, please contact administrator';
       });
+  }
+
+  forgotPassword() {
+    this.routeTo.navigate(['forgot-password']);
   }
 
 }

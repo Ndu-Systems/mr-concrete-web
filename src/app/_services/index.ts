@@ -8,5 +8,6 @@ export * from './dashboard/measurement.service';
 export * from './communication';
 export * from './dashboard';
 export * from './navigation';
+export * from './locale';
 // end:ng42.barrel
 

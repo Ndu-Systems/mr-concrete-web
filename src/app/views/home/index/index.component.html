@@ -1,288 +1,113 @@
-<div class="home-container">
-  <div class="container">
-
-    <div class="wrap">
-      <div class="search">
-        <button type="submit" class="searchButton">
-          <img src="assets/images/home/search.svg" alt="search_icon" class="search">
-        </button>
-        <input type="text" class="searchTerm" placeholder="What are you looking for?">
-      </div>
+<div class="container">
+  <app-home-heading [heading]="heading"></app-home-heading>
+  <app-search-toolbar></app-search-toolbar>
+  <app-pills [pillList]="pillList"
+             (selectedPillEmitter)="onSelected($event)"></app-pills>
+  <div class="card-list"
+       *ngIf="List">
+    <mat-card class="product"
+              *ngFor="let item of List">
+      <img [src]="item.Image"
+           class="stock imag"
+           alt="stock-image">
+      <button class=""
+              (click)="selectedProduct(item)">Learn more</button>
+    </mat-card>
+  </div>
+  <div class="info">
+    <h1 class="h2">
+      advantages of using our app.
+    </h1>
+    <div class="col-1-of-3"
+         *ngIf="advantages">
+      <app-info-card *ngFor="let item of advantages"
+                     [model]="item"></app-info-card>
     </div>
-
-    <div class="top-selling">
-      <!-- <img src="assets/images/home/top-selling.svg" alt=""> -->
-      <mat-card>
-        <div class="cart">
-          <img src="assets/images/home/market-filled.svg" alt="shopping cart">
-        </div>
-          <mat-card-header>
-              <mat-card-title>Truck hire heavy-duty</mat-card-title>
-              <!-- <mat-card-subtitle>Subtitle</mat-card-subtitle> -->
-          </mat-card-header>
-          <img matCardImage src="assets/images/home/p-1.png">
-          <mat-card-content>
-             <div class="col-1-of-2">
-               <h1 class="price">R3500.00 <span class="span">/day</span></h1>
-               <a routerLink="/register" mat-flat-button color="primary" class="cta-btn">View More</a>
-             </div>
-          </mat-card-content>
-      </mat-card>
-    </div>
-
+  </div>
+  <div class="contact-us">
     <div class="hero">
+      <h1 class="h2">
+        Want more info contact us<span class="fs">.</span>
+      </h1>
+    </div>
+    <form class="form"
+          [formGroup]="rForm">
       <div class="col-1-of-2">
-        <h1 class="big-text">
-          Get all your building material online & delivered to you on site <span class="fs">.</span>
-        </h1>
-      </div>
-    </div>
-
-    <div class="choose col-1-of-2">
-      <mat-card class="buyer">
-        <img src="assets/images/home/bricks.svg" alt="builder-img">
-        <div class="card-context">
-          <h1>Register as a Buyer
-            <span class="description">
-              View products & place orders online.
-            </span>
-          </h1>
-          <a routerLink="/register" mat-flat-button color="primary" class="cta-btn">Start Now</a>
-        </div>
-      </mat-card>
-      <mat-card>
-        <img src="assets/images/home/supplies.svg" alt="supplier-img">
-        <div class="card-context">
-          <h1>Register as a supplier
-            <span class="description">
-              Create orders and generate invoice everywhere. </span>
-          </h1>
-          <a routerLink="/register" mat-flat-button color="primary" class="cta-btn">Start Now</a>
-        </div>
-      </mat-card>
-    </div>
-
-    <div class="quick-links col-1-of-2">
-      <div class="hero">
-        <h1 class="big-text">
-          Top selling products<span class="fs">.</span>
-        </h1>
-      </div>
-      <div class="links col-1-of-2">
-        <a routerLink="">
-          <mat-card class="dark">
-            <img src="assets/images/home/home-white.svg" alt="home-img">
-          </mat-card>
-        </a>
-        <a routerLink="">
-          <mat-card class="yellow">
-            <img src="assets/images/home/shop.svg" alt="shop-img">
-          </mat-card>
-        </a>
-        <a routerLink="">
-          <mat-card class="dark">
-            <img src="assets/images/home/discount.svg" alt="discount-img">
-          </mat-card>
-        </a>
-        <a routerLink="">
-          <mat-card class="light">
-            <img src="assets/images/home/question.svg" alt="question-img">
-          </mat-card>
-        </a>
-      </div>
-    </div>
-
-    <div class="top-products col-1-of-2">
-      <div class="products col-1-of-2">
-        <mat-card>
-          <div class="cart">
-            <img src="assets/images/home/market-filled.svg" alt="shopping cart">
-          </div>
-          <img matCardImage src="assets/images/home/p-1.png" alt="question-img">
-          <div class="details col-1-of-2">
-            <h1>
-              Sand
-              <span class="span">
-                by: Supplier A
-              </span>
-            </h1>
-            <h1>
-              R50000.00<span class="metric">/day</span>
-            </h1>
-          </div>
-        </mat-card>
-        <mat-card>
-          <div class="cart">
-            <img src="assets/images/home/market-filled.svg" alt="shopping cart">
-          </div>
-          <img matCardImage src="assets/images/home/p-1.png" alt="question-img">
-          <div class="details col-1-of-2">
-            <h1>
-              Sand
-              <span class="span">
-                by: Supplier A
-              </span>
-            </h1>
-            <h1>
-              R50000.00<span class="metric">/day</span>
-            </h1>
-          </div>
-        </mat-card>
-        <mat-card>
-          <div class="cart">
-            <img src="assets/images/home/market-filled.svg" alt="shopping cart">
-          </div>
-          <img matCardImage src="assets/images/home/p-1.png" alt="question-img">
-          <div class="details col-1-of-2">
-            <h1>
-              Sand
-              <span class="span">
-                by: Supplier A
-              </span>
-            </h1>
-            <h1>
-              R50000.00<span class="metric">/day</span>
-            </h1>
-          </div>
-        </mat-card>
-        <mat-card>
-          <div class="cart">
-            <img src="assets/images/home/market-filled.svg" alt="shopping cart">
-          </div>
-          <img matCardImage src="assets/images/home/p-1.png" alt="question-img">
-          <div class="details col-1-of-2">
-            <h1>
-              Sand
-              <span class="span">
-                by: Supplier A
-              </span>
-            </h1>
-            <h1>
-              R50000.00<span class="metric">/day</span>
-            </h1>
-          </div>
-        </mat-card>
-      </div>
-      <div class="top-product">
-        <mat-card>
-          <div class="cart">
-            <img src="assets/images/home/market-filled.svg" alt="shopping cart">
-          </div>
-          <img matCardImage src="assets/images/home/p-1.png" alt="question-img">
-          <div class="details col-1-of-2">
-            <h1>
-              Sand
-              <span class="span">
-                by: Supplier A
-              </span>
-            </h1>
-            <h1>
-              R50000.00<span class="metric">/day</span>
-            </h1>
-          </div>
-        </mat-card>
-      </div>
-    </div>
-
-    <div class="suppliers">
-      <div class="hero">
-        <h1 class="big-text">
-          Registered suppliers<span class="fs">.</span>
-        </h1>
-      </div>
-      <div class="supplier-list">
-        <mat-card>
-          <h1 class="name">Supplier A</h1>
-          <img matCardImage src="assets/images/home/p-1.png" alt="question-img">
-        </mat-card>
-        <mat-card>
-          <h1 class="name">Supplier A</h1>
-          <img matCardImage src="assets/images/home/p-1.png" alt="question-img">
-        </mat-card>
-        <mat-card>
-          <h1 class="name">Supplier A</h1>
-          <img matCardImage src="assets/images/home/p-1.png" alt="question-img">
-        </mat-card>
-        <mat-card>
-          <h1 class="name">Supplier A</h1>
-          <img matCardImage src="assets/images/home/p-1.png" alt="question-img">
-        </mat-card>
-        <mat-card>
-          <h1 class="name">Supplier A</h1>
-          <img matCardImage src="assets/images/home/p-1.png" alt="question-img">
-        </mat-card>
-        <mat-card>
-          <h1 class="name">Supplier A</h1>
-          <img matCardImage src="assets/images/home/p-1.png" alt="question-img">
-        </mat-card>
-        <mat-card>
-          <h1 class="name">Supplier A</h1>
-          <img matCardImage src="assets/images/home/p-1.png" alt="question-img">
-        </mat-card>
-        <mat-card>
-          <h1 class="name">Supplier A</h1>
-          <img matCardImage src="assets/images/home/p-1.png" alt="question-img">
-        </mat-card>
-        <mat-card>
-          <h1 class="name">Supplier A</h1>
-          <img matCardImage src="assets/images/home/p-1.png" alt="question-img">
-        </mat-card>
-        <mat-card>
-          <h1 class="name">Supplier A</h1>
-          <img matCardImage src="assets/images/home/p-1.png" alt="question-img">
-        </mat-card>
-        <mat-card>
-          <h1 class="name">Supplier A</h1>
-          <img matCardImage src="assets/images/home/p-1.png" alt="question-img">
-        </mat-card>
-      </div>
-
-    </div>
-    <div class="contact-us">
-      <div class="hero">
-        <h1 class="big-text">
-          Want more info contact us<span class="fs">.</span>
-        </h1>
-      </div>
-      <form class="form" [formGroup]="rForm">
         <mat-form-field appearance="outline">
-          <mat-label>Full name</mat-label>
-          <input matInput placeholder="Enter full name" formControlName="FullName" MatFormFieldControl type="text"
-            required>
-          <mat-error *ngIf="!rForm.controls['FullName'].valid && rForm.controls['FullName'].touched">a name is required
+          <mat-label>FirstName</mat-label>
+          <input matInput
+                 placeholder="Enter Name"
+                 formControlName="FirstName"
+                 MatFormFieldControl
+                 type="text"
+                 required>
+          <mat-error *ngIf="!rForm.controls['FirstName'].valid && rForm.controls['FirstName'].touched">a name is
+            required
           </mat-error>
         </mat-form-field>
-        <div class="col-1-of-2">
-          <mat-form-field appearance="outline">
-            <mat-label>Email</mat-label>
-            <input matInput placeholder="Enter Email" formControlName="Email" MatFormFieldControl type="email">
-          </mat-form-field>
-          <mat-form-field appearance="outline">
-            <mat-label>Phone number</mat-label>
-            <input matInput placeholder="Enter Phone Number (+27)" formControlName="PhoneNumber" MatFormFieldControl type="text"
-              required>
-            <mat-error *ngIf="!rForm.controls['PhoneNumber'].valid && rForm.controls['PhoneNumber'].touched">a Phone number is
-              required
-            </mat-error>
-          </mat-form-field>
-        </div>
+        <mat-form-field appearance="outline">
+          <mat-label>Surname</mat-label>
+          <input matInput
+                 placeholder="Enter Surname"
+                 formControlName="Surname"
+                 MatFormFieldControl
+                 type="text"
+                 required>
+          <mat-error *ngIf="!rForm.controls['Surname'].valid && rForm.controls['Surname'].touched">a name is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-1-of-2">
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput
+                 placeholder="Enter Email"
+                 formControlName="Email"
+                 MatFormFieldControl
+                 type="email">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Phone number</mat-label>
+          <input matInput
+                 placeholder="Enter Phone Number (+27)"
+                 formControlName="PhoneNumber"
+                 MatFormFieldControl
+                 type="text"
+                 required>
+          <mat-error *ngIf="!rForm.controls['PhoneNumber'].valid && rForm.controls['PhoneNumber'].touched">a Phone
+            number is
+            required
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-1-of-1">
         <mat-form-field appearance="outline">
           <mat-label>Message</mat-label>
-          <textarea matInput MatFormFieldControl placeholder="Enter message"  formControlName="Message" required></textarea>
+          <textarea matInput
+                    MatFormFieldControl
+                    placeholder="Enter message"
+                    formControlName="Message"
+                    required></textarea>
           <mat-error *ngIf="!rForm.controls['Message'].valid && rForm.controls['Message'].touched">a message is required
           </mat-error>
         </mat-form-field>
-        <div class="col-1-of-2">
-          <button mat-flat-button color="primary" (click)="onSubmit(rForm.value)" [disabled]="!rForm.valid">
-            Submit
-          </button>
-          <a  mat-flat-button color="primary" class="transparent" routerLink="">clear</a>
-        </div>
-        <div class="error" *ngIf="error">
-          <h1>{{error}}</h1>
-        </div>
-      </form>
-    </div>
-
+      </div>
+      <div class="col-1-of-2">
+        <button mat-flat-button
+                color="primary"
+                (click)="onSubmit(rForm.value)"
+                [disabled]="!rForm.valid">
+          Submit
+        </button>
+        <button mat-flat-button
+                color="primary"
+                class="transparent"
+                (click)="clearForm()">clear</button>
+      </div>
+      <div class="error"
+           *ngIf="errors">
+        <h1>{{errors}}</h1>
+      </div>
+    </form>
   </div>
 </div>

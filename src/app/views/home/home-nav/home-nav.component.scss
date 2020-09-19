@@ -1,7 +1,7 @@
 @import '../../../../assets/styles/general/colors';
 
 .mat-toolbar {
-  background-color: $yellow;
+  background-color: $default-white;
   padding: 1rem 15rem;
   display: grid;
   grid-template-columns: 65% 25% auto;
@@ -9,7 +9,7 @@
 }
 
 .header-icon {
-  height: 2.5em;
+  height: 2rem;
 
 }
 
@@ -26,16 +26,19 @@ mat-toolbar-row {
       font-size: 17px;
 
       a {
-        text-transform: lowercase;
+        text-transform: capitalize;
         color: $black;
         text-decoration: none;
         font-weight: 600;
         padding: 14px;
 
         &.cta-btn {
-          color: $white;
-          border-radius: 3.125rem;
+          background: $yellow;
+          color: $black;
+          border-radius: 0rem;
           height: 2.5rem;
+          font-size: 0.938rem;
+          font-weight: 900;
           padding: 0 2rem;
         }
 
@@ -43,13 +46,38 @@ mat-toolbar-row {
           position: absolute;
           top: 1rem;
           right: 19rem;
-          background: $default-white;
+          background: $yellow;
           border-radius: 2rem;
           height: 1.7rem;
           width: 1.563rem;
           font-size: .8rem;
           font-weight: 800;
           text-align: center;
+        }
+      }
+    }
+  }
+
+  &.account {
+    ul {
+      li {
+        a {
+          color: $default-white;
+          &.cta-btn {
+            color: $black;
+          }
+        }
+      }
+    }
+  }
+
+  &.cart {
+    ul {
+
+      li {
+        color: $default-white;
+        a {
+
         }
       }
     }

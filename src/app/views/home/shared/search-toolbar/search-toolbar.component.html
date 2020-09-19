@@ -1,0 +1,20 @@
+<div class="search-bar">
+  <mat-form-field appearance="outline">
+    <mat-label>Search products</mat-label>
+    <input matInput
+           placeholder="Search products"
+           [ngModel]="SearchText"
+           MatFormFieldControl
+           type="text"
+           required>
+  </mat-form-field>
+  <button mat-flat-button
+          color="primary"
+          class="cta-btn">Search results</button>
+  <button mat-flat-button
+          color="primary"
+          class="search">
+    <span class="material-icons">
+      search
+    </span></button>
+</div>

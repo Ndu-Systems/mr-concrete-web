@@ -1,0 +1,35 @@
+.search-bar {
+  display: grid;
+  grid-template-columns: 80% auto;
+  grid-gap: 1rem;
+  border-bottom: 1.5px solid $grey_lighter;
+  padding-bottom: 2rem;
+  .mat-form-field {
+    width: 100%;
+    height: 3.125rem;
+  }
+
+  .mat-flat-button {
+    height: 4rem;
+    font-weight: 900;
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    background: $yellow !important;
+    color: $black !important;
+    border-radius: 0rem;
+  }
+
+  .search {
+    display: none;
+  }
+
+
+  @media only screen and (max-width: 600px) {
+    .cta-btn {
+      display: none;
+    }
+    .search {
+      display: block;
+    }
+  }
+}

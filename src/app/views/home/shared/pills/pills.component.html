@@ -1,0 +1,5 @@
+<div class="pills col-1-of-4" *ngIf="pillList">
+  <div class="pill" *ngFor="let item of pillList" (click)="selected(item)">
+    <h1 class="name" >{{item.Name}}</h1>
+  </div>
+</div>
