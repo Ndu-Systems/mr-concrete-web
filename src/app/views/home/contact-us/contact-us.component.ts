@@ -27,5 +27,9 @@ export class ContactUsComponent implements OnInit {
   clearForm() {
     this.rForm.reset();
   }
+  onSubmit(form) {
+
+  }
+
 
 }

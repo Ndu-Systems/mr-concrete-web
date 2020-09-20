@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./search-toolbar.component.scss']
 })
 export class SearchToolbarComponent implements OnInit {
-
+  SearchText;
   constructor() { }
 
   ngOnInit() {

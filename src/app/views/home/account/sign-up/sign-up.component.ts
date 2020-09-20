@@ -49,18 +49,13 @@ export class SignUpComponent implements OnInit {
 
   ngOnInit() {
     this.rForm = this.fb.group({
-      Email: new FormControl(
-        null,
-        Validators.compose([
-          Validators.required,
-          Validators.email
-        ])
-      ),
-      Password: [null, Validators.required],
+      Email: [null],
+      Password: [null],
+      FirstName: [null],
+      LastName: [null],
       Cellphone: [null],
-      FirstName: [null, Validators.required],
-      LastName: [null, Validators.required],
       CompanyName: [null],
+      CompanyPhone: [null],
       CompanyRepresentative: [null],
       TypeOfUser: [null],
       CreateUserId: ['sys'],
@@ -75,6 +70,7 @@ export class SignUpComponent implements OnInit {
     } else {
       this.isSupplier = false;
     }
+
   }
 
   onChangeEvent(ev) {
@@ -82,12 +78,13 @@ export class SignUpComponent implements OnInit {
   }
 
   onSubmit(model: SignUpModel) {
-    model.TypeOfUser = this.selectedType;
+    model.TypeOfUser = this.TypeOfUser;
     this.accountService.signUp(model)
       .pipe(first())
       .subscribe(data => {
         if (data.Email) {
           const email: Email = {
+            UserFullName: data.Email,
             Email: data.Email,
             Subject: 'Welcome & Activation',
             Message: '',
